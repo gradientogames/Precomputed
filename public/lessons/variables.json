@@ -1,0 +1,4 @@
+{
+  "title": "Variables 101",
+  "content": "Variables store values so you can reuse them. In JavaScript/TypeScript, use let for reassignable variables and const for values that won’t be reassigned. Example: const pi = 3.14; let count = 0; count = count + 1;"
+}
