@@ -1,0 +1,29 @@
+{
+  "title": "Welcome to Your First Lesson",
+  "description": "First lesson",
+  "content": [
+    {
+      "type": "text",
+      "text": "This is a tiny static prototype. Soon, you’ll be able to run code in-browser. For now, we’re just loading this lesson content from a JSON file."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of the following best describes what this app does with lessons?",
+      "options": [
+        { "id": "a", "text": "Lessons are hardcoded in the React components." },
+        { "id": "b", "text": "Lessons are fetched as static JSON files from public/lessons.", "correct": true },
+        { "id": "c", "text": "Lessons are streamed from a remote API in real time." }
+      ],
+      "explanation": "Check the README and code: it fetches JSON from /lessons."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print Hello from Python! to the console.",
+      "starterCode": "print('Hello from Python!')",
+      "desiredOutput": "Hello from Python!",
+      "maxLines": 100,
+      "maxStringLength": -1
+    }
+  ]
+}

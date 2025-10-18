@@ -1,0 +1,4 @@
+{
+  "title": "Functions Basics",
+  "content": "Functions group reusable logic. Define a function with function name(params) { ... } or as a const with arrow syntax: const add = (a, b) => a + b. Functions help you avoid repeating code and improve readability."
+}
