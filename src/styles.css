@@ -43,6 +43,28 @@
   /* Editor selection (customizable) */
   --editor-selection-bg: rgba(37, 99, 235, 0.25);
   --editor-selection-text: inherit;
+
+  /* Code/mono typography */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --code-font-size: .95rem;
+  --code-line-height: 1.5;
+
+  /* Input spacing */
+  --input-padding-y: 6px;
+  --input-padding-x: 8px;
+
+  /* Scrollbars */
+  --scrollbar-size: 8px;
+  --scrollbar-thumb: rgba(100, 116, 139, 0.6); /* slate-500 */
+  --scrollbar-thumb-hover: rgba(100, 116, 139, 0.9);
+  --scrollbar-track: transparent;
+
+  /* Syntax token colors (Python) */
+  --py-kw: #a855f7; /* violet-500 */
+  --py-str: #16a34a; /* green-600 */
+  --py-comm: #6b7280; /* gray-500 */
+  --py-num: #f59e0b; /* amber-500 */
+  --py-builtin: #0ea5e9; /* sky-500 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,6 +78,18 @@
     --color-primary-strong: #3b82f6; /* blue-500 */
     --color-primary-soft: rgba(96,165,250,0.15);
     --color-inverse: #0b1020;
+
+    /* Scrollbars */
+    --scrollbar-thumb: rgba(148, 163, 184, 0.5); /* slate-400 */
+    --scrollbar-thumb-hover: rgba(148, 163, 184, 0.8);
+    --scrollbar-track: transparent;
+
+    /* Syntax token colors (Python) */
+    --py-kw: #c084fc; /* violet-400 */
+    --py-str: #4ade80; /* green-400 */
+    --py-comm: #9ca3af; /* gray-400 */
+    --py-num: #fbbf24; /* amber-400 */
+    --py-builtin: #38bdf8; /* sky-400 */
   }
 }
 
@@ -144,7 +178,7 @@ a:hover { text-decoration: underline; }
 
 /* Components */
 .input {
-  padding: 6px 8px;
+  padding: var(--input-padding-y) var(--input-padding-x);
   border: var(--border-thickness) solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-bg);
@@ -225,11 +259,13 @@ footer { color: var(--color-muted); }
   background: var(--color-surface);
   box-shadow: var(--shadow-sm);
 }
-.interpreter-header {
+.interpreter-header, .console-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: var(--space-1) var(--space-2);
+}
+.interpreter-header {
   border-bottom: var(--border-thickness) solid var(--color-border);
 }
 /* .interpreter-body removed: textarea rendered directly for a flatter structure */
@@ -255,15 +291,23 @@ footer { color: var(--color-muted); }
   overflow: hidden; /* scroll synced from editor without showing a scrollbar */
   scroll-behavior: auto;
 }
-.code-gutter-pre { margin: 0; white-space: pre; line-height: 1.5; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: .95rem; }
+.code-gutter-pre,
+.code-highlight-pre,
+.code-readonly-pre {
+  margin: 0;
+  white-space: pre;
+  line-height: var(--code-line-height);
+  font-family: var(--font-mono);
+  font-size: var(--code-font-size);
+}
 
 .code-editor {
   width: 100%;
   height: 220px;
   resize: none; /* interpreter shouldn't be resizable */
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: .95rem;
-  line-height: 1.5;
+  font-family: var(--font-mono);
+  font-size: var(--code-font-size);
+  line-height: var(--code-line-height);
   border-radius: 0; /* remove rounded corners to make editor unobtrusive */
   border: none; /* make seamless */
   outline: none;
@@ -283,10 +327,6 @@ footer { color: var(--color-muted); }
   background: var(--color-bg);
 }
 .console-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-1) var(--space-2);
   border-bottom: none;
   flex-wrap: nowrap; /* prevent line break */
   white-space: nowrap; /* ensure single line header */
@@ -301,30 +341,14 @@ footer { color: var(--color-muted); }
   margin: 0;
 }
 
-:root {
-  --py-kw: #a855f7; /* violet-500 */
-  --py-str: #16a34a; /* green-600 */
-  --py-comm: #6b7280; /* gray-500 */
-  --py-num: #f59e0b; /* amber-500 */
-  --py-builtin: #0ea5e9; /* sky-500 */
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --py-kw: #c084fc; /* violet-400 */
-    --py-str: #4ade80; /* green-400 */
-    --py-comm: #9ca3af; /* gray-400 */
-    --py-num: #fbbf24; /* amber-400 */
-    --py-builtin: #38bdf8; /* sky-400 */
-  }
-}
 
 /* Code editor overlay for syntax highlighting */
 .code-editor-cell { position: relative; height: 220px; overflow: hidden; contain: paint; }
 .code-highlight {
   position: absolute;
   inset: 0;
-  padding: 6px 8px; /* match .input padding */
+  padding: var(--input-padding-y) var(--input-padding-x); /* match .input padding */
   pointer-events: none;
   overflow: hidden; /* hide overlay scrollbars; we scroll via translate */
   tab-size: 4;
@@ -333,11 +357,6 @@ footer { color: var(--color-muted); }
   contain: paint;
 }
 .code-highlight-pre {
-  margin: 0;
-  white-space: pre; /* keep exact spacing; editor uses pre-like layout */
-  line-height: 1.5;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: .95rem;
   will-change: transform;
   backface-visibility: hidden;
   transition: none;
@@ -386,19 +405,6 @@ footer { color: var(--color-muted); }
 }
 
 /* Sleek global scrollbars */
-:root {
-  --scrollbar-size: 8px;
-  --scrollbar-thumb: rgba(100, 116, 139, 0.6); /* slate-500 */
-  --scrollbar-thumb-hover: rgba(100, 116, 139, 0.9);
-  --scrollbar-track: transparent;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --scrollbar-thumb: rgba(148, 163, 184, 0.5); /* slate-400 */
-    --scrollbar-thumb-hover: rgba(148, 163, 184, 0.8);
-    --scrollbar-track: transparent;
-  }
-}
 /* Firefox */
 html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar-width: thin; }
 /* WebKit/Blink */
@@ -426,3 +432,47 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
   to { opacity: 1; transform: translateY(0); }
 }
 .fade-in { animation: fade-in 220ms ease-out both; }
+
+
+
+
+/* Spinner (vanilla CSS) */
+.loading { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2); color: var(--color-muted); }
+.spinner { width: 18px; height: 18px; border: 3px solid var(--color-border); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 800ms ease-out infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+/* Read-only code regions (prefix/suffix) */
+.code-readonly {
+  margin: 0;
+  padding: var(--space-2);
+  border: none;
+  background: rgba(0,0,0,0.2);
+  overflow: auto;
+}
+.code-readonly, .code-readonly * {
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+
+
+/* Language selection menu */
+.language-menu {
+  min-height: 50vh;
+  display: grid;
+  place-items: center;
+}
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 200px));
+  gap: var(--space-4);
+}
+@media (max-width: 700px) {
+  .language-grid { grid-template-columns: 1fr; }
+}
+.language-grid .btn {
+  padding: 16px 24px;
+  font-size: var(--fs-lg);
+}

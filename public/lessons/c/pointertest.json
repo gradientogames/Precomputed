@@ -3,6 +3,17 @@
   "description": "Learn how pointers let you control memory directly and write more powerful programs.",
   "content": [
     {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "",
+      "starterCode": "// Your code here",
+      "prefixCode": "#include <stdio.h>\n\nint main() {\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": -1,
+      "maxStringLength": -1
+    },
+    {
       "type": "text",
       "text": "In C, a pointer is a variable that stores the memory address of another variable. You can think of it as a signpost. Instead of holding a value, it points to where the value lives in memory."
     },
@@ -19,7 +30,9 @@
       "language": "c",
       "prompt": "Create an integer variable called number and a pointer that points to it. Then, use the pointer to change number’s value to 10.",
       "starterCode": "#include <stdio.h>\n\nint main() {\n    int number = 5;\n    int *ptr; // create a pointer\n\n    // Your code here\n\n    printf(\"%d\", number);\n    return 0;\n}",
-      "desiredOutput": "10",
+      "prefixCode": "",
+      "suffixCode": "",
+      "desiredOutput": { "type": "exact", "value": "10" },
       "maxLines": 50,
       "maxStringLength": -1
     },
@@ -47,7 +60,9 @@
       "language": "c",
       "prompt": "Print the memory address of a variable using the & operator. Try printing both the address and the value of the variable.",
       "starterCode": "#include <stdio.h>\n\nint main() {\n    int age = 20;\n\n    // Your code here\n\n    return 0;\n}",
-      "desiredOutput": "Address: (some address)\nValue: 20",
+      "prefixCode": "",
+      "suffixCode": "",
+      "desiredOutput": { "type": "pointer" },
       "maxLines": 50,
       "maxStringLength": -1
     },
@@ -60,7 +75,9 @@
       "language": "c",
       "prompt": "Write a function that doubles an integer using a pointer.",
       "starterCode": "#include <stdio.h>\n\nvoid doubleValue(int *ptr) {\n    // Your code here\n}\n\nint main() {\n    int number = 5;\n    doubleValue(&number);\n    printf(\"%d\", number);\n    return 0;\n}",
-      "desiredOutput": "10",
+      "prefixCode": "",
+      "suffixCode": "",
+      "desiredOutput": { "type": "exact", "value": "10" },
       "maxLines": 80,
       "maxStringLength": -1
     },
@@ -84,7 +101,9 @@
       "language": "c",
       "prompt": "Write a function called swap that swaps the values of two integers using pointers. Then call it from main and print the result.",
       "starterCode": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    // Your code here\n}\n\nint main() {\n    int x = 3;\n    int y = 7;\n\n    swap(&x, &y);\n    printf(\"%d %d\", x, y);\n    return 0;\n}",
-      "desiredOutput": "7 3",
+      "prefixCode": "",
+      "suffixCode": "",
+      "desiredOutput": { "type": "exact", "value": "7 3" },
       "maxLines": 100,
       "maxStringLength": -1
     },

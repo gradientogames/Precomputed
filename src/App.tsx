@@ -10,7 +10,26 @@ import CodeInterpreter from './components/CodeInterpreter'
 type LessonText = { type: 'text'; text: string }
 type LessonMCOption = { id: string; text: string; correct?: boolean }
 type LessonMCQ = { type: 'multiple-choice-quiz'; question: string; options: LessonMCOption[]; explanation?: string }
-type LessonCodeQuiz = { type: 'code-quiz'; language?: 'python' | 'c' | 'csharp'; prompt: string; starterCode?: string; desiredOutput?: string; maxLines?: number; maxStringLength?: number }
+
+type DesiredOutput =
+  | { type: 'none' }
+  | { type: 'exact'; value: string }
+  | { type: 'error' }
+  | { type: 'pointer' } // detects a pointer-like hex address in output (e.g., 0x7ffe...)
+  | { type: 'text+tokens'; text: string; sourceIncludes?: string[] }
+
+type LessonCodeQuiz = {
+  type: 'code-quiz'
+  language?: 'python' | 'c' | 'csharp'
+  prompt: string
+  starterCode?: string
+  prefixCode?: string
+  suffixCode?: string
+  desiredOutput?: DesiredOutput
+  maxLines?: number
+  maxStringLength?: number
+}
+
 type LessonElement = LessonText | LessonMCQ | LessonCodeQuiz
 
 type Lesson = {
@@ -77,31 +96,68 @@ function CodeQuizElement({ idx, element, lessonId, onSolved }: { idx: number; el
   const [attempted, setAttempted] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
   const desired = element.desiredOutput
+  const [expectedMsg, setExpectedMsg] = useState<string>('')
+
+  function evalResult(rule: DesiredOutput, output: string, error: string | null | undefined, runCode: string): boolean {
+    const norm = (s: string) => (s ?? '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trimEnd()
+    switch (rule.type) {
+      case 'none':
+        return true
+      case 'exact':
+        return !error && norm(output) === norm(rule.value)
+      case 'error':
+        return !!error
+      case 'pointer':
+        // detect 0x... hex pointer-like substring in output (stdout or stderr combined already)
+        return /\b0x[0-9a-fA-F]+\b/.test(output)
+      case 'text+tokens': {
+        const textOk = norm(output).includes(norm(rule.text))
+        const toks = rule.sourceIncludes ?? []
+        const toksOk = toks.every(t => runCode.includes(t))
+        return textOk && toksOk
+      }
+      default:
+        return false
+    }
+  }
+
+  function describeRule(rule: DesiredOutput): string {
+    switch (rule.type) {
+      case 'none': return 'No specific output required'
+      case 'exact': return `Exactly: ${rule.value}`
+      case 'error': return 'Program should produce an error'
+      case 'pointer': return 'Output should include a pointer-like address (e.g., 0x... )'
+      case 'text+tokens': return `Output should include "${rule.text}"` + (rule.sourceIncludes?.length ? ` and source must include: ${rule.sourceIncludes.join(', ')}` : '')
+      default: return ''
+    }
+  }
 
   return (
     <section className="quiz code-quiz mt-2">
-      <p><strong>Code challenge:</strong> {element.prompt}</p>
+      <p>{element.prompt}</p>
       <CodeInterpreter
         language={element.language ?? 'python'}
         initialCode={element.starterCode}
+        prefixCode={element.prefixCode}
+        suffixCode={element.suffixCode}
         storageKey={`code-quiz:${lessonId ?? 'unknown'}:${idx}:${element.language ?? 'python'}`}
         maxLines={element.maxLines ?? -1}
         maxStringLength={element.maxStringLength ?? -1}
-        onRunComplete={({ output, error }) => {
+        onRunComplete={({ output, error, runCode }) => {
           setAttempted(true)
           if (desired != null) {
-            const norm = (s: string) => (s ?? '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trimEnd()
-            const ok = !error && norm(output) === norm(desired)
+            const ok = evalResult(desired as DesiredOutput, output, error ?? null, runCode)
             setIsCorrect(ok)
+            setExpectedMsg(describeRule(desired as DesiredOutput))
             if (ok) { try { onSolved && onSolved() } catch {} }
           }
         }}
         rightPanel={
-          attempted && desired != null ? (
+          (attempted && desired != null && (desired as DesiredOutput).type !== 'none') ? (
             isCorrect ? (
               <p className="text-success mt-1">Correct</p>
             ) : (
-              <p className="text-danger mt-1">Incorrect. Expected output: <code>{desired}</code></p>
+              <p className="text-danger mt-1">Incorrect. Expected: <code>{expectedMsg}</code></p>
             )
           ) : null
         }
@@ -114,6 +170,12 @@ type LessonMeta = {
   id: string
   title: string
   file: string
+}
+
+type LanguageGroup = {
+  id: string
+  title: string
+  lessons: LessonMeta[]
 }
 
 export default function App() {
@@ -142,6 +204,10 @@ export default function App() {
   const [route] = useRoute()
   const isLessonRoute = route.startsWith('lesson/')
   const routeLessonId = isLessonRoute ? route.slice('lesson/'.length) : null
+  const isLangRoute = route.startsWith('lang/')
+  const routeLangId = isLangRoute ? route.slice('lang/'.length) : null
+
+  const [groups, setGroups] = useState<LanguageGroup[]>([])
 
   // Sync selected lesson id from route
   useEffect(() => {
@@ -224,7 +290,7 @@ export default function App() {
     }
   }, [])
 
-  // Load manifest on mount
+  // Load manifest on mount (supports grouped-by-language schema and legacy flat array)
   useEffect(() => {
     let cancelled = false
     async function loadManifest() {
@@ -232,12 +298,27 @@ export default function App() {
       setManifestLoading(true)
       setManifestError(null)
       try {
-        const res = await fetch('/lessons/manifest.json', { cache: 'no-store' })
+        const base = (import.meta as any)?.env?.BASE_URL ?? '/'
+        const res = await fetch(`${base}lessons/manifest.json`, { cache: 'no-store' })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const data = (await res.json()) as LessonMeta[]
+        const raw = await res.json()
         if (!cancelled) {
-          console.log('[App] manifest loaded with', data.length, 'items')
-          setManifest(data)
+          let parsedGroups: LanguageGroup[] = []
+          if (Array.isArray(raw)) {
+            // Legacy format: flat array of lessons; default them to Python
+            parsedGroups = [{ id: 'python', title: 'Python', lessons: raw as LessonMeta[] }]
+          } else if (raw && Array.isArray((raw as any).languages)) {
+            parsedGroups = (raw as any).languages as LanguageGroup[]
+          } else if (raw && Array.isArray((raw as any).groups)) {
+            parsedGroups = (raw as any).groups as LanguageGroup[]
+          } else {
+            parsedGroups = []
+          }
+          console.log('[App] manifest (groups) loaded with', parsedGroups.length, 'languages')
+          setGroups(parsedGroups)
+          // set active manifest based on current language route
+          const active = routeLangId ? (parsedGroups.find(g => g.id === routeLangId)?.lessons ?? []) : []
+          setManifest(active)
         }
       } catch (e: any) {
         console.error('[App] manifest load error:', e?.message || e)
@@ -254,10 +335,23 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Update active manifest when language changes or groups are loaded
+  useEffect(() => {
+    if (!routeLangId) { setManifest([]); return }
+    const g = groups.find(gr => gr.id === routeLangId)
+    setManifest(g ? g.lessons : [])
+  }, [groups, routeLangId])
+
   // Load selected lesson when currentId or manifest changes
   useEffect(() => {
     if (!currentId) return
-    const meta = manifest.find((m) => m.id === currentId)
+    let meta = manifest.find((m) => m.id === currentId)
+    if (!meta) {
+      for (const g of groups) {
+        const found = g.lessons.find(l => l.id === currentId)
+        if (found) { meta = found; break }
+      }
+    }
     if (!meta) return
 
     let cancelled = false
@@ -266,7 +360,8 @@ export default function App() {
       setLessonLoading(true)
       setLessonError(null)
       try {
-        const res = await fetch(`/lessons/${meta?.file}`, { cache: 'no-store' })
+        const base = (import.meta as any)?.env?.BASE_URL ?? '/'
+        const res = await fetch(`${base}lessons/${meta?.file}`, { cache: 'no-store' })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         const raw = (await res.json()) as any
         const data = normalizeLesson(raw)
@@ -286,7 +381,7 @@ export default function App() {
     return () => {
       cancelled = true
     }
-  }, [currentId, manifest])
+  }, [currentId, manifest, groups])
 
   // Reset sequential view and gating states when a new lesson is loaded
   useEffect(() => {
@@ -377,7 +472,8 @@ export default function App() {
       return
     }
     setFinishSaving(false)
-    navigate('')
+    const grp = groups.find(g => g.lessons.some(l => l.id === currentId))
+    navigate(grp ? (`lang/${grp.id}` as any) : '')
   }
 
   return (
@@ -406,8 +502,18 @@ export default function App() {
         {route === 'signin' && <SignInPage />}
         {route === 'account' && <AccountPage />}
         {route === '' && (
+          <section className="language-menu">
+            <div className="language-grid">
+              <button className="btn btn-primary" onClick={() => navigate('lang/python' as any)}>Python</button>
+              <button className="btn btn-primary" onClick={() => navigate('lang/c' as any)}>C</button>
+              <button className="btn btn-primary" onClick={() => navigate('lang/csharp' as any)}>C#</button>
+            </div>
+          </section>
+        )}
+
+        {isLangRoute && (
           <section>
-            <h2 className="mt-3">Lessons</h2>
+            <h2 className="mt-3">{(groups.find(g => g.id === routeLangId)?.title) ?? 'Lessons'}</h2>
             <p className="text-muted">Progress: {completedCount}/{total}</p>
             {manifestLoading && <p>Loading lessons…</p>}
             {manifestError && <p className="error">Error: {manifestError}</p>}
@@ -480,7 +586,8 @@ export default function App() {
                     let canFinish = true
                     if (finalEl && finalEl.type === 'code-quiz') {
                       const cq = finalEl as LessonCodeQuiz
-                      canFinish = cq.desiredOutput ? codeSolved.has(finalIdx) : true
+                      const requiresRun = cq.desiredOutput ? ((cq.desiredOutput as any).type !== 'none') : false
+                      canFinish = requiresRun ? codeSolved.has(finalIdx) : true
                     }
                     return canFinish ? (
                       <div className="mt-2">
@@ -495,7 +602,8 @@ export default function App() {
                       allow = mcqAnswered.has(lastIdx)
                     } else if (lastEl.type === 'code-quiz') {
                       const cq = lastEl as LessonCodeQuiz
-                      allow = cq.desiredOutput ? codeSolved.has(lastIdx) : true
+                      const requiresRun = cq.desiredOutput ? ((cq.desiredOutput as any).type !== 'none') : false
+                      allow = requiresRun ? codeSolved.has(lastIdx) : true
                     }
                   }
                   return allow ? (

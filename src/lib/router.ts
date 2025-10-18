@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export type Route = '' | 'signin' | 'account' | `lesson/${string}`
+export type Route = '' | 'signin' | 'account' | `lesson/${string}` | `lang/${string}`
 
 function normalize(hash: string): Route {
   const raw = hash.replace(/^#\/?/, '').trim().toLowerCase()
@@ -10,6 +10,9 @@ function normalize(hash: string): Route {
   else if (raw.startsWith('lesson/')) {
     const id = raw.slice('lesson/'.length)
     route = id ? (`lesson/${id}` as Route) : ''
+  } else if (raw.startsWith('lang/')) {
+    const id = raw.slice('lang/'.length)
+    route = id ? (`lang/${id}` as Route) : ''
   } else route = ''
   console.log('[router] normalize:', { input: hash, normalized: route })
   return route

@@ -21,7 +21,9 @@
       "language": "python",
       "prompt": "Print Hello from Python! to the console.",
       "starterCode": "print('Hello from Python!')",
-      "desiredOutput": "Hello from Python!",
+      "prefixCode": "",
+      "suffixCode": "",
+      "desiredOutput": { "type": "exact", "value": "Hello from Python!" },
       "maxLines": 100,
       "maxStringLength": -1
     }

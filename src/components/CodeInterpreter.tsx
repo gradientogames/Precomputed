@@ -9,10 +9,12 @@ export type CodeInterpreterProps = {
   initialCode?: string
   timeoutMs?: number // strict timeout per run
   storageKey?: string // local autosave key
-  onRunComplete?: (result: { output: string; error?: string | null }) => void
+  onRunComplete?: (result: { output: string; error?: string | null; runCode: string }) => void
   maxLines?: number // -1 for unlimited
   maxStringLength?: number // -1 for unlimited
   rightPanel?: React.ReactNode // optional panel rendered to the right of the console
+  prefixCode?: string // uneditable code prepended at run time
+  suffixCode?: string // uneditable code appended at run time
 }
 
 const DEFAULT_PY_SNIPPET = `# Python 3 (client-side)
@@ -20,7 +22,7 @@ const DEFAULT_PY_SNIPPET = `# Python 3 (client-side)
 print('Hello from Python!')
 `
 
-const DEFAULT_C_SNIPPET = `// C (WASM, client-side)
+const DEFAULT_C_SNIPPET = `// C (via Paiza.io API)
 // Type your code here and click Run
 #include <stdio.h>
 int main() {
@@ -29,7 +31,7 @@ int main() {
 }
 `
 
-const DEFAULT_CS_SNIPPET = `// C# (WASM, client-side)
+const DEFAULT_CS_SNIPPET = `// C# (via Paiza.io API)
 // Type your code here and click Run
 using System;
 public class Program {
@@ -39,7 +41,7 @@ public class Program {
 }
 `
 
-export default function CodeInterpreter({ language = 'python', initialCode, timeoutMs = 2000, storageKey, onRunComplete, maxLines = -1, maxStringLength = -1, rightPanel }: CodeInterpreterProps) {
+export default function CodeInterpreter({ language = 'python', initialCode, timeoutMs = 20000, storageKey, onRunComplete, maxLines = -1, maxStringLength = -1, rightPanel, prefixCode, suffixCode }: CodeInterpreterProps) {
   const [code, setCode] = useState(initialCode ?? (language === 'c' ? DEFAULT_C_SNIPPET : language === 'csharp' ? DEFAULT_CS_SNIPPET : DEFAULT_PY_SNIPPET))
   const [output, setOutput] = useState<string>('')
   const [status, setStatus] = useState<'idle' | 'running' | 'ready' | 'error'>('idle')
@@ -162,10 +164,35 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
   }, [code])
 
   const highlighted = useMemo(() => {
-    if (language === 'c') return highlightC(code)
-    if (language === 'csharp') return highlightCSharp(code)
-    return highlightPython(code)
+    const hi = (txt: string) => {
+      if (!txt) return ''
+      if (language === 'c') return highlightC(txt)
+      if (language === 'csharp') return highlightCSharp(txt)
+      return highlightPython(txt)
+    }
+    return hi(code)
   }, [language, code])
+
+  const prefixText = typeof prefixCode === 'string' ? prefixCode! : ''
+  const suffixText = typeof suffixCode === 'string' ? suffixCode! : ''
+  const prefixHighlighted = useMemo(() => {
+    if (!prefixText) return ''
+    if (language === 'c') return highlightC(prefixText)
+    if (language === 'csharp') return highlightCSharp(prefixText)
+    return highlightPython(prefixText)
+  }, [language, prefixText])
+  const suffixHighlighted = useMemo(() => {
+    if (!suffixText) return ''
+    if (language === 'c') return highlightC(suffixText)
+    if (language === 'csharp') return highlightCSharp(suffixText)
+    return highlightPython(suffixText)
+  }, [language, suffixText])
+
+  // Line counts for gutter
+  const countLines = (s: string) => s ? ((s.match(/\n/g)?.length ?? 0) + 1) : 0
+  const middleLineCount = (code.match(/\n/g)?.length ?? 0) + 1
+  const prefixLineCountRaw = countLines(prefixText)
+  const prefixLineCount = prefixLineCountRaw > 0 ? prefixLineCountRaw - 1 : 0;
 
   // Measure character width, line height, and paddings for caret positioning
   useEffect(() => {
@@ -238,50 +265,65 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
     const runner = runnerRef.current
     if (!runner) return
 
-    // Pre-run validation: enforce maxStringLength by scanning string literals
+    // Build final code with enforced prefix/suffix (uneditable regions)
+    const runPrefix = typeof prefixCode === 'string' ? prefixCode! : ''
+    const runSuffix = typeof suffixCode === 'string' ? suffixCode! : ''
+    let middleForRun = code
+    if (runPrefix && middleForRun.startsWith(runPrefix)) middleForRun = middleForRun.slice(runPrefix.length)
+    if (runSuffix && middleForRun.endsWith(runSuffix)) middleForRun = middleForRun.slice(0, middleForRun.length - runSuffix.length)
+    const runCode = runPrefix + middleForRun + runSuffix
+
+    // Pre-run validation: enforce maxStringLength by scanning string literals (on the user-editable portion)
     if (maxStringLength != null && maxStringLength >= 0) {
-      const tooLong = hasStringLiteralExceeding(code, maxStringLength)
+      const tooLong = hasStringLiteralExceeding(middleForRun, maxStringLength)
       if (tooLong) {
         const msg = `String literal exceeds max length of ${maxStringLength} characters. Please shorten your strings.`
         setConsoleOpen(true)
         setStatus('ready')
         setOutput('')
         setError(msg)
-        try { onRunComplete && onRunComplete({ output: '', error: msg }) } catch {}
+        try { onRunComplete && onRunComplete({ output: '', error: msg, runCode }) } catch {}
         return
       }
     }
 
-    setConsoleOpen(true)
+    // Do not open console until we have actual output
+    // Ensure previous console is hidden when starting a new run
+    setConsoleOpen(false)
     setStatus('running')
     setError(null)
     setOutput('')
 
-    const { promise } = runner.run(code, { timeoutMs })
+    const { promise } = runner.run(runCode, { timeoutMs })
 
     let aggOutput = ''
     let errMsg: string | null = null
     try {
       for await (const update of toAsyncIterable(promise)) {
         if (update.type === 'stdout') {
+          // Always open the console on first actual output; avoid stale state closures
+          setConsoleOpen(true)
           aggOutput += update.data
           setOutput((prev) => prev + update.data)
         } else if (update.type === 'stderr') {
+          setConsoleOpen(true)
           aggOutput += update.data
           setOutput((prev) => prev + update.data)
         } else if (update.type === 'error') {
+          setConsoleOpen(true)
           errMsg = update.message
           setError(update.message)
         }
         // ignore other control messages here; final result handled after loop
       }
       setStatus('ready')
-      try { onRunComplete && onRunComplete({ output: aggOutput, error: errMsg }) } catch {}
+      try { onRunComplete && onRunComplete({ output: aggOutput, error: errMsg, runCode }) } catch {}
     } catch (e: any) {
       const em = e?.message ?? 'Execution failed'
       setStatus('error')
       setError(em)
-      try { onRunComplete && onRunComplete({ output: aggOutput, error: em }) } catch {}
+      setConsoleOpen(true)
+      try { onRunComplete && onRunComplete({ output: aggOutput, error: em, runCode }) } catch {}
     }
   }
 
@@ -522,9 +564,15 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
         )}
       </div>
 
-      <div className="code-editor-wrapper">
+    {prefixText && (
+        <div className="code-readonly" aria-label="Prefix code (read-only)">
+          <pre className="code-readonly-pre" dangerouslySetInnerHTML={{ __html: prefixHighlighted }} />
+        </div>
+      )}
+
+    <div className="code-editor-wrapper">
         <div className="code-gutter" ref={gutterRef as any} aria-hidden="true">
-          <pre className="code-gutter-pre">{Array.from({ length: (code.match(/\n/g)?.length ?? 0) + 1 }, (_, i) => i + 1).join('\n')}</pre>
+          <pre className="code-gutter-pre">{Array.from({ length: middleLineCount }, (_, i) => i + 1 + prefixLineCount).join('\n')}</pre>
         </div>
         <div className="code-editor-cell">
           <div className="code-highlight" aria-hidden="true">
@@ -538,6 +586,7 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
             className="input code-editor"
             ref={editorRef as any}
             value={code}
+            style={{ paddingTop: metrics.paddingTop, paddingBottom: metrics.paddingTop }}
             onChange={(e) => {
               const val = e.target.value
               if (maxLines != null && maxLines >= 0) {
@@ -566,6 +615,27 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
           />
         </div>
       </div>
+
+      {suffixText && (
+        <div className="code-readonly" aria-label="Suffix code (read-only)">
+          <pre className="code-readonly-pre" dangerouslySetInnerHTML={{ __html: suffixHighlighted }} />
+        </div>
+      )}
+
+      {status === 'running' && !consoleOpen && !error && (!output || output.length === 0) && (
+        <div className="interpreter-footer" aria-live="polite">
+          <div className="interpreter-footer-row">
+            <div className="loading" aria-label="Running">
+              <div className="spinner" role="status" aria-hidden="false"></div>
+            </div>
+            {rightPanel ? (
+              <aside className="interpreter-side-panel" aria-label="Result panel">
+                {rightPanel}
+              </aside>
+            ) : null}
+          </div>
+        </div>
+      )}
 
       {consoleOpen && (
         <div className="interpreter-footer" aria-live="polite">

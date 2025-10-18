@@ -1,6 +1,25 @@
-[
-  { "id": "intro", "title": "Welcome to Your First Lesson", "file": "intro.json" },
-  { "id": "variables", "title": "Variables 101", "file": "variables.json" },
-  { "id": "functions", "title": "Functions Basics", "file": "functions.json" },
-  { "id": "pointers", "title": "Pointers", "file": "pointertest.json" }
-]
+{
+  "languages": [
+    {
+      "id": "python",
+      "title": "Python",
+      "lessons": [
+        { "id": "intro", "title": "Welcome to Your First Lesson", "file": "python/intro.json" },
+        { "id": "variables", "title": "Variables 101", "file": "python/variables.json" },
+        { "id": "functions", "title": "Functions Basics", "file": "python/functions.json" }
+      ]
+    },
+    {
+      "id": "c",
+      "title": "C",
+      "lessons": [
+        { "id": "pointers", "title": "Pointers", "file": "c/pointertest.json" }
+      ]
+    },
+    {
+      "id": "csharp",
+      "title": "C#",
+      "lessons": []
+    }
+  ]
+}
