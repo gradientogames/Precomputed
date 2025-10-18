@@ -1,0 +1,48 @@
+{
+  "title": "Data Types and Sizes",
+  "description": "Know your bits, bytes, and ranges.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Last time, you learned that every variable takes up space in memory. Now it’s time to see how much space each kind of data actually uses. In C, this isn’t abstract, it’s part of the language itself. The data type you choose determines exactly how many bytes the computer will reserve."
+    },
+    {
+      "type": "text",
+      "text": "Let’s start simple. A byte is the smallest unit of memory that can store a value. One byte can hold 256 different numbers, from 0 to 255. Larger types like int, float, or double use multiple bytes to store bigger or more precise numbers."
+    },
+    {
+      "type": "text",
+      "text": "For example, a char usually takes 1 byte, an int often takes 4 bytes, and a double might take 8 bytes. These sizes can vary depending on your system, but the idea is the same: larger types hold more information but use more memory. C gives you a direct way to check a type’s size using a built-in operator called sizeof."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Print the number of bytes used by an int using sizeof.",
+      "starterCode": "#include <stdio.h>\n\nint main() {\n    // print the size of an int\n    printf(\"%zu\", sizeof(int));\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "4" }
+    },
+    {
+      "type": "text",
+      "text": "Depending on your machine, the output might be 4 or another number, but the key point is that sizeof tells you how many bytes the type occupies. You can use it on variables or directly on type names. This gives you a concrete view of memory usage."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the sizeof operator do?",
+      "options": [
+        { "id": "a", "text": "It counts how many variables you’ve declared." },
+        { "id": "b", "text": "It returns how many bytes a type or variable uses.", "correct": true },
+        { "id": "c", "text": "It measures how long a program runs." },
+        { "id": "d", "text": "It converts a value into bytes." }
+      ],
+      "explanation": "sizeof returns the number of bytes that a type or variable occupies in memory. It’s how you measure data directly in C."
+    },
+    {
+      "type": "text",
+      "text": "Understanding type sizes helps you write efficient programs and predict how your code will behave on different systems. For example, if you store large amounts of data, using the right types can save memory. Or, when reading files or sending data across networks, you’ll need to know exactly how many bytes are being used."
+    },
+    {
+      "type": "text",
+      "text": "You’ve now connected data types to physical memory. In C, types aren’t just about meaning, they define real storage space inside the machine. In the next lesson, you’ll use these values in action as you explore how operators combine, compare, and manipulate them."
+    }
+  ]
+}

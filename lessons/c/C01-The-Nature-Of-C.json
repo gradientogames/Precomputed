@@ -1,0 +1,56 @@
+{
+  "title": "The Nature of C",
+  "description": "Why C is close to the metal.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Before we begin, take a moment to picture what a computer really is. Inside, it’s not thinking or reasoning, it’s following precise instructions written by people. Every blink, sound, and movement on your screen comes from code that tells the machine what to do, step by step. That’s what programming is: teaching a machine how to act."
+    },
+    {
+      "type": "text",
+      "text": "The C language gives you one of the most direct ways to do that. It was created in the 1970s, back when computers were far less powerful, and every byte of memory mattered. C talks almost directly to the hardware. When you write in C, you’re speaking to the machine in one of the closest ways possible while still using words instead of raw numbers."
+    },
+    {
+      "type": "text",
+      "text": "Let’s start with a simple thought experiment. Imagine you want to tell the computer to show a message, like 'Hello, world!'. You can’t just type those words into the screen. The computer doesn’t understand English. You need a language that both you and the machine can understand. C is that middle ground, it translates your instructions into the 1s and 0s that the CPU can actually run."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why do we need a programming language like C?",
+      "options": [
+        { "id": "a", "text": "Computers understand English." },
+        { "id": "b", "text": "C helps us communicate instructions to the computer.", "correct": true },
+        { "id": "c", "text": "C is used to make computers think on their own." },
+        { "id": "d", "text": "C is only for building video games." }
+      ],
+      "explanation": "Computers can’t understand human language. A programming language like C lets us describe what we want the machine to do in a way that can be translated into its own language of binary instructions."
+    },
+    {
+      "type": "text",
+      "text": "Every C program you’ll write goes through a process before it runs. First, you write the instructions in plain text. Then, a special program called a compiler translates them into something the CPU can execute. The end result is a file full of machine instructions, which the computer can run directly."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of these describes what a compiler does?",
+      "options": [
+        { "id": "a", "text": "It turns your text instructions into machine instructions.", "correct": true },
+        { "id": "b", "text": "It runs your code line by line instantly." },
+        { "id": "c", "text": "It manages the computer’s memory for you." },
+        { "id": "d", "text": "It sends your code over the internet." }
+      ],
+      "explanation": "A compiler reads the code you write and produces a version that the CPU can run. It acts as a translator between you and the machine."
+    },
+    {
+      "type": "text",
+      "text": "Because C is so close to the machine, it gives you a level of control that most languages hide. You can decide where data is stored in memory, how fast certain operations are, and even how hardware is accessed. That’s why C is often used for operating systems, embedded systems, and performance-critical software."
+    },
+    {
+      "type": "text",
+      "text": "But that control comes with responsibility. If you make a mistake in C, the computer will still do exactly what you told it to do, even if that means overwriting part of its own memory. There are no safety nets here, and that’s part of what makes learning C so valuable. You’ll not only learn how to code, but how computers themselves actually work."
+    },
+    {
+      "type": "text",
+      "text": "In this first lesson, the goal wasn’t to write code. It was to understand the mindset of programming in C: precision, control, and respect for the machine. In the next lesson, you’ll see what a C program looks like, how it starts, and how the compiler brings it to life."
+    }
+  ]
+}

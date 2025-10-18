@@ -1,0 +1,63 @@
+{
+  "title": "Variables and Memory",
+  "description": "Every variable occupies bytes, learn how.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve seen a C program run and print text. Now let’s ask a deeper question: where does that text, or any piece of data, actually live when the program runs? The answer lies in memory. Every program uses memory to store and retrieve information while it runs, and C lets you see that process up close."
+    },
+    {
+      "type": "text",
+      "text": "Think of memory as a long row of numbered boxes. Each box can hold a value, and each has an address, its position in that long line. When you create a variable in C, you’re asking the computer to reserve one of those boxes for you and give it a name so you can find it later."
+    },
+    {
+      "type": "text",
+      "text": "For example, when you write int age = 20;, you’re creating a box big enough to hold an integer and storing the number 20 inside it. The name age is just a label, something humans use to remember which box we’re talking about. The computer doesn’t care about the name, it only remembers the address."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Declare an integer variable named 'count' and give it a value of 5, then print it to the screen.",
+      "starterCode": "#include <stdio.h>\n\nint main() {\n    // your code here\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "5" }
+    },
+    {
+      "type": "text",
+      "text": "When you ran that program, the CPU stored the number 5 somewhere in memory. The variable count was your way of saying, 'remember this value for later.' If you print it again or perform math on it, the computer goes back to that same spot in memory, retrieves the value, and uses it in the calculation."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does a variable actually represent in C?",
+      "options": [
+        { "id": "a", "text": "A label that points to a spot in memory.", "correct": true },
+        { "id": "b", "text": "A box that moves around randomly." },
+        { "id": "c", "text": "A piece of code that runs automatically." },
+        { "id": "d", "text": "A type of compiler instruction." }
+      ],
+      "explanation": "A variable is a named reference to a specific location in memory that stores a value."
+    },
+    {
+      "type": "text",
+      "text": "The type you declare, like int or char, tells the compiler how many bytes to reserve for that variable. Different data types take up different amounts of memory. An int might take 4 bytes, while a char only takes 1. You’ll see later that this matters when you start working directly with memory addresses."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "If you declare 'int x = 3;', what does the word 'int' tell the computer?",
+      "options": [
+        { "id": "a", "text": "That x should hold a whole number.", "correct": true },
+        { "id": "b", "text": "That x will store text." },
+        { "id": "c", "text": "That x is a new function." },
+        { "id": "d", "text": "That x controls the compiler." }
+      ],
+      "explanation": "The keyword int tells the compiler that x should store an integer value, and it decides how much memory to reserve based on that type."
+    },
+    {
+      "type": "text",
+      "text": "In short, variables are how you talk to memory without dealing with raw numbers and addresses. You tell the computer what to store and what to call it, and it does the rest. But in C, you’ll soon see that those underlying addresses are still visible, and you can even reach in and manipulate them yourself."
+    },
+    {
+      "type": "text",
+      "text": "Next, we’ll go deeper into those details. You’ll learn about data types and sizes, and see exactly how many bytes different kinds of data take up. That’s where you’ll start to truly think like the machine."
+    }
+  ]
+}

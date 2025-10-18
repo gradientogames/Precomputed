@@ -1,0 +1,97 @@
+{
+  "title": "Main and the Compiler",
+  "description": "Understand what happens when a C program runs.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Last time, you learned that C is a bridge between your ideas and the machine’s logic. Now it’s time to actually see a C program. Every C program begins in one specific place: a function called main. When your program runs, the computer jumps straight into main and starts reading your instructions line by line."
+    },
+    {
+      "type": "text",
+      "text": "Let's see what a simple C program looks like. This will be your first real program and your first compiled experience. When you write C code, the file you save is only half the story (or in this case, the code that will be save on this website). You’ll still need a compiler to translate it into machine language so the CPU can execute it."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Try and get this program to output 'Hello, world!'.",
+      "starterCode": "    printf(\"Hello, World!\");",
+      "prefixCode": "#include <stdio.h>\n\nint main() {\n\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "Hello, world!", "skippable": true },
+      "maxLines": 1
+    },
+    {
+      "type": "text",
+      "text": "Whether or not you managed to fix it to make it correct (the W in `Hello, World!` shouldn't be capitalized), it is important to remember that almost everything in programming and computer science as a whole is case sensitive, so always watch out for incorrect casing or typos."
+    },
+    {
+      "type": "text",
+      "text": "But now, a deeper dive into that program. The first line, `#include <stdio.h>`, tells the compiler to include a small collection of code that knows how to handle input and output. Without it, `printf` would be unknown. The next part, `int main()`, marks the start of the main function, the heart of your program. Everything between the curly braces runs when the program starts."
+    },
+    {
+      "type": "text",
+      "text": "Inside main, you called `printf`. That’s a method that sends text to the output. In this case, it displays `Hello, world!`. Finally, the line `return 0;` tells the operating system that your program finished successfully."
+    },
+    {
+      "type": "text",
+      "text": "But, you may be thinking... \"WOAH chat I'm so cooked I don't even know what a 'method' or ';' is.\". That's alright."
+    },
+    {
+      "type": "text",
+      "text": "For now, it is important to understand that `printf` is known as a method. A method looks like any bit of text (with no spaces in between) such as `stinkyBozo` or `printf` that has a pair of brackets after it, like `printf()`. Methods are bundles of code that perform a specific task and can be reused. Don't worry about the specifics for now, just know that `printf(\"Harrow?\")` will output `Harrow?` to the console, which we will use to test our programs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of these are NOT methods?",
+      "options": [
+        { "id": "a", "text": "printf(\"This is not a method.\");"},
+        { "id": "b", "text": "#import <stdio.h>" , "correct": true },
+        { "id": "c", "text": "EliminateOrphans();" },
+        { "id": "d", "text": "int main() {}." }
+      ],
+      "explanation": "`#import <stdio.h>` is not a method. It tells the program to include other methods and definitions, rather than having a function itself. int main() {} might have tripped you up, but it is still a method, only a method definition. This will be explained in more detail later on."
+    },
+    {
+      "type": "text",
+      "text": "Some methods came have arguments, inputs that give extra information to the function for whatever purpose. This can be a number to do operations on, or in the case of `printf(\"This is not a method.\");` it can be text to display. Methods require that all their parameters are filled, meaning that you must give an argument for every corresponding method. Put simply, `printf();` would give an error if you gave two text inputs, or none; it MUST have one text input. It also MUST be text, it cannot be a number. If there was a method that had two numbers as parameters, then you MUST have two numbers in your arguments (the inputs you give when using a method). So, `AddTwoNumbers(5, 10);` would be correct, but `AddTwoNumbers(5);` would not be. Note how a comma (`,`) was used to separate arguments."
+    },
+    {
+      "type": "text",
+      "text": "You may have noticed a strange little symbol earlier, the semi-colon: bringer of syntax errors. The semi-colon (`;`) is a character used to denote the end of a line of code, and it goes at the end of every function you use otherwise you will get an error because the computer doesn't know when the line ends without it. Otherwise the only times you wouldn't use one is if you use curly braces `{}` or have a `//` or `#` at the start of a line."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Now, time for a review. What do you think `int main() { }` represent in a C program?",
+      "options": [
+        { "id": "a", "text": "It defines the starting point of the program.", "correct": true },
+        { "id": "b", "text": "It prints text to the screen." },
+        { "id": "c", "text": "It includes the input and output library." },
+        { "id": "d", "text": "It declares a variable." }
+      ],
+      "explanation": "main() is the entry point of every C program. The computer always begins execution there within its curley brackets."
+    },
+    {
+      "type": "text",
+      "text": "Now let’s connect this to what the compiler actually does. When you run the compiler on your source file, it first checks for syntax errors, mistakes in how you’ve written the code. Then it converts your human-readable instructions into a binary file made of machine instructions. That’s the program the CPU finally executes."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if you forget to compile your C file?",
+      "options": [
+        { "id": "a", "text": "The computer will still understand it automatically." },
+        { "id": "b", "text": "It won’t run, because the CPU can’t execute plain text.", "correct": true },
+        { "id": "c", "text": "The code will print everything twice." },
+        { "id": "d", "text": "It will skip the main function." }
+      ],
+      "explanation": "A compiler is required because the CPU only understands machine code, not the source text you wrote."
+    },
+    {
+      "type": "text",
+      "text": "Now you’ve seen how source code, compiler, and CPU fit together. You write instructions, the compiler translates them, and the machine obeys. C doesn’t hide that process, it invites you to see what’s really going on under the hood."
+    },
+    {
+      "type": "text",
+      "text": "In the next lesson, we’ll talk about variables and memory. You’ll learn that every piece of data you use in C has a physical space inside the computer’s memory. It’s how you start thinking like the machine itself."
+    }
+  ]
+}

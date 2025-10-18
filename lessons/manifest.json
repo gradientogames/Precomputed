@@ -1,6 +1,25 @@
-[
-  { "id": "intro", "title": "Welcome to Your First Lesson", "file": "intro.json" },
-  { "id": "variables", "title": "Variables 101", "file": "variables.json" },
-  { "id": "functions", "title": "Functions Basics", "file": "functions.json" },
-  { "id": "pointers", "title": "Pointers", "file": "pointertest.json" }
-]
+{
+  "languages": [
+    {
+      "id": "python",
+      "title": "Python",
+      "lessons": []
+    },
+    {
+      "id": "csharp",
+      "title": "C#",
+      "lessons": []
+    },
+    {
+      "id": "c",
+      "title": "C",
+      "lessons": [
+        { "id": "C-Lesson01", "title": "The Nature Of C", "file": "c/C01-The-Nature-Of-C.json" },
+        { "id": "C-Lesson02", "title": "Main and the Compiler", "file": "c/C02-Main-And-The-Compiler.json" },
+        { "id": "C-Lesson03", "title": "Variables and Memory", "file": "c/C03-Variables-And-Memory.json" },
+        { "id": "C-Lesson04", "title": "Data Types and Sizes", "file": "c/C04-Data-Types-And-Sizes.json" },
+        { "id": "C-Lesson05", "title": "Operators and Precedence", "file": "c/C05-Operators-And-Precedence.json" }
+      ]
+    }
+  ]
+}
