@@ -556,6 +556,9 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
     <section className="mt-3 interpreter" aria-label="Code interpreter">
       <div className="interpreter-header">
         <div className="cluster">
+          {language === 'python' && status !== 'ready' && status !== 'running' && status !== 'error' && (
+            <div className="spinner" role="status" aria-label="Loading Python runtime"></div>
+          )}
           <button className="btn btn-primary" onClick={handleRun} disabled={status !== 'ready'}>Run</button>
           <button className="btn" onClick={() => setResetDialogOpen(true)} disabled={status === 'running'}>Reset</button>
         </div>
@@ -586,6 +589,7 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
             className="input code-editor"
             ref={editorRef as any}
             value={code}
+            wrap="off"
             style={{ paddingTop: metrics.paddingTop, paddingBottom: metrics.paddingTop }}
             onChange={(e) => {
               const val = e.target.value

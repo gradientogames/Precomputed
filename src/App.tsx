@@ -6,17 +6,21 @@ import { useRoute, navigate } from './lib/router'
 import SignInPage from './pages/SignIn'
 import AccountPage from './pages/Account'
 import CodeInterpreter from './components/CodeInterpreter'
+import PythonImg from './graphics/Python.png'
+import CImg from './graphics/C.png'
+import CSharpImg from './graphics/CSharp.png'
 
 type LessonText = { type: 'text'; text: string }
 type LessonMCOption = { id: string; text: string; correct?: boolean }
 type LessonMCQ = { type: 'multiple-choice-quiz'; question: string; options: LessonMCOption[]; explanation?: string }
 
 type DesiredOutput =
-  | { type: 'none' }
-  | { type: 'exact'; value: string }
-  | { type: 'error' }
-  | { type: 'pointer' } // detects a pointer-like hex address in output (e.g., 0x7ffe...)
-  | { type: 'text+tokens'; text: string; sourceIncludes?: string[] }
+  | { type: 'none'; skippable?: boolean }
+  | { type: 'exact'; value: string; skippable?: boolean }
+  | { type: 'text'; value: string; skippable?: boolean }
+  | { type: 'error'; skippable?: boolean }
+  | { type: 'pointer'; skippable?: boolean } // detects a pointer-like hex address in output (e.g., 0x7ffe...)
+  | { type: 'text+tokens'; text: string; sourceIncludes?: string[]; skippable?: boolean }
 
 type LessonCodeQuiz = {
   type: 'code-quiz'
@@ -92,7 +96,7 @@ function MCQElement({ element, onAnswered }: { element: LessonMCQ; onAnswered?: 
   )
 }
 
-function CodeQuizElement({ idx, element, lessonId, onSolved }: { idx: number; element: LessonCodeQuiz; lessonId: string | null; onSolved?: () => void }) {
+function CodeQuizElement({ idx, element, lessonId, onSolved, onAttempted }: { idx: number; element: LessonCodeQuiz; lessonId: string | null; onSolved?: () => void; onAttempted?: () => void }) {
   const [attempted, setAttempted] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
   const desired = element.desiredOutput
@@ -105,6 +109,11 @@ function CodeQuizElement({ idx, element, lessonId, onSolved }: { idx: number; el
         return true
       case 'exact':
         return !error && norm(output) === norm(rule.value)
+      case 'text': {
+        const out = norm(output).trim()
+        const val = norm(rule.value).trim()
+        return !error && out === val
+      }
       case 'error':
         return !!error
       case 'pointer':
@@ -124,7 +133,8 @@ function CodeQuizElement({ idx, element, lessonId, onSolved }: { idx: number; el
   function describeRule(rule: DesiredOutput): string {
     switch (rule.type) {
       case 'none': return 'No specific output required'
-      case 'exact': return `Exactly: ${rule.value}`
+      case 'exact': return `${rule.value}`
+      case 'text': return `${rule.value}`
       case 'error': return 'Program should produce an error'
       case 'pointer': return 'Output should include a pointer-like address (e.g., 0x... )'
       case 'text+tokens': return `Output should include "${rule.text}"` + (rule.sourceIncludes?.length ? ` and source must include: ${rule.sourceIncludes.join(', ')}` : '')
@@ -145,6 +155,7 @@ function CodeQuizElement({ idx, element, lessonId, onSolved }: { idx: number; el
         maxStringLength={element.maxStringLength ?? -1}
         onRunComplete={({ output, error, runCode }) => {
           setAttempted(true)
+          try { onAttempted && onAttempted() } catch {}
           if (desired != null) {
             const ok = evalResult(desired as DesiredOutput, output, error ?? null, runCode)
             setIsCorrect(ok)
@@ -193,6 +204,7 @@ export default function App() {
   const [visibleCount, setVisibleCount] = useState(0)
   const [mcqAnswered, setMcqAnswered] = useState<Set<number>>(new Set())
   const [codeSolved, setCodeSolved] = useState<Set<number>>(new Set())
+  const [codeAttempted, setCodeAttempted] = useState<Set<number>>(new Set())
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
   const prevVisibleRef = useRef(0)
   const [finishSaving, setFinishSaving] = useState(false)
@@ -209,6 +221,12 @@ export default function App() {
 
   const [groups, setGroups] = useState<LanguageGroup[]>([])
 
+  // Header visibility on scroll
+  const headerRef = useRef<HTMLElement | null>(null)
+  const [isHeaderFloating, setIsHeaderFloating] = useState(true)
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [headerHeight, setHeaderHeight] = useState(0)
+
   // Sync selected lesson id from route
   useEffect(() => {
     setCurrentId(routeLessonId)
@@ -223,6 +241,43 @@ export default function App() {
 
   useEffect(() => {
     console.log('[App] progress backend:', backendLabel())
+  }, [])
+
+  // Measure header height
+  useEffect(() => {
+    function measure() {
+      const h = headerRef.current
+      if (h) setHeaderHeight(h.getBoundingClientRect().height)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
+
+  // Show header at top and when scrolling up; hide on scroll down
+  useEffect(() => {
+    let lastY = window.scrollY || 0
+    function onScroll() {
+      const y = window.scrollY || 0
+      const atTop = y <= 0
+      const delta = y - lastY
+      if (atTop) {
+        // Always keep header floating; just ensure it is visible at top
+        setIsHeaderFloating(true)
+        setIsHeaderVisible(true)
+      } else {
+        setIsHeaderFloating(true)
+        if (delta > 0 && y > 20) {
+          setIsHeaderVisible(false)
+        } else if (delta < 0) {
+          setIsHeaderVisible(true)
+        }
+      }
+      lastY = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true } as any)
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   // Load completed set from backend (Supabase if configured) on mount
@@ -290,6 +345,23 @@ export default function App() {
     }
   }, [])
 
+  async function fetchJsonWithDetails(url: string): Promise<any> {
+    const res = await fetch(url, { cache: 'no-store' })
+    const ct = res.headers?.get('content-type') || ''
+    const text = await res.text().catch(() => '')
+    if (!res.ok) {
+      const snippet = text ? text.slice(0, 200).replace(/\s+/g, ' ').trim() : ''
+      const hint = ct.includes('html') || (snippet && snippet.startsWith('<')) ? 'Hint: Received HTML instead of JSON (possibly a 404 or dev server fallback).' : ''
+      throw new Error(`Failed to fetch ${url}: HTTP ${res.status} ${res.statusText}. ${hint} Content-Type: ${ct || 'unknown'}. ${snippet ? `Body: ${snippet}` : ''}`)
+    }
+    try {
+      return text ? JSON.parse(text) : {}
+    } catch (err: any) {
+      const snippet = text ? text.slice(0, 200).replace(/\s+/g, ' ').trim() : ''
+      throw new Error(`Invalid JSON from ${url}: ${err?.message || String(err)}. Content-Type: ${ct || 'unknown'}. ${snippet ? `Body: ${snippet}` : ''}`)
+    }
+  }
+
   // Load manifest on mount (supports grouped-by-language schema and legacy flat array)
   useEffect(() => {
     let cancelled = false
@@ -299,9 +371,7 @@ export default function App() {
       setManifestError(null)
       try {
         const base = (import.meta as any)?.env?.BASE_URL ?? '/'
-        const res = await fetch(`${base}lessons/manifest.json`, { cache: 'no-store' })
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const raw = await res.json()
+        const raw = await fetchJsonWithDetails(`${base}lessons/manifest.json`)
         if (!cancelled) {
           let parsedGroups: LanguageGroup[] = []
           if (Array.isArray(raw)) {
@@ -361,9 +431,7 @@ export default function App() {
       setLessonError(null)
       try {
         const base = (import.meta as any)?.env?.BASE_URL ?? '/'
-        const res = await fetch(`${base}lessons/${meta?.file}`, { cache: 'no-store' })
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const raw = (await res.json()) as any
+        const raw = await fetchJsonWithDetails(`${base}lessons/${meta?.file}`) as any
         const data = normalizeLesson(raw)
         if (!cancelled) {
           console.log('[App] lesson loaded:', { id: currentId, title: data.title })
@@ -479,9 +547,12 @@ export default function App() {
   return (
     <div className="container">
       <main className="content">
-        <header>
+        <header
+          ref={el => { headerRef.current = el as any }}
+          className={'site-header' + (isHeaderFloating ? ' is-floating' : '') + (isHeaderFloating && !isHeaderVisible ? ' is-hidden' : '')}
+        >
           <div className="header-bar">
-            <h1 className="mb-2">Coding Lessons</h1>
+            <button className="brand-button brand-title mb-2" onClick={() => navigate('' as any)} aria-label="Go to language selection">PRECOMPUTED</button>
             <div className="ml-auto cluster">
               <button className="btn" onClick={() => navigate('')}>Lessons</button>
               {!hasSupabase && (
@@ -498,15 +569,52 @@ export default function App() {
             </div>
           </div>
         </header>
+        <div className="header-spacer" style={{ height: headerHeight }} />
 
         {route === 'signin' && <SignInPage />}
         {route === 'account' && <AccountPage />}
         {route === '' && (
           <section className="language-menu">
+            {hasSupabase && !canDoLessons && (
+              <p className="text-muted mt-2">Sign in to choose a language and start lessons.</p>
+            )}
             <div className="language-grid">
-              <button className="btn btn-primary" onClick={() => navigate('lang/python' as any)}>Python</button>
-              <button className="btn btn-primary" onClick={() => navigate('lang/c' as any)}>C</button>
-              <button className="btn btn-primary" onClick={() => navigate('lang/csharp' as any)}>C#</button>
+              <button
+                className="btn lang-card"
+                onClick={() => navigate('lang/python' as any)}
+                disabled={!canDoLessons}
+                aria-disabled={!canDoLessons}
+                title={!canDoLessons ? 'Sign in to select a language' : undefined}
+              >
+                <img src={PythonImg} alt="Python" className="lang-icon" />
+                <div className="lang-title">Python</div>
+                <div className="lang-difficulty diff-baby">Little Baby</div>
+                <div className="lang-subtitle">Don't even bother unless learning this is mandatory.</div>
+              </button>
+              <button
+                className="btn lang-card"
+                onClick={() => navigate('lang/csharp' as any)}
+                disabled={!canDoLessons}
+                aria-disabled={!canDoLessons}
+                title={!canDoLessons ? 'Sign in to select a language' : undefined}
+              >
+                <img src={CSharpImg} alt="C#" className="lang-icon" />
+                <div className="lang-title">C#</div>
+                <div className="lang-difficulty diff-easy">Easy</div>
+                <div className="lang-subtitle">Learn programming for any software, like games!</div>
+              </button>
+              <button
+                className="btn lang-card"
+                onClick={() => navigate('lang/c' as any)}
+                disabled={!canDoLessons}
+                aria-disabled={!canDoLessons}
+                title={!canDoLessons ? 'Sign in to select a language' : undefined}
+              >
+                <img src={CImg} alt="C" className="lang-icon" />
+                <div className="lang-title">C</div>
+                <div className="lang-difficulty diff-moderate">Moderate</div>
+                <div className="lang-subtitle">Designed to teach computer science and programming.</div>
+              </button>
             </div>
           </section>
         )}
@@ -566,6 +674,7 @@ export default function App() {
                           element={cq}
                           lessonId={currentId}
                           onSolved={() => setCodeSolved(prev => { const s = new Set(prev); s.add(idx); return s })}
+                          onAttempted={() => setCodeAttempted(prev => { const s = new Set(prev); s.add(idx); return s })}
                         />
                       )
                     }
@@ -586,8 +695,12 @@ export default function App() {
                     let canFinish = true
                     if (finalEl && finalEl.type === 'code-quiz') {
                       const cq = finalEl as LessonCodeQuiz
-                      const requiresRun = cq.desiredOutput ? ((cq.desiredOutput as any).type !== 'none') : false
-                      canFinish = requiresRun ? codeSolved.has(finalIdx) : true
+                      const d = cq.desiredOutput as any
+                      if (d && d.type !== 'none') {
+                        canFinish = d.skippable ? codeAttempted.has(finalIdx) : codeSolved.has(finalIdx)
+                      } else {
+                        canFinish = true
+                      }
                     }
                     return canFinish ? (
                       <div className="mt-2">
@@ -602,8 +715,12 @@ export default function App() {
                       allow = mcqAnswered.has(lastIdx)
                     } else if (lastEl.type === 'code-quiz') {
                       const cq = lastEl as LessonCodeQuiz
-                      const requiresRun = cq.desiredOutput ? ((cq.desiredOutput as any).type !== 'none') : false
-                      allow = requiresRun ? codeSolved.has(lastIdx) : true
+                      const d = cq.desiredOutput as any
+                      if (d && d.type !== 'none') {
+                        allow = d.skippable ? codeAttempted.has(lastIdx) : codeSolved.has(lastIdx)
+                      } else {
+                        allow = true
+                      }
                     }
                   }
                   return allow ? (

@@ -115,9 +115,6 @@ export default function SignInPage() {
           </button>
         </div>
       </form>
-      <div className="mt-3">
-        <button className="btn" onClick={() => { console.log('[SignIn] back to lessons'); navigate('') }}>Back to lessons</button>
-      </div>
     </section>
   )
 }

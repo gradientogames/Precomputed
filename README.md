@@ -39,7 +39,7 @@ How lessons work
 - Each lesson JSON contains at least { "title": string, "content": LessonElement[] }.
 - Supported content elements: text blocks, multiple-choice quizzes, and code quizzes.
 - Code quiz fields: { language, prompt, starterCode, prefixCode?, suffixCode?, desiredOutput?, maxLines?, maxStringLength? }.
-- desiredOutput strategies supported: none, exact, error, pointer, and text+tokens (see .junie/guidelines.md for details and examples).
+- desiredOutput strategies supported: none, exact, text, error, pointer, and text+tokens (see .junie/guidelines.md for details and examples).
 
 
 Where progress is stored

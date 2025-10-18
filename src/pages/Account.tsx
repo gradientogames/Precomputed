@@ -108,7 +108,6 @@ export default function AccountPage() {
             {resetting ? 'Resetting…' : 'Reset progress'}
           </button>
           <button className="btn btn-secondary" onClick={handleSignOut}>Sign out</button>
-          <button className="btn" onClick={() => { console.log('[Account] back to lessons'); navigate('') }}>Back to lessons</button>
         </div>
       </div>
       <ConfirmDialog

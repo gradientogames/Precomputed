@@ -1,0 +1,59 @@
+{
+  "title": "Operators and Precedence",
+  "description": "Master arithmetic and logical operations.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how C stores numbers and other data in memory. But programs don’t just store information, they use it to make decisions and perform calculations. Operators are how you tell the computer what to do with your data."
+    },
+    {
+      "type": "text",
+      "text": "Operators are small symbols like +, -, *, and /. They tell the CPU to perform arithmetic just like you would on paper. For example, 3 + 2 adds two numbers, while 6 / 3 divides one by the other. C also has comparison operators like == and >, which return true or false depending on the relationship between values."
+    },
+    {
+      "type": "text",
+      "text": "Here’s something important: not all operators have the same priority. When you write a more complex expression, like 3 + 2 * 4, C doesn’t read it strictly left to right. It follows a set of rules called precedence to decide which operations happen first. In that example, multiplication has higher precedence, so 2 * 4 runs before the addition. The result is 11, not 20."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Predict the output of this expression and print it: (4 + 2) * 3",
+      "starterCode": "#include <stdio.h>\n\nint main() {\n    printf(\"%d\", (4 + 2) * 3);\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "18" }
+    },
+    {
+      "type": "text",
+      "text": "You used parentheses to change the order of operations. Parentheses always come first in precedence, they let you control exactly how an expression is evaluated. Without them, C would follow its built-in rules, which prioritize multiplication and division before addition and subtraction."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "In C, which operator has the highest precedence?",
+      "options": [
+        { "id": "a", "text": "+" },
+        { "id": "b", "text": "-" },
+        { "id": "c", "text": "*" , "correct": true },
+        { "id": "d", "text": "==" }
+      ],
+      "explanation": "Multiplication (*) and division (/) have higher precedence than addition (+) or subtraction (-). This means they’re evaluated first unless parentheses change the order."
+    },
+    {
+      "type": "text",
+      "text": "C also supports logical operators like && (and), || (or), and ! (not). These are used in conditions to make decisions. For example, you can write if (a > 0 && b > 0) to check if two values are both positive. The result of a comparison or logical expression is 1 for true and 0 for false."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the expression (5 > 3 && 2 < 4) evaluate to?",
+      "options": [
+        { "id": "a", "text": "0" },
+        { "id": "b", "text": "1", "correct": true },
+        { "id": "c", "text": "true" },
+        { "id": "d", "text": "false" }
+      ],
+      "explanation": "Both comparisons are true, so the logical AND (&&) returns 1, which means true in C."
+    },
+    {
+      "type": "text",
+      "text": "Operators are the language’s way of expressing action. Precedence defines order. Together, they let you write expressions that the computer can evaluate step by step, exactly as you intend. In the next lesson, you’ll use these tools to control the *flow* of your programs, making them react and decide what to do next."
+    }
+  ]
+}

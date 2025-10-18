@@ -1,0 +1,98 @@
+# 🐍 Python (focus: the language itself)
+### Goal: Master Python’s syntax, structures, and idioms without external distractions.
+- Hello, Expressions. Learn how Python evaluates simple expressions and prints results.
+- Variables and Names. Understand how names point to values in Python.
+- Numbers and Math Tricks. Explore Python’s numeric types and arithmetic operations.
+- Strings and Quotes. Work with text, escaping, and multi-line strings.
+- Formatting Strings. Learn f-strings, format(), and concatenation.
+- Lists and Indexing. Store sequences and access elements dynamically.
+- Tuples and Immutability. Why fixed collections matter and how to use them.
+- Dictionaries and Keys. Build mappings for fast lookups.
+- Sets and Membership. Handle unique collections efficiently.
+- If Statements and Truth. Learn Python’s approach to boolean logic and control flow.
+- Loops: For and While. Iterate cleanly through sequences and ranges.
+- Functions: Reuse and Scope. Define, call, and understand variable scope.
+- Arguments and Defaults. Learn *args, **kwargs, and keyword-only arguments.
+- List Comprehensions. Express loops and filters in one line.
+- Prime Finder. Build a small program to list prime numbers.
+- Modules and Imports. Structure code into reusable files.
+- Namespaces and __name__. Understand how Python organizes code contexts.
+- Objects and Classes. Define classes and create instances.
+- Methods and self. Distinguish between data and behavior.
+- Inheritance and Polymorphism. Extend and modify behavior hierarchically.
+- Magic Methods and Operators. Override built-in behavior (__str__, __add__, etc.).
+- Exceptions and try/except. Handle and raise errors gracefully.
+- Iterators and Generators. Learn how for really works under the hood.
+- Decorators and Higher-Order Functions. Modify behavior dynamically.
+- Lambda and Functional Tools. Use map, filter, and reduce effectively.
+- Text Analyzer. Parse a text file and count word frequencies (mock input).
+- Comprehending Pythonic Style. Learn idioms and readability conventions.
+- Typing and Annotations. Use type hints for clarity and safety.
+- Simple Parser. Build a basic expression evaluator.
+- Finale: Mini Interpreter. Create a tiny Python-like calculator language.
+
+# 💡 C# (focus: programming as a skill)
+### Goal: Learn structured, object-oriented programming through C#.
+- Thinking Like a Programmer. What programming is before any syntax.
+- Your First Program. Understand structure: Main, statements, and flow.
+- Variables and Data Types. Use int, float, bool, string effectively.
+- Operators and Expressions. Combine and compare values logically.
+- Decisions: If and Switch. Implement branching logic.
+- Loops and Iteration. Repeat tasks with for, while, and foreach.
+- Methods and Parameters. Encapsulate code into reusable functions.
+- Return Values and Scope. Pass data in and out of methods correctly.
+- Arrays and Lists. Manage multiple values with collections.
+- Enums and Constants. Represent named states and choices.
+- Grade Calculator. Build a program that computes weighted grades.
+- Objects and Classes. Model the world with custom types.
+- Fields, Properties, and Encapsulation. Hide data and expose clean interfaces.
+- Constructors and Overloading. Control how objects are created.
+- Static vs Instance Members. Understand what belongs to the class vs object.
+- Inheritance and Virtual Methods. Share and extend code behavior.
+- Interfaces and Abstraction. Define contracts for flexible design.
+- Inventory System. Build a simple RPG-style item tracker.
+- Collections and Generics. Write reusable code with type safety.
+- Error Handling with Try/Catch. Anticipate and handle runtime issues.
+- Structs vs Classes. Learn when to use value vs reference types.
+- Delegates and Events. Write code that reacts to actions.
+- LINQ Basics. Query data with expressive syntax.
+- Student Database. Manage and query objects using LINQ.
+- Recursion and Problem Solving. Use recursive thinking for elegant solutions.
+- Design Patterns: Singleton and Factory. Learn the purpose behind common patterns.
+- Simple Turn-Based Game Logic. Simulate a mini strategy battle.
+- Refactoring for Readability. Improve structure and maintainability.
+- Testing Your Code. Write methods that are easy to verify and trust.
+- Finale: Mini Simulation Project. Build a small self-contained system (e.g. farm sim logic).
+
+# ⚙️ C (focus: low-level computer science)
+### Goal: Learn how computers actually execute code and manage memory.
+- The Nature of C. Why C is close to the metal.
+- Main and the Compiler. Understand what happens when a C program runs.
+- Variables and Memory. Every variable occupies bytes—see how.
+- Data Types and Sizes. Know your bits, bytes, and ranges.
+- Operators and Precedence. Master arithmetic and logical operations.
+- Control Flow. If, else, and while—how branching works at machine level.
+- For Loops and Counters. Classic loop structure and its efficiency.
+- Functions and the Stack. See how arguments and return addresses are stored.
+- Arrays and Memory Layout. Understand contiguous memory blocks.
+- Pointers: Addresses and Dereferencing. Directly manipulate memory.
+- Pointer Arithmetic. Traverse arrays and data manually.
+- Manual String Functions. Rebuild strlen, strcpy, etc.
+- Dynamic Memory: malloc and free. Request and manage heap memory.
+- Structs and Data Layout. Group related data manually.
+- Enums and Type Safety. Define symbolic constants.
+- Unions and Memory Reuse. Store multiple data types in the same space.
+- Linked List Implementation. Build your first dynamic data structure.
+- Function Pointers. Treat functions as data for callbacks.
+- Preprocessor and Macros. Learn how code transforms before compilation.
+- Header Files and Declarations. Organize code modularly.
+- Bitwise Operations. Operate directly on binary representations.
+- Bitfield Flags System. Implement lightweight settings with bits.
+- Stacks and Queues (Manual Implementation). Learn core data structures from scratch.
+- Memory Alignment and Padding. Understand how CPUs read memory efficiently.
+- Recursion and Stack Frames. Explore how recursion uses the call stack.
+- Simple Sorting Algorithms. Implement bubble, selection, and insertion sort.
+- Complex Data Structures. Build trees or hash tables manually.
+- Debugging with Print and Mind. Learn to think like the compiler.
+- Mini Allocator. Simulate your own simplified memory manager.
+- Finale: ECS. create your own simple ECS.

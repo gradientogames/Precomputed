@@ -45,7 +45,7 @@
   --editor-selection-text: inherit;
 
   /* Code/mono typography */
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --code-font-size: .95rem;
   --code-line-height: 1.5;
 
@@ -65,6 +65,10 @@
   --py-comm: #6b7280; /* gray-500 */
   --py-num: #f59e0b; /* amber-500 */
   --py-builtin: #0ea5e9; /* sky-500 */
+
+  /* Official brand colors reused for background and title gradient */
+  --brand-1: #2563eb; /* blue-600 */
+  --brand-2: #10b981; /* emerald-500 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -99,9 +103,15 @@ html, body, #root { height: 100%; }
 
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  line-height: 1.5;
-  background: var(--color-bg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  /* Background: non-repeating, stronger gradients without visible seams */
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(1500px 820px at 110% -10%, color-mix(in srgb, var(--brand-1) 26%, transparent), transparent 70%),
+    radial-gradient(1200px 720px at -10% 0%, color-mix(in srgb, var(--brand-2) 20%, transparent), transparent 75%);
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
   color: var(--color-text);
   padding: var(--space-5);
 }
@@ -137,7 +147,7 @@ a:hover { text-decoration: underline; }
 
 /* Layout */
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -156,6 +166,7 @@ a:hover { text-decoration: underline; }
   justify-content: space-between;
   gap: var(--space-3);
   flex-wrap: wrap;
+  padding: var(--space-1) var(--space-4);
 }
 
 /* Navigation list */
@@ -164,14 +175,16 @@ a:hover { text-decoration: underline; }
 .nav-button {
   width: 100%;
   text-align: left;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
   border: var(--border-thickness) solid var(--color-border);
-  background: transparent;
+  background: var(--color-surface);
   color: inherit;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out, background-color 160ms ease-out, border-color 160ms ease-out;
 }
-.nav-button:hover { background: var(--color-surface); }
+.nav-button:hover { background: var(--color-primary-soft); border-color: var(--color-primary); box-shadow: var(--shadow-md); transform: translateY(-1px); }
 .nav-button strong { font-weight: 600; }
 .nav-button.is-active { background: var(--color-primary-soft); border-color: var(--color-primary); }
 .nav-button.is-active strong { font-weight: 700; }
@@ -186,14 +199,16 @@ a:hover { text-decoration: underline; }
 }
 
 .btn {
-  padding: 6px 10px;
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   border: var(--border-thickness) solid var(--color-border);
   cursor: pointer;
   background: var(--color-surface);
   color: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out, transform 180ms ease-out, box-shadow 180ms ease-out;
 }
-.btn:disabled { opacity: .6; cursor: not-allowed; }
+.btn:disabled { opacity: .6; cursor: default; }
 .btn-primary { background: var(--color-primary); color: var(--color-inverse); border-color: var(--color-primary-strong); }
 .btn-primary:hover { background: var(--color-primary-strong); }
 .btn-secondary { background: var(--color-surface); }
@@ -255,7 +270,7 @@ footer { color: var(--color-muted); }
 /* Code Interpreter styles */
 .interpreter {
   border: var(--border-thickness) solid var(--color-border);
-  border-radius: 0;
+  border-radius: var(--radius-md);
   background: var(--color-surface);
   box-shadow: var(--shadow-sm);
 }
@@ -372,6 +387,15 @@ footer { color: var(--color-muted); }
 /* Editor focus outline off specifically for code editor */
 .code-editor:focus-visible { outline: none; }
 
+/* Allow selection drag across editor container so users can select to end-of-line even when cursor leaves the textarea */
+.code-editor-wrapper,
+.code-editor-cell {
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+
 
 /* Editor selection styling for code editor */
 .code-editor::selection { background: var(--editor-selection-bg); color: var(--editor-selection-text); }
@@ -460,13 +484,17 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
 
 /* Language selection menu */
 .language-menu {
-  min-height: 50vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   display: grid;
   place-items: center;
 }
 .language-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(140px, 200px));
+  grid-template-columns: repeat(3, minmax(180px, 240px));
   gap: var(--space-4);
 }
 @media (max-width: 700px) {
@@ -475,4 +503,152 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
 .language-grid .btn {
   padding: 16px 24px;
   font-size: var(--fs-lg);
+}
+
+/* Language cards */
+.lang-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+.lang-card:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+}
+.lang-icon { width: 100%; height: 100%; object-fit: contain; }
+.lang-title { font-weight: 700; font-size: var(--fs-xl); }
+.lang-subtitle { font-size: var(--fs-sm); color: var(--color-muted); line-height: 1.4; }
+.lang-difficulty { font-weight: 600; margin-top: 2px; }
+.lang-difficulty.diff-baby { color: var(--color-primary); }
+.lang-difficulty.diff-easy { color: var(--color-success); }
+.lang-difficulty.diff-moderate { color: var(--color-warning); }
+
+/* Header visibility: appears at top or when scrolling up */
+.site-header {
+  position: static;
+  background: var(--color-bg);
+  border-bottom: var(--border-thickness) solid var(--color-border);
+  margin-bottom: var(--space-4);
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
+}
+
+.site-header.is-floating {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.site-header.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Headings */
+h1, h2, h3 { letter-spacing: -0.01em; }
+h1 { font-size: 1.9rem; }
+
+/* Generic button interactions */
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
+
+/* Disable animations when interaction is disallowed (disabled or aria-disabled) */
+.btn:disabled,
+.btn[aria-disabled="true"],
+.nav-button:disabled,
+.nav-button[aria-disabled="true"],
+.choice-button:disabled,
+.choice-button[aria-disabled="true"] {
+  transition: none !important;
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.btn:disabled:hover,
+.btn[aria-disabled="true"]:hover,
+.nav-button:disabled:hover,
+.nav-button[aria-disabled="true"]:hover,
+.choice-button:disabled:hover,
+.choice-button[aria-disabled="true"]:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* Lesson card polish */
+.lesson { border-color: color-mix(in srgb, var(--color-border) 85%, transparent); }
+@supports not (color-mix: in srgb, white 50%, black 50%) {
+  /* Fallback: keep default border */
+}
+
+/* MCQ button states */
+.choice-button.is-correct { background: rgba(16, 185, 129, 0.08); }
+.choice-button.is-incorrect { background: rgba(220, 38, 38, 0.08); }
+
+/* Brand title: uppercase with static base gradient and animated sheen */
+.brand-button { background: none; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; }
+.brand-title {
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1.1;
+  font-weight: 900; /* bolder title */
+  margin-block: var(--space-3); /* bigger margins around title */
+  margin-inline: 0;
+  /* Two-layer background: base brand gradient + diagonal sheen sweep */
+  background-image:
+    linear-gradient(90deg, var(--brand-1), var(--brand-2)),
+    linear-gradient(115deg, rgba(255,255,255,0) 42%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0) 58%);
+  background-size: 100% 100%, 240% 240%;
+  background-position: 0% 0%, -180% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: brand-sheen 6s ease-out infinite;
+}
+@keyframes brand-sheen {
+  0%, 70% { background-position: 0% 0%, -180% 50%; }
+  75% { background-position: 0% 0%, 180% 50%; }
+  100% { background-position: 0% 0%, 180% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-title {
+    animation: none;
+    background-image: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+    background-size: 100% 100%;
+    background-position: 0% 0%;
+  }
+}
+
+/* Preserve MCQ correctness highlighting even on hover/disabled */
+.choice-button.is-correct,
+.choice-button.is-correct:hover,
+.choice-button.is-correct:disabled,
+.choice-button.is-correct[aria-disabled="true"],
+.choice-button.is-correct:disabled:hover,
+.choice-button.is-correct[aria-disabled="true"]:hover {
+  border-color: var(--color-success) !important;
+  background: rgba(16, 185, 129, 0.08) !important;
+}
+.choice-button.is-incorrect,
+.choice-button.is-incorrect:hover,
+.choice-button.is-incorrect:disabled,
+.choice-button.is-incorrect[aria-disabled="true"],
+.choice-button.is-incorrect:disabled:hover,
+.choice-button.is-incorrect[aria-disabled="true"]:hover {
+  border-color: var(--color-danger) !important;
+  background: rgba(220, 38, 38, 0.08) !important;
+}
+
+code {
+  background: rgba(0,0,0,0.3);
+  padding: 0.2em 0.4em;
+  font-family: var(--font-mono), monospace;
 }
