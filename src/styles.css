@@ -647,6 +647,20 @@ h1 { font-size: 1.9rem; }
   background: rgba(220, 38, 38, 0.08) !important;
 }
 
+/* Locked lesson buttons (nav-button) should look disabled (muted) and remain non-interactive */
+.nav-button:disabled,
+.nav-button[aria-disabled="true"] {
+  opacity: .6;
+  cursor: default;
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+.nav-button:disabled:hover,
+.nav-button[aria-disabled="true"]:hover {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
 code {
   background: rgba(0,0,0,0.3);
   padding: 0.2em 0.4em;

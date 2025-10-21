@@ -137,11 +137,9 @@ export function createPythonRunner(): PythonRunner {
 }
 
 function createPaizaRunner(language: 'c' | 'csharp'): Runner {
-  // Network-backed runner using Paiza.io API (https://api.paiza.io)
-  // The Runner interface is preserved to minimize changes elsewhere.
-  const env: any = (import.meta as any).env || {}
-  // Prefer an explicit proxy/base URL if provided; otherwise use Vite dev proxy in dev and direct API in prod
-  const PAIZA_BASE = env.VITE_PAIZA_BASE_URL || (env.DEV ? '/__paiza' : 'https://api.paiza.io')
+  // Paiza API base: dev uses Vite proxy; prod can use Cloudflare Worker proxy or direct API
+  const DEFAULT_BASE = import.meta.env.DEV ? '/__paiza' : 'https://api.paiza.io'
+  const PAIZA_BASE = (import.meta.env.VITE_PAIZA_BASE_URL || DEFAULT_BASE).replace(/\/+$/, '')
 
   function warmup(): Promise<void> {
     // No-op warmup; immediately resolve to keep UI consistent
@@ -307,10 +305,119 @@ function createPaizaRunner(language: 'c' | 'csharp'): Runner {
   return { run, warmup, dispose }
 }
 
+//function createJudge0Runner(language: 'c' | 'csharp'): Runner {
+//  const DEFAULT_BASE = import.meta.env.DEV ? '/__judge0' : 'https://ce.judge0.com'
+//  const BASE = (import.meta.env.VITE_JUDGE0_BASE_URL || DEFAULT_BASE).replace(/\/+$/, '')
+//
+//  function warmup(): Promise<void> {
+//    return Promise.resolve()
+//  }
+//
+//  function stripCompilerWarnings(text: string): string {
+//    if (!text) return ''
+//    const lines = text.split(/\r?\n/)
+//    const filtered = lines.filter((line) => {
+//      const l = line.trim()
+//      if (l.length === 0) return false
+//      if (/\bwarning(\s*\[[^\]]+\])?:/i.test(l)) return false
+//      if (/\bwarning\s+CS\d{4}\b/i.test(l)) return false
+//      if (/^\s*W:\s/.test(l)) return false
+//      return true
+//    })
+//    return filtered.join('\n')
+//  }
+//
+//  function run(code: string, opts?: RunOptions): RunHandle {
+//    const updates: RunUpdate[] = []
+//    const controller = new AbortController()
+//    const signal = controller.signal
+//
+//    const promise = (async () => {
+//      const timeoutMs = Math.max(1, opts?.timeoutMs ?? 20000)
+//      const deadline = Date.now() + timeoutMs
+//      const timeRemaining = () => Math.max(0, deadline - Date.now())
+//
+//      try {
+//        const envIdStr = language === 'c' ? (import.meta.env.VITE_JUDGE0_C_ID as any) : (import.meta.env.VITE_JUDGE0_CSHARP_ID as any)
+//        const fallbackId = language === 'c' ? 104 : 51 // common defaults; override via env if needed
+//        const language_id = Number.isFinite(parseInt(envIdStr, 10)) ? parseInt(envIdStr, 10) : fallbackId
+//
+//        const payload = {
+//          source_code: code,
+//          language_id,
+//          stdin: ''
+//        }
+//
+//        const url = `${BASE}/submissions?base64_encoded=false&wait=true`
+//        const createTimeoutId = setTimeout(() => controller.abort('timeout'), timeRemaining())
+//        let res: Response
+//        try {
+//          res = await fetch(url, {
+//            method: 'POST',
+//            headers: { 'Content-Type': 'application/json' },
+//            body: JSON.stringify(payload),
+//            signal,
+//          })
+//        } finally {
+//          clearTimeout(createTimeoutId)
+//        }
+//
+//        if (!res.ok) {
+//          const text = await res.text().catch(() => '')
+//          updates.push({ type: 'error', message: `Judge0 API error: HTTP ${res.status} ${res.statusText}${text ? ` - ${text}` : ''}` })
+//          updates.push({ type: 'done' })
+//          return { updates }
+//        }
+//
+//        const details: any = await res.json().catch(() => ({}))
+//        const stdout = (details?.stdout ?? '').toString()
+//        const stderrRaw = (details?.stderr ?? '').toString()
+//        const compileOutRaw = (details?.compile_output ?? '').toString()
+//        const messageRaw = (details?.message ?? '').toString()
+//
+//        const compileOut = stripCompilerWarnings(compileOutRaw)
+//        const stderr = stderrRaw
+//        const message = messageRaw
+//
+//        if (compileOut) updates.push({ type: 'stderr', data: compileOut })
+//        if (stdout) updates.push({ type: 'stdout', data: stdout })
+//        if (stderr) updates.push({ type: 'stderr', data: stderr })
+//        if (!compileOut && !stdout && !stderr && message) updates.push({ type: 'stderr', data: message })
+//        if (!compileOut && !stdout && !stderr && !message) updates.push({ type: 'stdout', data: '' })
+//
+//        updates.push({ type: 'done' })
+//        return { updates }
+//      } catch (e: any) {
+//        if (e?.name === 'AbortError') {
+//          updates.push({ type: 'error', message: `Execution aborted or timed out after ${opts?.timeoutMs ?? 20000} ms` })
+//        } else {
+//          updates.push({ type: 'error', message: e?.message ?? 'Unexpected error' })
+//        }
+//        updates.push({ type: 'done' })
+//        return { updates }
+//      }
+//    })()
+//
+//    function cancel() {
+//      try { controller.abort('cancelled') } catch {}
+//    }
+//
+//    return { promise, cancel }
+//  }
+//
+//  function dispose() {
+//    // Nothing to dispose for network runner
+//  }
+//
+//  return { run, warmup, dispose }
+//}
+
 export function createCRunner(): CRunner {
+  // Use Paiza in both development and production. Judge0 code is retained for future use.
   return createPaizaRunner('c')
 }
 
 export function createCSharpRunner(): CSharpRunner {
+  // Use Paiza in both development and production. Judge0 code is retained for future use.
   return createPaizaRunner('csharp')
 }
