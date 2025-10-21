@@ -1,0 +1,122 @@
+{
+  "title": "Loops and Iteration",
+  "description": "Repeat tasks with for, while, and foreach.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Up to this point, your programs execute statements one after another. But many tasks require repetition. Loops allow you to run the same block of code multiple times without rewriting it. In C#, you can use for, while, and foreach loops to automate repeated actions efficiently."
+    },
+    {
+      "type": "text",
+      "text": "Think of loops like giving instructions to a worker: 'Repeat this task 5 times' or 'Keep doing this until told to stop.' Loops help your program handle repetitive tasks, process collections of data, or perform calculations repeatedly without extra effort."
+    },
+    {
+      "type": "text",
+      "text": "Here’s a challenge. Imagine you want to print the numbers 1 through 5 on the screen. You could write five separate Console.WriteLine() statements. But a loop lets you do it with just a few lines. Think about how to tell the computer to repeat the print action in order."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which loop is best when you know exactly how many times to repeat a task?",
+      "options": [
+        {
+          "id": "a",
+          "text": "while loop"
+        },
+        {
+          "id": "b",
+          "text": "for loop",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "foreach loop"
+        },
+        {
+          "id": "d",
+          "text": "if statement"
+        }
+      ],
+      "explanation": "A for loop is ideal when the number of repetitions is known in advance."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Use a for loop to print the numbers 1 through 5, each on a new line.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Write your for loop here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "1\n2\n3\n4\n5"
+      }
+    },
+    {
+      "type": "text",
+      "text": "A while loop repeats a block of code as long as a condition is true. You use it when you don’t know in advance how many times the loop will run. The program keeps checking the condition before each iteration."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Use a while loop to print numbers from 1 to 5. Declare an integer counter and update it inside the loop.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " int counter = 1;\n // Write your while loop here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "1\n2\n3\n4\n5"
+      }
+    },
+    {
+      "type": "text",
+      "text": "A foreach loop is used to iterate over collections like arrays or lists. It automatically goes through each element, making your code shorter and easier to read. This is especially useful when you don’t need to modify the collection while looping."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Use a foreach loop to print all elements in the array numbers = {2, 4, 6, 8, 10}.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n int[] numbers = {2, 4, 6, 8, 10};\n",
+      "starterCode": " // Write your foreach loop here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "2\n4\n6\n8\n10"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Loops also require careful control to avoid problems. If the condition never becomes false, a loop runs forever, causing your program to hang. Always ensure your loop has a condition that will eventually end or a break statement when needed."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if a while loop’s condition never becomes false?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The loop executes once and stops"
+        },
+        {
+          "id": "b",
+          "text": "The program crashes immediately"
+        },
+        {
+          "id": "c",
+          "text": "The loop runs forever",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "C# automatically stops it after 10 iterations"
+        }
+      ],
+      "explanation": "If a while loop’s condition never evaluates to false, the loop continues indefinitely, creating an infinite loop."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a program that prints the first ten even numbers using a loop of your choice. Store each number in a variable before printing it. This exercise reinforces counting, variable use, and loop control."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You’ve learned how to automate repetition with for, while, and foreach loops. Loops let you handle repetitive tasks efficiently, making programs shorter, clearer, and easier to maintain. In the next lesson, you will learn how to organize code into reusable methods and pass data to them."
+    }
+  ]
+}

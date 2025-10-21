@@ -1,0 +1,103 @@
+{
+  "title": "Decisions: If and Switch",
+  "description": "Implement branching logic.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to store data in variables and manipulate it with operators. Now it’s time to control your program’s flow. Decision-making allows your program to behave differently depending on certain conditions. In C#, this is done with if statements and switch statements."
+    },
+    {
+      "type": "text",
+      "text": "Think of decision-making like choosing a path. You can say: 'If it is raining, take an umbrella. Otherwise, wear sunglasses.' In programming, you replace the situation with conditions that evaluate to true or false, and the program follows the appropriate path."
+    },
+    {
+      "type": "text",
+      "text": "Let’s start with a challenge. Imagine a simple program that decides whether a student passes an exam. You have a score stored in a variable. If the score is 50 or higher, the student passes. Otherwise, the student fails. Think about how you would write these rules step by step before coding them."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of these is the correct C# syntax for a basic if statement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "if score >= 50 { Console.WriteLine("
+          "Pass\"); }\"",
+          ,
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "if (score >= 50) then Console.WriteLine("
+          "Pass\");\"",
+        },
+        {
+          "id": "c",
+          "text": "if score >= 50: Console.WriteLine("
+          "Pass\")\"",
+        },
+        {
+          "id": "d",
+          "text": "if score >= 50 Console.WriteLine("
+          "Pass\");\"",
+        }
+      ],
+      "explanation": "C# requires parentheses around the condition and braces around the block of statements."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Declare an integer variable score = 65. Use an if statement to print 'Pass' if the score is 50 or higher, otherwise print 'Fail'.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n int score = 65;\n",
+      "starterCode": " // Write your if statement here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Pass"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Sometimes you need to check multiple conditions. An else if statement lets you test additional conditions if the first one is false. For example, you could classify scores as 'Fail', 'Pass', or 'Excellent' using multiple conditions in order."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Use if, else if, and else to classify a variable score = 85 as 'Fail' (<50), 'Pass' (50-79), or 'Excellent' (80+). Print the result.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n int score = 85;\n",
+      "starterCode": " // Write your classification here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Excellent"
+      }
+    },
+    {
+      "type": "text",
+      "text": "The switch statement is another way to make decisions, especially when you have a single variable with multiple specific values. It compares the variable to each case, and executes the matching block. This can be cleaner than multiple if-else statements in some situations."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Use a switch statement on an integer variable day = 3 to print the corresponding weekday name (1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday). Include a default case for invalid numbers.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n int day = 3;\n",
+      "starterCode": " // Write your switch statement here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Wednesday"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Decision-making allows programs to act differently under different circumstances. Without branching, every program would do the same thing all the time. By combining variables, operators, and conditions, you gain control over how your program reacts to input or data."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a program that takes an integer representing temperature. Print 'Cold' if it is below 10, 'Warm' if between 10 and 25, and 'Hot' if above 25. Use an if-else chain or switch logic as you prefer."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand how to control program flow using if and switch statements. These decision structures let your program choose actions based on conditions. In the next lesson, you’ll learn how to automate repeated actions with loops, building on your knowledge of variables and conditions."
+    }
+  ]
+}

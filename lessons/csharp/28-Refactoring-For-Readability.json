@@ -1,0 +1,66 @@
+{
+  "title": "Refactoring for Readability",
+  "description": "Improve structure and maintainability.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve built a turn-based game and now it’s time to learn about refactoring. Refactoring is the process of restructuring existing code to improve readability, reduce complexity, and make it easier to maintain, without changing its behavior. Well-refactored code is easier to debug and extend."
+    },
+    {
+      "type": "text",
+      "text": "Common refactoring techniques include extracting methods, renaming variables for clarity, removing duplicated code, and organizing classes and files logically. Applying these techniques improves the structure of your programs and reduces the risk of errors."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Given a Main method with repeated code that prints player actions, refactor it by creating a method PrintAction(string actor, string action) that prints '{actor} {action}' and replace repeated code with calls to this method.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Call PrintAction instead of repeated prints\n",
+      "suffixCode": " }\n // Define PrintAction method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Player attacks\nEnemy attacks"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Another important aspect is improving variable and method names. Names should clearly indicate purpose. For example, 'hp' can be renamed to 'Health', and 'doAttack()' to 'PerformAttack()'. This small change makes code easier to understand at a glance."
+    },
+    {
+      "type": "text",
+      "text": "Refactoring also involves simplifying complex logic. For instance, nested if statements can be split into separate methods, loops can be simplified using LINQ, and repeated patterns can be encapsulated into reusable functions. These steps make your program modular and maintainable."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about refactoring is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Refactoring changes the program’s output"
+        },
+        {
+          "id": "b",
+          "text": "Refactoring improves readability and maintainability",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Refactoring is unnecessary for small programs"
+        },
+        {
+          "id": "d",
+          "text": "Refactoring always introduces new features"
+        }
+      ],
+      "explanation": "Refactoring restructures code without changing its behavior, improving readability, maintainability, and reducing complexity."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Take your turn-based game code. Extract repeated attack logic into a method PerformAttack(attacker, defender). Rename variables and methods for clarity, and remove any duplicated code to simplify the Main method. Ensure the game still functions correctly."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now know how to refactor code for readability and maintainability. Applying these principles makes your programs easier to understand, debug, and extend. The next lesson will cover testing your code to ensure reliability and correctness."
+    }
+  ]
+}

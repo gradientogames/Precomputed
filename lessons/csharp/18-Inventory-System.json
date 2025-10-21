@@ -1,0 +1,80 @@
+{
+  "title": "Inventory System",
+  "description": "Build a simple RPG-style item tracker.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Now that you understand classes, inheritance, interfaces, and abstraction, it’s time to build a small project: an inventory system. This system will track items that a player can carry in a game. You’ll practice creating classes, managing collections, and using methods to manipulate data."
+    },
+    {
+      "type": "text",
+      "text": "An inventory system typically has items with properties such as Name, Type, and Quantity. You can represent each item as an object of an Item class. The inventory itself can be a list of items. Using methods, you can add, remove, and display items in the inventory."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a class Item with properties Name (string) and Quantity (int). In Main, create an Item object with Name='Potion' and Quantity=3 and print its properties.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Item object and print properties\n",
+      "suffixCode": " }\n // Define Item class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Potion\n3"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Next, create an Inventory class that holds a list of Item objects. Add methods to add an item, remove an item by name, and display all items in the inventory. This will give you practice combining classes, lists, and methods."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create an Inventory class with a List<Item> items. Add a method AddItem(Item item) to add items. In Main, create an Inventory, add the previously created Potion, and display the total number of items.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n Item potion = new Item { Name="
+      "Potion\", Quantity=3 };\\n\"",
+      ,
+      "starterCode": " // Create Inventory, add potion, and print count\n",
+      "suffixCode": " }\n // Define Inventory class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "1"
+      }
+    },
+    {
+      "type": "text",
+      "text": "You can extend the inventory by adding methods to increase or decrease quantities, search for specific items, or list items by type. This mimics how real game inventories work and reinforces object-oriented programming principles."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about this inventory system is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Each Item object must store its own properties",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Inventory can directly store Name and Quantity without an Item class"
+        },
+        {
+          "id": "c",
+          "text": "Lists cannot hold objects"
+        },
+        {
+          "id": "d",
+          "text": "Methods are not necessary for manipulating the inventory"
+        }
+      ],
+      "explanation": "Each Item object encapsulates its own data, making the inventory easier to manage. Lists can hold objects, and methods are needed to manipulate them effectively."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Extend the Inventory class with a RemoveItem(string name) method. Add two more items to the inventory, remove one by name, and print the remaining items with their quantities."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You’ve now created a working inventory system that combines classes, objects, lists, and methods. This demonstrates how object-oriented programming can be applied to practical problems. The next lesson will introduce collections and generics for writing reusable and type-safe code."
+    }
+  ]
+}

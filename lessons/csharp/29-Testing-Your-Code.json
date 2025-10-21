@@ -1,0 +1,78 @@
+{
+  "title": "Testing Your Code",
+  "description": "Write methods that are easy to verify and trust.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned to refactor code for clarity. The next step is testing. Testing ensures your program works correctly and allows you to make changes confidently. Writing testable code means designing methods that are predictable, isolated, and easy to verify."
+    },
+    {
+      "type": "text",
+      "text": "Unit tests check individual methods or classes in isolation. You provide input, verify the output, and ensure the method behaves as expected. In C#, frameworks like NUnit or MSTest allow automated testing, but you can start by writing simple test methods that call your code and print results."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a method Add(int a, int b) that returns the sum. Write a simple test in Main that checks if Add(2,3) == 5 and prints 'Test passed' if correct.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Call Add and verify result\n",
+      "suffixCode": " }\n // Define Add method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Test passed"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Testing also involves negative or edge cases. For example, if a method divides numbers, test dividing by zero or very large numbers. Anticipating errors and testing boundary conditions ensures your code is robust and reliable."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Write a method Divide(int a, int b) that returns a/b. In Main, test Divide(10,2) and Divide(10,0). Print 'Test passed' for valid division and 'Division by zero' if an exception occurs using try/catch.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Call Divide and handle exceptions\n",
+      "suffixCode": " }\n // Define Divide method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Test passed\nDivision by zero"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Good tests are automated, repeatable, and independent. They can be run after changes to ensure nothing breaks. Writing testable code often encourages better structure, smaller methods, and reduced dependencies."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about testing is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Testing only matters for large programs"
+        },
+        {
+          "id": "b",
+          "text": "Testing verifies code works and prevents regressions",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Testing always requires a testing framework"
+        },
+        {
+          "id": "d",
+          "text": "Testing changes the behavior of methods"
+        }
+      ],
+      "explanation": "Testing ensures your code works correctly, identifies errors, and prevents regressions. Frameworks help, but simple tests can also verify correctness."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Write a set of test methods for your turn-based game. Test actions like attacking, health updates, and win conditions. Ensure all methods behave correctly under normal and edge-case scenarios."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now know how to test code to ensure correctness and reliability. Testing complements refactoring and structured programming to produce maintainable and robust software. The next lesson will be the finale: building a mini simulation project that combines all the skills you’ve learned."
+    }
+  ]
+}

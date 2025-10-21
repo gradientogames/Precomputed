@@ -1,0 +1,94 @@
+{
+  "title": "Finale: Mini Simulation Project",
+  "description": "Build a small self-contained system (e.g. farm sim logic).",
+  "content": [
+    {
+      "type": "text",
+      "text": "Congratulations! You’ve reached the final lesson. In this lesson, you will consolidate all the skills you’ve learned throughout the course by building a mini simulation project. The goal is to create a self-contained system that integrates object-oriented design, collections, LINQ, events, recursion, and testing. For this project, we’ll simulate a small farm management system where players can grow crops, harvest them, and manage resources."
+    },
+    {
+      "type": "text",
+      "text": "The simulation will involve several classes: Player, Crop, Farm, and GameManager. Each class should encapsulate relevant data and behavior. The Player class tracks resources like money and inventory. The Crop class tracks growth stages, water levels, and harvestable status. The Farm class manages multiple crops. The GameManager orchestrates game flow, including turns, events, and updates."
+    },
+    {
+      "type": "text",
+      "text": "You will implement events to notify when crops are ready to harvest. Delegates will handle these notifications, allowing the Player to react automatically. LINQ will help query the farm to determine which crops are ready, filter by type, or compute total resources. Recursion can optionally be used to simulate multi-stage crop growth or perform batch updates on crops."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define a Crop class with Name, GrowthStage, and IsHarvestable properties. Implement a method Grow() that increments GrowthStage. If GrowthStage reaches 3, set IsHarvestable to true and trigger an event OnReadyToHarvest. In Main, create a Crop, subscribe to OnReadyToHarvest with a method that prints '{Name} is ready to harvest!', call Grow() three times, and verify the event triggers.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Crop, subscribe to event, call Grow\n",
+      "suffixCode": " }\n // Define Crop class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Wheat is ready to harvest!"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Next, implement the Player class with methods BuyCrop(), HarvestCrop(), and SellCrop(). The Player should maintain a resource count (money) and an inventory of harvested crops. Ensure methods update the Player state correctly and handle edge cases, such as trying to harvest crops that aren’t ready."
+    },
+    {
+      "type": "text",
+      "text": "The Farm class should hold a collection of crops and provide methods to plant new crops, water them, and advance growth stages. Use LINQ queries to filter crops by readiness, type, or other properties. For example, you can write a query to select all harvestable crops of a specific type."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "In the Farm class, implement a method GetHarvestableCrops() that returns all crops with IsHarvestable == true using LINQ. In Main, create a farm with multiple crops, call GetHarvestableCrops(), and print their names.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Farm, add crops, get harvestable crops, print names\n",
+      "suffixCode": " }\n // Define Crop and Farm classes here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Wheat\nCorn"
+      }
+    },
+    {
+      "type": "text",
+      "text": "GameManager coordinates the game loop. Each turn, the GameManager can advance all crops, trigger events, allow the Player to act, and update resources. Use loops, conditionals, and method calls to ensure a structured flow. Consider testing edge cases, such as attempting to harvest with no crops planted, to ensure robust logic."
+    },
+    {
+      "type": "text",
+      "text": "Include methods for displaying the current state of the farm, including each crop’s name, growth stage, and harvestable status, as well as the Player’s inventory and money. This provides feedback to the user and allows them to make informed decisions in the simulation."
+    },
+    {
+      "type": "text",
+      "text": "Testing is crucial. Write test methods for Player actions, crop growth, event triggers, and farm queries. Ensure all methods behave correctly under normal and edge conditions. Consider both unit tests for individual classes and integration tests for interactions between Player, Farm, and Crops."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which concepts are applied in this mini simulation project?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Object-oriented programming, events, LINQ, loops, and testing",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Only recursion and delegates"
+        },
+        {
+          "id": "c",
+          "text": "Static methods without objects"
+        },
+        {
+          "id": "d",
+          "text": "Classes without interaction"
+        }
+      ],
+      "explanation": "This project integrates OOP, events, delegates, LINQ, loops, recursion, and testing to create a working mini simulation system."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Build the full farm simulation. Include multiple crops, full Player interaction, events for harvestable crops, LINQ queries to summarize farm state, and a GameManager loop to simulate turns. Ensure your code is readable, modular, and tested. Print detailed outputs each turn showing crop growth, Player inventory, and money updates."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: By completing this mini simulation project, you’ve applied nearly every concept from the course: structured programming, object-oriented design, classes and structs, methods, loops, recursion, collections, LINQ, events, delegates, design patterns, refactoring, and testing. This project demonstrates how all these skills work together in a complete, interactive system. You are now ready to design and implement more complex software with confidence."
+    }
+  ]
+}

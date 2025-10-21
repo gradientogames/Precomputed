@@ -1,0 +1,78 @@
+{
+  "title": "Enums and Constants",
+  "description": "Represent named states and choices.",
+  "content": [
+    {
+      "type": "text",
+      "text": "So far, you’ve learned how to store values in variables, arrays, and lists. Sometimes, you need to represent a set of fixed options or states in a program. Enums and constants let you give meaningful names to these values, making your code easier to read and maintain."
+    },
+    {
+      "type": "text",
+      "text": "An enum (short for enumeration) is a way to define a group of named values. For example, you can define days of the week as Monday, Tuesday, Wednesday, and so on. Each name represents an underlying integer value, but using names makes your code much clearer."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define an enum called Day with values Monday, Tuesday, Wednesday, Thursday, Friday. In Main, declare a variable today of type Day and set it to Wednesday. Print it.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Declare variable today and print it\n",
+      "suffixCode": " }\n // Define enum here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Wednesday"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Constants are values that do not change during program execution. You define them using the const keyword. For example, a constant for the maximum number of students in a class could be written as const int MaxStudents = 30;. Constants make your code safer and more readable, because it’s clear which values should not be modified."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define a constant named Pi with the value 3.14159 and print it.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Print Pi constant\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "3.14159"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Enums and constants help prevent errors by avoiding 'magic numbers' or unexplained values in code. Instead of using numbers or strings directly, you can use named values that make your intentions clear. This improves readability and reduces bugs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about enums is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enums can change their values at runtime"
+        },
+        {
+          "id": "b",
+          "text": "Enums assign names to fixed integer values",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Enums cannot be printed"
+        },
+        {
+          "id": "d",
+          "text": "Enums are the same as constants"
+        }
+      ],
+      "explanation": "Enums provide a set of named constants. Their underlying integer values are fixed and make the code more readable."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Define an enum called Level with values Low, Medium, High. Declare a variable myLevel of type Level and set it to Medium. Also, define a constant MaxLevel with value 3. Print both values."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand how to represent fixed choices and unchanging values using enums and constants. This knowledge will make your code clearer and safer. In the next lesson, you will combine these concepts to build a grade calculator program."
+    }
+  ]
+}

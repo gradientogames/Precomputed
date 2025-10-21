@@ -1,0 +1,78 @@
+{
+  "title": "Student Database",
+  "description": "Manage and query objects using LINQ.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned the basics of LINQ and how to query and transform collections. Now it’s time to apply LINQ to a practical scenario: managing a student database. You’ll store a list of Student objects and use LINQ to filter, sort, and extract information efficiently."
+    },
+    {
+      "type": "text",
+      "text": "Each Student object should have properties like Name, Grade, and Age. Using LINQ, you can select students above a certain grade, order them by name, or project their information into a simpler form. This practice demonstrates real-world applications of LINQ with custom objects."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a Student class with Name and Grade properties. In Main, create a list of three students with varying grades and use LINQ to select students with Grade >= 75, then print their names.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create list of students and LINQ query\n",
+      "suffixCode": " }\n // Define Student class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Alice\nCharlie"
+      }
+    },
+    {
+      "type": "text",
+      "text": "You can also use ordering in LINQ. For example, OrderBy can sort students by Grade or Name. This is useful when displaying data in reports or user interfaces. Combining filtering and sorting allows you to extract meaningful insights from your data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Using the same list of students, order them by Grade descending and print each student's Name and Grade.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // LINQ query to order students and print\n",
+      "suffixCode": " }\n // Student class definition\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Charlie 90\nAlice 80\nBob 70"
+      }
+    },
+    {
+      "type": "text",
+      "text": "LINQ also allows projection into new forms. For example, you can select only student names, calculate averages, or create anonymous types with selected properties. This flexibility makes LINQ powerful for data analysis."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of the following is true about using LINQ with a student database?",
+      "options": [
+        {
+          "id": "a",
+          "text": "LINQ cannot filter or sort custom objects"
+        },
+        {
+          "id": "b",
+          "text": "LINQ allows filtering, sorting, and projecting properties of objects",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "LINQ only works on arrays, not lists"
+        },
+        {
+          "id": "d",
+          "text": "LINQ queries must always create new classes"
+        }
+      ],
+      "explanation": "LINQ works with any enumerable collection, including custom objects, and can filter, sort, and project data efficiently."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a list of Student objects with Name, Grade, and Age. Use LINQ to select students with Grade >= 75, order them by Name, and print each student's Name and Age."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now know how to use LINQ to manage and query a collection of objects like a student database. This skill is essential for handling data in applications efficiently and prepares you for more advanced problem solving, such as recursion and complex queries in the next lesson."
+    }
+  ]
+}

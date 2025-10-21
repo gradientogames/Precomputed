@@ -1,0 +1,117 @@
+{
+  "title": "Thinking Like a Programmer",
+  "description": "What programming is before any syntax.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Welcome to your first C# lesson. Before you write a single line of code, you need to think like a programmer. Programming is not just about syntax or typing commands into an editor. It is about solving problems step by step using logic and structure. In this lesson, you will learn how to approach problems like a programmer does, breaking them into smaller, clearer parts."
+    },
+    {
+      "type": "text",
+      "text": "Programmers do not guess their way through problems. They plan before they act. They understand what they want to achieve, decide the steps needed, and use precise instructions that a computer can follow. You will see that programming is less about knowing every command, and more about thinking clearly and methodically."
+    },
+
+    {
+      "type": "text",
+      "text": "Let’s begin with a small challenge. You use logical thinking every day, often without realizing it. For example, when you make breakfast, you decide what to eat, gather the ingredients, prepare them, and cook. Each step depends on the previous one being done correctly. This same sequence is what programming requires. Your challenge: describe, step by step, how you would make a cup of coffee so precisely that a robot could do it."
+    },
+
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which description is most precise for instructing a computer or robot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Make coffee"
+        },
+        {
+          "id": "b",
+          "text": "Put coffee beans into the machine, press start, and wait until the coffee is ready",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Prepare a nice hot drink"
+        },
+        {
+          "id": "d",
+          "text": "Make sure to serve coffee perfectly every time"
+        }
+      ],
+      "explanation": "Computers need clear, step-by-step instructions. Option B gives specific actions the computer can follow."
+    },
+
+    {
+      "type": "text",
+      "text": "Good. You just practiced thinking in steps, the core of programming logic. This is how every program works: a clear sequence of instructions. A computer does not guess or interpret vague directions. It follows exactly what you tell it, nothing more, nothing less."
+    },
+
+    {
+      "type": "text",
+      "text": "Now, let's connect that idea to programming. A program is a set of instructions written in a way the computer understands. In C#, those instructions form statements. Each statement tells the computer to do one specific thing, in order. But before you write those statements, you must always plan them. That’s what programmers mean when they say 'thinking like a programmer.'"
+    },
+
+    {
+      "type": "text",
+      "text": "Let’s test your understanding of what makes programming different from ordinary problem solving. Read the following question carefully before choosing."
+    },
+
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What separates a programmer’s thinking from everyday thinking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Programmers use creative ideas only"
+        },
+        {
+          "id": "b",
+          "text": "Programmers guess what the computer wants"
+        },
+        {
+          "id": "c",
+          "text": "Programmers think step-by-step and give exact instructions",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Programmers write code without planning"
+        }
+      ],
+      "explanation": "Programming requires exact, ordered steps. Computers do not infer meaning; they follow explicit instructions only."
+    },
+
+    {
+      "type": "text",
+      "text": "Now that you understand the mindset, let's introduce your first actual piece of code. Even though you are not yet expected to know syntax, you can already start seeing how structured logic appears in C#. The goal here is not memorization, but recognition of structure."
+    },
+
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Run your first C# program. It prints a message to the console. Don’t worry about the syntax; just notice the structure and flow.",
+      "prefixCode": "using System;\nclass Program {\n    static void Main() {\n",
+      "starterCode": "        Console.WriteLine(\"Thinking like a programmer.\");",
+      "suffixCode": "    }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Thinking like a programmer."
+      }
+    },
+
+    {
+      "type": "text",
+      "text": "Every C# program begins with a class and a Main method. You will learn exactly what these mean in the next lesson. For now, understand that Main is where the program starts running, and every instruction runs in order from top to bottom. You just executed a program that printed text to the screen, which is how all output begins."
+    },
+
+    {
+      "type": "text",
+      "text": "Let’s finish this lesson with a final challenge. You’ve seen that programming is about clear steps, precision, and logic. Think of a daily routine task—tying your shoes, sending a text, or brushing your teeth. Write down the steps as if you were telling a robot exactly how to do it. Each instruction should be explicit and in sequence. This exercise trains your logical thinking, which is more valuable than memorizing any command."
+    },
+
+    {
+      "type": "text",
+      "text": "Before you move on, reflect on what you’ve learned. Programming is not typing. It’s structured thinking. When you think clearly, your code works. When you think vaguely, your code fails. Keep that mindset as you continue. In the next lesson, you’ll write your first complete C# program and learn how it actually runs from start to finish."
+    }
+  ]
+}
