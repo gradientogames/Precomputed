@@ -1,0 +1,80 @@
+{
+  "title": "LINQ Basics",
+  "description": "Query data with expressive syntax.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to use delegates and events to react to actions. Now, you’ll explore LINQ, which stands for Language Integrated Query. LINQ allows you to query collections of data using a concise and readable syntax, similar to SQL but integrated directly into C#."
+    },
+    {
+      "type": "text",
+      "text": "With LINQ, you can filter, sort, and transform data in lists, arrays, and other collections without writing complex loops. Queries can be written using query syntax or method syntax. LINQ makes your code cleaner, easier to read, and less error-prone."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Given a list of integers {1, 2, 3, 4, 5}, use LINQ to select only the even numbers and print them.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nclass Program {\n static void Main() {\n List<int> numbers = new List<int> {1, 2, 3, 4, 5};\n",
+      "starterCode": " // Write LINQ query to select even numbers and print\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "2\n4"
+      }
+    },
+    {
+      "type": "text",
+      "text": "LINQ also supports projection, which allows you to transform data into new forms. For example, you can select only specific properties from a collection of objects or compute new values based on existing data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Given a list of strings { 'apple', 'banana', 'cherry' }, use LINQ to select the length of each string and print the lengths.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nclass Program {\n static void Main() {\n List<string> fruits = new List<string> { "
+      "apple\", \"banana\", \"cherry\" };\\n\"",
+      ,
+      "starterCode": " // Write LINQ query to select lengths and print\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "5\n6\n6"
+      }
+    },
+    {
+      "type": "text",
+      "text": "LINQ queries are executed lazily by default, meaning the data is only processed when you iterate over the results. You can use methods like ToList() or ToArray() to force immediate execution if needed."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about LINQ is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "LINQ can only be used with arrays"
+        },
+        {
+          "id": "b",
+          "text": "LINQ allows querying and transforming collections in a concise way",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "LINQ always executes immediately without iteration"
+        },
+        {
+          "id": "d",
+          "text": "LINQ replaces all loops in C#"
+        }
+      ],
+      "explanation": "LINQ works with many types of collections, allows filtering, sorting, and transforming data concisely, and executes lazily by default."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Given a list of Student objects with Name and Grade properties, use LINQ to select students with Grade >= 70 and print their names."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now know LINQ basics, which make it easier to query and manipulate collections efficiently. This skill is essential for working with data in C# and sets the stage for more complex object queries in applications like databases or game systems. The next lesson will be building a student database using these LINQ skills."
+    }
+  ]
+}

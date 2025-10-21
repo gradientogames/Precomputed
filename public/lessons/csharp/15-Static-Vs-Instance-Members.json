@@ -1,0 +1,78 @@
+{
+  "title": "Static vs Instance Members",
+  "description": "Understand what belongs to the class vs object.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to create objects with constructors and control their initialization. Now it’s important to understand the difference between static and instance members. Instance members belong to individual objects, while static members belong to the class itself."
+    },
+    {
+      "type": "text",
+      "text": "Instance members, such as fields, properties, and methods, are unique to each object. Each object maintains its own copy of instance variables, and changes to one object do not affect another. For example, two Car objects can have different Makes and Models because these properties are instance members."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a class Car with an instance property Make. Create two Car objects with different Makes and print both to demonstrate that instance members are unique to each object.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create two Car objects with different Makes and print\n",
+      "suffixCode": " }\n // Define Car class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Toyota\nHonda"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Static members, on the other hand, are shared by all objects of a class. They belong to the class itself rather than any individual object. You can access static members without creating an object. Static fields are useful for tracking information that applies to all objects, such as a count of how many objects have been created."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Add a static field TotalCars to the Car class that counts how many Car objects have been created. Increment it in the constructor and print TotalCars after creating two objects.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create two Car objects and print TotalCars\n",
+      "suffixCode": " }\n // Define Car class with static member here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "2"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Static methods can also be called without an object. They are useful for utility functions or actions that do not depend on individual object data. However, static methods cannot access instance members directly because they are not tied to any specific object."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement is true about static members in C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Static members belong to individual objects"
+        },
+        {
+          "id": "b",
+          "text": "Static members belong to the class and are shared among all objects",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Static methods can access instance members directly"
+        },
+        {
+          "id": "d",
+          "text": "Static fields are unique to each object"
+        }
+      ],
+      "explanation": "Static members belong to the class itself and are shared across all objects. Static methods cannot access instance members directly because they are not tied to any specific object."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a class Student with an instance property Name and a static field TotalStudents. Increment TotalStudents in the constructor. Create three students with different names and print each name along with the total number of students."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand the difference between static and instance members. Instance members are unique to objects, while static members belong to the class and are shared. Knowing when to use each is crucial for organizing data and functionality in your programs. The next lesson will teach you inheritance and virtual methods to share and extend code behavior."
+    }
+  ]
+}

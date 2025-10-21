@@ -1,0 +1,163 @@
+{
+  "title": "Variables and Data Types",
+  "description": "Use int, float, bool, string effectively.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You now know how to write statements and control the order of execution. But right now, your programs can only display fixed messages. To make your programs useful, you need a way to store information, change it, and reuse it. That’s what variables do. In this lesson, you’ll learn what a variable is, how to declare one, and why data types matter."
+    },
+
+    {
+      "type": "text",
+      "text": "Think of a variable as a labeled box that holds a piece of data. You decide what goes inside, and you can look inside later to use it. The label is the variable’s name, and the contents depend on its type. For example, an `int` holds whole numbers, a `string` holds text, and a `bool` holds true or false values."
+    },
+
+    {
+      "type": "text",
+      "text": "Let’s begin with a challenge. Imagine you are keeping track of your daily steps. You want to store today’s count, update it later, and show it on the screen. You need something that remembers a value and lets you use it later. That’s what a variable does."
+    },
+
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What best describes a variable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A permanent storage file"
+        },
+        {
+          "id": "b",
+          "text": "A labeled container for a value in memory",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "A fixed command that prints output"
+        },
+        {
+          "id": "d",
+          "text": "A temporary display on the console"
+        }
+      ],
+      "explanation": "A variable holds a value in memory that you can access and change while the program runs."
+    },
+
+    {
+      "type": "text",
+      "text": "Let’s introduce the syntax. Declaring a variable tells C# to create that labeled box. You specify the type first, then the name, and then optionally assign a value using the equals sign. For example: `int steps = 5000;`. This line creates an integer variable named `steps` and gives it the value 5000."
+    },
+
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create an integer variable called count with the value 10, then print it to the console.",
+      "prefixCode": "using System;\nclass Program {\n    static void Main() {\n",
+      "starterCode": "        // Write your code here\n",
+      "suffixCode": "    }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "10"
+      }
+    },
+
+    {
+      "type": "text",
+      "text": "The keyword `int` tells C# that this variable stores an integer, or whole number. You can use `Console.WriteLine()` to display its value. If you change the value before printing, you’ll see how variables store the latest assigned data. This ability to change values makes your programs flexible."
+    },
+
+    {
+      "type": "text",
+      "text": "C# uses data types to define what kind of value each variable can hold. Some common types include:\n- `int` for whole numbers\n- `float` or `double` for decimals\n- `bool` for true or false\n- `string` for text\nEach type defines how the computer stores and interprets the data. You can’t mix types freely because the computer must know exactly how to handle each value."
+    },
+
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which variable declaration is correct for storing text in C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "int name = 'James';"
+        },
+        {
+          "id": "b",
+          "text": "string name = \"James\";",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "text name = James;"
+        },
+        {
+          "id": "d",
+          "text": "char name = James;"
+        }
+      ],
+      "explanation": "Strings are written inside double quotes and declared using the `string` type."
+    },
+
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Declare three variables: an integer age set to 20, a string name set to \"Alex\", and a bool isStudent set to true. Print all three values in one line.",
+      "prefixCode": "using System;\nclass Program {\n    static void Main() {\n",
+      "starterCode": "        // Declare and print variables\n",
+      "suffixCode": "    }\n}",
+      "desiredOutput": {
+        "type": "text",
+        "value": "20 Alex True"
+      }
+    },
+
+    {
+      "type": "text",
+      "text": "When you run the program, you should see all values printed together. You can separate them with spaces by adding multiple arguments to `Console.WriteLine()` or by joining them into one formatted string. The output shows how C# combines different data types in a single expression."
+    },
+
+    {
+      "type": "text",
+      "text": "Now let’s explore what happens when you try to use a variable before assigning a value. C# does not allow that. You must always assign a value before you use it, otherwise the compiler will warn you. This ensures your program behaves predictably and avoids using garbage data."
+    },
+
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if you try to use a variable before assigning a value?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It prints a blank line"
+        },
+        {
+          "id": "b",
+          "text": "C# assigns a default random value"
+        },
+        {
+          "id": "c",
+          "text": "The program fails to compile",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "It automatically assigns zero"
+        }
+      ],
+      "explanation": "C# requires you to assign a value before using a variable. The compiler blocks code that tries to use uninitialized data."
+    },
+
+    {
+      "type": "text",
+      "text": "Variables are the foundation of every program. They let you represent changing information: scores in a game, user names, totals, or choices. Data types make sure you use the right kind of value for the right purpose. By combining both, you gain control over how your program stores and processes information."
+    },
+
+    {
+      "type": "text",
+      "text": "Your final challenge: write a small snippet that declares a string with your name, an int with your age, and a bool indicating whether you like coding. Print all three with short descriptive labels. This exercise will prepare you for the next lesson, where you’ll learn how to manipulate and compare these values using operators and expressions."
+    },
+
+    {
+      "type": "text",
+      "text": "Reflection: You’ve learned how variables hold data, how to declare them, and how to choose the right type. You now have the tools to store and display dynamic information in your programs. In the next lesson, you’ll learn how to combine and compare values to make your code think logically."
+    }
+
+
+  ]
+}

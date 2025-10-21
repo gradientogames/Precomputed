@@ -1,0 +1,78 @@
+{
+  "title": "Collections and Generics",
+  "description": "Write reusable code with type safety.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve built an inventory system using lists, classes, and methods. The next step is learning collections and generics, which allow you to store and manipulate multiple objects more effectively. Collections are data structures like lists, dictionaries, and queues, and generics let you enforce type safety while reusing code."
+    },
+    {
+      "type": "text",
+      "text": "Using generics ensures that a collection can only hold a specific type, which prevents runtime errors and improves code clarity. For example, List<Item> ensures that only Item objects can be added to the list. Generics can also be applied to methods and classes to make them flexible and reusable."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a generic class Box<T> with a field Value of type T. In Main, create a Box<int> holding 42 and a Box<string> holding 'Hello', and print their values.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create boxes and print values\n",
+      "suffixCode": " }\n // Define generic Box<T> class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "42\nHello"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Collections like List<T>, Dictionary<TKey, TValue>, Queue<T>, and Stack<T> provide different ways to store and access data. Lists allow ordered storage, dictionaries map keys to values, queues follow first-in-first-out, and stacks follow last-in-first-out. Using these structures efficiently is essential for building complex applications."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a Dictionary<string, int> to store item names and quantities. Add 'Potion' with 3 and 'Elixir' with 5, then print the quantity of 'Elixir'.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create dictionary, add items, and print quantity of Elixir\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "5"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Generics and collections together make your code more flexible and safe. You can write methods that work with any type of object, avoid casting, and prevent runtime errors caused by wrong types. This allows you to reuse the same logic across different parts of your program."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why are generics important in C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They allow collections to store multiple types without restriction"
+        },
+        {
+          "id": "b",
+          "text": "They enforce type safety and allow code reuse",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "They make methods slower"
+        },
+        {
+          "id": "d",
+          "text": "They can only be used with List<T>"
+        }
+      ],
+      "explanation": "Generics enforce type safety by restricting types while allowing the same code to work with different types, improving flexibility and preventing runtime errors."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a generic class Pair<T1, T2> to store two related values. Create a Pair<string, int> holding 'Sword' and 10, and print both values. Then create a List<Pair<string, int>> to store multiple items and iterate over the list to print all pairs."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand collections and generics, which are key tools for managing groups of objects and writing reusable, type-safe code. The next lesson will focus on handling runtime errors with try/catch statements to make your programs more robust."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Constructors and Overloading",
+  "description": "Control how objects are created.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to define classes and use properties to control access to fields. The next step is controlling how objects are created using constructors. A constructor is a special method that runs automatically when you create a new object. It initializes the object with default or specified values."
+    },
+    {
+      "type": "text",
+      "text": "Constructors have the same name as the class and do not have a return type. They can accept parameters to set initial values for properties or fields. If you don’t define a constructor, C# provides a default constructor that initializes fields with default values."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a class Car with a constructor that accepts make and model as parameters and sets the respective properties. In Main, create a Car object with make='Honda' and model='Civic' and print its properties.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Car object using constructor and print properties\n",
+      "suffixCode": " }\n // Define Car class with constructor here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Honda\nCivic"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Constructor overloading allows a class to have multiple constructors with different parameters. This gives you flexibility to create objects in different ways. For example, one constructor could accept only the make, while another accepts both make and model."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Add an overloaded constructor to the Car class that accepts only make and sets model to 'Unknown'. Create a Car object using this constructor and print its properties.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Car object using overloaded constructor\n",
+      "suffixCode": " }\n // Car class with overloaded constructors here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Toyota\nUnknown"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Using constructors and overloading helps you ensure that objects are always created in a valid state. It also simplifies object creation, especially when dealing with multiple required or optional values."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of the following is true about constructors in C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Constructors must have a return type"
+        },
+        {
+          "id": "b",
+          "text": "Constructors run automatically when an object is created",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "You cannot have more than one constructor in a class"
+        },
+        {
+          "id": "d",
+          "text": "Constructors are called like regular methods"
+        }
+      ],
+      "explanation": "Constructors are special methods that automatically run when a new object is created and do not have a return type. You can overload constructors to provide multiple ways to initialize objects."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a class Student with properties Name and Grade. Add two constructors: one that accepts both Name and Grade, and another that only accepts Name and sets Grade to 0. Create objects using both constructors and print their properties to verify correct initialization."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand how constructors and constructor overloading allow you to control object creation. This ensures objects start with meaningful values and improves flexibility in your code. The next lesson will teach you about static and instance members and when to use each."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Interfaces and Abstraction",
+  "description": "Define contracts for flexible design.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned inheritance and virtual methods to share and extend code. The next step is interfaces and abstraction. These tools allow you to define contracts that classes must follow, without specifying exactly how they should implement the behavior. This helps you write flexible and decoupled code."
+    },
+    {
+      "type": "text",
+      "text": "An interface defines a set of methods and properties that a class must implement. Unlike a base class, an interface does not contain any implementation. Any class that implements the interface must provide its own implementation for all interface members."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create an interface IAnimal with a method Speak(). Create a class Dog that implements IAnimal and its Speak() method to print 'Woof'. In Main, create a Dog object and call Speak().",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Dog object and call Speak\n",
+      "suffixCode": " }\n // Define IAnimal interface and Dog class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Woof"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Abstraction allows you to focus on what an object does rather than how it does it. Abstract classes can contain both implemented and unimplemented methods. Classes that inherit from an abstract class must provide implementations for abstract methods. This lets you define a template for a group of related classes."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create an abstract class Vehicle with an abstract method Move(). Create a class Car that inherits Vehicle and implements Move() to print 'Car is moving'. In Main, create a Car object and call Move().",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Car object and call Move\n",
+      "suffixCode": " }\n // Define Vehicle abstract class and Car class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Car is moving"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Interfaces and abstract classes provide structure to your code while keeping it flexible. They allow multiple unrelated classes to share the same contract, enabling polymorphism and easier maintenance. By programming to an interface or abstract class, you can swap implementations without changing the code that uses them."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement is correct about interfaces in C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Interfaces can contain implementation code"
+        },
+        {
+          "id": "b",
+          "text": "Interfaces define a contract that classes must implement",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Interfaces cannot be implemented by multiple classes"
+        },
+        {
+          "id": "d",
+          "text": "Interfaces are the same as abstract classes"
+        }
+      ],
+      "explanation": "Interfaces define a set of methods and properties without implementation. Classes that implement the interface must provide their own implementations."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create an interface IShape with a method Area(). Create two classes, Circle and Rectangle, that implement IShape and provide their own Area() implementations. In Main, create objects of both classes and print their areas."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand how interfaces and abstraction allow you to define contracts for your classes. This makes your code flexible, modular, and easier to extend. The next lesson will combine these concepts into building a simple RPG-style inventory system."
+    }
+  ]
+}
