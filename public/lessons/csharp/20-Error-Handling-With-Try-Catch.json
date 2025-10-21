@@ -1,0 +1,78 @@
+{
+  "title": "Error Handling with Try/Catch",
+  "description": "Anticipate and handle runtime issues.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve built programs using classes, methods, collections, and generics. The next step is learning how to handle errors that occur during runtime. In C#, try/catch blocks allow you to anticipate problems, catch exceptions, and respond without crashing the program."
+    },
+    {
+      "type": "text",
+      "text": "A try block contains code that might throw an exception. The catch block specifies the type of exception to handle and contains code to respond to it. You can also use a finally block to execute code whether or not an exception occurs, which is useful for cleanup tasks like closing files or releasing resources."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Write a try/catch block that attempts to divide 10 by 0. In the catch block, print 'Cannot divide by zero'.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Write try/catch here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Cannot divide by zero"
+      }
+    },
+    {
+      "type": "text",
+      "text": "You can catch specific exceptions, like DivideByZeroException, or general exceptions using Exception. Catching specific exceptions allows you to handle each type of error appropriately, providing better control over your program’s behavior."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Write a try/catch that attempts to parse 'abc' as an integer. Catch the FormatException and print 'Invalid number format'.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Write try/catch here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Invalid number format"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Finally blocks are optional but useful. They run regardless of whether an exception occurred. You can use them to release resources, close files, or perform cleanup tasks that must happen in all cases."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about try/catch/finally is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Code in the try block always runs after the catch"
+        },
+        {
+          "id": "b",
+          "text": "Finally block executes regardless of exceptions",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Catch blocks cannot specify exception types"
+        },
+        {
+          "id": "d",
+          "text": "Try blocks cannot throw exceptions"
+        }
+      ],
+      "explanation": "The finally block always executes, whether or not an exception occurred, allowing necessary cleanup actions."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a method Divide(int a, int b) that returns the division result. Use try/catch to handle division by zero and print a message. Test it with Divide(10, 0) and Divide(10, 2)."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now know how to handle runtime errors with try/catch/finally. This ensures your programs are more robust and can recover gracefully from unexpected issues. The next lesson will focus on structs versus classes and when to use value versus reference types."
+    }
+  ]
+}

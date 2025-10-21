@@ -1,0 +1,78 @@
+{
+  "title": "Inheritance and Virtual Methods",
+  "description": "Share and extend code behavior.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to create classes with fields, properties, and methods. The next step is inheritance, which allows you to create new classes based on existing ones. Inheritance promotes code reuse by letting a new class inherit properties and methods from a base class, and then extend or modify them."
+    },
+    {
+      "type": "text",
+      "text": "In C#, a base class defines common behavior and data, while a derived class inherits those members and can add new features or override existing behavior. This allows you to model real-world relationships, such as a Vehicle class being a base for Car and Truck subclasses."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a base class Vehicle with a method Describe() that prints 'This is a vehicle'. Create a derived class Car that inherits Vehicle. In Main, create a Car object and call Describe().",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Car object and call Describe\n",
+      "suffixCode": " }\n // Define Vehicle and Car classes here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "This is a vehicle"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Virtual methods allow derived classes to override behavior defined in a base class. By marking a method in the base class as virtual, you indicate that it can be replaced in a derived class using the override keyword. This is essential for customizing or extending functionality."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "In the Vehicle class, make Describe() virtual. In Car, override Describe() to print 'This is a car'. Create a Car object and call Describe() in Main.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Car object and call Describe\n",
+      "suffixCode": " }\n // Define Vehicle and Car classes with virtual/override methods here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "This is a car"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Inheritance and virtual methods help you avoid duplicating code. You can define shared behavior once in a base class and customize it only where needed. This improves maintainability and makes your code easier to extend in the future."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement is true about virtual methods?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Virtual methods cannot be overridden in derived classes"
+        },
+        {
+          "id": "b",
+          "text": "Virtual methods allow derived classes to override behavior",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Virtual methods are automatically static"
+        },
+        {
+          "id": "d",
+          "text": "Virtual methods can only be used in Main"
+        }
+      ],
+      "explanation": "Virtual methods in a base class can be overridden in derived classes using the override keyword, allowing customization of inherited behavior."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a base class Shape with a virtual method Draw() that prints 'Drawing shape'. Create a derived class Circle that overrides Draw() to print 'Drawing circle'. Create objects of both classes and call Draw() to see the difference."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand inheritance and virtual methods, which allow you to share code and customize behavior in derived classes. These concepts are key to writing flexible and reusable object-oriented programs. In the next lesson, you will learn about interfaces and abstraction for defining contracts in your code."
+    }
+  ]
+}

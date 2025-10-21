@@ -1,0 +1,82 @@
+{
+  "title": "Fields, Properties, and Encapsulation",
+  "description": "Hide data and expose clean interfaces.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to define classes and create objects. Now it’s time to control how data inside those objects is accessed and modified. This is called encapsulation. Encapsulation helps protect the internal state of an object and provides a clear interface for interacting with it. In C#, this is done using fields and properties."
+    },
+    {
+      "type": "text",
+      "text": "Fields are variables declared inside a class that store the object’s data. By default, fields can be accessed directly, but this can be risky because other parts of the program could change them in unintended ways. To protect these values, you can use access modifiers like private to restrict direct access."
+    },
+    {
+      "type": "text",
+      "text": "Properties provide a controlled way to read or modify private fields. They use get and set accessors. A get accessor returns the value of a field, and a set accessor allows controlled modification. This allows validation, logging, or other logic whenever a field is accessed or changed."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a class BankAccount with a private field balance of type double. Add a property Balance with public get and private set. In Main, create an account with balance 1000 and print the Balance.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create BankAccount object and print Balance\n",
+      "suffixCode": " }\n // Define BankAccount class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "1000"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Properties can also include validation logic inside the set accessor. For example, you can prevent setting a negative balance by checking the value before assigning it to the private field. This ensures your object maintains a valid state and prevents errors."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Modify the Balance property to allow setting a new balance only if it is non-negative. Try setting balance to -500 and print Balance afterwards to see that it did not change.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n BankAccount account = new BankAccount { Balance = 1000 };\n",
+      "starterCode": " account.Balance = -500;\n // Print Balance\n",
+      "suffixCode": " }\n // BankAccount class defined here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "1000"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Encapsulation allows your classes to expose only what is necessary and hide the internal implementation. This creates a clean interface for other parts of the program and makes your code easier to maintain and debug. It also prevents accidental misuse of object data."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why is encapsulation important in object-oriented programming?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It allows all fields to be accessed freely"
+        },
+        {
+          "id": "b",
+          "text": "It protects object data and provides controlled access",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "It makes classes run faster"
+        },
+        {
+          "id": "d",
+          "text": "It eliminates the need for methods"
+        }
+      ],
+      "explanation": "Encapsulation ensures that the internal state of objects is protected and accessed only through controlled interfaces, reducing errors and improving maintainability."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a class Student with a private field grade (int). Add a property Grade with get and set accessors that allow only grades between 0 and 100. In Main, create a student, try setting the grade to 105, then 85, and print the final Grade to confirm validation works."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand fields, properties, and encapsulation. Using these tools, you can protect your object’s internal data, enforce rules, and create a clean interface for other parts of your program. This is essential for building robust and maintainable object-oriented systems. The next lesson will teach you how to control how objects are created using constructors and overloading."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Recursion and Problem Solving",
+  "description": "Use recursive thinking for elegant solutions.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve worked extensively with collections, LINQ, and object-oriented programming. The next concept is recursion, which is a method calling itself to solve problems. Recursive thinking allows you to break complex tasks into smaller, identical problems, leading to elegant and concise solutions."
+    },
+    {
+      "type": "text",
+      "text": "A recursive method must have a base case that stops the recursion, and a recursive case that continues the process. Without a base case, recursion can result in infinite loops and stack overflow errors. Common examples include calculating factorials, traversing trees, and solving puzzles like the Tower of Hanoi."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Write a recursive method Factorial(int n) that returns the factorial of n. In Main, print Factorial(5).",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Call Factorial and print result\n",
+      "suffixCode": " }\n // Define Factorial method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "120"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Recursion can also be applied to collections. For example, you can recursively traverse a list or tree structure, process elements, and combine results. This is especially powerful for hierarchical or nested data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Write a recursive method SumList(List<int> numbers, int index) that returns the sum of all elements starting from index. In Main, use it to sum {1, 2, 3, 4, 5} starting at index 0.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n List<int> numbers = new List<int> {1, 2, 3, 4, 5};\n",
+      "starterCode": " // Call SumList and print result\n",
+      "suffixCode": " }\n // Define SumList method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "15"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Recursion requires careful thought about the base case and how each call progresses toward it. Writing recursive solutions often improves code clarity and reduces repetition, but it can also use more memory due to call stacks compared to iterative solutions."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of the following is necessary for a recursive method?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A loop inside the method"
+        },
+        {
+          "id": "b",
+          "text": "A base case to stop recursion",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "It must be static"
+        },
+        {
+          "id": "d",
+          "text": "It cannot return a value"
+        }
+      ],
+      "explanation": "A recursive method must include a base case to terminate the recursion; otherwise, it can result in infinite recursion and runtime errors."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Write a recursive method Fibonacci(int n) that returns the nth Fibonacci number. Test it with n = 6 and print the result. Consider how each call breaks the problem into smaller subproblems."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand recursion and how it can simplify complex problems by breaking them into smaller identical problems. Recursive thinking is essential for problem solving in programming, especially with hierarchical data, combinatorial problems, and algorithm design. The next lesson will cover design patterns, starting with Singleton and Factory patterns."
+    }
+  ]
+}

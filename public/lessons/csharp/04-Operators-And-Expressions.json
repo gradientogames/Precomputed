@@ -1,0 +1,128 @@
+{
+  "title": "Operators and Expressions",
+  "description": "Combine and compare values logically.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Now that you know how to store data in variables, the next step is learning how to manipulate that data. Operators allow you to perform actions on values, such as adding numbers, comparing values, or combining text. Expressions are combinations of variables, literals, and operators that produce a new value."
+    },
+    {
+      "type": "text",
+      "text": "Think of operators as verbs for your variables. Just like in a sentence, they define what action to perform. For example, + adds numbers, - subtracts, and == checks if two values are equal. Expressions combine these operators with variables or constants to produce results that can be stored or displayed."
+    },
+    {
+      "type": "text",
+      "text": "Here is a small challenge. Imagine you have two numbers, 7 and 3. Write down how you would calculate their sum, difference, product, and check if they are equal. Think step by step, just like when you planned your first program."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which expression correctly checks if variable a equals variable b?",
+      "options": [
+        {
+          "id": "a",
+          "text": "a = b"
+        },
+        {
+          "id": "b",
+          "text": "a == b",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "a != b"
+        },
+        {
+          "id": "d",
+          "text": "a + b"
+        }
+      ],
+      "explanation": "== compares two values for equality. = assigns a value and does not compare."
+    },
+    {
+      "type": "text",
+      "text": "Now let’s see operators in action with numbers. You can add, subtract, multiply, divide, and find the remainder. Each operator performs a specific calculation and produces a result. Expressions combine these operations to compute values that your program can use or store in variables."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create two integer variables, x = 8 and y = 3. Print the sum, difference, product, division, and remainder in separate lines.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Write code using operators here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "11\n5\n24\n2\n2"
+      }
+    },
+    {
+      "type": "text",
+      "text": "You can also combine operators with different types, such as strings. The + operator can join text values, called concatenation. For example, combining first and last names into a full name. Understanding how operators work with each type is essential to avoid errors."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Declare two string variables, first = "
+      "John\" and last = \"Doe\". Print them together as one full name with a space in between.\"",
+      ,
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Concatenate strings here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "John Doe"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Comparison operators let your program make decisions. Operators like >, <, >=, <=, ==, and != compare values and produce a boolean result, true or false. These results are used later in conditional statements, which you will learn in the next lessons."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is the result of the expression 5 > 3?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "3"
+        },
+        {
+          "id": "c",
+          "text": "true",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "false"
+        }
+      ],
+      "explanation": "The > operator checks if the first number is greater than the second. 5 is greater than 3, so the result is true."
+    },
+    {
+      "type": "text",
+      "text": "Logical operators like && (and), || (or), and ! (not) allow you to combine multiple conditions. For example, you can check if a number is positive and less than 10 using x > 0 && x < 10. The result is true only if both conditions are true."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Declare an integer variable score = 85. Print true if the score is greater than 50 and less than 100 using a logical expression.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " int score = 85;\n // Print true or false based on conditions\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "True"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create variables for two exam scores. Print their average, check if both scores are above 70, and print true or false. This exercise combines arithmetic and logical operators in one small program."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You’ve learned how to combine and compare values using operators and expressions. This lets your program compute results, make decisions, and prepare data for later use. In the next lesson, you will learn how to direct the flow of your program using conditional statements, building on these expressions."
+    }
+  ]
+}

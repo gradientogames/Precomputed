@@ -1,0 +1,84 @@
+{
+  "title": "Objects and Classes",
+  "description": "Model the world with custom types.",
+  "content": [
+    {
+      "type": "text",
+      "text": "So far, you have written programs using variables, arrays, methods, and loops. The next step in programming is learning how to model real-world objects. In C#, this is done using classes and objects. Classes are blueprints that define the properties and behaviors of objects, and objects are instances of these classes."
+    },
+    {
+      "type": "text",
+      "text": "Think of a class as a recipe, and objects as the dishes you prepare using that recipe. A class defines what data an object holds (properties) and what actions it can perform (methods). Once you define a class, you can create multiple objects with different values but the same structure and behavior."
+    },
+    {
+      "type": "text",
+      "text": "Challenge: Imagine you want to model a car. Each car has a make, model, and year. Cars can also perform actions, like starting the engine. Think about how you would structure a class to hold this information and what methods it would need."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define a class Car with properties Make, Model, and Year. In Main, create an object myCar of type Car, set Make='Toyota', Model='Corolla', Year=2020, and print these properties.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Car object and print properties\n",
+      "suffixCode": " }\n // Define Car class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Toyota\nCorolla\n2020"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Methods inside a class define actions the object can perform. For example, a Car class could have a method StartEngine that prints 'Engine started'. These methods operate on the object's properties and can be called from any object instance."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Add a method StartEngine to your Car class that prints 'Engine started'. Call it on myCar.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n Car myCar = new Car { Make="
+      "Toyota\", Model=\"Corolla\", Year=2020 };\\n\"",
+      ,
+      "starterCode": " // Call StartEngine method here\n",
+      "suffixCode": " }\n // Car class defined here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Engine started"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Objects and classes allow you to structure programs in a way that mirrors real-world concepts. This makes code easier to understand, extend, and maintain. Once you grasp this concept, you can model more complex systems with multiple interacting objects."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement is true about objects and classes in C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A class is an instance of an object"
+        },
+        {
+          "id": "b",
+          "text": "Objects are blueprints for classes"
+        },
+        {
+          "id": "c",
+          "text": "Objects are instances of classes",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Classes cannot have methods"
+        }
+      ],
+      "explanation": "Classes define the structure and behavior, while objects are instances created from the class blueprint."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a class Student with properties Name and Grade. Add a method PrintDetails that prints both properties. Create an object student1, set Name='Alice' and Grade=90, and call PrintDetails."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand how to model real-world entities using classes and objects. This concept is fundamental to object-oriented programming and forms the foundation for creating organized and maintainable software. In the next lesson, you’ll learn how to control access to data using fields, properties, and encapsulation."
+    }
+  ]
+}

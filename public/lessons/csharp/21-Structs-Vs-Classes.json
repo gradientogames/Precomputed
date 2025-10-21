@@ -1,0 +1,78 @@
+{
+  "title": "Structs vs Classes",
+  "description": "Learn when to use value vs reference types.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to build programs with classes, objects, and error handling. Now it’s important to understand the difference between structs and classes. In C#, structs are value types, while classes are reference types. This distinction affects how data is stored and copied in memory."
+    },
+    {
+      "type": "text",
+      "text": "Classes are reference types, which means that when you assign an object to another variable, both variables reference the same object. Changes made through one variable affect the same underlying object. Structs, on the other hand, are value types. Assigning a struct to another variable creates a copy, so modifications do not affect the original."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a struct Point with properties X and Y. In Main, create a Point p1 = { X=1, Y=2 } and assign Point p2 = p1. Change p2.X to 10 and print p1.X.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create structs and print p1.X\n",
+      "suffixCode": " }\n // Define Point struct here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "1"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Structs are best used for small, simple objects that represent a single value or a few related values, such as points, coordinates, or colors. Classes are better for complex objects with behavior and identity that need to be shared across multiple parts of the program."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a class Person with a property Name. In Main, create Person p1 with Name='Alice' and assign Person p2 = p1. Change p2.Name='Bob' and print p1.Name.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create class objects and print p1.Name\n",
+      "suffixCode": " }\n // Define Person class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Bob"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Remember: value types (structs) are copied when assigned, whereas reference types (classes) share the same underlying object. Choosing the correct type is important for program behavior and performance."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of the following is true?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Structs are reference types"
+        },
+        {
+          "id": "b",
+          "text": "Classes are value types"
+        },
+        {
+          "id": "c",
+          "text": "Structs are copied when assigned, classes are shared",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "Classes cannot have methods"
+        }
+      ],
+      "explanation": "Structs are value types, so assigning them creates a copy. Classes are reference types, so multiple variables can reference the same object."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a struct Rectangle with properties Width and Height and a class Circle with property Radius. Assign instances to new variables, modify the copies, and observe which changes affect the original objects. Print results to confirm the difference between value and reference types."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand structs versus classes and when to use value types versus reference types. This knowledge is essential for managing memory, avoiding unintended side effects, and writing predictable programs. The next lesson will introduce delegates and events for writing code that reacts to actions."
+    }
+  ]
+}

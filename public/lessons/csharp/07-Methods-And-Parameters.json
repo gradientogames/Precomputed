@@ -1,0 +1,82 @@
+{
+  "title": "Methods and Parameters",
+  "description": "Encapsulate code into reusable functions.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You have learned how to store data in variables and perform tasks repeatedly using loops. The next step is organizing your code into reusable blocks called methods. Methods allow you to group instructions together, give them a name, and run them whenever needed. This makes your programs shorter, clearer, and easier to maintain."
+    },
+    {
+      "type": "text",
+      "text": "Think of a method like a mini-program inside your program. Instead of rewriting the same code multiple times, you write it once in a method and call it whenever required. Methods can also accept input values, called parameters, and produce output using return values."
+    },
+    {
+      "type": "text",
+      "text": "Here’s a small challenge. Imagine you want to print a greeting multiple times. Without a method, you would write Console.WriteLine(\"Hello\") repeatedly. With a method, you can write a single method that prints a greeting and call it as many times as you need. This is the essence of code reuse."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define a method called PrintGreeting that prints 'Hello, world!' and call it from Main once.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Call the method here\n",
+      "suffixCode": " }\n // Define your method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Hello, world!"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Methods can also accept parameters, which let you send data into them. For example, a method could accept a string parameter name and print 'Hello, name!'. Parameters make methods flexible and adaptable for different situations."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define a method Greet that accepts a string parameter name and prints 'Hello, {name}!'. Call it from Main with the argument 'Alex'.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Call Greet method with your name\n",
+      "suffixCode": " }\n // Define Greet method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Hello, Alex!"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Methods help reduce repetition and increase clarity. When you encounter a task you need to perform multiple times or in different parts of the program, a method is the best solution. It also makes debugging easier because you can isolate and test individual methods."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement is true about methods?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Methods can only be called once"
+        },
+        {
+          "id": "b",
+          "text": "Methods group reusable code and can accept parameters",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Methods cannot use variables from Main"
+        },
+        {
+          "id": "d",
+          "text": "Methods are optional and cannot return values"
+        }
+      ],
+      "explanation": "Methods are designed to group reusable code, can accept input through parameters, and can return values. They are fundamental to structuring programs."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a method called Multiply that accepts two integers and prints their product. Call it from Main with any two numbers. This exercise will reinforce defining methods, using parameters, and calling them correctly."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand how to encapsulate code into methods and pass data using parameters. This is a crucial skill for organizing programs and reducing repetition. In the next lesson, you will learn about return values and variable scope, allowing methods to provide data back to the caller."
+    }
+  ]
+}

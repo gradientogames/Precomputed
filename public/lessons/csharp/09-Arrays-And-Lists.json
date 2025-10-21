@@ -1,0 +1,96 @@
+{
+  "title": "Arrays and Lists",
+  "description": "Manage multiple values with collections.",
+  "content": [
+    {
+      "type": "text",
+      "text": "So far, you’ve worked with individual variables, which can store a single value at a time. But many programs need to store multiple values of the same type. Arrays and lists allow you to group multiple values together under a single variable name, making it easier to manage collections of data."
+    },
+    {
+      "type": "text",
+      "text": "An array is a fixed-size collection of elements of the same type. You declare an array, set its size, and store values at specific positions called indexes. Indexes start at 0, so the first element is at index 0, the second at index 1, and so on."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create an integer array of size 5, store the numbers 10, 20, 30, 40, 50, and print the third element (index 2).",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Declare array and print element here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "30"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Lists are similar to arrays but more flexible. They can grow or shrink in size dynamically. Lists are part of the System.Collections.Generic namespace and allow you to add, remove, and access elements easily."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a List of strings called fruits. Add 'Apple', 'Banana', 'Cherry'. Print the second item in the list.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Declare list, add items, and print element\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Banana"
+      }
+    },
+    {
+      "type": "text",
+      "text": "You can loop through arrays and lists using for or foreach loops. foreach is especially convenient because it automatically goes through each element without needing to manage an index."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Use a foreach loop to print all elements in the List fruits = ['Apple', 'Banana', 'Cherry'], each on a new line.",
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n List<string> fruits = new List<string>{"
+      "Apple\", \"Banana\", \"Cherry\"};\\n\"",
+      ,
+      "starterCode": " // Use foreach to print elements\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Apple\nBanana\nCherry"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Arrays are useful when the number of elements is fixed, and you want fast access by index. Lists are better when you need flexibility to add or remove items dynamically. Both are fundamental tools for managing collections of data in your programs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about lists in C# is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Lists have fixed size like arrays"
+        },
+        {
+          "id": "b",
+          "text": "Lists can grow and shrink dynamically",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Lists cannot store strings"
+        },
+        {
+          "id": "d",
+          "text": "Lists do not allow iteration"
+        }
+      ],
+      "explanation": "Lists are dynamic collections that can grow or shrink, and they can store any type of object, including strings."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create an array of 5 integers, calculate the sum of all elements using a loop, and print the result. Then, create a List of your favorite colors, loop through them, and print each one. This will combine arrays, lists, and loops into one program."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You’ve learned how to manage multiple values with arrays and lists. These collections are essential for handling larger sets of data efficiently. In the next lesson, you’ll learn how to represent named states and fixed values using enums and constants."
+    }
+  ]
+}

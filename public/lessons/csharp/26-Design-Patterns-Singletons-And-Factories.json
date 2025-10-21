@@ -1,0 +1,156 @@
+{
+  "title": "Design Patterns: Singleton and Factory",
+  "description": "Learn the purpose behind common patterns.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve mastered recursion and complex problem solving. Now it’s time to learn design patterns, which are reusable solutions to common programming problems. We’ll focus on two fundamental patterns: Singleton and Factory. Understanding these patterns improves code structure, maintainability, and scalability."
+    },
+    {
+      "type": "text",
+      "text": "The Singleton pattern ensures a class has only one instance and provides a global point of access to it. This is useful for managing resources that should only exist once, such as a configuration manager or logging system."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Implement a Singleton class Logger with a method Log(string message) that prints the message. Ensure only one instance of Logger can exist. In Main, get the instance and call Log('Hello Singleton').",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Get Singleton instance and call Log\n",
+      "suffixCode": " }\n // Define Logger Singleton class here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Hello Singleton"
+      }
+    },
+    {
+      "type": "text",
+      "text": "The Factory pattern provides an interface for creating objects but allows subclasses to decide which class to instantiate. This helps decouple object creation from usage, making your code more flexible and easier to extend."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create an abstract class Enemy and two subclasses, Goblin and Troll. Implement a Factory class EnemyFactory with a method CreateEnemy(string type) that returns a Goblin or Troll based on type. In Main, create a Goblin using the factory and print 'Goblin created'.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Use EnemyFactory to create a Goblin\n",
+      "suffixCode": " }\n // Define Enemy, Goblin, Troll, and EnemyFactory classes here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Goblin created"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Design patterns like Singleton and Factory solve recurring design problems and make your code more organized. Singleton ensures controlled access to a single instance, while Factory separates object creation from its use, enabling flexible and maintainable code."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about design patterns is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Singleton allows multiple instances of a class"
+        },
+        {
+          "id": "b",
+          "text": "Factory decouples object creation from usage",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Singleton and Factory are only used in C#"
+        },
+        {
+          "id": "d",
+          "text": "Design patterns always make code slower"
+        }
+      ],
+      "explanation": "Design patterns provide reusable solutions. The Factory pattern decouples object creation from usage, making code flexible. Singleton restricts a class to a single instance."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Implement a Logger Singleton and an EnemyFactory in a single program. Use the Logger to print messages when creating different enemy types using the factory."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand Singleton and Factory patterns, which help organize code and solve common design problems. Recognizing where to apply these patterns improves software quality. The next lesson will cover creating simple turn-based game logic using these and previous concepts."
+    }
+  ]
+}
+{
+  "title": "Simple Turn-Based Game Logic",
+  "description": "Simulate a mini strategy battle.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned about design patterns like Singleton and Factory, and now it’s time to combine your knowledge into a practical application: a simple turn-based game. Turn-based games operate in rounds, where each participant takes a turn to act. Implementing this logic will reinforce object-oriented programming, collections, and method design."
+    },
+    {
+      "type": "text",
+      "text": "In this mini battle, you can create classes for Player and Enemy, each with properties like Health and AttackPower. Using a loop, alternate turns between the player and enemy, applying damage each round until one reaches zero health. This exercise will help you practice controlling program flow and updating object states."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a Player class with Health=10 and AttackPower=3. Create an Enemy class with Health=8 and AttackPower=2. In Main, simulate one turn where the Player attacks the Enemy, reducing Enemy’s Health by Player’s AttackPower, then print Enemy’s Health.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Simulate one attack turn\n",
+      "suffixCode": " }\n // Define Player and Enemy classes here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "5"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Next, extend the simulation to multiple turns using a loop. Each turn, the Player attacks the Enemy, and the Enemy attacks back. Include a condition to stop the loop if either reaches zero health. This demonstrates using iteration with object state updates."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Simulate a battle loop where Player and Enemy attack each other until one’s Health <= 0. Print the winner: 'Player wins' or 'Enemy wins'.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n Player player = new Player { Health=10, AttackPower=3 };\n Enemy enemy = new Enemy { Health=8, AttackPower=2 };\n",
+      "starterCode": " // Implement battle loop and print winner\n",
+      "suffixCode": " }\n // Define Player and Enemy classes here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Player wins"
+      }
+    },
+    {
+      "type": "text",
+      "text": "You can further enhance the game by adding methods like TakeDamage, Heal, or special attacks. Consider using lists if multiple enemies or players are involved. This exercise ties together concepts from classes, methods, loops, and object interactions."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which principle is demonstrated by the turn-based game simulation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Object-oriented programming with interactions",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "Recursion only"
+        },
+        {
+          "id": "c",
+          "text": "Delegates without events"
+        },
+        {
+          "id": "d",
+          "text": "Generics without collections"
+        }
+      ],
+      "explanation": "The turn-based game uses classes, objects, and methods interacting with each other, demonstrating object-oriented programming."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Expand the game to include two players and two enemies. Alternate turns and track health for each. Print the order of actions and announce the winner at the end."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You’ve applied object-oriented principles, loops, and method design to create a working turn-based battle system. This project integrates multiple lessons and prepares you for thinking about code structure and readability in more complex simulations, which will be the focus of the next lesson on refactoring."
+    }
+  ]
+}

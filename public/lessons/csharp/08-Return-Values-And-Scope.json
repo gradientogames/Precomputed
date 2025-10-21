@@ -1,0 +1,82 @@
+{
+  "title": "Return Values and Scope",
+  "description": "Pass data in and out of methods correctly.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned how to organize code into methods and pass data into them using parameters. The next step is learning how methods can send data back to the part of the program that called them. This is done using return values. Return values allow methods to produce a result that can be stored in a variable or used in further calculations."
+    },
+    {
+      "type": "text",
+      "text": "Think of a return value like an answer from a function. You send information into the method, it performs a task, and then gives you back a result. For example, a method could accept two numbers, add them, and return the sum. The calling code can then use that sum for other purposes."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a method called Add that takes two integers and returns their sum. Call it from Main with 5 and 7, then print the result.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Call Add method and print result\n",
+      "suffixCode": " }\n // Define Add method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "12"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Methods can return different data types, including integers, floats, strings, or booleans. The return type must match the type of data being sent back. If a method does not return any value, its return type is void."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What return type should you use if a method does not return any value?",
+      "options": [
+        {
+          "id": "a",
+          "text": "int"
+        },
+        {
+          "id": "b",
+          "text": "string"
+        },
+        {
+          "id": "c",
+          "text": "void",
+          "correct": true
+        },
+        {
+          "id": "d",
+          "text": "bool"
+        }
+      ],
+      "explanation": "Use void for methods that perform actions but do not return a value."
+    },
+    {
+      "type": "text",
+      "text": "Scope defines where a variable or parameter is accessible. Variables declared inside a method exist only inside that method. They cannot be accessed outside. Parameters also follow the same scope rules. Variables declared in Main or other methods are separate from variables in different methods."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Inside Main, declare an integer a = 10. Define a method PrintNumber that takes an integer and prints it. Call the method with a. Ensure the variable inside Main is not directly accessed inside the method.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n int a = 10;\n",
+      "starterCode": " // Call PrintNumber here\n",
+      "suffixCode": " }\n // Define PrintNumber method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "10"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Understanding return values and scope is crucial for building programs that are organized and maintainable. Returning data allows methods to communicate results back to the caller. Scope ensures variables do not interfere with each other, reducing errors and confusion."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a method called Multiply that accepts two integers, returns their product, and call it from Main. Store the result in a variable and print it. This reinforces understanding of parameters, return values, and proper scope."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now know how to send data in and out of methods correctly and understand the scope of variables. These skills are essential for writing modular and error-free programs. In the next lesson, you’ll learn how to manage multiple values with arrays and lists."
+    }
+  ]
+}

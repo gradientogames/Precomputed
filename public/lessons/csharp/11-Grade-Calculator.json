@@ -1,0 +1,54 @@
+{
+  "title": "Grade Calculator",
+  "description": "Build a program that computes weighted grades.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned variables, operators, loops, methods, arrays, lists, enums, and constants. Now it’s time to combine these skills into a practical program: a grade calculator. This program will compute a student's overall grade based on multiple scores and their respective weights."
+    },
+    {
+      "type": "text",
+      "text": "Think of weighted grades like this: each assignment or test contributes a portion to the final grade. For example, homework might be 30%, and the final exam 70%. Your program will need to store scores, apply weights, and compute the total. This is an excellent exercise in combining operators, arrays, loops, and methods."
+    },
+    {
+      "type": "text",
+      "text": "Challenge: Imagine a student has scores 80, 90, 70 for three assignments. Their weights are 20%, 30%, and 50%. Calculate the weighted average by multiplying each score by its weight and adding the results. Think about how you could store scores and weights in arrays or lists."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create arrays for scores = {80, 90, 70} and weights = {0.2, 0.3, 0.5}. Compute the weighted average using a loop and print it.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Compute weighted average here\n",
+      "suffixCode": " }\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "80"
+      }
+    },
+    {
+      "type": "text",
+      "text": "You can also create a method to calculate weighted averages. This allows you to reuse the calculation for different students or different sets of scores. The method can accept arrays for scores and weights and return the final weighted grade."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define a method CalculateWeightedAverage that takes two arrays: scores and weights. Return the weighted average. Call it from Main with the example scores and weights and print the result.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n int[] scores = {80, 90, 70};\n double[] weights = {0.2, 0.3, 0.5};\n",
+      "starterCode": " // Call CalculateWeightedAverage and print result\n",
+      "suffixCode": " }\n // Define CalculateWeightedAverage method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "80"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Extend your grade calculator to handle any number of scores and weights using arrays. Ensure that the weights sum to 1.0. If not, print a message indicating the weights are invalid. This will reinforce array handling, loops, operators, and method usage."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You’ve successfully built a program that combines multiple concepts into a practical tool. Grade calculation required arrays, loops, operators, and methods, illustrating how different programming concepts work together. In the next lesson, you will learn how to model real-world objects using classes and objects."
+    }
+  ]
+}

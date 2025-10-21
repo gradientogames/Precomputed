@@ -1,0 +1,78 @@
+{
+  "title": "Delegates and Events",
+  "description": "Write code that reacts to actions.",
+  "content": [
+    {
+      "type": "text",
+      "text": "You’ve learned about classes, structs, and how to manage program flow. The next step is delegates and events, which let your program respond to actions dynamically. Delegates are objects that reference methods, allowing you to pass methods as parameters and call them indirectly."
+    },
+    {
+      "type": "text",
+      "text": "An event is a way for a class to notify other classes or objects when something happens. Events rely on delegates to define the signature of the methods that can be called in response. This pattern is commonly used in GUI programming, game logic, and other scenarios where actions trigger reactions."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Define a delegate ActionDelegate that takes no parameters and returns void. Create a method Greet() that prints 'Hello!'. Assign Greet to a variable of type ActionDelegate and call it.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create delegate instance and call Greet\n",
+      "suffixCode": " }\n // Define Greet method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Hello!"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Events are declared using the event keyword with a delegate type. Other classes can subscribe methods to the event using += and unsubscribe using -=. When the event is raised, all subscribed methods are invoked automatically."
+    },
+    {
+      "type": "code-quiz",
+      "language": "csharp",
+      "prompt": "Create a class Button with an event Click of type ActionDelegate. In Main, create a Button, subscribe a method PrintClicked() that prints 'Button clicked', and invoke the Click event.",
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
+      "starterCode": " // Create Button, subscribe to Click, and invoke it\n",
+      "suffixCode": " }\n // Define Button class and PrintClicked method here\n}",
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Button clicked"
+      }
+    },
+    {
+      "type": "text",
+      "text": "Delegates and events decouple the sender of an action from the receivers. This allows multiple methods to respond to the same event without the sender needing to know about them. It also enables more modular and maintainable code."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about delegates and events is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delegates cannot reference methods"
+        },
+        {
+          "id": "b",
+          "text": "Events can have multiple subscribers",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Events are unrelated to delegates"
+        },
+        {
+          "id": "d",
+          "text": "Delegates cannot be assigned to variables"
+        }
+      ],
+      "explanation": "Delegates reference methods, and events allow multiple subscribers. This pattern enables actions to trigger multiple responses while keeping sender and receiver decoupled."
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: Create a class Alarm with an event OnAlarm of type ActionDelegate. Subscribe two methods: RingBell() printing 'Bell rings!' and FlashLight() printing 'Light flashes!'. Raise the OnAlarm event and confirm both methods execute."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand delegates and events, which allow your code to respond dynamically to actions. This is crucial for interactive applications, games, and systems that rely on event-driven programming. The next lesson will introduce LINQ basics for querying and manipulating data efficiently."
+    }
+  ]
+}
