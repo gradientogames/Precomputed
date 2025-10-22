@@ -9,6 +9,7 @@ import CodeInterpreter from './components/CodeInterpreter'
 import PythonImg from './graphics/Python.png'
 import CImg from './graphics/C.png'
 import CSharpImg from './graphics/CSharp.png'
+import LogoImg from './graphics/Logo.svg'
 
 type LessonText = { type: 'text'; text: string }
 type LessonMCOption = { id: string; text: string; correct?: boolean }
@@ -610,7 +611,7 @@ export default function App() {
           className={'site-header' + (isHeaderFloating ? ' is-floating' : '') + (isHeaderFloating && !isHeaderVisible ? ' is-hidden' : '')}
         >
           <div className="header-bar">
-            <img src="/src/graphics/Logo.svg" alt="Logo" style={{height: '4rem'}}/>
+            <img src={LogoImg} alt="Logo" style={{height: '4rem'}}/>
             <button className="brand-button brand-title mb-2" onClick={() => navigate('' as any)}
                     aria-label="Go to language selection">PRECOMPUTED
             </button>
