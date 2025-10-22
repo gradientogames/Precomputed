@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { backendLabel, loadCompleted as loadProgress, setLessonCompleted } from './lib/progress'
-import { hasSupabase } from './lib/supabaseClient'
-import { type AuthUser, onAuthChange } from './lib/auth'
-import { useRoute, navigate } from './lib/router'
+import {useEffect, useMemo, useRef, useState} from 'react'
+import {backendLabel, loadCompleted as loadProgress, setLessonCompleted} from './lib/progress'
+import {hasSupabase} from './lib/supabaseClient'
+import {type AuthUser, onAuthChange} from './lib/auth'
+import {navigate, useRoute} from './lib/router'
 import SignInPage from './pages/SignIn'
 import AccountPage from './pages/Account'
 import CodeInterpreter from './components/CodeInterpreter'
@@ -48,14 +48,14 @@ function normalizeLesson(raw: any): Lesson {
   if (Array.isArray(contentRaw)) {
     content = contentRaw as LessonElement[]
   } else if (typeof contentRaw === 'string') {
-    content = [{ type: 'text', text: contentRaw }]
+    content = [{type: 'text', text: contentRaw}]
   } else if (contentRaw == null) {
     content = []
   }
-  return { title, content }
+  return {title, content}
 }
 
-function MCQElement({ element, onAnswered }: { element: LessonMCQ; onAnswered?: (correct: boolean) => void }) {
+function MCQElement({element, onAnswered}: { element: LessonMCQ; onAnswered?: (correct: boolean) => void }) {
   const [selected, setSelected] = useState<string | null>(null)
   const [locked, setLocked] = useState(false)
   const correctId = useMemo(() => element.options.find(o => o.correct)?.id ?? null, [element])
@@ -65,7 +65,10 @@ function MCQElement({ element, onAnswered }: { element: LessonMCQ; onAnswered?: 
     if (locked) return
     setSelected(id)
     setLocked(true)
-    try { onAnswered && onAnswered(id === correctId) } catch {}
+    try {
+      onAnswered && onAnswered(id === correctId)
+    } catch {
+    }
   }
 
   return (
@@ -96,7 +99,13 @@ function MCQElement({ element, onAnswered }: { element: LessonMCQ; onAnswered?: 
   )
 }
 
-function CodeQuizElement({ idx, element, lessonId, onSolved, onAttempted }: { idx: number; element: LessonCodeQuiz; lessonId: string | null; onSolved?: () => void; onAttempted?: () => void }) {
+function CodeQuizElement({idx, element, lessonId, onSolved, onAttempted}: {
+  idx: number;
+  element: LessonCodeQuiz;
+  lessonId: string | null;
+  onSolved?: () => void;
+  onAttempted?: () => void
+}) {
   const [attempted, setAttempted] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
   const desired = element.desiredOutput
@@ -132,13 +141,20 @@ function CodeQuizElement({ idx, element, lessonId, onSolved, onAttempted }: { id
 
   function describeRule(rule: DesiredOutput): string {
     switch (rule.type) {
-      case 'none': return 'No specific output required'
-      case 'exact': return `${rule.value}`
-      case 'text': return `${rule.value}`
-      case 'error': return 'Program should produce an error'
-      case 'pointer': return 'Output should include a pointer-like address (e.g., 0x... )'
-      case 'text+tokens': return `Output should include "${rule.text}"` + (rule.sourceIncludes?.length ? ` and source must include: ${rule.sourceIncludes.join(', ')}` : '')
-      default: return ''
+      case 'none':
+        return 'No specific output required'
+      case 'exact':
+        return `${rule.value}`
+      case 'text':
+        return `${rule.value}`
+      case 'error':
+        return 'Program should produce an error'
+      case 'pointer':
+        return 'Output should include a pointer-like address (e.g., 0x... )'
+      case 'text+tokens':
+        return `Output should include "${rule.text}"` + (rule.sourceIncludes?.length ? ` and source must include: ${rule.sourceIncludes.join(', ')}` : '')
+      default:
+        return ''
     }
   }
 
@@ -153,14 +169,22 @@ function CodeQuizElement({ idx, element, lessonId, onSolved, onAttempted }: { id
         storageKey={`code-quiz:${lessonId ?? 'unknown'}:${idx}:${element.language ?? 'python'}`}
         maxLines={element.maxLines ?? -1}
         maxStringLength={element.maxStringLength ?? -1}
-        onRunComplete={({ output, error, runCode }) => {
+        onRunComplete={({output, error, runCode}) => {
           setAttempted(true)
-          try { onAttempted && onAttempted() } catch {}
+          try {
+            onAttempted && onAttempted()
+          } catch {
+          }
           if (desired != null) {
             const ok = evalResult(desired as DesiredOutput, output, error ?? null, runCode)
             setIsCorrect(ok)
             setExpectedMsg(describeRule(desired as DesiredOutput))
-            if (ok) { try { onSolved && onSolved() } catch {} }
+            if (ok) {
+              try {
+                onSolved && onSolved()
+              } catch {
+              }
+            }
           }
         }}
         rightPanel={
@@ -249,6 +273,7 @@ export default function App() {
       const h = headerRef.current
       if (h) setHeaderHeight(h.getBoundingClientRect().height)
     }
+
     measure()
     window.addEventListener('resize', measure)
     return () => window.removeEventListener('resize', measure)
@@ -257,6 +282,7 @@ export default function App() {
   // Show header at top and when scrolling up; hide on scroll down
   useEffect(() => {
     let lastY = window.scrollY || 0
+
     function onScroll() {
       const y = window.scrollY || 0
       const atTop = y <= 0
@@ -275,7 +301,8 @@ export default function App() {
       }
       lastY = y
     }
-    window.addEventListener('scroll', onScroll, { passive: true } as any)
+
+    window.addEventListener('scroll', onScroll, {passive: true} as any)
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -283,6 +310,7 @@ export default function App() {
   // Load completed set from backend (Supabase if configured) on mount
   useEffect(() => {
     let cancelled = false
+
     async function load() {
       console.log('[App] loading initial completed progress')
       try {
@@ -295,6 +323,7 @@ export default function App() {
         console.warn('[App] failed to load initial progress:', e)
       }
     }
+
     load()
     return () => {
       cancelled = true
@@ -314,6 +343,7 @@ export default function App() {
         }
       })()
     }
+
     window.addEventListener('progress-reset', handleReset as EventListener)
     return () => {
       window.removeEventListener('progress-reset', handleReset as EventListener)
@@ -325,7 +355,7 @@ export default function App() {
     if (!hasSupabase) return
     console.log('[App] subscribing to auth changes')
     const unsub = onAuthChange((u) => {
-      console.log('[App] auth changed:', u ? { id: u.id, email: u.email } : null)
+      console.log('[App] auth changed:', u ? {id: u.id, email: u.email} : null)
       setUser(u)
       // refresh progress when auth state changes
       ;(async () => {
@@ -341,12 +371,15 @@ export default function App() {
     })
     return () => {
       console.log('[App] unsubscribing from auth changes')
-      try { unsub && (unsub as any)() } catch {}
+      try {
+        unsub && (unsub as any)()
+      } catch {
+      }
     }
   }, [])
 
   async function fetchJsonWithDetails(url: string): Promise<any> {
-    const res = await fetch(url, { cache: 'no-store' })
+    const res = await fetch(url, {cache: 'no-store'})
     const ct = res.headers?.get('content-type') || ''
     const text = await res.text().catch(() => '')
     if (!res.ok) {
@@ -365,6 +398,7 @@ export default function App() {
   // Load manifest on mount (supports grouped-by-language schema and legacy flat array)
   useEffect(() => {
     let cancelled = false
+
     async function loadManifest() {
       console.log('[App] fetching lessons manifest')
       setManifestLoading(true)
@@ -376,7 +410,7 @@ export default function App() {
           let parsedGroups: LanguageGroup[] = []
           if (Array.isArray(raw)) {
             // Legacy format: flat array of lessons; default them to Python
-            parsedGroups = [{ id: 'python', title: 'Python', lessons: raw as LessonMeta[] }]
+            parsedGroups = [{id: 'python', title: 'Python', lessons: raw as LessonMeta[]}]
           } else if (raw && Array.isArray((raw as any).languages)) {
             parsedGroups = (raw as any).languages as LanguageGroup[]
           } else if (raw && Array.isArray((raw as any).groups)) {
@@ -398,6 +432,7 @@ export default function App() {
         console.log('[App] manifest load finished')
       }
     }
+
     loadManifest()
     return () => {
       cancelled = true
@@ -407,7 +442,10 @@ export default function App() {
 
   // Update active manifest when language changes or groups are loaded
   useEffect(() => {
-    if (!routeLangId) { setManifest([]); return }
+    if (!routeLangId) {
+      setManifest([]);
+      return
+    }
     const g = groups.find(gr => gr.id === routeLangId)
     setManifest(g ? g.lessons : [])
   }, [groups, routeLangId])
@@ -419,14 +457,18 @@ export default function App() {
     if (!meta) {
       for (const g of groups) {
         const found = g.lessons.find(l => l.id === currentId)
-        if (found) { meta = found; break }
+        if (found) {
+          meta = found;
+          break
+        }
       }
     }
     if (!meta) return
 
     let cancelled = false
+
     async function loadLesson() {
-      console.log('[App] loading lesson', { id: currentId, file: meta?.file })
+      console.log('[App] loading lesson', {id: currentId, file: meta?.file})
       setLessonLoading(true)
       setLessonError(null)
       try {
@@ -434,7 +476,7 @@ export default function App() {
         const raw = await fetchJsonWithDetails(`${base}lessons/${meta?.file}`) as any
         const data = normalizeLesson(raw)
         if (!cancelled) {
-          console.log('[App] lesson loaded:', { id: currentId, title: data.title })
+          console.log('[App] lesson loaded:', {id: currentId, title: data.title})
           setLesson(data)
         }
       } catch (e: any) {
@@ -442,9 +484,10 @@ export default function App() {
         if (!cancelled) setLessonError(e?.message ?? 'Failed to load lesson')
       } finally {
         if (!cancelled) setLessonLoading(false)
-        console.log('[App] lesson load finished', { id: currentId })
+        console.log('[App] lesson load finished', {id: currentId})
       }
     }
+
     loadLesson()
     return () => {
       cancelled = true
@@ -476,7 +519,14 @@ export default function App() {
       const idx = visibleCount - 1
       const el = itemRefs.current[idx]
       if (el && typeof (el as any).scrollIntoView === 'function') {
-        try { (el as any).scrollIntoView({ behavior: 'smooth', block: 'start' } as any) } catch { try { (el as any).scrollIntoView(true) } catch {} }
+        try {
+          (el as any).scrollIntoView({behavior: 'smooth', block: 'start'} as any)
+        } catch {
+          try {
+            (el as any).scrollIntoView(true)
+          } catch {
+          }
+        }
       }
     }
     prevVisibleRef.current = visibleCount
@@ -517,7 +567,13 @@ export default function App() {
   async function finishLesson() {
     if (!currentId) return
     if (!canDoLessons) {
-      if (hasSupabase) { navigate('signin'); return } else { navigate(''); return }
+      if (hasSupabase) {
+        navigate('signin');
+        return
+      } else {
+        navigate('');
+        return
+      }
     }
     setFinishSaving(true)
     // optimistic update
@@ -548,11 +604,16 @@ export default function App() {
     <div className="container">
       <main className="content">
         <header
-          ref={el => { headerRef.current = el as any }}
+          ref={el => {
+            headerRef.current = el as any
+          }}
           className={'site-header' + (isHeaderFloating ? ' is-floating' : '') + (isHeaderFloating && !isHeaderVisible ? ' is-hidden' : '')}
         >
           <div className="header-bar">
-            <button className="brand-button brand-title mb-2" onClick={() => navigate('' as any)} aria-label="Go to language selection">PRECOMPUTED</button>
+            <img src="/src/graphics/Logo.svg" alt="Logo" style={{height: '4rem'}}/>
+            <button className="brand-button brand-title mb-2" onClick={() => navigate('' as any)}
+                    aria-label="Go to language selection">PRECOMPUTED
+            </button>
             <div className="ml-auto cluster">
               <button className="btn" onClick={() => navigate('')}>Lessons</button>
               {!hasSupabase && (
@@ -569,10 +630,10 @@ export default function App() {
             </div>
           </div>
         </header>
-        <div className="header-spacer" style={{ height: headerHeight }} />
+        <div className="header-spacer" style={{height: headerHeight}}/>
 
-        {route === 'signin' && <SignInPage />}
-        {route === 'account' && <AccountPage />}
+        {route === 'signin' && <SignInPage/>}
+        {route === 'account' && <AccountPage/>}
         {route === '' && (
           <section className="language-menu">
             {hasSupabase && !canDoLessons && (
@@ -586,7 +647,7 @@ export default function App() {
                 aria-disabled={!canDoLessons}
                 title={!canDoLessons ? 'Sign in to select a language' : undefined}
               >
-                <img src={PythonImg} alt="Python" className="lang-icon" />
+                <img src={PythonImg} alt="Python" className="lang-icon"/>
                 <div className="lang-title">Python</div>
                 <div className="lang-difficulty diff-baby">Little Baby</div>
                 <div className="lang-subtitle">Don't even bother unless learning this is mandatory.</div>
@@ -598,7 +659,7 @@ export default function App() {
                 aria-disabled={!canDoLessons}
                 title={!canDoLessons ? 'Sign in to select a language' : undefined}
               >
-                <img src={CSharpImg} alt="C#" className="lang-icon" />
+                <img src={CSharpImg} alt="C#" className="lang-icon"/>
                 <div className="lang-title">C#</div>
                 <div className="lang-difficulty diff-easy">Easy</div>
                 <div className="lang-subtitle">Learn programming for any software, like games!</div>
@@ -610,7 +671,7 @@ export default function App() {
                 aria-disabled={!canDoLessons}
                 title={!canDoLessons ? 'Sign in to select a language' : undefined}
               >
-                <img src={CImg} alt="C" className="lang-icon" />
+                <img src={CImg} alt="C" className="lang-icon"/>
                 <div className="lang-title">C</div>
                 <div className="lang-difficulty diff-moderate">Moderate</div>
                 <div className="lang-subtitle">Designed to teach computer science and programming.</div>
@@ -632,7 +693,10 @@ export default function App() {
                   return (
                     <li key={m.id} className="nav-item">
                       <button
-                        onClick={() => { console.log('[App] open lesson', m.id); navigate(`lesson/${m.id}` as any) }}
+                        onClick={() => {
+                          console.log('[App] open lesson', m.id);
+                          navigate(`lesson/${m.id}` as any)
+                        }}
                         className="nav-button"
                         disabled={locked}
                         aria-disabled={locked}
@@ -663,9 +727,13 @@ export default function App() {
                   {(lesson.content.slice(0, visibleCount)).map((el, idx) => {
                     let child: JSX.Element | null = null
                     if (el.type === 'text') {
-                      child = <p dangerouslySetInnerHTML={{ __html: renderLessonMarkdown((el as LessonText).text) }} />
+                      child = <p dangerouslySetInnerHTML={{__html: renderLessonMarkdown((el as LessonText).text)}}/>
                     } else if (el.type === 'multiple-choice-quiz') {
-                      child = <MCQElement element={el as LessonMCQ} onAnswered={() => setMcqAnswered(prev => { const s = new Set(prev); s.add(idx); return s })} />
+                      child = <MCQElement element={el as LessonMCQ} onAnswered={() => setMcqAnswered(prev => {
+                        const s = new Set(prev);
+                        s.add(idx);
+                        return s
+                      })}/>
                     } else if (el.type === 'code-quiz') {
                       const cq = el as LessonCodeQuiz
                       child = (
@@ -673,13 +741,23 @@ export default function App() {
                           idx={idx}
                           element={cq}
                           lessonId={currentId}
-                          onSolved={() => setCodeSolved(prev => { const s = new Set(prev); s.add(idx); return s })}
-                          onAttempted={() => setCodeAttempted(prev => { const s = new Set(prev); s.add(idx); return s })}
+                          onSolved={() => setCodeSolved(prev => {
+                            const s = new Set(prev);
+                            s.add(idx);
+                            return s
+                          })}
+                          onAttempted={() => setCodeAttempted(prev => {
+                            const s = new Set(prev);
+                            s.add(idx);
+                            return s
+                          })}
                         />
                       )
                     }
                     return (
-                      <div key={idx} ref={el2 => { itemRefs.current[idx] = el2 }} className="lesson-el fade-in">
+                      <div key={idx} ref={el2 => {
+                        itemRefs.current[idx] = el2
+                      }} className="lesson-el fade-in">
                         {child}
                       </div>
                     )
@@ -704,7 +782,8 @@ export default function App() {
                     }
                     return canFinish ? (
                       <div className="mt-2">
-                        <button className="btn btn-primary" onClick={finishLesson} disabled={finishSaving}>{finishSaving ? 'Finishing…' : 'Finish'}</button>
+                        <button className="btn btn-primary" onClick={finishLesson}
+                                disabled={finishSaving}>{finishSaving ? 'Finishing…' : 'Finish'}</button>
                       </div>
                     ) : null
                   }
@@ -725,7 +804,9 @@ export default function App() {
                   }
                   return allow ? (
                     <div className="mt-2">
-                      <button className="btn btn-primary" onClick={() => setVisibleCount(c => Math.min(len, c + 1))}>Continue</button>
+                      <button className="btn btn-primary"
+                              onClick={() => setVisibleCount(c => Math.min(len, c + 1))}>Continue
+                      </button>
                     </div>
                   ) : null
                 })()}
