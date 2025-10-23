@@ -1,0 +1,69 @@
+{
+  "title": "Inheritance and Polymorphism",
+  "description": "Extend and modify behavior hierarchically.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Inheritance lets one class reuse and extend the behavior of another. A new class, called the child or subclass, can inherit methods and attributes from a base class, also known as the parent or superclass."
+    },
+    {
+      "type": "text",
+      "text": "To define a subclass, place the parent class name in parentheses after the subclass name. The subclass automatically gets access to all methods and attributes of the parent class, unless overridden."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a class Animal with a method speak() that prints 'Sound'. Then define a subclass Dog that inherits from Animal. Create an instance of Dog and call speak().",
+      "starterCode": "class Animal:\n    def speak(self):\n        print('Sound')\n\nclass Dog(Animal):\n    pass\n\nd = Dog()\nd.speak()",
+      "desiredOutput": { "type": "exact", "value": "Sound" }
+    },
+    {
+      "type": "text",
+      "text": "A subclass can override methods from its parent to provide specific behavior. When a method in a subclass has the same name as one in its parent, the subclass’s version is used instead."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Modify the Dog class so that speak() prints 'Bark' instead of 'Sound'. Create a Dog instance and call speak().",
+      "starterCode": "class Animal:\n    def speak(self):\n        print('Sound')\n\nclass Dog(Animal):\n    def speak(self):\n        \n\nd = Dog()\nd.speak()",
+      "desiredOutput": { "type": "exact", "value": "Bark" }
+    },
+    {
+      "type": "text",
+      "text": "You can also call methods from the parent class using the super() function. This allows you to extend, rather than completely replace, the parent’s behavior in the child class."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use super() inside the Dog class to first call Animal’s speak() method, then print 'Bark'.",
+      "starterCode": "class Animal:\n    def speak(self):\n        print('Sound')\n\nclass Dog(Animal):\n    def speak(self):\n        \n\nDog().speak()",
+      "desiredOutput": { "type": "exact", "value": "Sound\nBark" }
+    },
+    {
+      "type": "text",
+      "text": "Polymorphism means that different objects can respond to the same method call in different ways. For example, both Dog and Cat might have a speak() method, but each produces its own sound. This allows flexible and reusable code."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define classes Dog and Cat, both inheriting from Animal. Override speak() in each to print 'Bark' and 'Meow'. Create one Dog and one Cat, then call speak() on both.",
+      "starterCode": "class Animal:\n    def speak(self):\n        print('Sound')\n\nclass Dog(Animal):\n    def speak(self):\n        print('Bark')\n\nclass Cat(Animal):\n    def speak(self):\n        print('Meow')\n\nDog().speak()\nCat().speak()",
+      "desiredOutput": { "type": "exact", "value": "Bark\nMeow" }
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is polymorphism in Python?",
+      "options": [
+        { "id": "a", "text": "A feature allowing different classes to define the same method name with different behavior", "correct": true },
+        { "id": "b", "text": "When a method changes its name automatically" },
+        { "id": "c", "text": "A way to delete inherited methods" },
+        { "id": "d", "text": "A data type conversion feature" }
+      ],
+      "explanation": "Polymorphism allows different classes to define methods with the same name but unique behavior, enabling flexible use of code."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how inheritance lets classes share and extend functionality, how to override methods, use super() to access parent behavior, and apply polymorphism for flexible object interactions. These ideas are key to building extensible and maintainable code."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Debugging with Print and Mind",
+  "description": "Learn how to debug C programs using print statements and logical reasoning. Understand common bugs, tracing techniques, and how to analyze program flow step by step.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Debugging is the process of identifying and fixing errors in your code. In C, using print statements is a simple but powerful way to understand what your program is doing at runtime. By printing variable values and execution points, you can trace the program's behavior."
+    },
+    {
+      "type": "text",
+      "text": "Logical reasoning, or 'debugging in the mind,' involves thinking through what the code is supposed to do versus what it actually does. This helps identify logic errors, incorrect conditions, and unexpected behavior without running the program."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why is printing variable values helpful in debugging?",
+      "options": [
+        { "id": "a", "text": "It fixes syntax errors" },
+        { "id": "b", "text": "It shows the program's runtime behavior and variable states", "correct": true },
+        { "id": "c", "text": "It optimizes memory usage" },
+        { "id": "d", "text": "It converts code to machine language" }
+      ],
+      "explanation": "Printing variable values allows you to see the program's internal state and understand how data changes during execution."
+    },
+    {
+      "type": "text",
+      "text": "Common bugs in C include off-by-one errors in loops, incorrect pointer usage, uninitialized variables, and incorrect array indices. By carefully placing print statements before and after critical operations, you can isolate the source of the problem."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Insert print statements to debug why the loop prints incorrect numbers. Fix the code to print 1 2 3 4 5.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int i;\n",
+      "starterCode": "    for(i=0; i<=5; i++) {\n        // Your code here\n    }\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1 2 3 4 5" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Combining print debugging with mental reasoning strengthens problem-solving skills. You learn to visualize the program's flow, anticipate results, and systematically isolate errors. This approach is essential before using advanced debugging tools."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is 'debugging in the mind'?",
+      "options": [
+        { "id": "a", "text": "Running the program repeatedly" },
+        { "id": "b", "text": "Thinking through program logic to identify errors", "correct": true },
+        { "id": "c", "text": "Writing print statements everywhere" },
+        { "id": "d", "text": "Using a debugger software only" }
+      ],
+      "explanation": "Debugging in the mind involves reasoning through the code, understanding expected behavior, and spotting logic errors without running the program."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "title": "Unions and Memory Reuse",
+  "description": "Learn how unions allow different data types to share the same memory space. Understand how unions can save memory and how to access data safely.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A union is similar to a struct, but all members share the same memory location. This means that at any given time, a union can store only one of its members. Unions are useful when you want to save memory and know that only one type of data will be used at a time."
+    },
+    {
+      "type": "text",
+      "text": "For example, a union can hold an integer, a float, or a character array, but only one value at a time. Writing to one member will overwrite the previous value. Understanding this behavior is essential to avoid unexpected results."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is the key difference between a union and a struct?",
+      "options": [
+        { "id": "a", "text": "A struct shares memory between members, a union does not" },
+        { "id": "b", "text": "A union shares memory between members, a struct does not", "correct": true },
+        { "id": "c", "text": "A union cannot have different data types" },
+        { "id": "d", "text": "A struct can only hold integers" }
+      ],
+      "explanation": "In a union, all members occupy the same memory space. Only one member can hold a valid value at a time. Struct members have separate memory locations."
+    },
+    {
+      "type": "text",
+      "text": "Unions are often used in situations where memory efficiency is important, such as embedded systems or low-level programming. They are also used to interpret the same memory in multiple ways, like reading a byte array as an integer or a float."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a union Data with members int i and float f. Assign 10 to i and print it.",
+      "prefixCode": "#include <stdio.h>\nunion Data {\n    int i;\n    float f;\n};\nint main() {\n    union Data d;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Accessing another member after writing to one will interpret the same memory differently. This can be useful for type punning but can also lead to unexpected values. Always be aware of which member contains the valid data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Assign 3.14 to f in the same union and print it.",
+      "prefixCode": "#include <stdio.h>\nunion Data {\n    int i;\n    float f;\n};\nint main() {\n    union Data d;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "3.14" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Unions allow memory reuse by letting multiple data types share the same space. They are powerful in low-level programming for saving memory and interpreting data in different ways. Always track which member is currently valid to avoid errors."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why must you be careful when using unions?",
+      "options": [
+        { "id": "a", "text": "Because writing to one member overwrites others", "correct": true },
+        { "id": "b", "text": "Because unions cannot store integers" },
+        { "id": "c", "text": "Because unions automatically allocate new memory for each member" },
+        { "id": "d", "text": "Because unions are slower than structs" }
+      ],
+      "explanation": "Writing to one member of a union overwrites the shared memory, so accessing another member without writing to it first can produce unexpected values."
+    }
+  ]
+}

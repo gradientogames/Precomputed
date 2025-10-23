@@ -1,0 +1,82 @@
+{
+  "title": "Preprocessor and Macros",
+  "description": "Learn how the C preprocessor works and how to use macros for constants, code reuse, and conditional compilation. Understand the order of preprocessing before compilation.",
+  "content": [
+    {
+      "type": "text",
+      "text": "The C preprocessor runs before compilation and processes directives starting with #, such as #include, #define, and #ifdef. It modifies the source code by including files, replacing macros, or conditionally compiling code."
+    },
+    {
+      "type": "text",
+      "text": "Macros are symbolic names or code templates defined with #define. They can represent constants or small code snippets. Using macros improves readability, allows easy changes, and can reduce repetitive code."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the #define directive do?",
+      "options": [
+        { "id": "a", "text": "Defines a constant or macro", "correct": true },
+        { "id": "b", "text": "Compiles the code" },
+        { "id": "c", "text": "Allocates memory" },
+        { "id": "d", "text": "Creates a function pointer" }
+      ],
+      "explanation": "#define defines a symbolic name or macro which the preprocessor replaces before compilation."
+    },
+    {
+      "type": "text",
+      "text": "For example, you can define a macro for the value of PI using #define PI 3.14. Anywhere PI appears in the code, the preprocessor replaces it with 3.14 before the compiler sees the code."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a macro SIZE as 10 and print it.",
+      "prefixCode": "#include <stdio.h>\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Macros can also take parameters, acting like inline functions. For example, #define SQUARE(x) ((x)*(x)) defines a macro that squares its argument. The preprocessor replaces SQUARE(5) with ((5)*(5)) in the code before compilation."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a macro DOUBLE(x) that multiplies x by 2, then print DOUBLE(7).",
+      "prefixCode": "#include <stdio.h>\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "14" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Conditional compilation allows you to include or exclude code using #ifdef, #ifndef, #else, and #endif. This is useful for platform-specific code, debugging, or feature toggles."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use #define DEBUG and #ifdef DEBUG to print 'Debug mode' only if DEBUG is defined.",
+      "prefixCode": "#include <stdio.h>\n#define DEBUG\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "Debug mode" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Reflection: The preprocessor runs before compilation, preparing your code. Macros allow symbolic constants and reusable code snippets. Conditional compilation helps manage code for different scenarios or debugging. Understanding preprocessing improves clarity and control over C programs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why is conditional compilation useful?",
+      "options": [
+        { "id": "a", "text": "To execute code faster" },
+        { "id": "b", "text": "To include or exclude code based on conditions", "correct": true },
+        { "id": "c", "text": "To allocate memory" },
+        { "id": "d", "text": "To define functions" }
+      ],
+      "explanation": "Conditional compilation allows you to selectively include or exclude code using preprocessor directives, useful for platform-specific code or debugging."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "title": "Stacks and Queues (Manual Implementation)",
+  "description": "Learn how to implement stacks and queues from scratch using arrays or linked lists. Understand LIFO and FIFO principles, and practice push, pop, enqueue, and dequeue operations.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Stacks and queues are fundamental data structures. A stack follows Last-In-First-Out (LIFO), meaning the last element added is the first removed. A queue follows First-In-First-Out (FIFO), meaning the first element added is the first removed. Implementing them manually helps you understand memory management and pointer usage."
+    },
+    {
+      "type": "text",
+      "text": "You can implement stacks and queues using arrays or linked lists. With arrays, you track the top index for a stack or front and rear indices for a queue. With linked lists, you use nodes connected via pointers, dynamically allocating memory for each element."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which principle does a stack follow?",
+      "options": [
+        { "id": "a", "text": "FIFO" },
+        { "id": "b", "text": "LIFO", "correct": true },
+        { "id": "c", "text": "Random Access" },
+        { "id": "d", "text": "Priority" }
+      ],
+      "explanation": "Stacks follow the Last-In-First-Out (LIFO) principle: the last element added is the first to be removed."
+    },
+    {
+      "type": "text",
+      "text": "To implement a stack using a linked list, each node contains data and a pointer to the next node. Push adds a new node at the head, and pop removes the head node. This approach avoids fixed-size limits and uses dynamic memory efficiently."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Implement a stack with push and pop using a linked list. Push 10 and 20, then pop and print the value.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\nstruct Node {\n    int data;\n    struct Node *next;\n};\nint main() {\n    struct Node *top = NULL;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "20" },
+      "maxLines": 8
+    },
+    {
+      "type": "text",
+      "text": "For queues, each node points to the next, with front and rear pointers. Enqueue adds a node at the rear, and dequeue removes a node from the front. Using pointers ensures dynamic memory allocation and avoids shifting elements as in arrays."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Implement a queue using a linked list. Enqueue 5 and 15, then dequeue and print the value.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\nstruct Node {\n    int data;\n    struct Node *next;\n};\nint main() {\n    struct Node *front = NULL;\n    struct Node *rear = NULL;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "5" },
+      "maxLines": 10
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Implementing stacks and queues manually teaches dynamic memory management, pointer handling, and the principles behind LIFO and FIFO. These structures are widely used in algorithms, recursion, and system programming."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is a key advantage of implementing stacks and queues with linked lists over arrays?",
+      "options": [
+        { "id": "a", "text": "Fixed memory usage" },
+        { "id": "b", "text": "Dynamic memory allocation without fixed size limits", "correct": true },
+        { "id": "c", "text": "Faster access to elements by index" },
+        { "id": "d", "text": "Avoiding pointers entirely" }
+      ],
+      "explanation": "Linked lists allow dynamic allocation of nodes, avoiding fixed-size limits and enabling flexible memory usage for stacks and queues."
+    }
+  ]
+}

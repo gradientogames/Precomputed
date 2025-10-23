@@ -1,0 +1,72 @@
+{
+  "title": "Control Flow",
+  "description": "Learn how programs make decisions and repeat actions using if, else, and while statements. Understand how branching works at the machine level and how conditions control the flow of execution.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Imagine your program could choose what to do based on conditions, or repeat tasks until a goal is reached. This is the purpose of control flow in C. Control flow lets you decide which parts of your code run and when. Without it, programs would just execute one statement after another, blindly."
+    },
+    {
+      "type": "text",
+      "text": "In C, the main tools for control flow are if, else, and while statements. 'If' allows your program to run code only when a condition is true. 'Else' lets you handle the alternative when the condition is false. 'While' repeats a block of code as long as a condition remains true. These structures make your programs dynamic and responsive."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement runs its block only when a condition is true?",
+      "options": [
+        { "id": "a", "text": "while" },
+        { "id": "b", "text": "if", "correct": true },
+        { "id": "c", "text": "else" },
+        { "id": "d", "text": "for" }
+      ],
+      "explanation": "'If' checks a condition and runs the block only if the condition evaluates to true. 'Else' runs only if 'if' is false, and 'while' repeats a block while its condition is true."
+    },
+    {
+      "type": "text",
+      "text": "Let's see a simple example. Suppose you want to print a message if a number is positive. You can use an 'if' statement to check the number. If it is positive, the program prints the message. Otherwise, it skips that block or goes to an 'else' block."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the program so it prints 'Positive number' only if the number is greater than 0.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int number = 5;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "Positive number" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "While statements allow repetition. If you want to count from 1 to 5, you can set a variable and repeat a block while the variable is less than or equal to 5. Each loop iteration can increase the variable until the condition is false. This simple mechanism allows loops, counters, and repeated actions in your programs."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use a while loop to print numbers from 1 to 5.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int i = 1;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1\n2\n3\n4\n5" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Control flow is fundamental in C. 'If' handles decisions, 'else' handles alternatives, and 'while' handles repetition. Every program you write will use these structures in some form. Understanding them is crucial for building dynamic, responsive, and efficient programs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens when the condition in a while loop becomes false?",
+      "options": [
+        { "id": "a", "text": "The program crashes" },
+        { "id": "b", "text": "The loop stops", "correct": true },
+        { "id": "c", "text": "The loop repeats infinitely" },
+        { "id": "d", "text": "The next if statement runs" }
+      ],
+      "explanation": "A while loop continues as long as its condition is true. When the condition becomes false, the loop ends and the program continues with the next statement after the loop."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Control flow determines which paths your program takes. By mastering if, else, and while, you can implement logic, conditions, and repetition. Visualize these statements as traffic signs guiding your program's execution. Practice writing small programs using these tools to internalize their behavior and effects."
+    }
+  ]
+}

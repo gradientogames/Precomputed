@@ -1,0 +1,62 @@
+{
+  "title": "Methods and self",
+  "description": "Distinguish between data and behavior.",
+  "content": [
+    {
+      "type": "text",
+      "text": "In Python, methods are functions defined inside a class. They describe what an object can do. Each method must include self as its first parameter. The self parameter refers to the specific instance calling the method."
+    },
+    {
+      "type": "text",
+      "text": "When you call a method, Python automatically passes the instance as the first argument. This allows the method to access and modify the instance’s attributes. Without self, the method would not know which object it belongs to."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a class Car with an __init__ method setting the brand attribute. Add a method show_brand() that prints 'Brand: ' followed by the brand. Create a Car instance 'Toyota' and call show_brand().",
+      "starterCode": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n\n    def show_brand(self):\n        \n\ncar = Car('Toyota')\ncar.show_brand()",
+      "desiredOutput": { "type": "exact", "value": "Brand: Toyota" }
+    },
+    {
+      "type": "text",
+      "text": "Methods can both read and change object data. Because self represents the object, any change to self.attribute updates that object only. Each instance has its own copy of data, but all instances share the same methods."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add a method drive() that sets the attribute speed to 60 and prints 'Driving at 60 km/h'. Create an instance and call drive().",
+      "starterCode": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n\n    def drive(self):\n        \n\nmy_car = Car('Honda')\nmy_car.drive()",
+      "desiredOutput": { "type": "exact", "value": "Driving at 60 km/h" }
+    },
+    {
+      "type": "text",
+      "text": "The key difference between data and behavior in classes is that attributes store data while methods define behavior. Methods describe how objects act or react using their data. This separation keeps your code organized and clear."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the 'self' keyword represent in a class method?",
+      "options": [
+        { "id": "a", "text": "The class itself" },
+        { "id": "b", "text": "A random variable" },
+        { "id": "c", "text": "The current instance of the class", "correct": true },
+        { "id": "d", "text": "A global variable" }
+      ],
+      "explanation": "self refers to the instance that called the method, allowing access to that object's data and behavior."
+    },
+    {
+      "type": "text",
+      "text": "Methods can also return values like normal functions. Use return when you need the result of a method instead of just printing it. You call returned values like any other function result."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add a method get_brand() that returns the car’s brand. Print the returned value.",
+      "starterCode": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n\n    def get_brand(self):\n        \n\ncar = Car('Ford')\nprint(car.get_brand())",
+      "desiredOutput": { "type": "exact", "value": "Ford" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how methods connect behavior to data through self. You saw how to access and modify attributes within methods and how Python automatically provides the instance as self. This distinction between data and behavior forms the foundation of object-oriented programming."
+    }
+  ]
+}

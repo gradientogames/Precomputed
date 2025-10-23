@@ -1,5 +1,7 @@
 As per the following guidelines, I want you to generate me a json file for a lesson based on the roadmap of lessons and guidelines provided. Assume no prior knowledge besides previous lessons done in the roadmap. Please start with lesson 1 and we can generate the rest over time.
 
+
+
 Guidelines for writing lessons
 ⦁	Lesson stages (use for lessons teaching new concepts, but feel free to diverge from this format for certain lessons): Challenge -> Introduce -> Teach use -> Concept (how it works) -> Final Challenge -> Reflection.
 ⦁	Each stage should have several elements and lots of text. Use a variety of elements.
@@ -80,35 +82,35 @@ Examples
 }
 
 ## Roadmap:
-🐍 Python (focus: the language itself)
-Goal: Master Python’s syntax, structures, and idioms without external distractions.
-1⦁	Hello, Expressions. Learn how Python evaluates simple expressions and prints results.
-2⦁	Variables and Names. Understand how names point to values in Python.
-3⦁	Numbers and Math Tricks. Explore Python’s numeric types and arithmetic operations.
-4⦁	Strings and Quotes. Work with text, escaping, and multi-line strings.
-5⦁	Formatting Strings. Learn f-strings, format(), and concatenation.
-6⦁	Lists and Indexing. Store sequences and access elements dynamically.
-7⦁	Tuples and Immutability. Why fixed collections matter and how to use them.
-8⦁	Dictionaries and Keys. Build mappings for fast lookups.
-9⦁	Sets and Membership. Handle unique collections efficiently.
-10⦁	If Statements and Truth. Learn Python’s approach to boolean logic and control flow.
-11⦁	Loops: For and While. Iterate cleanly through sequences and ranges.
-12⦁	Functions: Reuse and Scope. Define, call, and understand variable scope.
-13⦁	Arguments and Defaults. Learn *args, **kwargs, and keyword-only arguments.
-14⦁	List Comprehensions. Express loops and filters in one line.
-15⦁	Prime Finder. Build a small program to list prime numbers.
-16⦁	Modules and Imports. Structure code into reusable files.
-17⦁	Namespaces and name. Understand how Python organizes code contexts.
-18⦁	Objects and Classes. Define classes and create instances.
-19⦁	Methods and self. Distinguish between data and behavior.
-20⦁	Inheritance and Polymorphism. Extend and modify behavior hierarchically.
-21⦁	Magic Methods and Operators. Override built-in behavior (str, add, etc.).
-22⦁	Exceptions and try/except. Handle and raise errors gracefully.
-23⦁	Iterators and Generators. Learn how for really works under the hood.
-24⦁	Decorators and Higher-Order Functions. Modify behavior dynamically.
-25⦁	Lambda and Functional Tools. Use map, filter, and reduce effectively.
-26⦁	Text Analyzer. Parse a text file and count word frequencies (mock input).
-27⦁	Comprehending Pythonic Style. Learn idioms and readability conventions.
-28⦁	Typing and Annotations. Use type hints for clarity and safety.
-29⦁	Simple Parser. Build a basic expression evaluator.
-30⦁	Finale: Mini Interpreter. Create a tiny Python-like calculator language.
+⚙️ C (focus: low-level computer science)
+Goal: Learn how computers actually execute code and manage memory.
+1⦁	The Nature of C. Why C is close to the metal.
+2⦁	Main and the Compiler. Understand what happens when a C program runs.
+3⦁	Variables and Memory. Every variable occupies bytes—see how.
+4⦁	Data Types and Sizes. Know your bits, bytes, and ranges.
+5⦁	Operators and Precedence. Master arithmetic and logical operations.
+6⦁	Control Flow. If, else, and while—how branching works at machine level.
+7⦁	For Loops and Counters. Classic loop structure and its efficiency.
+8⦁	Functions and the Stack. See how arguments and return addresses are stored.
+9⦁	Arrays and Memory Layout. Understand contiguous memory blocks.
+10⦁	Pointers: Addresses and Dereferencing. Directly manipulate memory.
+11⦁	Pointer Arithmetic. Traverse arrays and data manually.
+12⦁	Manual String Functions. Rebuild strlen, strcpy, etc.
+13⦁	Dynamic Memory: malloc and free. Request and manage heap memory.
+14⦁	Structs and Data Layout. Group related data manually.
+15⦁	Enums and Type Safety. Define symbolic constants.
+16⦁	Unions and Memory Reuse. Store multiple data types in the same space.
+17⦁	Linked List Implementation. Build your first dynamic data structure.
+18⦁	Function Pointers. Treat functions as data for callbacks.
+19⦁	Preprocessor and Macros. Learn how code transforms before compilation.
+20⦁	Header Files and Declarations. Organize code modularly.
+21⦁	Bitwise Operations. Operate directly on binary representations.
+22⦁	Bitfield Flags System. Implement lightweight settings with bits.
+23⦁	Stacks and Queues (Manual Implementation). Learn core data structures from scratch.
+24⦁	Memory Alignment and Padding. Understand how CPUs read memory efficiently.
+25⦁	Recursion and Stack Frames. Explore how recursion uses the call stack.
+26⦁	Simple Sorting Algorithms. Implement bubble, selection, and insertion sort.
+27⦁	Complex Data Structures. Build trees or hash tables manually.
+28⦁	Debugging with Print and Mind. Learn to think like the compiler.
+29⦁	Mini Allocator. Simulate your own simplified memory manager.
+30⦁	Finale: ECS. create your own simple ECS.

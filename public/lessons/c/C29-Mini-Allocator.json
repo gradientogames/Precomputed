@@ -1,0 +1,64 @@
+{
+  "title": "Mini Allocator",
+  "description": "Learn how to create a simplified memory allocator in C. Understand how malloc and free work, manage a fixed memory block, and implement basic allocation and deallocation routines.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A mini allocator simulates dynamic memory allocation using a fixed memory block. Instead of relying on the system's malloc and free, you manage memory manually, tracking free and used sections. This helps understand how memory management works at a low level."
+    },
+    {
+      "type": "text",
+      "text": "You can implement a mini allocator using an array to represent memory and a simple header to store the size of each allocated block. When a request comes, you search for a free block large enough to satisfy it, mark it as used, and return a pointer. Freeing a block marks it as available again."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why implement a mini allocator?",
+      "options": [
+        { "id": "a", "text": "To replace operating system memory management" },
+        { "id": "b", "text": "To understand dynamic memory allocation and tracking", "correct": true },
+        { "id": "c", "text": "To increase memory usage" },
+        { "id": "d", "text": "To prevent pointers entirely" }
+      ],
+      "explanation": "A mini allocator provides insight into how malloc and free work, helping you learn memory management concepts."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Implement a mini allocator using a fixed array of 100 bytes. Allocate 10 bytes and print the address (index) of the allocated block.",
+      "prefixCode": "#include <stdio.h>\n#define MEM_SIZE 100\nchar memory[MEM_SIZE];\nint allocated[MEM_SIZE] = {0};\n",
+      "starterCode": "    // Your allocation code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": 8
+    },
+    {
+      "type": "text",
+      "text": "To free a block, you mark the memory section as available again. You can then reuse it for future allocations. Simple strategies include first-fit, best-fit, or next-fit searches for free blocks. Implementing these manually teaches memory fragmentation issues and allocation strategies."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Free the previously allocated 10-byte block and verify that it can be reallocated.",
+      "prefixCode": "#include <stdio.h>\n#define MEM_SIZE 100\nchar memory[MEM_SIZE];\nint allocated[MEM_SIZE] = {0};\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": 8
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Building a mini allocator deepens your understanding of dynamic memory, pointers, and low-level memory management. It highlights challenges like fragmentation, allocation strategies, and tracking memory manually."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is a key challenge when implementing a mini allocator?",
+      "options": [
+        { "id": "a", "text": "Keeping track of free and used memory blocks", "correct": true },
+        { "id": "b", "text": "Printing variables" },
+        { "id": "c", "text": "Sorting arrays" },
+        { "id": "d", "text": "Preventing recursion" }
+      ],
+      "explanation": "Managing which memory sections are free or used is crucial to avoid overlapping allocations and memory corruption."
+    }
+  ]
+}

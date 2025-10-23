@@ -1,0 +1,68 @@
+{
+  "title": "Bitfield Flags System",
+  "description": "Learn how to use bitfields to store multiple boolean flags efficiently in a single integer. Understand how to define, set, clear, and check flags using bitwise operations.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A bitfield is a way to store multiple boolean values in a single integer, using individual bits as flags. This reduces memory usage compared to using separate variables for each flag. Bitfields are commonly used for settings, options, and status indicators."
+    },
+    {
+      "type": "text",
+      "text": "You define a bitfield inside a struct with a colon and the number of bits. For example, 'unsigned int flag1:1;' declares a 1-bit flag. Multiple flags can be combined in a single struct, allowing efficient memory use while keeping the code readable."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why use bitfields instead of separate variables for flags?",
+      "options": [
+        { "id": "a", "text": "They make code slower" },
+        { "id": "b", "text": "They save memory and pack multiple flags into one integer", "correct": true },
+        { "id": "c", "text": "They prevent using pointers" },
+        { "id": "d", "text": "They automatically initialize all variables" }
+      ],
+      "explanation": "Bitfields allow multiple boolean flags to occupy only the bits they need, saving memory and keeping related flags together."
+    },
+    {
+      "type": "text",
+      "text": "You can set a bitfield flag using assignment, clear it by assigning 0, and check its value in conditional statements. Bitfields also work well with bitwise operations if you prefer to manipulate all flags together using masks."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a struct Flags with three 1-bit flags: a, b, c. Set a=1, b=0, c=1 and print the sum of the flags.",
+      "prefixCode": "#include <stdio.h>\nstruct Flags {\n    unsigned int a:1;\n    unsigned int b:1;\n    unsigned int c:1;\n};\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "2" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Bitfields provide readable names for each flag, but you must be careful with portability. The exact memory layout may vary between compilers. For maximum control, you can also manipulate the underlying integer using bitwise masks and shifts."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use an unsigned int variable to store three flags using bits 0, 1, 2. Set bits 0 and 2, then check if bit 1 is set. Print 1 if set, 0 otherwise.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    unsigned int flags = 0;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "0" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Bitfield flags systems allow memory-efficient storage of multiple boolean values. Using either struct bitfields or bitwise masks, you can manage many flags in a single variable. This technique is essential in embedded systems, low-level programming, and performance-critical applications."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is a potential drawback of using struct bitfields?",
+      "options": [
+        { "id": "a", "text": "They use too much memory" },
+        { "id": "b", "text": "Their memory layout may vary across compilers", "correct": true },
+        { "id": "c", "text": "They cannot store integers" },
+        { "id": "d", "text": "They do not allow conditional checks" }
+      ],
+      "explanation": "Struct bitfields are compiler-dependent in memory layout, so portability may be affected when using them across different systems."
+    }
+  ]
+}

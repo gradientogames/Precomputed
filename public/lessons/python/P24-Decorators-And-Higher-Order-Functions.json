@@ -1,0 +1,54 @@
+{
+  "title": "Decorators and Higher-Order Functions",
+  "description": "Modify behavior dynamically.",
+  "content": [
+    {
+      "type": "text",
+      "text": "In Python, functions are first-class objects. This means you can pass them as arguments, return them from other functions, and assign them to variables. Higher-order functions take other functions as input or return new functions."
+    },
+    {
+      "type": "text",
+      "text": "A decorator is a special type of higher-order function that wraps another function to modify its behavior without changing its code. Decorators are applied using the @ symbol above a function definition."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Write a decorator called shout that converts the return value of a function to uppercase. Apply it to a greet() function returning 'hello' and print the result.",
+      "starterCode": "def shout(func):\n    def wrapper():\n        \n    return wrapper\n\n@shout\ndef greet():\n    return 'hello'\n\nprint(greet())",
+      "desiredOutput": { "type": "exact", "value": "HELLO" }
+    },
+    {
+      "type": "text",
+      "text": "Decorators allow you to add behavior like logging, timing, or validation without modifying the original function. They are widely used in Python libraries and frameworks."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a decorator log_call that prints 'Calling function' before executing the decorated function foo().",
+      "starterCode": "def log_call(func):\n    def wrapper():\n        \n    return wrapper\n\n@log_call\ndef foo():\n    print('Inside foo')\n\nfoo()",
+      "desiredOutput": { "type": "exact", "value": "Calling function\nInside foo" }
+    },
+    {
+      "type": "text",
+      "text": "Higher-order functions like map, filter, and reduce take functions as arguments and apply them over sequences. This allows concise and expressive transformations of data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use map to square each number in [1, 2, 3, 4] and print the resulting list.",
+      "starterCode": "nums = [1, 2, 3, 4]\nresult = list(map(lambda x: x*x, nums))\nprint(result)",
+      "desiredOutput": { "type": "exact", "value": "[1, 4, 9, 16]" }
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use filter to select only even numbers from [1, 2, 3, 4] and print the resulting list.",
+      "starterCode": "nums = [1, 2, 3, 4]\nresult = list(filter(lambda x: x % 2 == 0, nums))\nprint(result)",
+      "desiredOutput": { "type": "exact", "value": "[2, 4]" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned that higher-order functions can take or return other functions, and decorators wrap functions to modify behavior dynamically. This allows concise, flexible, and reusable code patterns."
+    }
+  ]
+}

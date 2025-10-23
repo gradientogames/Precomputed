@@ -1,0 +1,69 @@
+{
+  "title": "Exceptions and try/except",
+  "description": "Handle runtime errors gracefully.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Exceptions are errors that occur during program execution. When an exception happens, the normal flow of the program stops unless it is handled. Handling exceptions prevents the program from crashing and allows controlled recovery."
+    },
+    {
+      "type": "text",
+      "text": "The try/except block is used to catch and handle exceptions. Code that might cause an error is placed inside the try block, and the handling code goes inside the except block."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Handle a ZeroDivisionError when dividing by zero and print 'Cannot divide by zero'.",
+      "starterCode": "try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    ",
+      "desiredOutput": { "type": "exact", "value": "Cannot divide by zero" }
+    },
+    {
+      "type": "text",
+      "text": "You can handle multiple types of exceptions by adding multiple except clauses. This allows different handling logic depending on the type of error raised."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Catch ValueError and ZeroDivisionError separately. Print 'Bad value' for ValueError and 'Division error' for ZeroDivisionError.",
+      "starterCode": "try:\n    x = int('a')\nexcept ValueError:\n    \nexcept ZeroDivisionError:\n    ",
+      "desiredOutput": { "type": "exact", "value": "Bad value" }
+    },
+    {
+      "type": "text",
+      "text": "The else block in a try statement runs only if no exception occurs. It’s useful for code that should only execute when the try block succeeds completely."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add an else block that prints 'Success' if no exception occurs.",
+      "starterCode": "try:\n    x = 10 / 2\nexcept ZeroDivisionError:\n    print('Error')\nelse:\n    ",
+      "desiredOutput": { "type": "exact", "value": "Success" }
+    },
+    {
+      "type": "text",
+      "text": "The finally block runs regardless of whether an exception occurs or not. It is typically used for cleanup actions like closing files or releasing resources."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add a finally block that prints 'Done' regardless of success or failure.",
+      "starterCode": "try:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    print('Error')\nfinally:\n    ",
+      "desiredOutput": { "type": "exact", "value": "Error\nDone" }
+    },
+    {
+      "type": "text",
+      "text": "You can also raise your own exceptions using the raise keyword. This allows you to enforce constraints or signal specific error conditions in your code."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Raise a ValueError with the message 'Invalid age' if age is less than 0.",
+      "starterCode": "age = -5\nif age < 0:\n    ",
+      "desiredOutput": { "type": "error", "value": "ValueError: Invalid age" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to catch, handle, and raise exceptions to control runtime errors. Using try, except, else, and finally ensures robust programs that can fail gracefully without crashing."
+    }
+  ]
+}

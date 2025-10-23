@@ -1,0 +1,72 @@
+{
+  "title": "For Loops and Counters",
+  "description": "Learn how to use for loops to repeat actions a specific number of times. Understand how counters work and why for loops are efficient for iteration.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Sometimes you know in advance how many times you want a block of code to run. For loops are designed for this purpose. They combine initialization, condition checking, and iteration in a single line, making your code concise and clear. Counters control the loop and track progress."
+    },
+    {
+      "type": "text",
+      "text": "A typical for loop has three parts: the starting point, the condition, and the step. The starting point sets the initial value. The condition decides how long the loop runs. The step updates the counter each iteration. Together, these parts control how many times the loop executes and in what order."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which part of a for loop determines how many times it runs?",
+      "options": [
+        { "id": "a", "text": "Initialization" },
+        { "id": "b", "text": "Condition", "correct": true },
+        { "id": "c", "text": "Step" },
+        { "id": "d", "text": "Function name" }
+      ],
+      "explanation": "The condition is checked before each iteration. The loop runs as long as the condition is true. Initialization sets the start, and the step changes the counter."
+    },
+    {
+      "type": "text",
+      "text": "Let's write a for loop to print numbers from 1 to 5. The counter starts at 1, the condition checks that it is less than or equal to 5, and the step increases the counter by 1 each iteration. Each pass prints the current value, demonstrating how loops automate repetitive tasks."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use a for loop to print numbers 1 through 5, each on a new line.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1\n2\n3\n4\n5" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "For loops can also count down or use larger steps. For example, you can start at 10 and decrease by 2 until you reach 0. By adjusting the initialization, condition, and step, you control the direction and size of the loop increments. This flexibility makes for loops ideal for counters and indexed operations."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use a for loop to print even numbers from 2 to 10.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "2\n4\n6\n8\n10" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "For loops are more compact than while loops when you know the number of iterations. They reduce the chance of errors by keeping initialization, condition, and counter update in one place. Once you understand counters and loop mechanics, you can implement a variety of iterative processes efficiently."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if you forget to update the counter in a for loop?",
+      "options": [
+        { "id": "a", "text": "The loop may run infinitely", "correct": true },
+        { "id": "b", "text": "The program crashes immediately" },
+        { "id": "c", "text": "The loop runs zero times" },
+        { "id": "d", "text": "The program skips the loop" }
+      ],
+      "explanation": "If the counter never changes, the loop's condition may remain true forever. This causes an infinite loop unless you break it manually."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: For loops let you control repetition with precision. By mastering counters, initialization, and conditions, you gain a reliable tool for performing repetitive tasks. Practice different step sizes, directions, and ranges to see how flexible and powerful for loops are in C programming."
+    }
+  ]
+}

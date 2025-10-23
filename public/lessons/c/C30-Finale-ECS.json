@@ -1,0 +1,82 @@
+{
+  "title": "Finale: ECS (Entity Component System)",
+  "description": "Learn how to implement a simple Entity Component System (ECS) in C. Combine all concepts learned so far: structs, arrays, memory management, pointers, and dynamic structures to simulate a lightweight game or simulation engine.",
+  "content": [
+    {
+      "type": "text",
+      "text": "The Entity Component System (ECS) is a way to organize data and behavior in a program, commonly used in games and simulations. Instead of using deep class hierarchies, ECS separates entities (identifiers), components (data), and systems (logic). This separation improves flexibility, memory layout, and performance."
+    },
+    {
+      "type": "text",
+      "text": "Entities are simple identifiers, usually integers, representing individual objects in the system. Components are structs containing data such as position, velocity, health, or color. Systems operate on arrays of components, updating all entities that have the relevant components in each iteration."
+    },
+    {
+      "type": "text",
+      "text": "By using arrays for components and compact memory layouts, ECS benefits from data locality. Systems can loop through contiguous arrays, reducing cache misses and improving performance. Pointers and manual memory management are key to dynamically adding and removing components while keeping memory efficient."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "In ECS, what is the role of a component?",
+      "options": [
+        { "id": "a", "text": "It stores data about an entity", "correct": true },
+        { "id": "b", "text": "It executes logic on entities" },
+        { "id": "c", "text": "It represents a unique identifier" },
+        { "id": "d", "text": "It manages memory" }
+      ],
+      "explanation": "Components are data-only structures that describe attributes of an entity, such as position or health."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a Position component struct with x and y integers. Create an array of 3 Position components and initialize them with (1,1), (2,3), (4,5). Print all positions.",
+      "prefixCode": "#include <stdio.h>\nstruct Position {\n    int x;\n    int y;\n};\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1 1\n2 3\n4 5" },
+      "maxLines": 8
+    },
+    {
+      "type": "text",
+      "text": "Systems are functions that iterate over components and update them. For example, a movement system could update all Position components based on a Velocity component array. By decoupling logic from entities, systems can operate independently and scale efficiently."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Given arrays of Position and Velocity components, write a system function that updates positions by adding velocity values to them. Print updated positions.",
+      "prefixCode": "#include <stdio.h>\nstruct Position { int x; int y; };\nstruct Velocity { int dx; int dy; };\nint main() {\n    struct Position pos[2] = {{0,0},{2,3}};\n    struct Velocity vel[2] = {{1,1},{-1,2}};\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1 1\n1 5" },
+      "maxLines": 8
+    },
+    {
+      "type": "text",
+      "text": "Dynamic allocation allows adding or removing entities and components at runtime. By combining your knowledge of malloc, free, pointers, and arrays, you can manage memory efficiently for all components. This is essential when building large simulations or games with many dynamic objects."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: This final lesson unites everything you've learned: structs, arrays, memory management, pointers, loops, recursion, and data structures. ECS demonstrates how low-level programming concepts create efficient, scalable systems. Understanding ECS prepares you for advanced game engines, simulations, or systems programming. You now have a deep grasp of how data can be organized, accessed, and manipulated in C at a high-performance, low-level level."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why is ECS considered memory-efficient compared to traditional object hierarchies?",
+      "options": [
+        { "id": "a", "text": "Components are scattered in memory" },
+        { "id": "b", "text": "Components are stored in contiguous arrays, improving cache performance", "correct": true },
+        { "id": "c", "text": "Entities hold all logic themselves" },
+        { "id": "d", "text": "It avoids using arrays" }
+      ],
+      "explanation": "By storing components in contiguous memory arrays, ECS improves data locality and CPU cache usage, making operations faster and more memory-efficient."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Simulate adding a new entity with Position (5,5) and print all entity positions including the new one. Assume a dynamically allocated array of Position components.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\nstruct Position { int x; int y; };\nint main() {\n    struct Position* positions = malloc(2 * sizeof(struct Position));\n    positions[0] = (struct Position){1,2};\n    positions[1] = (struct Position){3,4};\n    int count = 2;\n",
+      "starterCode": "    // Add new entity here\n",
+      "suffixCode": "    for(int i=0;i<count;i++) printf(\"%d %d\\n\", positions[i].x, positions[i].y);\n    free(positions);\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1 2\n3 4\n5 5" },
+      "maxLines": 6
+    }
+  ]
+}

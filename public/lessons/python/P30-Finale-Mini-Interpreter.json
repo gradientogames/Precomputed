@@ -1,0 +1,66 @@
+{
+  "title": "Finale: Mini Interpreter",
+  "description": "Create a tiny Python-like calculator language.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Welcome to the finale! In this lesson, you will combine everything you’ve learned to build a small interpreter, a program that reads, evaluates, and executes Python-like arithmetic expressions. This is your chance to see how variables, expressions, functions, and control flow can be handled in a unified program."
+    },
+    {
+      "type": "text",
+      "text": "An interpreter typically follows three steps: tokenization, parsing, and evaluation. Tokenization breaks input into meaningful pieces. Parsing organizes tokens into a structure representing operations. Evaluation computes results based on that structure."
+    },
+    {
+      "type": "text",
+      "text": "You’ll start by supporting simple arithmetic expressions like addition, subtraction, multiplication, and division. Later, we’ll add variables so you can store and reuse values. Finally, you’ll wrap everything in a loop to allow multiple lines of input like a mini REPL."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Tokenize the input 'x = 2 + 3' into a list of meaningful strings and print them.",
+      "starterCode": "expr = 'x = 2 + 3'\ntokens = expr.split()\nprint(tokens)",
+      "desiredOutput": { "type": "exact", "value": "['x', '=', '2', '+', '3']" }
+    },
+    {
+      "type": "text",
+      "text": "Next, convert numbers to integers and handle the assignment operator. Store the variable in a dictionary to keep track of its value. This allows your interpreter to remember user-defined values."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Evaluate the assignment 'x = 2 + 3' and store x in a dictionary variables. Print variables['x'].",
+      "starterCode": "variables = {}\ntokens = ['x', '=', '2', '+', '3']\nvar, eq, a, op, b = tokens\na, b = int(a), int(b)\nif op == '+':\n    variables[var] = a + b\nprint(variables['x'])",
+      "desiredOutput": { "type": "exact", "value": "5" }
+    },
+    {
+      "type": "text",
+      "text": "Now you can handle expressions that use previously defined variables. Look up their values in your variables dictionary and compute results just like Python would."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Evaluate 'y = x * 2' using the previously stored x=5 and print y.",
+      "starterCode": "variables = {'x': 5}\ntokens = ['y', '=', 'x', '*', '2']\nvar, eq, a, op, b = tokens\na = variables.get(a, int(a))\nb = variables.get(b, int(b))\nif op == '*':\n    variables[var] = a * b\nprint(variables['y'])",
+      "desiredOutput": { "type": "exact", "value": "10" }
+    },
+    {
+      "type": "text",
+      "text": "Finally, wrap your interpreter in a loop so you can accept multiple lines of input. Use a simple while True loop and break when the user types 'exit'. Each line is tokenized, parsed, and evaluated sequentially."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a mini loop accepting input like 'a = 1', 'b = a + 2', printing the result of each assignment. Stop on 'exit'.",
+      "starterCode": "variables = {}\nwhile True:\n    line = input()\n    if line == 'exit':\n        break\n    tokens = line.split()\n    var, eq, a, op, b = tokens\n    a = variables.get(a, int(a))\n    b = variables.get(b, int(b))\n    if op == '+':\n        variables[var] = a + b\n    print(variables[var])",
+      "desiredOutput": { "type": "none" }
+    },
+    {
+      "type": "text",
+      "text": "Optional Extensions: You can expand this interpreter by adding support for subtraction, multiplication, division, and even parentheses. Later, you could allow defining simple functions, using if statements, or loops. Each addition reinforces the lessons you’ve learned throughout the course."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You now understand how Python interprets code. You have written a mini interpreter that tokenizes input, parses expressions, evaluates them, handles variables, and loops for multiple inputs. This finale demonstrates the power of combining syntax, variables, operators, functions, and control flow into a working program. Congratulations on completing the roadmap!"
+    }
+  ]
+}

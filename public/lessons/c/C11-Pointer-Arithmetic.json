@@ -1,0 +1,68 @@
+{
+  "title": "Pointer Arithmetic",
+  "description": "Learn how to navigate memory using pointers. Understand how adding or subtracting integers from pointers moves through memory, and how this applies to arrays and data structures.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Pointer arithmetic allows you to move through memory by performing calculations on pointers. Since pointers store memory addresses, adding an integer to a pointer advances it by that many elements of the type it points to. Subtracting an integer moves it backward in memory."
+    },
+    {
+      "type": "text",
+      "text": "For example, if you have an integer pointer pointing to the first element of an array, adding 1 to the pointer moves it to the next integer in the array. The compiler automatically scales the increment by the size of the type, so you always land on valid element boundaries."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if you add 1 to an int* pointer?",
+      "options": [
+        { "id": "a", "text": "It moves to the next memory address by 1 byte" },
+        { "id": "b", "text": "It moves to the next int in memory", "correct": true },
+        { "id": "c", "text": "It doubles the value of the pointer" },
+        { "id": "d", "text": "It points to a random location" }
+      ],
+      "explanation": "Adding 1 to an int* pointer moves it forward by the size of an int (usually 4 bytes), pointing to the next element in memory."
+    },
+    {
+      "type": "text",
+      "text": "Pointer arithmetic is commonly used to iterate over arrays. Instead of using array indices, you can advance a pointer through each element of the array. This can make certain low-level operations faster and shows how arrays are directly related to memory addresses."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use pointer arithmetic to print all elements of the array numbers[3] = {10, 20, 30}.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int numbers[3] = {10, 20, 30};\n    int *p = numbers;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10\n20\n30" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "You can also subtract pointers to find the distance between elements. For example, if one pointer points to numbers[2] and another to numbers[0], subtracting them gives 2, the number of elements between them. This is useful for calculating array sizes or ranges."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Print the difference between two pointers pointing to numbers[2] and numbers[0].",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int numbers[3] = {10, 20, 30};\n    int *p1 = &numbers[2];\n    int *p2 = &numbers[0];\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "2" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Pointer arithmetic connects the concept of memory addresses with array traversal and data access. By understanding how to move pointers forward, backward, and measure distances, you gain precise control over memory and lay the foundation for advanced data structures."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why does pointer arithmetic scale by the size of the type?",
+      "options": [
+        { "id": "a", "text": "To ensure the pointer moves to the next element correctly", "correct": true },
+        { "id": "b", "text": "To multiply the pointer's value" },
+        { "id": "c", "text": "To allocate new memory automatically" },
+        { "id": "d", "text": "To prevent any arithmetic" }
+      ],
+      "explanation": "The compiler multiplies the arithmetic by the size of the pointed type so that adding 1 moves the pointer exactly to the next element in memory."
+    }
+  ]
+}

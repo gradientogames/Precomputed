@@ -1,0 +1,47 @@
+{
+  "title": "Text Analyzer",
+  "description": "Parse a text file and count word frequencies (mock input).",
+  "content": [
+    {
+      "type": "text",
+      "text": "A text analyzer processes text to extract useful information. One common task is counting how often each word appears. This helps you understand the content and patterns in text data."
+    },
+    {
+      "type": "text",
+      "text": "You can split a string into words using the split() method. Then, by iterating over the words, you can count how many times each word occurs using a dictionary."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Given the text 'hello world hello', count the frequency of each word and print the dictionary.",
+      "starterCode": "text = 'hello world hello'\nwords = text.split()\ncounts = {}\nfor word in words:\n    \nprint(counts)",
+      "desiredOutput": { "type": "exact", "value": "{'hello': 2, 'world': 1}" }
+    },
+    {
+      "type": "text",
+      "text": "Dictionaries are ideal for counting because keys represent words and values store the counts. You can check if a word is already a key and increment its value, or initialize it to 1 if not present."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use dict.get() to simplify counting words in ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']. Print the resulting dictionary.",
+      "starterCode": "words = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']\ncounts = {}\nfor word in words:\n    \nprint(counts)",
+      "desiredOutput": { "type": "exact", "value": "{'apple': 3, 'banana': 2, 'orange': 1}" }
+    },
+    {
+      "type": "text",
+      "text": "You can sort word frequencies by count to find the most common words. Using sorted() with a key function lets you order items by values in descending order."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Sort the previous dictionary by frequency from highest to lowest and print the result as a list of tuples.",
+      "starterCode": "counts = {'apple': 3, 'banana': 2, 'orange': 1}\nsorted_counts = sorted(counts.items(), key=lambda item: , reverse=True)\nprint(sorted_counts)",
+      "desiredOutput": { "type": "exact", "value": "[('apple', 3), ('banana', 2), ('orange', 1)]" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to parse text, split it into words, count word frequencies using dictionaries, and sort results. These techniques form the basis of text analysis and natural language processing in Python."
+    }
+  ]
+}
