@@ -1,0 +1,58 @@
+{
+  "title": "Modules and Imports",
+  "description": "Structure code into reusable files.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Modules in Python are files containing Python code that can be reused in other programs. Using modules allows you to organize your code into separate files and avoid repeating functions or classes across multiple scripts."
+    },
+    {
+      "type": "text",
+      "text": "You can import an entire module using import module_name. For example, import math gives you access to mathematical functions like math.sqrt() and math.pi. This allows you to leverage built-in Python functionality."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Import the math module and print the square root of 16 using math.sqrt().",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "4.0" }
+    },
+    {
+      "type": "text",
+      "text": "You can also import specific functions or variables from a module using from module_name import name. For example, from math import sqrt allows you to call sqrt() directly without the module prefix."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Import only the sqrt function from math and use it to calculate the square root of 25.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "5.0" }
+    },
+    {
+      "type": "text",
+      "text": "You can create your own modules by saving Python code in a .py file. Other scripts can import your module using import or from-import. This allows you to structure large projects into smaller, manageable files."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Assume you have a file my_module.py with a function greet() that prints 'Hello'. Write the import statement to use greet() in another script.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "text", "value": "from my_module import greet" }
+    },
+    {
+      "type": "text",
+      "text": "Python also searches for modules in the current directory, the standard library, and directories listed in sys.path. This allows flexible organization and the use of external libraries."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use the random module to print a random integer between 1 and 10.",
+      "starterCode": "import random\n\nprint()",
+      "desiredOutput": { "type": "exact", "value": "Any integer from 1 to 10" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to import modules, import specific functions, create your own modules, and understand Python's search paths. Structuring code with modules makes your programs more organized, maintainable, and reusable."
+    }
+  ]
+}

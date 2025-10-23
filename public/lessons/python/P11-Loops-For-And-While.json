@@ -1,0 +1,58 @@
+{
+  "title": "Loops: For and While",
+  "description": "Iterate cleanly through sequences and ranges.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Loops allow your program to repeat actions multiple times. Python has two main types of loops: for loops and while loops. Using loops helps you avoid writing repetitive code."
+    },
+    {
+      "type": "text",
+      "text": "A for loop iterates over a sequence, such as a list, string, or range. For example, for i in range(3): print(i) will print 0, 1, 2. The loop runs once for each element in the sequence."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use a for loop to print all items in the list fruits = ['apple', 'banana', 'cherry'].",
+      "starterCode": "fruits = ['apple', 'banana', 'cherry']\n\n",
+      "desiredOutput": { "type": "exact", "value": "apple\nbanana\ncherry" }
+    },
+    {
+      "type": "text",
+      "text": "A while loop repeats as long as a condition is true. For example, x = 0; while x < 3: print(x); x += 1 prints 0, 1, 2. Be careful: if the condition never becomes false, the loop runs forever."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use a while loop to print numbers from 1 to 5.",
+      "starterCode": "x = 1\n\n",
+      "desiredOutput": { "type": "exact", "value": "1\n2\n3\n4\n5" }
+    },
+    {
+      "type": "text",
+      "text": "You can use break to exit a loop early and continue to skip to the next iteration. This is useful when you need to stop based on a condition or skip certain elements without stopping the entire loop."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use a for loop to print numbers from 1 to 5, but skip 3 using continue.",
+      "starterCode": "for i in range(1, 6):\n    ",
+      "desiredOutput": { "type": "exact", "value": "1\n2\n4\n5" }
+    },
+    {
+      "type": "text",
+      "text": "Loops can be nested inside each other. For example, you can have a for loop inside another for loop to iterate over a grid or matrix. Each loop has its own variable and scope."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use nested loops to print a 2x2 grid of coordinates (x, y) where x and y are 0 or 1.",
+      "starterCode": "for x in range(2):\n    ",
+      "desiredOutput": { "type": "exact", "value": "(0, 0)\n(0, 1)\n(1, 0)\n(1, 1)" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to use for and while loops, control loop execution with break and continue, and nest loops for complex iterations. Loops are a fundamental tool for performing repetitive tasks efficiently in Python."
+    }
+  ]
+}

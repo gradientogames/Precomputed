@@ -1,0 +1,114 @@
+As per the following guidelines, I want you to generate me a json file for a lesson based on the roadmap of lessons and guidelines provided. Assume no prior knowledge besides previous lessons done in the roadmap. Please start with lesson 1 and we can generate the rest over time.
+
+Guidelines for writing lessons
+⦁	Lesson stages (use for lessons teaching new concepts, but feel free to diverge from this format for certain lessons): Challenge -> Introduce -> Teach use -> Concept (how it works) -> Final Challenge -> Reflection.
+⦁	Each stage should have several elements and lots of text. Use a variety of elements.
+⦁	Assume the user will have no prior knowledge other than previous lessons done on this website.
+⦁	Elements:
+⦁	Text elements should be several sentences long (at least 4).
+⦁	Answers for multiple-choice-quiz's should have as short answer text as possible.
+⦁	For code-quiz's, minimise the amount of code the user can edit, such as putting all imports into the code prefix, or put a method definition in the prefix and suffix code.
+⦁	Language focuses:
+⦁	For python: base lesson around teaching literally only python.
+⦁	For C#: base lesson around teaching programming.
+⦁	For C: base lesson around teaching (low-level) computer science.
+⦁	Writing voice: Use active voice Instead of: "The meeting was canceled by management." Use: "Management canceled the meeting." Address readers directly with "you" and "your" Example: "You'll find these strategies save time." Be direct and concise Example: "Call me at 3pm." Use simple language Example: "We need to fix this problem." Stay away from fluff Example: "The project failed." Focus on clarity Example: "Submit your expense report by Friday." Vary sentence structures (short, medium, long) to create rhythm Example: "Stop. Think about what happened. Consider how we might prevent similar issues in the future." Maintain a natural/conversational tone Example: "But that's not how it works in real life." Keep it real Example: "This approach has problems." Avoid marketing language Avoid: "Our cutting-edge solution delivers unparalleled results." Use instead: "Our tool can help you track expenses." Simplify grammar Example: "yeah we can do that tomorrow." Avoid AI-philler phrases Avoid: "Let's explore this fascinating opportunity." Use instead: "Here's what we know." Avoid (important!): Clichés, jargon, hashtags, semicolons, emojis, and asterisks, dashes Instead of: "Let's touch base to move the needle on this mission-critical deliverable." Use: "Let's meet to discuss how to improve this important project." Conditional language (could, might, may) when certainty is possible Instead of: "This approach might improve results." Use: "This approach improves results." Redundancy and repetition (remove fluff!) ABSOLUTELY NO EM DASHES! Instead of "—" Use ","
+Lesson JSON schema
+This app renders lessons from static JSON files under public/lessons. The manifest is public/lessons/manifest.json and each lesson file must contain at least:
+⦁	title: string
+⦁	description: string
+⦁	content: LessonElement[]
+Content elements supported:
+⦁	Text block:
+{ "type": "text", "text": string }
+⦁	Multiple-choice quiz:
+{
+"type": "multiple-choice-quiz",
+"question": string,
+"options": [{ id: string, text: string, correct?: boolean }],
+"explanation"?: string
+}
+⦁	Code quiz:
+{
+"type": "code-quiz",
+"language"?: "python" | "c" | "csharp",
+"prompt": string,
+"starterCode"?: string,          // editable middle code provided to the learner
+"prefixCode"?: string,           // uneditable code prepended at run time
+"suffixCode"?: string,           // uneditable code appended at run time
+"desiredOutput"?: DesiredOutput, // passing criteria (see below)
+"maxLines"?: number,             // -1 means unlimited
+"maxStringLength"?: number       // -1 means unlimited
+}
+Uneditable prefix/suffix behavior
+⦁	If prefixCode/suffixCode are provided, the interpreter reconstructs the final code as: prefixCode + learnerCode + suffixCode. If the learner manually alters prefix/suffix in the editor, they are ignored at run time and the enforced prefix/suffix are used.
+⦁	The UI displays prefix/suffix in separate read-only code blocks above and below the editable editor. Line numbers correspond to the editable area only. Syntax highlighting applies to the read-only blocks and the editor.
+DesiredOutput strategies (union type)
+⦁	none: no specific output is required; the quiz does not gate Continue/Finish.
+{ "type": "none" }
+⦁	exact: output must exactly equal the provided string (after normalizing newlines and trimming trailing newlines).
+{ "type": "exact", "value": "7 3" }
+⦁	text: output should only contain the provided string (surrounding whitespace is ignored).
+{ "type": "text", "value": "7 3" }
+⦁	error: the run must yield an error (compile/runtime) and is considered correct if an error is reported.
+{ "type": "error" }
+⦁	pointer: output must contain a pointer-like hex address (e.g., 0x7ffe...). Useful for C %p exercises.
+{ "type": "pointer" }
+⦁	text+tokens: output must include the given text AND the submitted source must include all listed tokens (simple substring checks).
+{ "type": "text+tokens", "text": "done", "sourceIncludes": ["&value", "*ptr"] }
+Skippable desiredOutput
+⦁	Any desiredOutput object may include an optional flag: { "skippable": true }.
+⦁	When skippable is true, the quiz will not block Continue/Finish based on correctness, but the learner must run the code at least once. Continue/Finish remain disabled until a run completes and output is received.
+Examples
+⦁	Python hello world:
+{
+"type": "code-quiz",
+"language": "python",
+"prompt": "Print Hello from Python! to the console.",
+"starterCode": "print('Hello from Python!')",
+"prefixCode": "",
+"suffixCode": "",
+"desiredOutput": { "type": "exact", "value": "Hello from Python!" }
+}
+⦁	C pointer address:
+{
+"type": "code-quiz",
+"language": "c",
+"prompt": "Print the memory address of a variable using & and the value.",
+"starterCode": "#include <stdio.h>\nint main(){ int x=42; /* ... */ }",
+"desiredOutput": { "type": "pointer" }
+}
+
+## Roadmap:
+🐍 Python (focus: the language itself)
+Goal: Master Python’s syntax, structures, and idioms without external distractions.
+1⦁	Hello, Expressions. Learn how Python evaluates simple expressions and prints results.
+2⦁	Variables and Names. Understand how names point to values in Python.
+3⦁	Numbers and Math Tricks. Explore Python’s numeric types and arithmetic operations.
+4⦁	Strings and Quotes. Work with text, escaping, and multi-line strings.
+5⦁	Formatting Strings. Learn f-strings, format(), and concatenation.
+6⦁	Lists and Indexing. Store sequences and access elements dynamically.
+7⦁	Tuples and Immutability. Why fixed collections matter and how to use them.
+8⦁	Dictionaries and Keys. Build mappings for fast lookups.
+9⦁	Sets and Membership. Handle unique collections efficiently.
+10⦁	If Statements and Truth. Learn Python’s approach to boolean logic and control flow.
+11⦁	Loops: For and While. Iterate cleanly through sequences and ranges.
+12⦁	Functions: Reuse and Scope. Define, call, and understand variable scope.
+13⦁	Arguments and Defaults. Learn *args, **kwargs, and keyword-only arguments.
+14⦁	List Comprehensions. Express loops and filters in one line.
+15⦁	Prime Finder. Build a small program to list prime numbers.
+16⦁	Modules and Imports. Structure code into reusable files.
+17⦁	Namespaces and name. Understand how Python organizes code contexts.
+18⦁	Objects and Classes. Define classes and create instances.
+19⦁	Methods and self. Distinguish between data and behavior.
+20⦁	Inheritance and Polymorphism. Extend and modify behavior hierarchically.
+21⦁	Magic Methods and Operators. Override built-in behavior (str, add, etc.).
+22⦁	Exceptions and try/except. Handle and raise errors gracefully.
+23⦁	Iterators and Generators. Learn how for really works under the hood.
+24⦁	Decorators and Higher-Order Functions. Modify behavior dynamically.
+25⦁	Lambda and Functional Tools. Use map, filter, and reduce effectively.
+26⦁	Text Analyzer. Parse a text file and count word frequencies (mock input).
+27⦁	Comprehending Pythonic Style. Learn idioms and readability conventions.
+28⦁	Typing and Annotations. Use type hints for clarity and safety.
+29⦁	Simple Parser. Build a basic expression evaluator.
+30⦁	Finale: Mini Interpreter. Create a tiny Python-like calculator language.

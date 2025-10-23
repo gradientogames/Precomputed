@@ -1,0 +1,73 @@
+{
+  "title": "Variables and Names",
+  "description": "Understand how names point to values in Python.",
+  "content": [
+    {
+      "type": "text",
+      "text": "In Python, a variable is a name that points to a value. Instead of typing a number repeatedly, you can store it in a variable and reuse it. Think of a variable as a label attached to a value."
+    },
+    {
+      "type": "text",
+      "text": "To create a variable, you use the = operator. The left side is the variable name, the right side is the value. For example, x = 5 creates a variable named x that points to the value 5."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of these lines correctly assigns a value to a variable?",
+      "options": [
+        { "id": "a", "text": "5 = x" },
+        { "id": "b", "text": "x = 5", "correct": true },
+        { "id": "c", "text": "x == 5" },
+        { "id": "d", "text": "let x = 5" }
+      ],
+      "explanation": "Python assigns values using a single =. 'x = 5' is correct. '5 = x' is reversed. 'x == 5' is a comparison, not assignment. 'let x = 5' is invalid in Python."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a variable named 'age' and assign it the value 21, then print it.",
+      "starterCode": "age = \nprint(age)",
+      "desiredOutput": { "type": "exact", "value": "21" }
+    },
+    {
+      "type": "text",
+      "text": "Variable names must follow rules. They can contain letters, numbers, and underscores, but cannot start with a number. Names are case-sensitive, so myVar and myvar are different. Use meaningful names to make your code readable."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which variable name is invalid in Python?",
+      "options": [
+        { "id": "a", "text": "total_score" },
+        { "id": "b", "text": "_temp" },
+        { "id": "c", "text": "2nd_place", "correct": true },
+        { "id": "d", "text": "username1" }
+      ],
+      "explanation": "Variable names cannot start with a number. '2nd_place' is invalid."
+    },
+    {
+      "type": "text",
+      "text": "You can use variables in expressions. Python evaluates the variable’s value and uses it. For example, x = 4; y = x + 3; print(y) outputs 7. Variables let you write flexible and reusable code."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Assign 10 to a variable 'a', 5 to a variable 'b', then print their sum.",
+      "starterCode": "a = \nb = \nprint()",
+      "desiredOutput": { "type": "exact", "value": "15" }
+    },
+    {
+      "type": "text",
+      "text": "Variables can also store text (strings). For example, name = 'Alice'. You can combine strings using + and include variables in print statements. This allows you to build dynamic messages."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a variable 'first_name' with 'John' and 'last_name' with 'Doe'. Print 'John Doe' using these variables.",
+      "starterCode": "first_name = \nlast_name = \nprint()",
+      "desiredOutput": { "type": "exact", "value": "John Doe" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to create variables, assign values, follow naming rules, and use them in expressions and text. Variables are essential for storing and reusing information. Mastering this concept sets the stage for calculations, strings, and more complex Python programs."
+    }
+  ]
+}

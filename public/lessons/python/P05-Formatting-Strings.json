@@ -1,0 +1,58 @@
+{
+  "title": "Formatting Strings",
+  "description": "Learn f-strings, format(), and concatenation.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Formatting strings allows you to insert values into text dynamically. Instead of building strings manually with +, you can use tools that make code cleaner and easier to read."
+    },
+    {
+      "type": "text",
+      "text": "The simplest method is concatenation using +. For example, 'Hello, ' + 'Alice' results in 'Hello, Alice'. Concatenation works, but it can become messy when inserting numbers or multiple variables."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Concatenate 'I have ' and 3 apples to print 'I have 3 apples'.",
+      "starterCode": "print('I have ' + str() + ' apples')",
+      "desiredOutput": { "type": "exact", "value": "I have 3 apples" }
+    },
+    {
+      "type": "text",
+      "text": "Python 3.6 introduced f-strings. They allow you to embed variables directly in strings using curly braces {} and prefixing the string with f. For example, name = 'Alice'; f'Hello, {name}' produces 'Hello, Alice'."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use an f-string to print 'Hello, Bob' where the variable name = 'Bob'.",
+      "starterCode": "name = 'Bob'\nprint()",
+      "desiredOutput": { "type": "exact", "value": "Hello, Bob" }
+    },
+    {
+      "type": "text",
+      "text": "Another method is the format() function. You write placeholders {} in your string and call .format() with values. For example, '{} scored {} points'.format('Alice', 10) results in 'Alice scored 10 points'. This works in older Python versions or when multiple replacements are needed."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use format() to print 'John has 5 cats' where the name and number are variables.",
+      "starterCode": "name = 'John'\ncount = 5\nprint()",
+      "desiredOutput": { "type": "exact", "value": "John has 5 cats" }
+    },
+    {
+      "type": "text",
+      "text": "F-strings and format() also allow formatting numbers. For example, you can limit decimal places or align text. f'{3.14159:.2f}' produces '3.14'. This is useful for reports, calculations, and neatly formatted output."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the number 2.71828 rounded to 3 decimal places using an f-string.",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "2.718" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned three ways to format strings: concatenation, f-strings, and format(). You can insert variables, numbers, and even formatted numbers directly into text. Using these tools keeps your code readable and your output clear."
+    }
+  ]
+}

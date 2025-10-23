@@ -1,0 +1,58 @@
+{
+  "title": "Dictionaries and Keys",
+  "description": "Build mappings for fast lookups.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A dictionary in Python is a collection of key-value pairs. Each key points to a value. Dictionaries are useful for storing data where you want to look up values by a specific identifier rather than by position."
+    },
+    {
+      "type": "text",
+      "text": "You create a dictionary using curly braces {}. For example, scores = {'Alice': 10, 'Bob': 8} creates a dictionary with two entries. Keys are unique, and values can be any type, including numbers, strings, lists, or even other dictionaries."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a dictionary 'person' with keys 'name' and 'age', and values 'John' and 25. Then print the dictionary.",
+      "starterCode": "person = {}\nprint(person)",
+      "desiredOutput": { "type": "exact", "value": "{'name': 'John', 'age': 25}" }
+    },
+    {
+      "type": "text",
+      "text": "You access values in a dictionary using their keys. For example, scores['Alice'] returns 10. If you try to access a key that doesn’t exist, Python will produce a KeyError."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the age of 'John' from the dictionary person = {'name': 'John', 'age': 25}.",
+      "starterCode": "person = {'name': 'John', 'age': 25}\nprint()",
+      "desiredOutput": { "type": "exact", "value": "25" }
+    },
+    {
+      "type": "text",
+      "text": "You can add or change entries by assigning a value to a key. For example, scores['Charlie'] = 12 adds a new key-value pair, and scores['Alice'] = 15 changes Alice’s score. This makes dictionaries flexible for dynamic data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add a new key 'city' with value 'Paris' to the dictionary person = {'name': 'John', 'age': 25} and print it.",
+      "starterCode": "person = {'name': 'John', 'age': 25}\n\nprint(person)",
+      "desiredOutput": { "type": "exact", "value": "{'name': 'John', 'age': 25, 'city': 'Paris'}" }
+    },
+    {
+      "type": "text",
+      "text": "Dictionaries have methods like keys(), values(), and items(). keys() returns all keys, values() returns all values, and items() returns key-value pairs as tuples. These methods make it easy to loop through dictionaries."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print all keys and all values from the dictionary person = {'name': 'John', 'age': 25, 'city': 'Paris'}.",
+      "starterCode": "person = {'name': 'John', 'age': 25, 'city': 'Paris'}\nprint()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "name\nage\ncity\nJohn\n25\nParis" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to create dictionaries, access and modify values, add new entries, and loop through keys and values. Dictionaries allow fast lookups by key and are ideal for organizing related data in Python programs."
+    }
+  ]
+}

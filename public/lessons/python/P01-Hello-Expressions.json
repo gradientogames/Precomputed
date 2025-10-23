@@ -1,0 +1,73 @@
+{
+  "title": "Hello, Expressions",
+  "description": "Learn how Python evaluates simple expressions and prints results.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Welcome to Python! In this lesson, you'll see how Python evaluates expressions and shows results. An expression is any piece of code that Python can calculate into a value. For now, think of it as a way to tell Python to do math or combine values."
+    },
+    {
+      "type": "text",
+      "text": "You'll start with simple arithmetic. Python can add, subtract, multiply, and divide numbers. When you type an expression and run it, Python calculates the result immediately. For example, entering 2 + 3 will give you 5."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of these is a valid Python expression?",
+      "options": [
+        { "id": "a", "text": "2 + 3", "correct": true },
+        { "id": "b", "text": "print('Hello')" },
+        { "id": "c", "text": "let x = 5" },
+        { "id": "d", "text": "if 2 then 3" }
+      ],
+      "explanation": "Python expressions include calculations like 2 + 3. print() is a statement, let x = 5 is invalid in Python, and if 2 then 3 is not a valid expression."
+    },
+    {
+      "type": "text",
+      "text": "You can also use the print() function to display values. This function shows the result in the console. For example, print(2 + 3) will show 5. Using print helps you check your work and see immediate feedback."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the result of 7 minus 4 to the console.",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "3" }
+    },
+    {
+      "type": "text",
+      "text": "Python follows standard math rules. Multiplication happens before addition. Parentheses can change the order. For instance, 2 + 3 * 4 equals 14, but (2 + 3) * 4 equals 20. Understanding this is key for correct calculations."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Calculate and print the result of 2 + 3 * 4.",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "14" }
+    },
+    {
+      "type": "text",
+      "text": "Expressions aren't limited to numbers. You can combine text using the + operator, called concatenation. For example, 'Hello' + ' ' + 'World' results in 'Hello World'. Python evaluates expressions from left to right unless parentheses change the order."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Combine the words 'Python' and 'Rocks' with a space in between, then print the result.",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "Python Rocks" }
+    },
+    {
+      "type": "text",
+      "text": "Final challenge: try combining numbers and strings carefully. Python will not let you add a number directly to a string. You must convert numbers to strings first using str(). This helps prevent mistakes and ensures clarity in your code."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print 'I have 3 apples' by combining a string and a number.",
+      "starterCode": "print('I have ' + str() + ' apples')",
+      "desiredOutput": { "type": "exact", "value": "I have 3 apples" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how Python evaluates expressions, prints results, follows math rules, and combines text. Using print() and parentheses carefully is your first step toward writing correct Python code. Keep practicing these expressions—they are the foundation of everything you do next."
+    }
+  ]
+}

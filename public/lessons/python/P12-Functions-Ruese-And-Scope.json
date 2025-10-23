@@ -1,0 +1,58 @@
+{
+  "title": "Functions: Reuse and Scope",
+  "description": "Define, call, and understand variable scope.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Functions in Python let you group code into reusable blocks. You define a function once and call it multiple times, which helps reduce repetition and organize your program logically."
+    },
+    {
+      "type": "text",
+      "text": "You define a function using the def keyword, followed by a name and parentheses. For example, def greet(): print('Hello') creates a function named greet that prints 'Hello'. You call it by writing greet()."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function say_hello() that prints 'Hello, World!' and call it.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "Hello, World!" }
+    },
+    {
+      "type": "text",
+      "text": "Functions can accept inputs called parameters. These allow you to pass data into the function. For example, def greet(name): print('Hello, ' + name) prints a personalized message when you call greet('Alice')."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function greet(name) that prints 'Hello, ' followed by the name, then call it with 'Bob'.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "Hello, Bob" }
+    },
+    {
+      "type": "text",
+      "text": "Functions can return values using the return statement. For example, def add(a, b): return a + b returns the sum of two numbers. You can store the result in a variable or use it directly."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function add(a, b) that returns their sum. Call it with 3 and 5 and print the result.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "8" }
+    },
+    {
+      "type": "text",
+      "text": "Variable scope determines where a variable can be accessed. Variables defined inside a function are local and cannot be used outside. Variables defined outside are global and can be accessed inside functions unless shadowed by a local variable."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function set_local() that sets x = 10 inside it. Outside the function, try printing x. This should produce an error.",
+      "starterCode": "def set_local():\n    x = 10\n\nprint(x)",
+      "desiredOutput": { "type": "error" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to define and call functions, pass parameters, return values, and understand local versus global scope. Functions make your code reusable and help you manage complexity efficiently."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "title": "Lists and Indexing",
+  "description": "Store sequences and access elements dynamically.",
+  "content": [
+    {
+      "type": "text",
+      "text": "In Python, a list is an ordered collection of items. Lists can store numbers, strings, or even other lists. They are useful when you want to keep multiple values together and work with them efficiently."
+    },
+    {
+      "type": "text",
+      "text": "You create a list using square brackets []. For example, numbers = [1, 2, 3] creates a list with three integers. Lists can have any number of elements, including zero, and the elements can be of different types."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a list named 'fruits' containing 'apple', 'banana', and 'cherry', then print it.",
+      "starterCode": "fruits = []\nprint(fruits)",
+      "desiredOutput": { "type": "exact", "value": "['apple', 'banana', 'cherry']" }
+    },
+    {
+      "type": "text",
+      "text": "You can access individual elements of a list using their index inside square brackets. Indexing starts at 0, so the first element is index 0, the second is 1, and so on. Negative indexes count from the end: -1 is the last element."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the first and last items of the list fruits = ['apple', 'banana', 'cherry'].",
+      "starterCode": "fruits = ['apple', 'banana', 'cherry']\nprint()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "apple\ncherry" }
+    },
+    {
+      "type": "text",
+      "text": "Lists are mutable, meaning you can change their contents. You can assign a new value to a specific index. For example, numbers[0] = 10 replaces the first element of the list with 10. This allows dynamic updates to your data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Change the second item of fruits = ['apple', 'banana', 'cherry'] to 'blueberry' and print the list.",
+      "starterCode": "fruits = ['apple', 'banana', 'cherry']\n\nprint(fruits)",
+      "desiredOutput": { "type": "exact", "value": "['apple', 'blueberry', 'cherry']" }
+    },
+    {
+      "type": "text",
+      "text": "You can find the number of items in a list using len(). For example, len(fruits) returns 3. This is useful when looping through lists or checking their size."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the number of items in fruits = ['apple', 'banana', 'cherry'].",
+      "starterCode": "fruits = ['apple', 'banana', 'cherry']\nprint()",
+      "desiredOutput": { "type": "exact", "value": "3" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to create lists, access elements by index, modify elements, and check their length. Lists allow you to store and work with sequences of data efficiently, making your programs more flexible and dynamic."
+    }
+  ]
+}

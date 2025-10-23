@@ -1,0 +1,44 @@
+{
+  "title": "Prime Finder",
+  "description": "Build a small program to list prime numbers.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Prime numbers are numbers greater than 1 that have no divisors other than 1 and themselves. Identifying primes is a common exercise in programming and helps understand loops, conditions, and efficiency."
+    },
+    {
+      "type": "text",
+      "text": "To check if a number n is prime, you test if it can be divided evenly by any number from 2 up to n-1. If no such divisor exists, the number is prime. This can be implemented using loops and if statements."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Write a function is_prime(n) that returns True if n is prime, False otherwise. Test it with n = 7.",
+      "starterCode": "def is_prime(n):\n    \n\nprint(is_prime(7))",
+      "desiredOutput": { "type": "exact", "value": "True" }
+    },
+    {
+      "type": "text",
+      "text": "You can use loops to generate all prime numbers up to a given limit. Start from 2 and check each number using the is_prime function. If it is prime, add it to a list of primes."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Generate all prime numbers from 2 to 10 and print them as a list.",
+      "starterCode": "def is_prime(n):\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True\n\nprimes = []\n\nprint(primes)",
+      "desiredOutput": { "type": "exact", "value": "[2, 3, 5, 7]" }
+    },
+    {
+      "type": "text",
+      "text": "You can optimize prime checking by testing divisors only up to the square root of n, because a larger factor would require a smaller factor already tested. This reduces unnecessary checks and improves efficiency for larger numbers."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Modify the is_prime function to check divisors only up to int(n**0.5) + 1. Test it with n = 29.",
+      "starterCode": "def is_prime(n):\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nprint(is_prime(29))",
+      "desiredOutput": { "type": "exact", "value": "True" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to identify prime numbers, create functions to check primality, generate prime lists, and optimize loops. This exercise combines conditionals, loops, and functions to solve a p

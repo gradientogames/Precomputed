@@ -1,0 +1,58 @@
+{
+  "title": "Numbers and Math Tricks",
+  "description": "Explore Python’s numeric types and arithmetic operations.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Python has different types of numbers. The most common are integers, which are whole numbers like 3 or -7, and floats, which are decimal numbers like 3.14 or -0.5. Understanding these types helps you choose the right kind of number for your calculations."
+    },
+    {
+      "type": "text",
+      "text": "You can perform arithmetic operations with numbers. Addition (+), subtraction (-), multiplication (*), division (/), integer division (//), modulus (%), and exponentiation (**) are all available. Python evaluates these operators following standard math rules."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Calculate and print 7 multiplied by 3.",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "21" }
+    },
+    {
+      "type": "text",
+      "text": "Integer division (//) returns the whole number part of a division, ignoring any remainder. For example, 7 // 3 equals 2. Modulus (%) gives the remainder. For example, 7 % 3 equals 1. These are useful when you need to split things evenly or check divisibility."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the integer division of 15 by 4 and then the remainder.",
+      "starterCode": "print()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "3\n3" }
+    },
+    {
+      "type": "text",
+      "text": "Exponentiation (**) raises a number to a power. For example, 2 ** 3 equals 8 because 2 multiplied by itself 3 times is 8. Python also supports negative numbers and floating-point powers, allowing precise calculations."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Calculate and print 5 to the power of 2.",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "25" }
+    },
+    {
+      "type": "text",
+      "text": "Python can also handle rounding and absolute values. Use abs() to get the absolute value and round() to round floats to the nearest integer or a specific number of decimals. These are common tools in calculations and data processing."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the absolute value of -7 and round 3.14159 to 2 decimal places.",
+      "starterCode": "print()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "7\n3.14" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You practiced Python’s numeric types and arithmetic operators. You learned addition, subtraction, multiplication, division, integer division, modulus, exponentiation, rounding, and absolute values. Mastering these operations lets you calculate anything from simple totals to advanced formulas."
+    }
+  ]
+}
