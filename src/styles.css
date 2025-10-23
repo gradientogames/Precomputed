@@ -69,6 +69,10 @@
   /* Official brand colors reused for background and title gradient */
   --brand-1: #2563eb; /* blue-600 */
   --brand-2: #10b981; /* emerald-500 */
+
+  /* Variables controlling behaviour of tilt (3d) cards */
+  --tiltcard-max-rot: 18deg;
+  --tiltcard-ease-speed: 0.12;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -665,4 +669,51 @@ code {
   background: rgba(0,0,0,0.3);
   padding: 0.2em 0.4em;
   font-family: var(--font-mono), monospace;
+}
+
+.card-3d{
+  --w:320px;
+  --h:420px;
+  perspective:1200px;
+  width:var(--w);
+  height:var(--h);
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card-3d .card-inner{
+  width:100%;
+  height:100%;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 18px 40px rgba(2,6,23,0.6);
+  transform-style:preserve-3d;
+  will-change:transform;
+  overflow:hidden;
+  position:relative;
+  transition:box-shadow 0.3s ease;
+  display:grid;
+  place-items:center;
+  color:#e6eef8;
+  text-align:center;
+  padding:24px;
+}
+.card-3d .card-inner h1{margin:0 0 8px;font-size:20px;}
+.card-3d .card-inner p{margin:0;font-size:13px;opacity:0.85;}
+.card-3d .glare{
+  position:absolute;
+  top:0;left:0;
+  width:200%;height:200%;
+  transform:translate(-50%,-50%) rotate(45deg);
+  pointer-events:none;
+  background:radial-gradient(600px 200px at 10% 20%,rgba(255,255,255,0.18),rgba(255,255,255,0.02) 25%,transparent 40%);
+  mix-blend-mode:overlay;
+  opacity:0.6;
+  filter:blur(20px);
+  transition:opacity 200ms linear;
+}
+@media(max-width:420px){
+  .card-3d{--w:280px;--h:360px;}
 }
