@@ -1,0 +1,58 @@
+{
+  "title": "Sets and Membership",
+  "description": "Handle unique collections efficiently.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A set in Python is an unordered collection of unique items. Sets are useful when you need to store items without duplicates and check membership efficiently. They do not keep elements in any particular order."
+    },
+    {
+      "type": "text",
+      "text": "You create a set using curly braces {} or the set() function. For example, numbers = {1, 2, 3} creates a set with three numbers. Using set([1, 2, 2, 3]) removes duplicates automatically, resulting in {1, 2, 3}."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a set named 'fruits' containing 'apple', 'banana', 'apple', and 'cherry'. Print the set.",
+      "starterCode": "fruits = set()\nprint(fruits)",
+      "desiredOutput": { "type": "exact", "value": "{'apple', 'banana', 'cherry'}" }
+    },
+    {
+      "type": "text",
+      "text": "You can check if an item exists in a set using the in keyword. For example, 'apple' in fruits returns True, while 'orange' in fruits returns False. Membership checks in sets are very fast, even with large collections."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Check if 'banana' and 'orange' are in fruits = {'apple', 'banana', 'cherry'} and print the results.",
+      "starterCode": "fruits = {'apple', 'banana', 'cherry'}\nprint()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "True\nFalse" }
+    },
+    {
+      "type": "text",
+      "text": "Sets support operations like union, intersection, and difference. Union combines two sets, intersection gives common elements, and difference gives items in one set but not the other. These operations are useful for working with groups of unique items."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Given set1 = {1, 2, 3} and set2 = {2, 3, 4}, print their union and intersection.",
+      "starterCode": "set1 = {1, 2, 3}\nset2 = {2, 3, 4}\nprint()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "{1, 2, 3, 4}\n{2, 3}" }
+    },
+    {
+      "type": "text",
+      "text": "You can add items to a set using add() and remove items using remove() or discard(). discard() does not raise an error if the item does not exist, while remove() does. Sets are mutable, but the elements themselves must be immutable types."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add 'orange' to fruits = {'apple', 'banana', 'cherry'} and remove 'apple'. Print the resulting set.",
+      "starterCode": "fruits = {'apple', 'banana', 'cherry'}\n\nprint(fruits)",
+      "desiredOutput": { "type": "exact", "value": "{'banana', 'cherry', 'orange'}" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to create sets, enforce uniqueness, check membership, perform set operations, and modify sets. Sets are ideal for handling collections where duplicates are not allowed and membership tests need to be fast."
+    }
+  ]
+}

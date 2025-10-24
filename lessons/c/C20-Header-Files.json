@@ -1,0 +1,68 @@
+{
+  "title": "Header Files and Declarations",
+  "description": "Learn how to organize your C code using header files. Understand declarations, function prototypes, and why separating code improves modularity and maintainability.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Header files in C, usually with a .h extension, contain declarations for functions, macros, and types. They allow you to separate the interface of your code from its implementation. By including headers, multiple source files can share common definitions without duplicating code."
+    },
+    {
+      "type": "text",
+      "text": "Declarations tell the compiler about the existence of a function, variable, or type, without providing the full implementation. This is essential for modular programs, where functions are defined in one file and used in another. Function prototypes are a type of declaration specifying the function name, return type, and parameters."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is the purpose of a header file?",
+      "options": [
+        { "id": "a", "text": "To contain main function only" },
+        { "id": "b", "text": "To declare functions, types, and macros for reuse", "correct": true },
+        { "id": "c", "text": "To allocate memory" },
+        { "id": "d", "text": "To execute code" }
+      ],
+      "explanation": "Header files declare functions, types, and macros. Including them in source files allows code reuse and modularity without duplicating implementations."
+    },
+    {
+      "type": "text",
+      "text": "For example, you can create a header file math_utils.h that declares a function int add(int a, int b);. The actual function definition is in math_utils.c. Including math_utils.h in main.c lets you call add without redefining it."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Include a header file math_utils.h and call the function add(2,3). Assume math_utils.h declares int add(int, int);",
+      "prefixCode": "#include <stdio.h>\n#include \"math_utils.h\"\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "5" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Header files can also contain macros, struct definitions, and typedefs. Using header guards with #ifndef, #define, and #endif prevents multiple inclusions, avoiding compilation errors."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Write header guards for MY_HEADER_H in a header file.",
+      "prefixCode": "",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "",
+      "desiredOutput": { "type": "exact", "value": "#ifndef MY_HEADER_H\n#define MY_HEADER_H\n#endif" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Using header files and declarations separates interface from implementation, enabling modular and maintainable code. Function prototypes, macros, and type definitions in headers allow multiple source files to share code safely and efficiently."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why use header guards in a header file?",
+      "options": [
+        { "id": "a", "text": "To prevent multiple inclusion of the same header", "correct": true },
+        { "id": "b", "text": "To execute code faster" },
+        { "id": "c", "text": "To allocate memory" },
+        { "id": "d", "text": "To define functions" }
+      ],
+      "explanation": "Header guards prevent multiple inclusions of a header file, which can cause redefinition errors during compilation."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Magic Methods and Operators",
+  "description": "Override built-in behavior (str, add, etc.).",
+  "content": [
+    {
+      "type": "text",
+      "text": "Magic methods, also called dunder methods (short for double underscore), are special methods that Python uses to implement built-in behavior. They start and end with double underscores, such as __init__, __str__, and __add__."
+    },
+    {
+      "type": "text",
+      "text": "These methods let you define how your objects behave with built-in functions and operators. For example, __str__ defines how your object appears when printed, and __add__ defines how + behaves between two instances."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a class Person with __init__ storing a name attribute and __str__ returning 'Person: ' followed by the name. Create an instance and print it.",
+      "starterCode": "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def __str__(self):\n        \n\np = Person('Alice')\nprint(p)",
+      "desiredOutput": { "type": "exact", "value": "Person: Alice" }
+    },
+    {
+      "type": "text",
+      "text": "By implementing __add__, you can define custom addition between objects. Python calls this method when you use the + operator. This makes your classes behave more naturally with operators."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a class Point with x and y attributes. Implement __add__ so that adding two Points returns a new Point with summed coordinates. Print the result's x and y.",
+      "starterCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __add__(self, other):\n        \n\np1 = Point(2, 3)\np2 = Point(4, 5)\nresult = p1 + p2\nprint(result.x, result.y)",
+      "desiredOutput": { "type": "exact", "value": "6 8" }
+    },
+    {
+      "type": "text",
+      "text": "Other useful magic methods include __eq__ for equality (==), __lt__ for less-than (<), and __len__ for len(). By defining these, your objects can interact with Python’s syntax and functions naturally."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Implement __eq__ in Point so that two points are equal if both coordinates match. Compare two equal points and print the result.",
+      "starterCode": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __eq__(self, other):\n        \n\nprint(Point(1, 2) == Point(1, 2))",
+      "desiredOutput": { "type": "exact", "value": "True" }
+    },
+    {
+      "type": "text",
+      "text": "You can also define how objects are represented by programmers using __repr__. It returns an unambiguous string used for debugging, often similar to the class constructor format."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which magic method controls how an object is displayed when printed?",
+      "options": [
+        { "id": "a", "text": "__init__" },
+        { "id": "b", "text": "__str__", "correct": true },
+        { "id": "c", "text": "__repr__" },
+        { "id": "d", "text": "__call__" }
+      ],
+      "explanation": "__str__ defines the human-readable string representation of an object, shown when you call print()."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned that magic methods allow your classes to integrate with Python’s core behavior. By overriding methods like __str__, __add__, and __eq__, you make custom objects behave predictably and interact cleanly with built-in operators and functions."
+    }
+  ]
+}

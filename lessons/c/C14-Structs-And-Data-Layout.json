@@ -1,0 +1,68 @@
+{
+  "title": "Structs and Data Layout",
+  "description": "Learn how to group related data using structs. Understand how structs are stored in memory and how to access their members efficiently.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A struct in C allows you to combine different types of variables into a single unit. This is useful for representing complex data, like a point with x and y coordinates or a student with a name and grade. Structs make your programs more organized and readable."
+    },
+    {
+      "type": "text",
+      "text": "Each member of a struct occupies memory, and the compiler lays out these members in order. Understanding the memory layout is important because it affects alignment, padding, and efficiency. Accessing members uses the dot operator (.) for variables and the arrow operator (->) when using pointers."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "How do you access a member of a struct variable?",
+      "options": [
+        { "id": "a", "text": "Using * (asterisk)" },
+        { "id": "b", "text": "Using the dot operator (.)", "correct": true },
+        { "id": "c", "text": "Using the ampersand (&)" },
+        { "id": "d", "text": "Using parentheses ()" }
+      ],
+      "explanation": "For a struct variable, you use the dot operator to access its members. If you have a pointer to a struct, you use the arrow operator ->."
+    },
+    {
+      "type": "text",
+      "text": "For example, you can define a struct for a point with two integers, x and y. You can then create variables of this struct type and assign or read values for x and y. This organizes related data in a single memory block and makes your code more readable."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the program to print the x value of point p.",
+      "prefixCode": "#include <stdio.h>\nstruct Point {\n    int x;\n    int y;\n};\nint main() {\n    struct Point p = {3, 4};\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "3" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Structs can also be used with pointers. When you have a pointer to a struct, you can access its members using the arrow operator (->). This is particularly useful when passing structs to functions, allowing the function to modify the original data without copying the entire struct."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use a pointer to the struct p to print its y value.",
+      "prefixCode": "#include <stdio.h>\nstruct Point {\n    int x;\n    int y;\n};\nint main() {\n    struct Point p = {5, 10};\n    struct Point *ptr = &p;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Structs group related data together and clarify your program's organization. Understanding memory layout, member access, and pointers to structs is essential for building more complex data structures efficiently and safely in C."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why is understanding struct memory layout important?",
+      "options": [
+        { "id": "a", "text": "It determines how variables are named" },
+        { "id": "b", "text": "It affects memory alignment and efficiency", "correct": true },
+        { "id": "c", "text": "It changes how the compiler runs" },
+        { "id": "d", "text": "It prevents using arrays inside structs" }
+      ],
+      "explanation": "The compiler lays out struct members in memory, potentially adding padding for alignment. Knowing this helps you write efficient code and understand how structs occupy memory."
+    }
+  ]
+}

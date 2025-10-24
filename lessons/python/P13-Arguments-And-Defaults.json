@@ -1,0 +1,58 @@
+{
+  "title": "Arguments and Defaults",
+  "description": "Learn *args, **kwargs, and keyword-only arguments.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Functions in Python can accept different types of arguments. You can pass fixed numbers of arguments, variable numbers, or keyword arguments. This makes your functions flexible for many situations."
+    },
+    {
+      "type": "text",
+      "text": "Default arguments allow a function to use a value if none is provided. For example, def greet(name='Guest'): print('Hello, ' + name) prints 'Hello, Guest' if you don’t pass a name."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function greet(name='Guest') that prints 'Hello, ' followed by the name. Call it without arguments.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "Hello, Guest" }
+    },
+    {
+      "type": "text",
+      "text": "*args collects extra positional arguments into a tuple. This allows a function to accept any number of positional values. For example, def add_all(*numbers): return sum(numbers) sums all arguments provided."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function add_all(*numbers) that returns the sum of all numbers. Call it with 1, 2, 3 and print the result.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "6" }
+    },
+    {
+      "type": "text",
+      "text": "**kwargs collects extra keyword arguments into a dictionary. This is useful when you don’t know all the argument names in advance. For example, def print_info(**info): print(info) prints a dictionary of all keyword arguments passed."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function print_info(**info) that prints info. Call it with name='Alice', age=30.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "{'name': 'Alice', 'age': 30}" }
+    },
+    {
+      "type": "text",
+      "text": "You can also define keyword-only arguments using * in the function definition. Arguments after * must be passed by name. This helps make function calls explicit and readable."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a function greet(*, name) that prints 'Hello, ' + name. Call it with name='Bob'.",
+      "starterCode": "\n",
+      "desiredOutput": { "type": "exact", "value": "Hello, Bob" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned default arguments, *args for variable positional arguments, **kwargs for variable keyword arguments, and keyword-only arguments. These features let you write functions that handle flexible inputs while keeping code readable and clear."
+    }
+  ]
+}

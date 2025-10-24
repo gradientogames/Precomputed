@@ -1,0 +1,68 @@
+{
+  "title": "Pointers: Addresses and Dereferencing",
+  "description": "Learn how to use pointers to store memory addresses and access data indirectly. Understand the concepts of addresses, dereferencing, and why pointers are powerful in C.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A pointer is a variable that stores the memory address of another variable. Instead of holding a direct value, it points to the location in memory where the value is stored. Pointers allow you to work with memory directly, which is essential for low-level programming and efficient data manipulation."
+    },
+    {
+      "type": "text",
+      "text": "The address-of operator '&' gives the memory address of a variable. The dereference operator '*' lets you access or modify the value stored at the address the pointer holds. Using these operators together allows you to read and write values indirectly, which is a fundamental concept in C programming."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which operator is used to get the memory address of a variable?",
+      "options": [
+        { "id": "a", "text": "* (asterisk)" },
+        { "id": "b", "text": "& (ampersand)", "correct": true },
+        { "id": "c", "text": "% (percent)" },
+        { "id": "d", "text": "# (hash)" }
+      ],
+      "explanation": "The '&' operator returns the memory address of a variable. The '*' operator is used for dereferencing a pointer to access the value at that address."
+    },
+    {
+      "type": "text",
+      "text": "For example, if you have an integer variable 'x', you can create a pointer 'p' that stores the address of 'x'. By dereferencing 'p' with '*p', you can read or modify the value of 'x' indirectly. This allows multiple parts of a program to access and change the same data efficiently."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the code to print the value of x using the pointer p.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int x = 42;\n    int *p = &x;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "42" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Pointers can also modify the value of the variable they point to. By assigning a new value to '*p', the original variable 'x' is updated. This is called indirect modification. Understanding this is critical for functions that need to change values in the calling function."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use the pointer p to change x to 100 and print it.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int x = 0;\n    int *p = &x;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "100" },
+      "maxLines": 3
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Pointers let you work with memory directly, access variables indirectly, and pass data efficiently between functions. Mastering pointers is essential for understanding memory layout, arrays, and dynamic memory. Always ensure a pointer points to a valid memory address to avoid undefined behavior."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the dereference operator '*' do?",
+      "options": [
+        { "id": "a", "text": "Allocates memory" },
+        { "id": "b", "text": "Accesses the value stored at a pointer's address", "correct": true },
+        { "id": "c", "text": "Deletes a variable" },
+        { "id": "d", "text": "Prints the memory address" }
+      ],
+      "explanation": "The '*' operator retrieves or modifies the value stored at the memory address held by a pointer. This is called dereferencing."
+    }
+  ]
+}

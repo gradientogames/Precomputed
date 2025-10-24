@@ -1,0 +1,67 @@
+{
+  "title": "Complex Data Structures",
+  "description": "Learn how to implement and use more complex data structures in C, such as binary trees and hash tables. Understand how to organize, traverse, and manipulate structured data efficiently.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Complex data structures like trees and hash tables allow you to store and access data efficiently. Unlike arrays or linked lists, these structures provide faster search, insertion, and deletion operations in certain scenarios, making them essential for advanced programming."
+    },
+    {
+      "type": "text",
+      "text": "A binary tree is a hierarchical structure where each node has at most two children: left and right. Binary search trees (BSTs) maintain the property that left children are smaller than the parent node and right children are larger, allowing fast search and insertion operations."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a struct for a binary tree node containing an integer value and left/right pointers. Create a root node with value 10.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Traversing a binary tree can be done in pre-order, in-order, or post-order. In-order traversal of a BST prints elements in sorted order. Recursive functions are commonly used to navigate each node and its children efficiently."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Write an in-order traversal function for a BST and print values. Assume the tree has nodes 10, 5, 15.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\nstruct Node {\n    int value;\n    struct Node *left;\n    struct Node *right;\n};\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "int main() {\n    // Build tree and call traversal\n    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": 10
+    },
+    {
+      "type": "text",
+      "text": "Hash tables store key-value pairs and provide near-constant-time lookup. A hash function converts a key into an index in an array. Collisions are resolved using chaining (linked lists) or open addressing (probing). Hash tables are widely used in databases, caches, and symbol tables."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a simple hash table struct with an array of 10 pointers to linked list nodes containing integer keys.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": 8
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Learning complex data structures like trees and hash tables expands your ability to organize and access data efficiently. These structures underpin many algorithms and real-world applications, such as databases, search engines, and memory management systems."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is the main advantage of a binary search tree over a linked list?",
+      "options": [
+        { "id": "a", "text": "Faster sequential access" },
+        { "id": "b", "text": "Faster search, insertion, and deletion in sorted data", "correct": true },
+        { "id": "c", "text": "Uses less memory" },
+        { "id": "d", "text": "Allows circular references" }
+      ],
+      "explanation": "A binary search tree allows efficient search, insertion, and deletion operations in sorted data, improving over linear search in linked lists."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "title": "Manual String Functions",
+  "description": "Learn how to manipulate strings manually in C by building functions like strlen and strcpy. Understand how strings are stored in memory and how pointers interact with them.",
+  "content": [
+    {
+      "type": "text",
+      "text": "In C, strings are arrays of characters ending with a special null character '\\0'. Unlike higher-level languages, C does not provide built-in string methods. To work with strings, you often need to create your own functions to measure length, copy contents, or compare values."
+    },
+    {
+      "type": "text",
+      "text": "Manual string functions help you understand how strings occupy memory and how to manipulate them safely. By iterating over characters until the null terminator is reached, you can perform common operations like computing the length or copying data from one array to another."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What marks the end of a string in C?",
+      "options": [
+        { "id": "a", "text": "A newline character" },
+        { "id": "b", "text": "The null character '\\0'", "correct": true },
+        { "id": "c", "text": "The last visible character" },
+        { "id": "d", "text": "The first space character" }
+      ],
+      "explanation": "C strings end with the null character '\\0'. Functions that process strings use this marker to determine where the string stops."
+    },
+    {
+      "type": "text",
+      "text": "For example, to find the length of a string manually, you start at the first character and count each character until you reach '\\0'. This teaches how memory is used and how loops interact with arrays and pointers."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the function to return the length of the string 'str'.",
+      "prefixCode": "#include <stdio.h>\nint string_length(char *str) {\n    int len = 0;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return len;\n}\n\nint main() {\n    printf(\"%d\", string_length(\"Hello\"));\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "5" },
+      "maxLines": 4
+    },
+    {
+      "type": "text",
+      "text": "Copying a string manually involves iterating through the source array and writing each character into the destination array, including the null terminator. This teaches careful memory management and pointer usage."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the function to copy 'src' into 'dest'.",
+      "prefixCode": "#include <stdio.h>\nvoid string_copy(char *dest, char *src) {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "}\n\nint main() {\n    char a[6];\n    string_copy(a, \"Hello\");\n    printf(\"%s\", a);\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "Hello" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Building manual string functions gives insight into how arrays, pointers, and memory interact in C. It reinforces understanding of loops, null termination, and safe memory handling. These skills are essential for more advanced string operations and memory management."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why must you copy the null character '\\0' when copying a string?",
+      "options": [
+        { "id": "a", "text": "To mark the end of the string in the destination", "correct": true },
+        { "id": "b", "text": "To increase the array size" },
+        { "id": "c", "text": "It is optional" },
+        { "id": "d", "text": "To initialize pointers" }
+      ],
+      "explanation": "Without copying '\\0', the destination string will not terminate correctly, and functions reading it may access memory beyond the intended string, causing undefined behavior."
+    }
+  ]
+}

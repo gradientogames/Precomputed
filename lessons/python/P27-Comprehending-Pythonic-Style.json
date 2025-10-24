@@ -1,0 +1,55 @@
+{
+  "title": "Comprehending Pythonic Style",
+  "description": "Learn idioms and readability conventions.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Pythonic style emphasizes code that is clear, readable, and concise. Following Pythonic conventions helps you write code that other Python developers can understand quickly and maintain easily."
+    },
+    {
+      "type": "text",
+      "text": "Common Pythonic practices include using meaningful variable names, avoiding unnecessary comments, and writing code that does one thing well. Readability is preferred over clever or complex tricks."
+    },
+    {
+      "type": "text",
+      "text": "Python offers idiomatic ways to perform common tasks. For example, using list comprehensions instead of loops for creating lists, or unpacking multiple values directly from a tuple, makes code shorter and easier to read."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Rewrite the loop [i*i for i in range(5)] using a list comprehension instead of appending in a loop. Print the resulting list.",
+      "starterCode": "squares = [i*i for i in range(5)]\nprint(squares)",
+      "desiredOutput": { "type": "exact", "value": "[0, 1, 4, 9, 16]" }
+    },
+    {
+      "type": "text",
+      "text": "Pythonic style also prefers explicitness over implicit assumptions. This means writing code that is easy to understand even without extra comments, using clear function and class structures."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Unpack the tuple (1, 2, 3) into variables a, b, c and print them.",
+      "starterCode": "t = (1, 2, 3)\na, b, c = t\nprint(a, b, c)",
+      "desiredOutput": { "type": "exact", "value": "1 2 3" }
+    },
+    {
+      "type": "text",
+      "text": "You should also follow the principle of avoiding repetition (DRY). Use functions, loops, and comprehensions to avoid copying and pasting code. This keeps your code maintainable and reduces bugs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of the following is considered Pythonic?",
+      "options": [
+        { "id": "a", "text": "Using a loop to build a list instead of a comprehension" },
+        { "id": "b", "text": "Using meaningful variable names and clear structure", "correct": true },
+        { "id": "c", "text": "Writing as few lines as possible regardless of clarity" },
+        { "id": "d", "text": "Avoiding functions and repeating code" }
+      ],
+      "explanation": "Pythonic style emphasizes clarity, readability, and following conventions, not minimizing lines at the cost of understanding."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned that Pythonic code is clear, concise, and readable. Using idioms like comprehensions, tuple unpacking, meaningful names, and DRY principles helps you write code that is maintainable and understandable by other Python developers."
+    }
+  ]
+}

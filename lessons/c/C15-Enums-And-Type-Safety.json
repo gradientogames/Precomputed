@@ -1,0 +1,68 @@
+{
+  "title": "Enums and Type Safety",
+  "description": "Learn how to use enums to define symbolic constants in C. Understand how enums improve readability, maintainability, and type safety in your programs.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Enums allow you to define a set of named integer constants. Instead of using magic numbers throughout your code, you can give meaningful names to values. This improves readability and makes your code easier to understand and maintain."
+    },
+    {
+      "type": "text",
+      "text": "For example, you can define an enum for the days of the week. Each day is assigned an integer value starting from 0 by default. You can also assign specific values to some or all elements. Enums ensure that only valid values are used, improving type safety."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is the main benefit of using enums?",
+      "options": [
+        { "id": "a", "text": "They automatically allocate memory dynamically" },
+        { "id": "b", "text": "They give symbolic names to integers and improve code clarity", "correct": true },
+        { "id": "c", "text": "They replace arrays" },
+        { "id": "d", "text": "They allow floating-point arithmetic" }
+      ],
+      "explanation": "Enums give meaningful names to integer constants, making code easier to read and reducing the chance of errors from using magic numbers."
+    },
+    {
+      "type": "text",
+      "text": "Using enums improves type safety because you can restrict a variable to a limited set of values. This helps prevent invalid values from being assigned and makes debugging easier. You can combine enums with switch statements for clear and structured control flow."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define an enum Color with values RED, GREEN, BLUE. Then declare a variable c of type Color and assign it GREEN. Print the integer value of c.",
+      "prefixCode": "#include <stdio.h>\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1" },
+      "maxLines": 6
+    },
+    {
+      "type": "text",
+      "text": "You can also assign specific values to enum members. For example, you could assign RED=1, GREEN=3, BLUE=5. This gives you flexibility while maintaining readability. The compiler enforces the underlying integer type, ensuring predictable behavior."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define an enum Weekday with MON=1, TUE=2, WED=3. Declare a variable today of type Weekday and assign WED. Print its value.",
+      "prefixCode": "#include <stdio.h>\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "3" },
+      "maxLines": 6
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Enums provide symbolic names for constants, improving code clarity and reducing errors. They enforce type safety by limiting allowed values and make switch-case statements cleaner. Mastering enums helps you write safer, more maintainable C programs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if you assign a value outside the enum's defined constants?",
+      "options": [
+        { "id": "a", "text": "The program automatically corrects it" },
+        { "id": "b", "text": "The compiler may allow it, but it reduces type safety", "correct": true },
+        { "id": "c", "text": "The program crashes" },
+        { "id": "d", "text": "The enum automatically adds the new value" }
+      ],
+      "explanation": "C enums are not strict types; assigning a value outside the defined constants is allowed, but it undermines type safety and can lead to logical errors."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "title": "Memory Alignment and Padding",
+  "description": "Learn how the compiler aligns data in memory and why padding is used. Understand how memory alignment affects performance, struct layout, and efficient data access.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Memory alignment ensures that data is stored at addresses that match its type's requirements. For example, a 4-byte integer is typically aligned on a 4-byte boundary. Proper alignment allows the CPU to access data efficiently, reducing memory access time and avoiding potential crashes on some architectures."
+    },
+    {
+      "type": "text",
+      "text": "Padding is extra space the compiler inserts between members of a struct to maintain alignment. This can cause the size of a struct to be larger than the sum of its member sizes. Understanding alignment and padding helps optimize memory usage and prevents unexpected behavior when working with low-level memory operations."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why does the compiler add padding to structs?",
+      "options": [
+        { "id": "a", "text": "To make structs larger for safety" },
+        { "id": "b", "text": "To align data in memory for efficient CPU access", "correct": true },
+        { "id": "c", "text": "To prevent using pointers" },
+        { "id": "d", "text": "To store additional variables automatically" }
+      ],
+      "explanation": "Padding ensures that each member of a struct is stored at an address aligned to its size, improving CPU efficiency."
+    },
+    {
+      "type": "text",
+      "text": "For example, a struct with a char (1 byte) followed by an int (4 bytes) may have 3 bytes of padding after the char to align the int on a 4-byte boundary. This is important to understand when calculating struct sizes and optimizing memory layouts."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a struct with a char followed by an int. Print sizeof(struct) to see the effect of padding.",
+      "prefixCode": "#include <stdio.h>\nstruct Test {\n    char c;\n    int i;\n};\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Compilers may also align entire structs to certain boundaries, adding extra padding at the end, called tail padding. This ensures that arrays of structs maintain proper alignment for each element. Knowing this helps in designing memory-efficient data structures."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use #pragma pack(1) to remove padding for the previous struct and print its size again.",
+      "prefixCode": "#include <stdio.h>\n#pragma pack(1)\nstruct Test {\n    char c;\n    int i;\n};\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "none" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Memory alignment and padding are crucial for understanding struct sizes, efficient memory access, and low-level optimizations. Being aware of alignment issues helps in embedded programming, performance-critical code, and interfacing with hardware or network protocols."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is tail padding in a struct?",
+      "options": [
+        { "id": "a", "text": "Extra bytes at the beginning of a struct" },
+        { "id": "b", "text": "Extra bytes added at the end of a struct for alignment", "correct": true },
+        { "id": "c", "text": "Unused variables inside the struct" },
+        { "id": "d", "text": "Memory allocated dynamically outside the struct" }
+      ],
+      "explanation": "Tail padding ensures that each element of an array of structs is properly aligned in memory according to the largest member's requirements."
+    }
+  ]
+}

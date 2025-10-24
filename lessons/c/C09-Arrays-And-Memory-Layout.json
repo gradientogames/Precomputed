@@ -1,0 +1,68 @@
+{
+  "title": "Arrays and Memory Layout",
+  "description": "Learn how arrays store data in contiguous memory and how indexing works. Understand how memory layout affects program behavior and efficiency.",
+  "content": [
+    {
+      "type": "text",
+      "text": "An array is a collection of elements of the same type stored in consecutive memory locations. Instead of creating separate variables for each value, you can use an array to group them together. Arrays allow you to access elements efficiently using an index, starting from zero."
+    },
+    {
+      "type": "text",
+      "text": "The memory layout of arrays is critical. All elements are stored contiguously, which means that the computer can calculate the address of any element using its index. This makes accessing elements very fast. Understanding this layout also helps prevent errors such as accessing memory outside the array bounds."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does it mean that an array is stored in contiguous memory?",
+      "options": [
+        { "id": "a", "text": "All elements are stored in random locations" },
+        { "id": "b", "text": "Elements are stored one after another in memory", "correct": true },
+        { "id": "c", "text": "Each element uses a separate memory block" },
+        { "id": "d", "text": "The array cannot store integers" }
+      ],
+      "explanation": "Contiguous memory means elements are stored sequentially. This allows fast indexing and predictable memory access."
+    },
+    {
+      "type": "text",
+      "text": "You access elements of an array using the syntax array[index]. The first element is at index 0. If you try to access an index outside the valid range, the program may read or write unrelated memory, causing undefined behavior. Arrays provide a simple and efficient way to organize multiple values of the same type."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the program to print the first element of the array.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int numbers[3] = {10, 20, 30};\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "You can also loop through arrays using for loops. By combining arrays and loops, you can perform operations on all elements efficiently. For example, you can sum all values or find the maximum element by iterating through the array indices."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Use a for loop to print all elements of the array 'numbers'.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n    int numbers[4] = {1, 2, 3, 4};\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "1\n2\n3\n4" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Arrays store data contiguously and provide fast, indexed access. Understanding memory layout helps you avoid errors and write efficient code. Mastering arrays is a foundation for working with more advanced data structures like pointers and dynamic memory."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if you access an array index outside its bounds?",
+      "options": [
+        { "id": "a", "text": "The program safely returns 0" },
+        { "id": "b", "text": "Undefined behavior may occur", "correct": true },
+        { "id": "c", "text": "The array grows automatically" },
+        { "id": "d", "text": "C prints an error message automatically" }
+      ],
+      "explanation": "Accessing memory outside an array's valid indices may overwrite or read unrelated memory. This leads to undefined behavior, which can crash the program or cause incorrect results."
+    }
+  ]
+}

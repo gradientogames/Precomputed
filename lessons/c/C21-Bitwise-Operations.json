@@ -1,0 +1,72 @@
+{
+  "title": "Bitwise Operations",
+  "description": "Learn how to manipulate individual bits in integers using bitwise operators. Understand AND, OR, XOR, NOT, and shift operations and their practical applications.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Bitwise operations allow you to manipulate individual bits of an integer. Unlike arithmetic operators, bitwise operators work directly on the binary representation of numbers. This is useful for low-level programming, flags, and optimization."
+    },
+    {
+      "type": "text",
+      "text": "C provides several bitwise operators: AND (&), OR (|), XOR (^), NOT (~), left shift (<<), and right shift (>>). AND clears bits, OR sets bits, XOR toggles bits, and NOT inverts bits. Shifts move bits left or right, effectively multiplying or dividing by powers of two."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the bitwise AND operator (&) do?",
+      "options": [
+        { "id": "a", "text": "Clears bits to zero" },
+        { "id": "b", "text": "Sets bits to one" },
+        { "id": "c", "text": "Performs AND between corresponding bits, 1 only if both are 1", "correct": true },
+        { "id": "d", "text": "Inverts all bits" }
+      ],
+      "explanation": "Bitwise AND compares each bit of two numbers and sets the result bit to 1 only if both bits are 1."
+    },
+    {
+      "type": "text",
+      "text": "For example, 6 (binary 0110) & 3 (binary 0011) equals 2 (binary 0010). Similarly, 6 | 3 equals 7 (binary 0111), and 6 ^ 3 equals 5 (binary 0101). The ~ operator inverts all bits, so ~6 equals -7 in two's complement representation."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Compute 6 & 3 and print the result.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "2" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Shifts move bits left or right. Left shift (<<) moves bits to higher positions, filling with zeros on the right. Right shift (>>) moves bits to lower positions. Left shifting by n multiplies the number by 2^n, and right shifting divides by 2^n (for unsigned numbers)."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Left shift 3 by 2 positions and print the result.",
+      "prefixCode": "#include <stdio.h>\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "12" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Bitwise operations are widely used for flags, masks, and performance optimization. You can pack multiple boolean values into a single integer, toggle options, or extract bits efficiently without using conditional statements."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which operator toggles bits in C?",
+      "options": [
+        { "id": "a", "text": "AND (&)" },
+        { "id": "b", "text": "XOR (^)", "correct": true },
+        { "id": "c", "text": "OR (|)" },
+        { "id": "d", "text": "NOT (~)" }
+      ],
+      "explanation": "XOR (^) toggles bits: 1 becomes 0 and 0 becomes 1 if the corresponding bit in the other number is 1."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Bitwise operations give you control over individual bits. Mastering them is crucial for low-level programming, memory-efficient data storage, and working with hardware. Understanding these operators allows you to implement fast and efficient solutions."
+    }
+  ]
+}

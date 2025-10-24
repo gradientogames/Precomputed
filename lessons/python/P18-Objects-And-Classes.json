@@ -1,0 +1,62 @@
+{
+  "title": "Objects and Classes",
+  "description": "Define classes and create instances.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Everything in Python is an object. Objects bundle together data and behavior. Classes are blueprints for creating objects. When you define a class, you describe what data and methods every object of that class will have."
+    },
+    {
+      "type": "text",
+      "text": "You define a class using the class keyword. Inside it, you usually define a special method __init__ to initialize attributes for each instance. When you create an object, Python calls __init__ automatically."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a class named Dog that has an __init__ method setting its name attribute. Then create an instance called my_dog with the name 'Rex'. Print my_dog.name.",
+      "starterCode": "class Dog:\n    def __init__(self, name):\n        \n\nmy_dog = Dog('Rex')\nprint()",
+      "desiredOutput": { "type": "exact", "value": "Rex" }
+    },
+    {
+      "type": "text",
+      "text": "An instance is a concrete object created from a class. You call the class as if it were a function to create one. Each instance has its own data stored in attributes, but all instances share the same methods defined in the class."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create two Dog instances, 'Rex' and 'Max', and print both names to confirm each instance holds its own data.",
+      "starterCode": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\nrex = Dog('Rex')\nmax = Dog('Max')\nprint(rex.name)\nprint(max.name)",
+      "desiredOutput": { "type": "exact", "value": "Rex\nMax" }
+    },
+    {
+      "type": "text",
+      "text": "You can define methods inside a class to describe behaviors. Methods are functions that belong to a class and automatically receive the instance as their first argument, called self. Use self to access attributes or call other methods."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add a method bark() to the Dog class that prints the dog's name followed by 'barks!'. Call bark() on an instance named 'Rex'.",
+      "starterCode": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        \n\nrex = Dog('Rex')\nrex.bark()",
+      "desiredOutput": { "type": "exact", "value": "Rex barks!" }
+    },
+    {
+      "type": "text",
+      "text": "Classes let you model real-world concepts and relationships cleanly. You can have many instances of the same class, each holding its own data, but all behaving consistently through shared methods."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is a class in Python?",
+      "options": [
+        { "id": "a", "text": "A specific instance of an object" },
+        { "id": "b", "text": "A blueprint for creating objects", "correct": true },
+        { "id": "c", "text": "A built-in data type" },
+        { "id": "d", "text": "A function that stores data" }
+      ],
+      "explanation": "A class defines how objects are structured and behave. Instances are created from classes."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned that classes define the structure and behavior of objects. You saw how to use __init__ to initialize attributes, how to define methods with self, and how each instance maintains its own data."
+    }
+  ]
+}

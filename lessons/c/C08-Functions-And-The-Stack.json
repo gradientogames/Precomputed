@@ -1,0 +1,68 @@
+{
+  "title": "Functions and the Stack",
+  "description": "Learn how functions work in C and how the call stack manages arguments, return addresses, and local variables. Understand how the stack organizes program execution and memory.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Functions let you divide your program into smaller, reusable pieces. Each function performs a specific task and can be called whenever needed. Using functions makes your code organized, readable, and easier to debug. In C, functions also interact closely with the stack, a key part of memory that manages execution."
+    },
+    {
+      "type": "text",
+      "text": "The stack is a memory structure that stores function calls, arguments, and local variables. Each time a function is called, a new stack frame is created. This frame holds all information needed to execute the function. When the function finishes, its frame is removed, returning control to the previous function call."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the stack store during function execution?",
+      "options": [
+        { "id": "a", "text": "Global variables only" },
+        { "id": "b", "text": "Function calls, arguments, and local variables", "correct": true },
+        { "id": "c", "text": "Compiler optimizations" },
+        { "id": "d", "text": "Loop counters only" }
+      ],
+      "explanation": "The stack keeps track of function execution. Each function call gets its own frame containing arguments, local variables, and the return address."
+    },
+    {
+      "type": "text",
+      "text": "Consider a simple function that adds two numbers. When you call it, the arguments are pushed onto the stack. The function executes using those values and returns the result. Once finished, its stack frame is removed, and execution continues from where the function was called. This mechanism allows functions to be nested and recursive safely."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the function to return the sum of two integers.",
+      "prefixCode": "#include <stdio.h>\nint add(int a, int b) {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "}\n\nint main() {\n    int result = add(3, 4);\n    printf(\"%d\", result);\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "7" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Functions can also call other functions. Each call creates a new frame on the stack. Frames are removed in reverse order as functions return. This Last-In-First-Out behavior ensures that the most recent function completes before returning to earlier calls. Understanding this is critical for debugging and working with recursion."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Complete the program so main calls a function 'greet' that prints 'Hello World'.",
+      "prefixCode": "#include <stdio.h>\nvoid greet() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "}\n\nint main() {\n    greet();\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "Hello World" },
+      "maxLines": 2
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Functions simplify programming by encapsulating tasks. The stack ensures each call has its own isolated workspace for variables and return addresses. By visualizing function calls as stack frames, you can understand how execution flows and why local variables do not interfere with one another."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens when a function finishes executing?",
+      "options": [
+        { "id": "a", "text": "The stack frame is removed", "correct": true },
+        { "id": "b", "text": "All global variables are cleared" },
+        { "id": "c", "text": "The program stops" },
+        { "id": "d", "text": "The function is stored for later use" }
+      ],
+      "explanation": "When a function returns, its stack frame is removed. This restores the previous function's environment and allows execution to continue from where the function was called."
+    }
+  ]
+}

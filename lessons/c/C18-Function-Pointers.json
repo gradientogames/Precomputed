@@ -1,0 +1,68 @@
+{
+  "title": "Function Pointers",
+  "description": "Learn how to store and call functions using pointers. Understand the syntax, usage, and applications of function pointers for callbacks and dynamic behavior.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A function pointer is a variable that stores the address of a function. Instead of calling a function directly, you can call it through a pointer. This allows you to choose which function to execute at runtime, enabling flexible and dynamic behavior in your program."
+    },
+    {
+      "type": "text",
+      "text": "Function pointers are declared with the return type of the function and the argument types. You can assign a function's name to the pointer and later use the pointer with arguments just like a regular function call. This is particularly useful for implementing callbacks, where a function is passed as an argument to another function."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is a function pointer?",
+      "options": [
+        { "id": "a", "text": "A variable that stores a function's address", "correct": true },
+        { "id": "b", "text": "A pointer that stores data" },
+        { "id": "c", "text": "A function that returns a pointer" },
+        { "id": "d", "text": "A macro for functions" }
+      ],
+      "explanation": "A function pointer stores the memory address of a function, allowing it to be called indirectly."
+    },
+    {
+      "type": "text",
+      "text": "For example, if you have a function 'int add(int a, int b)', you can declare a pointer 'int (*fp)(int, int)' and assign 'add' to it. Calling 'fp(2, 3)' will execute the 'add' function. This demonstrates how functions can be treated as data in C."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Declare a function pointer for a function int multiply(int, int), assign the function, and call it with 2 and 5.",
+      "prefixCode": "#include <stdio.h>\nint multiply(int a, int b) { return a * b; }\nint main() {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10" },
+      "maxLines": 4
+    },
+    {
+      "type": "text",
+      "text": "Function pointers can also be passed as arguments to other functions. This enables higher-order functions where the called function executes different logic depending on the pointer received. It is widely used in sorting algorithms, callbacks, and event handling."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Write a function 'apply' that takes two integers and a function pointer, then calls the function pointer with the integers. Use it to add 3 and 4.",
+      "prefixCode": "#include <stdio.h>\nint add(int a, int b) { return a + b; }\nint apply(int x, int y, int (*func)(int,int)) {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "}\n\nint main() {\n    printf(\"%d\", apply(3,4,add));\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "7" },
+      "maxLines": 4
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Function pointers treat functions as data, allowing dynamic execution and flexible program design. They are essential for callbacks, plugin systems, and implementing abstract behaviors. Mastering them improves your understanding of memory and execution flow in C."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why are function pointers useful?",
+      "options": [
+        { "id": "a", "text": "They allow functions to be copied" },
+        { "id": "b", "text": "They allow dynamic function calls and callbacks", "correct": true },
+        { "id": "c", "text": "They increase execution speed" },
+        { "id": "d", "text": "They replace arrays" }
+      ],
+      "explanation": "Function pointers allow you to call different functions dynamically, enabling callbacks and flexible program design."
+    }
+  ]
+}

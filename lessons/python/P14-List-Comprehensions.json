@@ -1,0 +1,58 @@
+{
+  "title": "List Comprehensions",
+  "description": "Express loops and filters in one line.",
+  "content": [
+    {
+      "type": "text",
+      "text": "List comprehensions provide a concise way to create lists using a single line of code. They combine loops and optional conditions to produce a new list from an existing sequence."
+    },
+    {
+      "type": "text",
+      "text": "The basic syntax is: [expression for item in iterable]. For example, [x*2 for x in range(5)] produces [0, 2, 4, 6, 8]. The expression can be any operation applied to the loop variable."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use a list comprehension to create a list of squares from 0 to 4.",
+      "starterCode": "squares = []\nprint(squares)",
+      "desiredOutput": { "type": "exact", "value": "[0, 1, 4, 9, 16]" }
+    },
+    {
+      "type": "text",
+      "text": "You can add a condition at the end of the comprehension to filter elements. For example, [x for x in range(10) if x % 2 == 0] produces only even numbers from 0 to 9."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a list of even numbers from 0 to 9 using a list comprehension.",
+      "starterCode": "evens = []\nprint(evens)",
+      "desiredOutput": { "type": "exact", "value": "[0, 2, 4, 6, 8]" }
+    },
+    {
+      "type": "text",
+      "text": "List comprehensions can also include multiple loops. For example, [(x, y) for x in range(2) for y in range(2)] produces [(0, 0), (0, 1), (1, 0), (1, 1)]. This is useful for creating grids or combinations."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use a list comprehension to create pairs (x, y) where x and y are 0 or 1.",
+      "starterCode": "pairs = []\nprint(pairs)",
+      "desiredOutput": { "type": "exact", "value": "[(0, 0), (0, 1), (1, 0), (1, 1)]" }
+    },
+    {
+      "type": "text",
+      "text": "You can also apply functions or operations inside a list comprehension. For example, [str(x) for x in range(3)] produces ['0', '1', '2']. This allows transforming data while building the list."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Use a list comprehension to convert numbers 1 to 3 into strings.",
+      "starterCode": "str_numbers = []\nprint(str_numbers)",
+      "desiredOutput": { "type": "exact", "value": "['1', '2', '3']" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to create lists concisely with list comprehensions, use conditions to filter elements, nest loops, and apply transformations. List comprehensions make your code shorter, clearer, and more Pythonic."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "title": "Tuples and Immutability",
+  "description": "Why fixed collections matter and how to use them.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A tuple is similar to a list, but it cannot be changed after creation. This property is called immutability. Tuples are useful when you want to store a fixed collection of values that should not be modified accidentally."
+    },
+    {
+      "type": "text",
+      "text": "You create a tuple by placing items inside parentheses (). For example, point = (3, 5) creates a tuple with two numbers. You can also create a tuple without parentheses by separating values with commas: x, y = 1, 2."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a tuple named 'colors' containing 'red', 'green', 'blue', then print it.",
+      "starterCode": "colors = ()\nprint(colors)",
+      "desiredOutput": { "type": "exact", "value": "('red', 'green', 'blue')" }
+    },
+    {
+      "type": "text",
+      "text": "You can access elements in a tuple using indexing, just like lists. The first element is index 0, the last is -1. However, you cannot assign a new value to an element. Attempting to do so will produce an error."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the first and last items of colors = ('red', 'green', 'blue').",
+      "starterCode": "colors = ('red', 'green', 'blue')\nprint()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "red\nblue" }
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Try changing the first item of the tuple colors = ('red', 'green', 'blue') to 'yellow'. This should produce an error.",
+      "starterCode": "colors = ('red', 'green', 'blue')\ncolors[0] = 'yellow'",
+      "desiredOutput": { "type": "error" }
+    },
+    {
+      "type": "text",
+      "text": "Tuples can store multiple types of values together. For example, a tuple can contain a string, a number, and another tuple. This makes them useful for returning multiple results from a function or grouping related values."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a tuple named 'person' with a name 'Alice', age 30, and a tuple of two scores 80 and 90. Print the tuple.",
+      "starterCode": "person = ()\nprint(person)",
+      "desiredOutput": { "type": "exact", "value": "('Alice', 30, (80, 90))" }
+    },
+    {
+      "type": "text",
+      "text": "You can also unpack tuples into separate variables. For example, x, y = (10, 20) assigns 10 to x and 20 to y. This is a convenient way to extract values without indexing each one individually."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Unpack the tuple coords = (4, 5) into variables x and y, then print x and y.",
+      "starterCode": "coords = (4, 5)\n\nprint()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "4\n5" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to create tuples, access elements, understand immutability, store multiple types, and unpack values. Tuples provide fixed, reliable collections that prevent accidental modifications and help organize data safely."
+    }
+  ]
+}

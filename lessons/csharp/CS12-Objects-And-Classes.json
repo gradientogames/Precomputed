@@ -34,9 +34,7 @@
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Add a method StartEngine to your Car class that prints 'Engine started'. Call it on myCar.",
-      "prefixCode": "using System;\nclass Program {\n static void Main() {\n Car myCar = new Car { Make="
-      "Toyota\", Model=\"Corolla\", Year=2020 };\\n\"",
-      ,
+      "prefixCode": "using System;\nclass Program {\n static void Main() {\n Car myCar = new Car { Make=\"Toyota\", Model=\"Corolla\", Year=2020 };\n",
       "starterCode": " // Call StartEngine method here\n",
       "suffixCode": " }\n // Car class defined here\n}",
       "desiredOutput": {

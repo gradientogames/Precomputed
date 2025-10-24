@@ -30,9 +30,7 @@
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Given a list of strings { 'apple', 'banana', 'cherry' }, use LINQ to select the length of each string and print the lengths.",
-      "prefixCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nclass Program {\n static void Main() {\n List<string> fruits = new List<string> { "
-      "apple\", \"banana\", \"cherry\" };\\n\"",
-      ,
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nclass Program {\n static void Main() {\n List<string> fruits = new List<string> { \"apple\", \"banana\", \"cherry\" };\n",
       "starterCode": " // Write LINQ query to select lengths and print\n",
       "suffixCode": " }\n}",
       "desiredOutput": {

@@ -1,0 +1,58 @@
+{
+  "title": "Strings and Quotes",
+  "description": "Work with text, escaping, and multi-line strings.",
+  "content": [
+    {
+      "type": "text",
+      "text": "In Python, a string is a sequence of characters used to represent text. Strings are enclosed in either single quotes (' ') or double quotes (\" \"). Both work the same way, so you can choose whichever makes your code clearer."
+    },
+    {
+      "type": "text",
+      "text": "You can include quotes inside strings by using the opposite quote type. For example, 'He said \"Hello\"' or \"It's fine\". This helps avoid syntax errors when your text contains punctuation."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a string containing: It's a sunny day and print it.",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "It's a sunny day" }
+    },
+    {
+      "type": "text",
+      "text": "Sometimes you need special characters, like a new line or a tab. Use escape sequences for this. \\n creates a new line, and \\t creates a tab space. Escaping allows Python to interpret these characters correctly."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the following text exactly as shown, using escape sequences:\nLine one\nLine two",
+      "starterCode": "print()",
+      "desiredOutput": { "type": "exact", "value": "Line one\nLine two" }
+    },
+    {
+      "type": "text",
+      "text": "Python also supports multi-line strings using triple quotes (''' ''' or \"\"\" \"\"\"). Multi-line strings can span several lines without using \\n. They are useful for long messages or documentation."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Create a multi-line string with these two lines and print it:\nHello\nWorld",
+      "starterCode": "print('''\n\n''')",
+      "desiredOutput": { "type": "exact", "value": "Hello\nWorld" }
+    },
+    {
+      "type": "text",
+      "text": "Strings can be combined using the + operator. This is called concatenation. You can also repeat strings using the * operator. For example, 'Hi' * 3 results in 'HiHiHi'. This is useful for creating repeated text patterns quickly."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Concatenate 'Python' and 'Rocks', then print the result. Then repeat 'Ha' 4 times on a new line and print it.",
+      "starterCode": "print()\nprint()",
+      "desiredOutput": { "type": "exact", "value": "PythonRocks\nHaHaHaHa" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to create strings using single, double, and triple quotes, include quotes inside strings, use escape sequences for special characters, and combine or repeat strings. These skills are fundamental for handling text and displaying messages in Python."
+    }
+  ]
+}

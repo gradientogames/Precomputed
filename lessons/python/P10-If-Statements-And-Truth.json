@@ -1,0 +1,58 @@
+{
+  "title": "If Statements and Truth",
+  "description": "Learn Python’s approach to boolean logic and control flow.",
+  "content": [
+    {
+      "type": "text",
+      "text": "In Python, if statements allow your program to make decisions. The code inside an if block runs only when a condition is true. This lets you execute different actions depending on the situation."
+    },
+    {
+      "type": "text",
+      "text": "Conditions in Python are expressions that evaluate to True or False. You can use comparison operators like ==, !=, >, <, >=, and <= to build conditions. Boolean values True and False are capitalized in Python."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Check if the variable x = 5 is greater than 3 and print 'Yes' if it is.",
+      "starterCode": "x = 5\n\nif :\n    print('Yes')",
+      "desiredOutput": { "type": "exact", "value": "Yes" }
+    },
+    {
+      "type": "text",
+      "text": "You can extend if statements with elif (else if) and else blocks. elif allows you to check multiple conditions sequentially, and else runs code when no conditions are true."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Write an if-elif-else statement for x = 10: print 'Small' if x < 5, 'Medium' if x < 15, else 'Large'.",
+      "starterCode": "x = 10\n\n",
+      "desiredOutput": { "type": "exact", "value": "Medium" }
+    },
+    {
+      "type": "text",
+      "text": "Python uses logical operators and, or, and not to combine conditions. and requires both conditions to be True, or requires at least one True, and not negates a condition. These operators let you create complex logic in if statements."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Check if x = 7 is greater than 5 and less than 10, then print 'Yes'.",
+      "starterCode": "x = 7\n\n",
+      "desiredOutput": { "type": "exact", "value": "Yes" }
+    },
+    {
+      "type": "text",
+      "text": "Python treats some values as False in conditions: 0, 0.0, '', [], {}, set(), and None. All other values are considered True. This allows you to write concise code that checks whether a variable contains meaningful data."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Check if the list items = [] is empty. If it is, print 'Empty'.",
+      "starterCode": "items = []\n\n",
+      "desiredOutput": { "type": "exact", "value": "Empty" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to write if, elif, and else statements, use comparison and logical operators, and understand truthy and falsy values in Python. Mastering conditional logic is essential for controlling program flow based on data."
+    }
+  ]
+}

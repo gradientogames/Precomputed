@@ -1,0 +1,58 @@
+{
+  "title": "Namespaces and name",
+  "description": "Understand how Python organizes code contexts.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A namespace in Python is a mapping from names to objects. It determines where and how variable names are stored and accessed. Different namespaces exist for different parts of a program, such as global, local, and built-in."
+    },
+    {
+      "type": "text",
+      "text": "The global namespace contains variables defined at the top level of a script or module. Local namespaces exist inside functions and methods. Variables in a local namespace are independent of the global namespace."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Define a global variable x = 5 and a function print_x() that prints x. Call the function.",
+      "starterCode": "x = 5\n\ndef print_x():\n    \n\nprint_x()",
+      "desiredOutput": { "type": "exact", "value": "5" }
+    },
+    {
+      "type": "text",
+      "text": "Python resolves names using the LEGB rule: Local, Enclosing, Global, Built-in. It first looks in the local namespace, then in any enclosing functions, then globally, and finally in Python’s built-in namespace."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Inside a function, assign x = 10. Outside, x = 5. Print x inside and outside the function to demonstrate local vs global scope.",
+      "starterCode": "x = 5\n\ndef f():\n    x = 10\n    print(x)\n\nf()\nprint(x)",
+      "desiredOutput": { "type": "exact", "value": "10\n5" }
+    },
+    {
+      "type": "text",
+      "text": "The built-in namespace contains Python’s built-in functions and exceptions, like len, print, and ValueError. These are always available unless shadowed by a local or global variable with the same name."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print the length of the list items = [1, 2, 3] using the built-in len function.",
+      "starterCode": "items = [1, 2, 3]\nprint()",
+      "desiredOutput": { "type": "exact", "value": "3" }
+    },
+    {
+      "type": "text",
+      "text": "The special variable __name__ helps determine whether a script is being run directly or imported as a module. If a file is run directly, __name__ is '__main__'; if imported, it is the module’s name."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Print '__main__' if the script is run directly, otherwise print the module name using __name__.",
+      "starterCode": "if __name__ == '__main__':\n    print('__main__')\nelse:\n    print(__name__)",
+      "desiredOutput": { "type": "exact", "value": "__main__" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned about namespaces, the LEGB rule, local and global variables, built-in names, and the purpose of __name__. Understanding namespaces helps you write code that avoids naming conflicts and behaves predictably when imported or run directly."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "title": "Dynamic Memory: malloc and free",
+  "description": "Learn how to request and manage memory manually using malloc and free. Understand heap memory, pointers, and why dynamic allocation is essential for flexible programs.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Static arrays have fixed size determined at compile time. Sometimes, you do not know how much memory your program will need in advance. Dynamic memory allocation allows you to request memory at runtime from the heap, a portion of memory separate from the stack."
+    },
+    {
+      "type": "text",
+      "text": "In C, the function malloc allocates a block of memory of a specified size and returns a pointer to it. Since malloc only reserves memory, you must also release it when done using free. This prevents memory leaks and ensures efficient use of resources."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does malloc return?",
+      "options": [
+        { "id": "a", "text": "The size of the memory allocated" },
+        { "id": "b", "text": "A pointer to the allocated memory", "correct": true },
+        { "id": "c", "text": "The value stored in memory" },
+        { "id": "d", "text": "Nothing, it only allocates memory" }
+      ],
+      "explanation": "malloc returns a pointer to the first byte of the allocated memory block. You must store this pointer to use or free the memory later."
+    },
+    {
+      "type": "text",
+      "text": "For example, if you want an array of 10 integers but do not know the size at compile time, you can use malloc to allocate memory dynamically. The returned pointer can be used like a normal array, but you must remember to free it once it is no longer needed."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Allocate memory for an array of 5 integers, set the first element to 42, print it, and free the memory.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *arr = (int*)malloc(5 * sizeof(int));\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "42" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Always free dynamically allocated memory using free. Failing to do so causes memory leaks, where memory is reserved but never released. Over time, this can exhaust available memory and crash programs, especially in long-running applications."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Allocate memory for a single integer, assign it 100, print it, then release the memory.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *p = (int*)malloc(sizeof(int));\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "100" },
+      "maxLines": 5
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Dynamic memory allocation gives programs flexibility to handle varying amounts of data. By combining malloc and free with pointers, you control memory usage directly. Mastering these concepts is crucial for building efficient and stable programs."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens if you use memory allocated by malloc without calling free?",
+      "options": [
+        { "id": "a", "text": "The memory is automatically cleared" },
+        { "id": "b", "text": "Memory is leaked, reducing available resources", "correct": true },
+        { "id": "c", "text": "The program crashes immediately" },
+        { "id": "d", "text": "malloc stops working" }
+      ],
+      "explanation": "Failing to call free after malloc causes memory to remain reserved. This is called a memory leak and can reduce available memory over time."
+    }
+  ]
+}

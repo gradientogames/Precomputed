@@ -46,9 +46,7 @@
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Use a foreach loop to print all elements in the List fruits = ['Apple', 'Banana', 'Cherry'], each on a new line.",
-      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n List<string> fruits = new List<string>{"
-      "Apple\", \"Banana\", \"Cherry\"};\\n\"",
-      ,
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n List<string> fruits = new List<string>{\"Apple\", \"Banana\", \"Cherry\"};\n",
       "starterCode": " // Use foreach to print elements\n",
       "suffixCode": " }\n}",
       "desiredOutput": {

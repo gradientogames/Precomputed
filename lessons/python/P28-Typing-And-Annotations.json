@@ -1,0 +1,58 @@
+{
+  "title": "Typing and Annotations",
+  "description": "Use type hints for clarity and safety.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Python supports optional type hints to indicate the expected type of variables, function parameters, and return values. Type hints help you and others understand your code and can improve tooling support, like autocomplete and static analysis."
+    },
+    {
+      "type": "text",
+      "text": "To add a type hint to a function parameter, use a colon followed by the type. For example, def greet(name: str) indicates that the name parameter should be a string."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add type hints to a function add(a, b) that takes two integers and returns an integer sum.",
+      "starterCode": "def add(a: , b: ) -> :\n    return a + b\n\nprint(add(2, 3))",
+      "desiredOutput": { "type": "exact", "value": "5" }
+    },
+    {
+      "type": "text",
+      "text": "Type hints do not change the behavior of the program. Python still runs the code dynamically. They are purely for clarity, documentation, and support from type checkers like mypy."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add type hints to a function greet(name) that returns a greeting string.",
+      "starterCode": "def greet(name: ) -> :\n    return 'Hello ' + name\n\nprint(greet('Alice'))",
+      "desiredOutput": { "type": "exact", "value": "Hello Alice" }
+    },
+    {
+      "type": "text",
+      "text": "You can also hint complex types, like lists, dictionaries, or optional values using the typing module. For example, List[int] indicates a list of integers, and Optional[str] indicates a value that can be a string or None."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Add type hints to a function process(numbers) that takes a list of integers and returns a list of integers.",
+      "starterCode": "from typing import List\n\ndef process(numbers: ) -> :\n    return [n*2 for n in numbers]\n\nprint(process([1, 2, 3]))",
+      "desiredOutput": { "type": "exact", "value": "[2, 4, 6]" }
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which statement about Python type hints is correct?",
+      "options": [
+        { "id": "a", "text": "Type hints enforce types at runtime" },
+        { "id": "b", "text": "Type hints are ignored by Python and only serve clarity and tooling", "correct": true },
+        { "id": "c", "text": "Type hints replace the need for testing" },
+        { "id": "d", "text": "Type hints automatically convert types if wrong" }
+      ],
+      "explanation": "Python type hints are optional and do not affect runtime behavior. They help with readability, documentation, and static analysis."
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to add type hints to variables and functions, how to handle simple and complex types, and how type hints improve code clarity and tooling support without affecting Python’s dynamic behavior."
+    }
+  ]
+}

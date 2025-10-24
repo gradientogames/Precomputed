@@ -61,9 +61,7 @@
     {
       "type": "code-quiz",
       "language": "csharp",
-      "prompt": "Declare two string variables, first = "
-      "John\" and last = \"Doe\". Print them together as one full name with a space in between.\"",
-      ,
+      "prompt": "Declare two string variables, `first = \"John\"` and `last = \"Doe\"`. Print them together as one full name with a space in between.",
       "prefixCode": "using System;\nclass Program {\n static void Main() {\n",
       "starterCode": " // Concatenate strings here\n",
       "suffixCode": " }\n}",

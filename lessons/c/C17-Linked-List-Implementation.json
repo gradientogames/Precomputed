@@ -1,0 +1,68 @@
+{
+  "title": "Linked List Implementation",
+  "description": "Learn how to build a dynamic data structure called a linked list. Understand nodes, pointers, and how to traverse and manipulate lists in memory.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A linked list is a dynamic data structure composed of nodes. Each node contains data and a pointer to the next node. Unlike arrays, linked lists do not require contiguous memory, allowing flexible insertion and deletion of elements."
+    },
+    {
+      "type": "text",
+      "text": "The basic node structure usually includes a data field and a pointer to the next node. The last node points to NULL, indicating the end of the list. Understanding how nodes link together is essential for traversing, adding, or removing elements."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What does the last node in a linked list point to?",
+      "options": [
+        { "id": "a", "text": "It points to the first node" },
+        { "id": "b", "text": "It points to NULL", "correct": true },
+        { "id": "c", "text": "It points to itself" },
+        { "id": "d", "text": "It points to a random address" }
+      ],
+      "explanation": "The last node points to NULL to indicate the end of the list, which helps in traversal and prevents accessing invalid memory."
+    },
+    {
+      "type": "text",
+      "text": "You can create a linked list by allocating nodes dynamically with malloc. Each node's pointer links to the next node, forming a chain. Traversing the list involves following the pointers from the head node until NULL is reached."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Define a struct Node with an int data and a pointer to the next node. Create one node with value 10 and print it.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10" },
+      "maxLines": 6
+    },
+    {
+      "type": "text",
+      "text": "To add a new node at the end, create a new node with malloc and update the previous last node's next pointer. Removing a node involves updating pointers to skip the node to delete and freeing its memory. These operations highlight why pointers are essential in dynamic data structures."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Create a second node with value 20, link it to the first node, and print both values in order.",
+      "prefixCode": "#include <stdio.h>\n#include <stdlib.h>\nstruct Node {\n    int data;\n    struct Node *next;\n};\nint main() {\n    struct Node *head = (struct Node*)malloc(sizeof(struct Node));\n    head->data = 10;\n    head->next = NULL;\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "10\n20" },
+      "maxLines": 6
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Linked lists demonstrate dynamic memory usage, pointers, and data structure design. Mastering linked lists helps you understand memory management, pointer traversal, and more complex structures like stacks, queues, or trees."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why are linked lists preferred over arrays in some situations?",
+      "options": [
+        { "id": "a", "text": "They always use less memory" },
+        { "id": "b", "text": "They allow efficient insertion and deletion without contiguous memory", "correct": true },
+        { "id": "c", "text": "They are faster for accessing any index" },
+        { "id": "d", "text": "They do not require pointers" }
+      ],
+      "explanation": "Linked lists do not require contiguous memory, and inserting or deleting nodes does not involve shifting other elements, making them flexible compared to arrays."
+    }
+  ]
+}

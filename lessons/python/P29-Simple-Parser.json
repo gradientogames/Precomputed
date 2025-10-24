@@ -1,0 +1,47 @@
+{
+  "title": "Simple Parser",
+  "description": "Build a basic expression evaluator.",
+  "content": [
+    {
+      "type": "text",
+      "text": "A parser reads input and converts it into a structure that a program can understand. In this lesson, you will build a simple parser that evaluates basic arithmetic expressions like '2 + 3'."
+    },
+    {
+      "type": "text",
+      "text": "Parsing involves breaking the input into tokens, understanding the order of operations, and computing the result. Even a simple parser helps you understand how interpreters work under the hood."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Split the string '2 + 3' into its components (number, operator, number) and print them.",
+      "starterCode": "expr = '2 + 3'\ntokens = expr.split()\nprint(tokens)",
+      "desiredOutput": { "type": "exact", "value": "['2', '+', '3']" }
+    },
+    {
+      "type": "text",
+      "text": "After tokenizing, you can convert numbers from strings to integers and perform the operation indicated by the operator. This is the simplest form of evaluation."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Evaluate the expression '2 + 3' using the tokens and print the result.",
+      "starterCode": "tokens = ['2', '+', '3']\na, op, b = tokens\na, b = int(a), int(b)\nif op == '+':\n    result = \nprint(result)",
+      "desiredOutput": { "type": "exact", "value": "5" }
+    },
+    {
+      "type": "text",
+      "text": "You can extend the parser to handle other operators like -, *, and /. Each operator is checked, and the corresponding arithmetic is performed."
+    },
+    {
+      "type": "code-quiz",
+      "language": "python",
+      "prompt": "Extend the parser to evaluate '6 * 7' using the same approach.",
+      "starterCode": "tokens = ['6', '*', '7']\na, op, b = tokens\na, b = int(a), int(b)\nif op == '+':\n    result = a + b\nelif op == '*':\n    \nprint(result)",
+      "desiredOutput": { "type": "exact", "value": "42" }
+    },
+    {
+      "type": "text",
+      "text": "Reflection: You learned how to split expressions into tokens, convert strings to numbers, and evaluate simple arithmetic. This simple parser shows the foundation of how interpreters read and compute code."
+    }
+  ]
+}

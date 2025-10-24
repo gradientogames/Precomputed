@@ -1,0 +1,68 @@
+{
+  "title": "Recursion and Stack Frames",
+  "description": "Learn how recursion works in C and how the call stack manages function calls. Understand stack frames, local variables, and how recursion uses memory for each call.",
+  "content": [
+    {
+      "type": "text",
+      "text": "Recursion is when a function calls itself to solve a smaller part of a problem. It is a powerful technique for tasks that can be broken down into similar subproblems, such as computing factorials, traversing trees, or solving puzzles."
+    },
+    {
+      "type": "text",
+      "text": "Each recursive call creates a stack frame on the call stack. The stack frame stores the function's parameters, local variables, and the return address. When the function returns, its stack frame is popped off the stack, and execution resumes at the previous call."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What happens each time a function is called recursively?",
+      "options": [
+        { "id": "a", "text": "It overwrites the previous call's variables" },
+        { "id": "b", "text": "A new stack frame is created with its own parameters and local variables", "correct": true },
+        { "id": "c", "text": "The function executes without using memory" },
+        { "id": "d", "text": "The previous stack frames are deleted" }
+      ],
+      "explanation": "Each recursive call gets its own stack frame, keeping parameters and local variables separate from other calls."
+    },
+    {
+      "type": "text",
+      "text": "A base case is required to stop recursion; otherwise, the program will continue calling itself until the stack overflows. Careful design of the base case ensures recursion terminates correctly."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Write a recursive function factorial(int n) that returns n!. Call factorial(5) and print the result.",
+      "prefixCode": "#include <stdio.h>\nint factorial(int n) {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "}\nint main() {\n    printf(\"%d\", factorial(5));\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "120" },
+      "maxLines": 6
+    },
+    {
+      "type": "text",
+      "text": "Recursive functions can be visualized as a chain of stacked calls. Each call waits for its child call to complete before continuing. This helps understand how local variables are isolated and how the call stack manages return addresses."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Write a recursive function to compute the nth Fibonacci number. Call it with n=6 and print the result.",
+      "prefixCode": "#include <stdio.h>\nint fibonacci(int n) {\n",
+      "starterCode": "    // Your code here\n",
+      "suffixCode": "}\nint main() {\n    printf(\"%d\", fibonacci(6));\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "8" },
+      "maxLines": 6
+    },
+    {
+      "type": "text",
+      "text": "Reflection: Understanding recursion and stack frames is essential for algorithm design and debugging. Each call’s stack frame isolates variables and preserves the execution context. Mastering recursion improves problem-solving skills and insight into how functions and memory work in C."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Why is a base case necessary in recursion?",
+      "options": [
+        { "id": "a", "text": "To optimize memory usage" },
+        { "id": "b", "text": "To stop recursion and prevent stack overflow", "correct": true },
+        { "id": "c", "text": "To allocate a new stack frame" },
+        { "id": "d", "text": "To pass parameters" }
+      ],
+      "explanation": "A base case defines when recursion stops, preventing infinite calls and stack overflow."
+    }
+  ]
+}
