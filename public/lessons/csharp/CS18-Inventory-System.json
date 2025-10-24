@@ -30,9 +30,7 @@
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Create an Inventory class with a List<Item> items. Add a method AddItem(Item item) to add items. In Main, create an Inventory, add the previously created Potion, and display the total number of items.",
-      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n Item potion = new Item { Name="
-      "Potion\", Quantity=3 };\\n\"",
-      ,
+      "prefixCode": "using System;\nusing System.Collections.Generic;\nclass Program {\n static void Main() {\n Item potion = new Item { Name=\"Potion\", Quantity=3 };\n",
       "starterCode": " // Create Inventory, add potion, and print count\n",
       "suffixCode": " }\n // Define Inventory class here\n}",
       "desiredOutput": {

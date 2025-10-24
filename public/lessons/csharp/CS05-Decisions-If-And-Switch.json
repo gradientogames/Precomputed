@@ -19,26 +19,17 @@
       "question": "Which of these is the correct C# syntax for a basic if statement?",
       "options": [
         {
-          "id": "a",
-          "text": "if score >= 50 { Console.WriteLine("
-          "Pass\"); }\"",
-          ,
+          "text": "if (score >= 50) then Console.WriteLine(\"Pass\");"
+        },
+        {
+          "text": "if score >= 50: Console.WriteLine(\"Pass\");"
+        },
+        {
+          "text": "if score >= 50 { Console.WriteLine(\"Pass\"); }\"",
           "correct": true
         },
         {
-          "id": "b",
-          "text": "if (score >= 50) then Console.WriteLine("
-          "Pass\");\"",
-        },
-        {
-          "id": "c",
-          "text": "if score >= 50: Console.WriteLine("
-          "Pass\")\"",
-        },
-        {
-          "id": "d",
-          "text": "if score >= 50 Console.WriteLine("
-          "Pass\");\"",
+          "text": "if score >= 50 Console.WriteLine(\"Pass\");"
         }
       ],
       "explanation": "C# requires parentheses around the condition and braces around the block of statements."

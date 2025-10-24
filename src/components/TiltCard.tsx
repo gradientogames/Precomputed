@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import React, {ReactNode, useEffect, useRef, useState} from 'react';
 
 interface TiltCardProps {
   children: ReactNode;
   className?: string; // optional additional class names
 }
 
-const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
+const TiltCard: React.FC<TiltCardProps> = ({children, className = ''}) => {
   const MAX_ROT = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tiltcard-max-rot')) || 18;
   const EASE = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tiltcard-ease-speed')) || 0.12;
   const GLARE_SENSITIVITY = 1;
@@ -15,9 +15,9 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
   const glareRef = useRef<HTMLDivElement>(null);
 
   const [rect, setRect] = useState<DOMRect | null>(null);
-  const [pointer, setPointer] = useState({ x: 0.5, y: 0.5 });
-  const [target, setTarget] = useState({ rx: 0, ry: 0, tz: 0, gx: 50, gy: 0, go: 0.6 });
-  const [curr, setCurr] = useState({ rx: 0, ry: 0, tz: 0, gx: 50, gy: 0, go: 0.6 });
+  const [pointer, setPointer] = useState({x: 0.5, y: 0.5});
+  const [target, setTarget] = useState({rx: 0, ry: 0, tz: 0, gx: 50, gy: 0, go: 0.6});
+  const [curr, setCurr] = useState({rx: 0, ry: 0, tz: 0, gx: 50, gy: 0, go: 0.6});
 
   useEffect(() => {
     const updateRect = () => {
@@ -32,7 +32,8 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
       const dy = (ny - 0.5) * 2;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      setPointer({ x: Math.max(0, Math.min(1, nx)), y: Math.max(0, Math.min(1, ny)) });
+      setPointer({x: Math.max(0, Math.min(1, nx)), y: Math.max(0, Math.min(1, ny))});
+      console.log(pointer)
       setTarget({
         rx: -dy * MAX_ROT,
         ry: dx * MAX_ROT,
@@ -48,7 +49,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
     };
 
     const leave = () => {
-      setTarget({ rx: 0, ry: 0, tz: 18, gx: 50, gy: 0, go: 0.55 });
+      setTarget({rx: 0, ry: 0, tz: 18, gx: 50, gy: 0, go: 0.55});
       if (cardRef.current) cardRef.current.style.transition = 'box-shadow 0.3s ease';
     };
 
@@ -68,7 +69,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
       cardRef.current.style.transform = t;
       glareRef.current.style.left = (curr.gx - 2) + '%';
       glareRef.current.style.top = (curr.gy * 1.3) + '%';
-      glareRef.current.style.opacity = curr.go;
+      glareRef.current.style.opacity = curr.go.toString();
 
       const absRot = Math.max(Math.abs(curr.rx), Math.abs(curr.ry));
       cardRef.current.style.boxShadow = `0 ${18 + absRot * 0.8}px ${30 + absRot * 1.8}px rgba(2,6,23,0.55)`;
@@ -89,9 +90,9 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '' }) => {
     wrapperRef.current?.addEventListener('mousemove', onMouseMove);
     wrapperRef.current?.addEventListener('mouseenter', enter);
     wrapperRef.current?.addEventListener('mouseleave', leave);
-    wrapperRef.current?.addEventListener('touchmove', onTouchMove, { passive: true });
-    wrapperRef.current?.addEventListener('touchstart', enter, { passive: true });
-    wrapperRef.current?.addEventListener('touchend', leave, { passive: true });
+    wrapperRef.current?.addEventListener('touchmove', onTouchMove, {passive: true});
+    wrapperRef.current?.addEventListener('touchstart', enter, {passive: true});
+    wrapperRef.current?.addEventListener('touchend', leave, {passive: true});
 
     return () => {
       window.removeEventListener('resize', updateRect);
