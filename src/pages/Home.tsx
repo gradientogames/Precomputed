@@ -1,7 +1,6 @@
 import '../quote.css'
 import { navigate } from '../lib/router'
 import { hasSupabase } from '../lib/supabaseClient'
-import TiltCard from '../components/TiltCard'
 import { useEffect, useState } from 'react'
 import { type AuthUser, onAuthChange } from '../lib/auth'
 

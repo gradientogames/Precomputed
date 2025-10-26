@@ -20,7 +20,7 @@ const TiltCard: React.FC<TiltCardProps> = ({children, className = ''}) => {
   const glareRef = useRef<HTMLDivElement>(null);
 
   const [rect, setRect] = useState<DOMRect | null>(null);
-  const [pointer, setPointer] = useState({x: 0.5, y: 0.5});
+  const [, setPointer] = useState({x: 0.5, y: 0.5});
   const [target, setTarget] = useState({rx: 0, ry: 0, tz: 0, gx: 50, gy: 0, go: 0.6});
   const [curr, setCurr] = useState({rx: 0, ry: 0, tz: 0, gx: 50, gy: 0, go: 0.6});
 
