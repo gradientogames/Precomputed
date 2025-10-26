@@ -36,9 +36,10 @@ export function initButtonSounds() {
   const exit = createAudio(exitSrc)
 
   // Delegate to the document to catch dynamically added buttons as well
-  function getInteractableButton(el: EventTarget | null): HTMLButtonElement | null {
+  function getInteractableButton(el: EventTarget | null): HTMLButtonElement | HTMLAnchorElement | null {
     const elem = el as Element | null
-    const btn = elem && (elem as Element).closest ? (elem as Element).closest('button') as HTMLButtonElement | null : null
+    let btn = elem && (elem as Element).closest ? (elem as Element).closest('button') as HTMLButtonElement | HTMLAnchorElement| null : null
+    if (!btn) btn = elem && (elem as Element).closest ? (elem as Element).closest('a') as  HTMLAnchorElement | null : null
     if (!btn) return null
     // Treat as non-interactable if natively disabled (including via fieldset) or ARIA-disabled
     try {
@@ -53,9 +54,14 @@ export function initButtonSounds() {
 
   // Hover: mouseenter on any button, and focus via keyboard/tab
   document.addEventListener('mouseover', (e) => {
-    const btn = getInteractableButton(e.target)
+    const target = e.target as Element | null
+    const btn = getInteractableButton(target)
     if (btn) {
-      play(hover)
+      const relatedTarget = (e as MouseEvent).relatedTarget as Element | null
+      // Only play hover sound if we're coming from outside the button
+      if (!relatedTarget || !btn.contains(relatedTarget)) {
+        play(hover)
+      }
     }
   }, true)
 
@@ -89,7 +95,8 @@ export function initButtonSounds() {
     const fromBtn = getInteractableButton(target)
     if (!fromBtn) return
     const related = (e as MouseEvent).relatedTarget as Element | null
-    if (!related || !related.closest || !related.closest('button')) {
+    // Only play exit sound if we're leaving the button entirely (not moving to/from its children)
+    if (!related || !fromBtn.contains(related)) {
       play(exit)
     }
   }, true)

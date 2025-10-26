@@ -5,6 +5,7 @@ import { backendLabel, resetProgress } from '../lib/progress'
 import { hasSupabase } from '../lib/supabaseClient'
 import { navigate } from '../lib/router'
 import ConfirmDialog from '../components/ConfirmDialog'
+import '../responsive.css'
 
 export default function AccountPage() {
   const [user, setUser] = useState<AuthUser>(null)
@@ -63,44 +64,53 @@ export default function AccountPage() {
     }
   }
 
+  // Using CSS classes from responsive.css
+
   if (!hasSupabase) {
     return (
-      <section className="account-page">
-        <h2>Account</h2>
-        <p className="error">Supabase is not configured. Sign-in and account features are disabled.</p>
-        <button className="btn mt-2" onClick={() => { console.log('[Account] back to lessons'); navigate('') }}>Back to lessons</button>
-      </section>
+      <div className="account-container">
+        <section className="account-page account-content">
+          <h2>Account</h2>
+          <p className="error">Supabase is not configured. Sign-in and account features are disabled.</p>
+          <button className="btn mt-2" onClick={() => { console.log('[Account] back to lessons'); navigate('') }}>Back to lessons</button>
+        </section>
+      </div>
     )
   }
 
   if (authLoading) {
     return (
-      <section className="account-page">
-        <h2>Account</h2>
-        <p aria-live="polite" className="text-muted">Loading account…</p>
-      </section>
+      <div className="account-container">
+        <section className="account-page account-content">
+          <h2>Account</h2>
+          <p aria-live="polite" className="text-muted">Loading account…</p>
+        </section>
+      </div>
     )
   }
 
   if (!user) {
     return (
-      <section className="account-page">
-        <h2>Account</h2>
-        <p>You are not signed in.</p>
-        <div className="cluster mt-2">
-          <button className="btn btn-primary" onClick={() => { console.log('[Account] go to sign in'); navigate('signin') }}>Sign in</button>
-          <button className="btn" onClick={() => { console.log('[Account] back to lessons'); navigate('') }}>Back to lessons</button>
-        </div>
-      </section>
+      <div className="account-container">
+        <section className="account-page account-content">
+          <h2>Account</h2>
+          <p>You are not signed in.</p>
+          <div className="cluster mt-2">
+            <button className="btn btn-primary" onClick={() => { console.log('[Account] go to sign in'); navigate('signin') }}>Sign in</button>
+            <button className="btn" onClick={() => { console.log('[Account] back to lessons'); navigate('') }}>Back to lessons</button>
+          </div>
+        </section>
+      </div>
     )
   }
 
   return (
-    <section className="account-page">
-      <h2>Your account</h2>
+    <div className="account-container">
+      <section className="account-page account-content">
+        <h2>Your account</h2>
       {error && <p className="error">{error}</p>}
       {resetInfo && <p className="text-muted" aria-live="polite">{resetInfo}</p>}
-      <div className="lesson mt-3" style={{ maxWidth: 600 }}>
+      <div className="lesson mt-3">
         <p><strong>Email:</strong> {user.email ?? '-'}</p>
         <p><strong>User ID:</strong> <code>{user.id}</code></p>
         <div className="mt-3 cluster">
@@ -119,6 +129,7 @@ export default function AccountPage() {
         onConfirm={doReset}
         onCancel={() => { setConfirmOpen(false); console.log('[Account] reset cancelled') }}
       />
-    </section>
+      </section>
+    </div>
   )
 }

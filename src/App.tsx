@@ -1,16 +1,18 @@
 import {useEffect, useMemo, useRef, useState} from 'react'
+import { resizeSmoothScroll } from './lib/smoothScroll'
 import {backendLabel, loadCompleted as loadProgress, setLessonCompleted} from './lib/progress'
 import {hasSupabase} from './lib/supabaseClient'
 import {type AuthUser, onAuthChange} from './lib/auth'
 import {navigate, useRoute} from './lib/router'
 import SignInPage from './pages/SignIn'
 import AccountPage from './pages/Account'
+import HomePage from './pages/Home'
+import LanguageSelection from './pages/LanguageSelection'
 import CodeInterpreter from './components/CodeInterpreter'
-//import TiltCard from './components/TiltCard'
+import LogoImg from './graphics/Logo.svg'
 import PythonImg from './graphics/Python.png'
 import CImg from './graphics/C.png'
 import CSharpImg from './graphics/CSharp.png'
-import LogoImg from './graphics/Logo.svg'
 
 type LessonText = { type: 'text'; text: string }
 type LessonMCOption = { id: string; text: string; correct?: boolean }
@@ -257,6 +259,24 @@ export default function App() {
   useEffect(() => {
     setCurrentId(routeLessonId)
   }, [routeLessonId])
+
+  // Resize smooth scroll and scroll down on mcq answer
+  useEffect(() => {
+    if (!lesson) return
+    resizeSmoothScroll()   
+    const idx = visibleCount - 1
+    const el = itemRefs.current[idx]
+      if (el && typeof (el as any).scrollIntoView === 'function') {
+        try {
+          (el as any).scrollIntoView({behavior: 'smooth', block: 'start'} as any)
+        } catch {
+          try {
+            (el as any).scrollIntoView(true)
+          } catch {
+          }
+        }
+      }
+  }, [lesson, mcqAnswered])
 
   // Whether lessons can be done (require sign-in when Supabase is enabled)
   const canDoLessons = !hasSupabase || !!user
@@ -529,10 +549,16 @@ export default function App() {
           } catch {
           }
         }
-      }
-    }
+      }  
+    }   
     prevVisibleRef.current = visibleCount
   }, [visibleCount, lesson])
+
+  useEffect(() => {
+    if (isLessonRoute && lesson && !lessonLoading) {
+      resizeSmoothScroll() // runs after new element is rendered
+    }
+  }, [visibleCount, lessonLoading, lesson])
 
   const total = manifest.length
   const completedCount = useMemo(() => {
@@ -605,87 +631,65 @@ export default function App() {
   return (
     <div className="container">
       <main className="content">
-        <header
-          ref={el => {
-            headerRef.current = el as any
-          }}
-          className={'site-header' + (isHeaderFloating ? ' is-floating' : '') + (isHeaderFloating && !isHeaderVisible ? ' is-hidden' : '')}
-        >
-          <div className="header-bar">
-            <img src={LogoImg} alt="Logo" style={{height: '4rem'}}/>
-            <button className="brand-button brand-title mb-2" onClick={() => navigate('' as any)}
-                    aria-label="Go to language selection">PRECOMPUTED
-            </button>
-            <div className="ml-auto cluster">
-              <button className="btn" onClick={() => navigate('')}>Lessons</button>
-              {!hasSupabase && (
-                <small className="text-danger">Supabase not configured. Progress will be stored locally.</small>
-              )}
-              {/* Auth status is logged to console; avoid redundant UI text per guidelines */}
-              {hasSupabase && (
-                user ? (
-                  <button className="btn btn-secondary" onClick={() => navigate('account')}>Account</button>
-                ) : (
-                  <button className="btn btn-primary" onClick={() => navigate('signin')}>Sign in</button>
-                )
-              )}
-            </div>
-          </div>
-        </header>
-        <div className="header-spacer" style={{height: headerHeight}}/>
+        {route !== 'signin' && (
+          <>
+            <header
+              ref={el => {
+                headerRef.current = el as any
+              }}
+              className={'site-header' + (isHeaderFloating ? ' is-floating' : '') + (isHeaderFloating && !isHeaderVisible ? ' is-hidden' : '')}
+            >
+              <div className="header-bar">
+                <a onClick={() => navigate('' as any)}><img draggable="false" src={LogoImg} alt="Logo" style={{height: '4rem'}}/></a>
+                <button className="brand-button brand-title mb-2" onClick={() => navigate('' as any)}
+                        aria-label="Go to home">PRECOMPUTED
+                </button>
+                <div className="ml-auto cluster">
+                  <button className="btn" onClick={() => navigate('languages')}>Learn</button>
+                  {!hasSupabase && (
+                    <small className="text-danger">Supabase not configured. Progress will be stored locally.</small>
+                  )}
+                  {/* Auth status is logged to console; avoid redundant UI text per guidelines */}
+                  {hasSupabase && (
+                    user ? (
+                      <button className="btn btn-secondary" onClick={() => navigate('account')}>Account</button>
+                    ) : (
+                      <button className="btn btn-primary" onClick={() => navigate('signin')}>Sign in</button>
+                    )
+                  )}
+                </div>
+              </div>
+            </header>
+            {route !== '' && (
+              <div className="header-spacer" style={{height: headerHeight}}/>
+            )}
+          </>
+        )}
 
         {route === 'signin' && <SignInPage/>}
         {route === 'account' && <AccountPage/>}
-        {route === '' && (
-          <section className="language-menu">
-            {hasSupabase && !canDoLessons && (
-              <p className="text-muted mt-2">Sign in to choose a language and start lessons.</p>
-            )}
-            <div className="language-grid">
-              <button
-                className="btn lang-card"
-                onClick={() => navigate('lang/python' as any)}
-                disabled={!canDoLessons}
-                aria-disabled={!canDoLessons}
-                title={!canDoLessons ? 'Sign in to select a language' : undefined}
-              >
-                <img src={PythonImg} alt="Python" className="lang-icon"/>
-                <div className="lang-title">Python</div>
-                <div className="lang-difficulty diff-baby">Little Baby</div>
-                <div className="lang-subtitle">Don't even bother unless learning this is mandatory.</div>
-              </button>
-              <button
-                className="btn lang-card"
-                onClick={() => navigate('lang/csharp' as any)}
-                disabled={!canDoLessons}
-                aria-disabled={!canDoLessons}
-                title={!canDoLessons ? 'Sign in to select a language' : undefined}
-              >
-                <img src={CSharpImg} alt="C#" className="lang-icon"/>
-                <div className="lang-title">C#</div>
-                <div className="lang-difficulty diff-easy">Easy</div>
-                <div className="lang-subtitle">Learn programming for any software, like games!</div>
-              </button>
-              <button
-                className="btn lang-card"
-                onClick={() => navigate('lang/c' as any)}
-                disabled={!canDoLessons}
-                aria-disabled={!canDoLessons}
-                title={!canDoLessons ? 'Sign in to select a language' : undefined}
-              >
-                <img src={CImg} alt="C" className="lang-icon"/>
-                <div className="lang-title">C</div>
-                <div className="lang-difficulty diff-moderate">Moderate</div>
-                <div className="lang-subtitle">Designed to teach computer science and programming.</div>
-              </button>
-            </div>
-          </section>
-        )}
+        {route === '' && <HomePage/>}
+        {route === 'languages' && <LanguageSelection canDoLessons={canDoLessons} />}
 
         {isLangRoute && (
           <section>
-            <h2 className="mt-3">{(groups.find(g => g.id === routeLangId)?.title) ?? 'Lessons'}</h2>
-            <p className="text-muted">Progress: {completedCount}/{total}</p>
+            {(() => {
+              const grp = groups.find(g => g.id === routeLangId)
+              const title = grp?.title ?? 'Lessons'
+              const icon = routeLangId === 'python' ? PythonImg : routeLangId === 'csharp' ? CSharpImg : CImg
+              const pct = total > 0 ? Math.round((completedCount / total) * 100) : 0
+              return (
+                <div className="lang-progress-header mt-3" aria-label={`${title} progress`}>
+                  <img draggable="false" src={icon} alt={title} className="lang-header-icon" />
+                  <div className="progress-wrap">
+                    <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} aria-label={`${completedCount}/${total} completed`}>
+                      <div className="progress-bar" style={{ width: `${pct}%` }} />
+                    </div>
+                    <div className="progress-subtitle text-muted">{completedCount}/{total} completed</div>
+                  </div>
+                </div>
+              )
+            })()}
             {manifestLoading && <p>Loading lessons…</p>}
             {manifestError && <p className="error">Error: {manifestError}</p>}
             {!manifestLoading && !manifestError && (
@@ -704,8 +708,7 @@ export default function App() {
                         aria-disabled={locked}
                         title={locked ? (!canDoLessons ? 'Sign in to access lessons' : 'Complete previous lessons to unlock') : undefined}
                       >
-                        <strong>{m.title}</strong> {locked && <span className="text-muted">- Locked</span>}
-                        {!locked && completed.has(m.id) && <span className="text-muted"> - Completed</span>}
+                        <strong>{m.title}</strong>
                       </button>
                     </li>
                   )
@@ -807,7 +810,8 @@ export default function App() {
                   return allow ? (
                     <div className="mt-2">
                       <button className="btn btn-primary"
-                              onClick={() => setVisibleCount(c => Math.min(len, c + 1))}>Continue
+                              onClick={() => setVisibleCount(c => Math.min(len, c + 1))}>
+                                Continue
                       </button>
                     </div>
                   ) : null

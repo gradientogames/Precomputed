@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export type Route = '' | 'signin' | 'account' | `lesson/${string}` | `lang/${string}`
+export type Route = '' | 'signin' | 'account' | 'languages' | `lesson/${string}` | `lang/${string}`
 
 function normalize(hash: string): Route {
   // Preserve the case of IDs while matching route prefixes case-insensitively
@@ -9,6 +9,7 @@ function normalize(hash: string): Route {
   let route: Route = ''
   if (lc === 'signin') route = 'signin'
   else if (lc === 'account') route = 'account'
+  else if (lc === 'languages') route = 'languages'
   else if (lc.startsWith('lesson/')) {
     const id = raw.slice('lesson/'.length) // preserve original case for ID
     route = id ? (`lesson/${id}` as Route) : ''

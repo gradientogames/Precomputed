@@ -1,0 +1,72 @@
+/* Responsive layout styles */
+
+/* Base styles for all screen sizes */
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  padding: 1rem;
+}
+
+.account-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Back button styling */
+.back-button-container {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.back-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.signin-content {
+  width: 100%;
+  max-width: 520px;
+}
+
+.account-content {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Media queries for mobile devices */
+@media (max-width: 768px) {
+  .signin-content,
+  .account-content {
+    padding: 1rem;
+  }
+  
+  /* Adjust form elements for smaller screens */
+  .cluster {
+    flex-direction: column;
+  }
+  
+  .cluster > * {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Media queries for very small screens */
+@media (max-width: 480px) {
+  .signin-container,
+  .account-container {
+    padding: 0.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}

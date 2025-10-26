@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { hasSupabase } from '../lib/supabaseClient'
 import { onAuthChange, signIn, signUp } from '../lib/auth'
 import { navigate } from '../lib/router'
+import '../responsive.css'
 
 export default function SignInPage() {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin')
@@ -12,6 +13,8 @@ export default function SignInPage() {
   const [info, setInfo] = useState<string | null>(null)
   const [authChecked, setAuthChecked] = useState(false)
   const [signedInEmail, setSignedInEmail] = useState<string | null>(null)
+  
+  // Using CSS classes from responsive.css
 
   useEffect(() => {
     console.log('[SignIn] mounted')
@@ -65,20 +68,28 @@ export default function SignInPage() {
   }
 
   return (
-    <section>
-      <h2>{mode === 'signin' ? 'Sign in' : 'Create account'}</h2>
-      {!hasSupabase && (
-        <p className="error">Supabase not configured. Progress will be stored locally, but sign-in is disabled.</p>
-      )}
-      {error && <p className="error">{error}</p>}
-      {info && <p className="text-muted">{info}</p>}
-      <p aria-live="polite" className="text-muted mt-2">
-        {!authChecked ? 'Checking session…' : signedInEmail ? `Signed in as ${signedInEmail}.` : 'Not signed in.'}
-      </p>
-      {mode === 'signup' && (
-        <p className="text-muted">Note: You’ll receive a confirmation email. Please click the link to activate your account before signing in.</p>
-      )}
-      <form onSubmit={handleSubmit} className="lesson mt-3" style={{ maxWidth: 520 }}>
+    <div className="signin-container">
+      <section className="signin-content">
+        <div className="back-button-container">
+          <button 
+            className="btn btn-ghost back-button" 
+            onClick={() => { console.log('[SignIn] back to home'); navigate('') }}
+          >
+            Back
+          </button>
+        </div>
+        {!hasSupabase && (
+          <p className="error">Supabase not configured. Progress will be stored locally, but sign-in is disabled.</p>
+        )}
+        {error && <p className="error">{error}</p>}
+        {info && <p className="text-muted">{info}</p>}
+        <p aria-live="polite" className="text-muted mt-2">
+          {!authChecked ? 'Checking session…' : signedInEmail ? `Signed in as ${signedInEmail}.` : 'Not signed in.'}
+        </p>
+        {mode === 'signup' && (
+          <p className="text-muted">Note: You'll receive a confirmation email. Please click the link to activate your account before signing in.</p>
+        )}
+        <form onSubmit={handleSubmit} className="lesson mt-3" style={{ width: '100%' }}>
         <div className="cluster">
           <input
             className="input"
@@ -115,6 +126,7 @@ export default function SignInPage() {
           </button>
         </div>
       </form>
-    </section>
+      </section>
+    </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { resizeSmoothScroll } from '../lib/smoothScroll'
 import ConfirmDialog from './ConfirmDialog'
 
 // Simple interpreter facade; now supports Python, C, and C# via web workers
@@ -17,23 +18,16 @@ export type CodeInterpreterProps = {
   suffixCode?: string // uneditable code appended at run time
 }
 
-const DEFAULT_PY_SNIPPET = `# Python 3 (client-side)
-# Type your code here and click Run
-print('Hello from Python!')
-`
+const DEFAULT_PY_SNIPPET = `print('Hello from Python!')`
 
-const DEFAULT_C_SNIPPET = `// C (via Paiza.io API)
-// Type your code here and click Run
-#include <stdio.h>
+const DEFAULT_C_SNIPPET = `#include <stdio.h>
 int main() {
   printf("Hello from C!\n");
   return 0;
 }
 `
 
-const DEFAULT_CS_SNIPPET = `// C# (via Paiza.io API)
-// Type your code here and click Run
-using System;
+const DEFAULT_CS_SNIPPET = `using System;
 public class Program {
   public static void Main() {
     Console.WriteLine("Hello from C#!");
@@ -52,6 +46,7 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
   const gutterRef = useRef<HTMLDivElement | null>(null)
   const editorRef = useRef<HTMLTextAreaElement | null>(null)
   const highlightPreRef = useRef<HTMLPreElement | null>(null)
+  const consoleRef = useRef<HTMLDivElement | null>(null)
   const [caretPos, setCaretPos] = useState<{ left: number; top: number; height: number; visible: boolean }>({ left: 8, top: 6, height: 0, visible: true })
   const [metrics, setMetrics] = useState<{ charWidth: number; lineHeight: number; paddingTop: number; paddingLeft: number; tabSize: number }>({ charWidth: 8, lineHeight: 21, paddingTop: 6, paddingLeft: 8, tabSize: 4 })
   const [smoothCaret, setSmoothCaret] = useState(false)
@@ -61,6 +56,20 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
     if (smoothTimerRef.current) window.clearTimeout(smoothTimerRef.current)
     smoothTimerRef.current = window.setTimeout(() => setSmoothCaret(false), duration)
   }
+
+  useEffect(() => {
+    resizeSmoothScroll()
+      if (consoleRef && typeof (consoleRef as any).scrollIntoView === 'function') {
+        try {
+          (consoleRef as any).scrollIntoView({behavior: 'smooth', block: 'start'} as any)
+        } catch {
+          try {
+            (consoleRef as any).scrollIntoView(true)
+          } catch {
+          }
+        }
+      }
+  }, [consoleOpen])
 
   const caretRafRef = useRef<number | null>(null)
   function scheduleCaretUpdate() {
@@ -586,6 +595,7 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
             />
           </div>
           <textarea
+            id="EditorText"
             className="input code-editor"
             ref={editorRef as any}
             value={code}
@@ -644,7 +654,7 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
       {consoleOpen && (
         <div className="interpreter-footer" aria-live="polite">
           <div className="interpreter-footer-row">
-            <div className="console">
+            <div className="console" ref={consoleRef}>
               <div className="console-header">
                 <strong>Output</strong>
                 <button className="btn btn-ghost" onClick={() => setConsoleOpen(false)} aria-label="Close output">Close</button>
