@@ -4,83 +4,468 @@
       "id": "python",
       "title": "Python",
       "lessons": [
-        { "id": "P-Lesson01", "title": "Hello Expressions", "file": "python/P01-Hello-Expressions.json" },
-        { "id": "P-Lesson02", "title": "Variables And Names", "file": "python/P02-Variables-And-Names.json" },
-        { "id": "P-Lesson03", "title": "Numbers And Math Tricks", "file": "python/P03-Numbers-And-Math-Tricks.json" },
-        { "id": "P-Lesson04", "title": "Strings And Quotes", "file": "python/P04-Strings-And-Quotes.json" },
-        { "id": "P-Lesson05", "title": "Formatting Strings", "file": "python/P05-Formatting-Strings.json" },
-        { "id": "P-Lesson06", "title": "Lists And Indexing", "file": "python/P06-Lists-And-Indexing.json" },
-        { "id": "P-Lesson07", "title": "Tuples And Immutability", "file": "python/P07-Tuples-And-Immutability.json" },
-        { "id": "P-Lesson08", "title": "Dictionaries And Keys", "file": "python/P08-Dictionaries-And-Keys.json" },
-        { "id": "P-Lesson09", "title": "Sets And Membership", "file": "python/P09-Sets-And-Membership.json" },
-        { "id": "P-Lesson10", "title": "If Statements And Truth", "file": "python/P10-If-Statements-And-Truth.json" },
-        { "id": "P-Lesson11", "title": "Loops For And While", "file": "python/P11-Loops-For-And-While.json" },
-        { "id": "P-Lesson12", "title": "Functions Reuse And Scope", "file": "python/P12-Functions-Reuse-And-Scope.json" },
-        { "id": "P-Lesson13", "title": "Arguments And Defaults", "file": "python/P13-Arguments-And-Defaults.json" },
-        { "id": "P-Lesson14", "title": "List Comprehensions", "file": "python/P14-List-Comprehensions.json" },
-        { "id": "P-Lesson15", "title": "Prime Finder", "file": "python/P15-Prime-Finder.json" },
-        { "id": "P-Lesson16", "title": "Modules And Imports", "file": "python/P16-Modules-And-Imports.json" },
-        { "id": "P-Lesson17", "title": "Namespaces And Name", "file": "python/P17-Namespaces-And-Name.json" },
-        { "id": "P-Lesson18", "title": "Objects And Classes", "file": "python/P18-Objects-And-Classes.json" },
-        { "id": "P-Lesson19", "title": "Methods And Self", "file": "python/P19-Methods-And-Self.json" },
-        { "id": "P-Lesson20", "title": "Inheritance And Polymorphism", "file": "python/P20-Inheritance-And-Polymorphism.json" },
-        { "id": "P-Lesson21", "title": "Magic Methods And Operators", "file": "python/P21-Magic-Methods-And-Operators.json" },
-        { "id": "P-Lesson22", "title": "Exceptions And Try Except", "file": "python/P22-Exceptions-And-Try-Except.json" },
-        { "id": "P-Lesson23", "title": "Iterators And Generators", "file": "python/P23-Iterators-And-Generators.json" },
-        { "id": "P-Lesson24", "title": "Decorators And Higher Order Functions", "file": "python/P24-Decorators-And-Higher-Order-Functions.json" },
-        { "id": "P-Lesson25", "title": "Lambda And Functional Tools", "file": "python/P25-Lambda-And-Functional-Tools.json" },
-        { "id": "P-Lesson26", "title": "Text Analyzer", "file": "python/P26-Text-Analyzer.json" },
-        { "id": "P-Lesson27", "title": "Comprehending Pythonic Style", "file": "python/P27-Comprehending-Pythonic-Style.json" },
-        { "id": "P-Lesson28", "title": "Typing And Annotations", "file": "python/P28-Typing-And-Annotations.json" },
-        { "id": "P-Lesson29", "title": "Simple Parser", "file": "python/P29-Simple-Parser.json" },
-        { "id": "P-Lesson30", "title": "Finale Mini Interpreter", "file": "python/P30-Finale-Mini-Interpreter.json" }
+        {
+          "id": "P-Lesson01",
+          "title": "Hello Expressions",
+          "file": "python/P01-Hello-Expressions.json"
+        },
+        {
+          "id": "P-Lesson02",
+          "title": "Variables And Names",
+          "file": "python/P02-Variables-And-Names.json"
+        },
+        {
+          "id": "P-Lesson03",
+          "title": "Numbers And Math Tricks",
+          "file": "python/P03-Numbers-And-Math-Tricks.json"
+        },
+        {
+          "id": "P-Lesson04",
+          "title": "Strings And Quotes",
+          "file": "python/P04-Strings-And-Quotes.json"
+        },
+        {
+          "id": "P-Lesson05",
+          "title": "Formatting Strings",
+          "file": "python/P05-Formatting-Strings.json"
+        },
+        {
+          "id": "P-Lesson06",
+          "title": "Lists And Indexing",
+          "file": "python/P06-Lists-And-Indexing.json"
+        },
+        {
+          "id": "P-Lesson07",
+          "title": "Tuples And Immutability",
+          "file": "python/P07-Tuples-And-Immutability.json"
+        },
+        {
+          "id": "P-Lesson08",
+          "title": "Dictionaries And Keys",
+          "file": "python/P08-Dictionaries-And-Keys.json"
+        },
+        {
+          "id": "P-Lesson09",
+          "title": "Sets And Membership",
+          "file": "python/P09-Sets-And-Membership.json"
+        },
+        {
+          "id": "P-Lesson10",
+          "title": "If Statements And Truth",
+          "file": "python/P10-If-Statements-And-Truth.json"
+        },
+        {
+          "id": "P-Lesson11",
+          "title": "Loops For And While",
+          "file": "python/P11-Loops-For-And-While.json"
+        },
+        {
+          "id": "P-Lesson12",
+          "title": "Functions Reuse And Scope",
+          "file": "python/P12-Functions-Reuse-And-Scope.json"
+        },
+        {
+          "id": "P-Lesson13",
+          "title": "Arguments And Defaults",
+          "file": "python/P13-Arguments-And-Defaults.json"
+        },
+        {
+          "id": "P-Lesson14",
+          "title": "List Comprehensions",
+          "file": "python/P14-List-Comprehensions.json"
+        },
+        {
+          "id": "P-Lesson15",
+          "title": "Prime Finder",
+          "file": "python/P15-Prime-Finder.json"
+        },
+        {
+          "id": "P-Lesson16",
+          "title": "Modules And Imports",
+          "file": "python/P16-Modules-And-Imports.json"
+        },
+        {
+          "id": "P-Lesson17",
+          "title": "Namespaces And Name",
+          "file": "python/P17-Namespaces-And-Name.json"
+        },
+        {
+          "id": "P-Lesson18",
+          "title": "Objects And Classes",
+          "file": "python/P18-Objects-And-Classes.json"
+        },
+        {
+          "id": "P-Lesson19",
+          "title": "Methods And Self",
+          "file": "python/P19-Methods-And-Self.json"
+        },
+        {
+          "id": "P-Lesson20",
+          "title": "Inheritance And Polymorphism",
+          "file": "python/P20-Inheritance-And-Polymorphism.json"
+        },
+        {
+          "id": "P-Lesson21",
+          "title": "Magic Methods And Operators",
+          "file": "python/P21-Magic-Methods-And-Operators.json"
+        },
+        {
+          "id": "P-Lesson22",
+          "title": "Exceptions And Try Except",
+          "file": "python/P22-Exceptions-And-Try-Except.json"
+        },
+        {
+          "id": "P-Lesson23",
+          "title": "Iterators And Generators",
+          "file": "python/P23-Iterators-And-Generators.json"
+        },
+        {
+          "id": "P-Lesson24",
+          "title": "Decorators And Higher Order Functions",
+          "file": "python/P24-Decorators-And-Higher-Order-Functions.json"
+        },
+        {
+          "id": "P-Lesson25",
+          "title": "Lambda And Functional Tools",
+          "file": "python/P25-Lambda-And-Functional-Tools.json"
+        },
+        {
+          "id": "P-Lesson26",
+          "title": "Text Analyzer",
+          "file": "python/P26-Text-Analyzer.json"
+        },
+        {
+          "id": "P-Lesson27",
+          "title": "Comprehending Pythonic Style",
+          "file": "python/P27-Comprehending-Pythonic-Style.json"
+        },
+        {
+          "id": "P-Lesson28",
+          "title": "Typing And Annotations",
+          "file": "python/P28-Typing-And-Annotations.json"
+        },
+        {
+          "id": "P-Lesson29",
+          "title": "Simple Parser",
+          "file": "python/P29-Simple-Parser.json"
+        },
+        {
+          "id": "P-Lesson30",
+          "title": "Finale Mini Interpreter",
+          "file": "python/P30-Finale-Mini-Interpreter.json"
+        }
       ]
     },
     {
       "id": "csharp",
       "title": "C#",
       "lessons": [
-        { "id": "CS-Lesson01", "title": "Thinking Like a Programmer", "file": "csharp/CS01-Thinking-Like-A-Programmer.json" },
-        { "id": "CS-Lesson02", "title": "Your First Program", "file": "csharp/CS02-Your-First-Program.json" },
-        { "id": "CS-Lesson03", "title": "Variables and Data Types", "file": "csharp/CS03-Variables-And-Data-Types.json" },
-        { "id": "CS-Lesson04", "title": "Operators and Expressions", "file": "csharp/CS04-Operators-And-Expressions.json" },
-        { "id": "CS-Lesson05", "title": "Decisions: If and Switch", "file": "csharp/CS05-Decisions-If-And-Switch.json" },
-        { "id": "CS-Lesson06", "title": "Loops and Iteration", "file": "csharp/CS06-Loops-And-Iteration.json" },
-        { "id": "CS-Lesson07", "title": "Methods and Parameters", "file": "csharp/CS07-Methods-And-Parameters.json" },
-        { "id": "CS-Lesson08", "title": "Return Values and Scope", "file": "csharp/CS08-Return-Values-And-Scope.json" },
-        { "id": "CS-Lesson09", "title": "Arrays and Lists", "file": "csharp/CS09-Arrays-And-Lists.json" },
-        { "id": "CS-Lesson10", "title": "Enums and Constants", "file": "csharp/CS10-Enums-And-Constants.json" },
-        { "id": "CS-Lesson11", "title": "Grade Calculator", "file": "csharp/CS11-Grade-Calculator.json" },
-        { "id": "CS-Lesson12", "title": "Objects and Classes", "file": "csharp/CS12-Objects-And-Classes.json" },
-        { "id": "CS-Lesson13", "title": "Fields, Properties, and Encapsulation", "file": "csharp/CS13-Fields-Properties-And-Encapsulation.json" },
-        { "id": "CS-Lesson14", "title": "Constructors and Overloading", "file": "csharp/CS14-Constructors-And-Overloading.json" },
-        { "id": "CS-Lesson15", "title": "Static vs Instance Members", "file": "csharp/CS15-Static-Vs-Instance-Members.json" },
-        { "id": "CS-Lesson16", "title": "Inheritance and Virtual Methods", "file": "csharp/CS16-Inheritance-And-Virtual-Methods.json" },
-        { "id": "CS-Lesson17", "title": "Interfaces and Abstraction", "file": "csharp/CS17-Interfaces-And-Abstraction.json" },
-        { "id": "CS-Lesson18", "title": "Inventory System", "file": "csharp/CS18-Inventory-System.json" },
-        { "id": "CS-Lesson19", "title": "Collections and Generics", "file": "csharp/CS19-Collections-And-Generics.json" },
-        { "id": "CS-Lesson20", "title": "Error Handling with Try/Catch", "file": "csharp/CS20-Error-Handling-With-Try-Catch.json" },
-        { "id": "CS-Lesson21", "title": "Structs vs Classes", "file": "csharp/CS21-Structs-Vs-Classes.json" },
-        { "id": "CS-Lesson22", "title": "Delegates and Events", "file": "csharp/CS22-Delegates-And-Events.json" },
-        { "id": "CS-Lesson23", "title": "LINQ Basics", "file": "csharp/CS23-LINQ-Basics.json" },
-        { "id": "CS-Lesson24", "title": "Student Database", "file": "csharp/CS24-Student-Database.json" },
-        { "id": "CS-Lesson25", "title": "Recursion and Problem Solving", "file": "csharp/CS25-Recursion-And-Problem-Solving.json" },
-        { "id": "CS-Lesson26", "title": "Design Patterns: Singleton and Factory", "file": "csharp/CS26-Design-Patterns-Singletons-And-Factories.json" },
-        { "id": "CS-Lesson27", "title": "Simple Turn-Based Game Logic", "file": "csharp/CS27-Simple-Turn-Based-Game-Logic.json" },
-        { "id": "CS-Lesson28", "title": "Refactoring for Readability", "file": "csharp/CS28-Refactoring-For-Readability.json" },
-        { "id": "CS-Lesson29", "title": "Testing Your Code", "file": "csharp/CS29-Testing-Your-Code.json" },
-        { "id": "CS-Lesson30", "title": "Finale: Mini Simulation Project", "file": "csharp/CS30-Finale-Mini-Simulation-Project.json" }
+        {
+          "id": "CS-Lesson01",
+          "title": "Thinking Like a Programmer",
+          "file": "csharp/CS01-Thinking-Like-A-Programmer.json"
+        },
+        {
+          "id": "CS-Lesson02",
+          "title": "Your First Program",
+          "file": "csharp/CS02-Your-First-Program.json"
+        },
+        {
+          "id": "CS-Lesson03",
+          "title": "Variables and Data Types",
+          "file": "csharp/CS03-Variables-And-Data-Types.json"
+        },
+        {
+          "id": "CS-Lesson04",
+          "title": "Operators and Expressions",
+          "file": "csharp/CS04-Operators-And-Expressions.json"
+        },
+        {
+          "id": "CS-Lesson05",
+          "title": "Decisions: If and Switch",
+          "file": "csharp/CS05-Decisions-If-And-Switch.json"
+        },
+        {
+          "id": "CS-Lesson06",
+          "title": "Loops and Iteration",
+          "file": "csharp/CS06-Loops-And-Iteration.json"
+        },
+        {
+          "id": "CS-Lesson07",
+          "title": "Methods and Parameters",
+          "file": "csharp/CS07-Methods-And-Parameters.json"
+        },
+        {
+          "id": "CS-Lesson08",
+          "title": "Return Values and Scope",
+          "file": "csharp/CS08-Return-Values-And-Scope.json"
+        },
+        {
+          "id": "CS-Lesson09",
+          "title": "Arrays and Lists",
+          "file": "csharp/CS09-Arrays-And-Lists.json"
+        },
+        {
+          "id": "CS-Lesson10",
+          "title": "Enums and Constants",
+          "file": "csharp/CS10-Enums-And-Constants.json"
+        },
+        {
+          "id": "CS-Lesson11",
+          "title": "Grade Calculator",
+          "file": "csharp/CS11-Grade-Calculator.json"
+        },
+        {
+          "id": "CS-Lesson12",
+          "title": "Objects and Classes",
+          "file": "csharp/CS12-Objects-And-Classes.json"
+        },
+        {
+          "id": "CS-Lesson13",
+          "title": "Fields, Properties, and Encapsulation",
+          "file": "csharp/CS13-Fields-Properties-And-Encapsulation.json"
+        },
+        {
+          "id": "CS-Lesson14",
+          "title": "Constructors and Overloading",
+          "file": "csharp/CS14-Constructors-And-Overloading.json"
+        },
+        {
+          "id": "CS-Lesson15",
+          "title": "Static vs Instance Members",
+          "file": "csharp/CS15-Static-Vs-Instance-Members.json"
+        },
+        {
+          "id": "CS-Lesson16",
+          "title": "Inheritance and Virtual Methods",
+          "file": "csharp/CS16-Inheritance-And-Virtual-Methods.json"
+        },
+        {
+          "id": "CS-Lesson17",
+          "title": "Interfaces and Abstraction",
+          "file": "csharp/CS17-Interfaces-And-Abstraction.json"
+        },
+        {
+          "id": "CS-Lesson18",
+          "title": "Inventory System",
+          "file": "csharp/CS18-Inventory-System.json"
+        },
+        {
+          "id": "CS-Lesson19",
+          "title": "Collections and Generics",
+          "file": "csharp/CS19-Collections-And-Generics.json"
+        },
+        {
+          "id": "CS-Lesson20",
+          "title": "Error Handling with Try/Catch",
+          "file": "csharp/CS20-Error-Handling-With-Try-Catch.json"
+        },
+        {
+          "id": "CS-Lesson21",
+          "title": "Structs vs Classes",
+          "file": "csharp/CS21-Structs-Vs-Classes.json"
+        },
+        {
+          "id": "CS-Lesson22",
+          "title": "Delegates and Events",
+          "file": "csharp/CS22-Delegates-And-Events.json"
+        },
+        {
+          "id": "CS-Lesson23",
+          "title": "LINQ Basics",
+          "file": "csharp/CS23-LINQ-Basics.json"
+        },
+        {
+          "id": "CS-Lesson24",
+          "title": "Student Database",
+          "file": "csharp/CS24-Student-Database.json"
+        },
+        {
+          "id": "CS-Lesson25",
+          "title": "Recursion and Problem Solving",
+          "file": "csharp/CS25-Recursion-And-Problem-Solving.json"
+        },
+        {
+          "id": "CS-Lesson26",
+          "title": "Design Patterns: Singleton and Factory",
+          "file": "csharp/CS26-Design-Patterns-Singletons-And-Factories.json"
+        },
+        {
+          "id": "CS-Lesson27",
+          "title": "Simple Turn-Based Game Logic",
+          "file": "csharp/CS27-Simple-Turn-Based-Game-Logic.json"
+        },
+        {
+          "id": "CS-Lesson28",
+          "title": "Refactoring for Readability",
+          "file": "csharp/CS28-Refactoring-For-Readability.json"
+        },
+        {
+          "id": "CS-Lesson29",
+          "title": "Testing Your Code",
+          "file": "csharp/CS29-Testing-Your-Code.json"
+        },
+        {
+          "id": "CS-Lesson30",
+          "title": "Finale: Mini Simulation Project",
+          "file": "csharp/CS30-Finale-Mini-Simulation-Project.json"
+        }
       ]
     },
     {
       "id": "c",
       "title": "C",
       "lessons": [
-        { "id": "C-Lesson01", "title": "The Nature Of C", "file": "c/C01-The-Nature-Of-C.json" },
-        { "id": "C-Lesson02", "title": "Main and the Compiler", "file": "c/C02-Main-And-The-Compiler.json" },
-        { "id": "C-Lesson03", "title": "Variables and Memory", "file": "c/C03-Variables-And-Memory.json" },
-        { "id": "C-Lesson04", "title": "Data Types and Sizes", "file": "c/C04-Data-Types-And-Sizes.json" },
-        { "id": "C-Lesson05", "title": "Operators and Precedence", "file": "c/C05-Operators-And-Precedence.json" }
+        {
+          "id": "C-Lesson01",
+          "title": "The Nature Of C",
+          "file": "c/C01-The-Nature-Of-C.json"
+        },
+        {
+          "id": "C-Lesson02",
+          "title": "Main And The Compiler",
+          "file": "c/C02-Main-And-The-Compiler.json"
+        },
+        {
+          "id": "C-Lesson03",
+          "title": "Variables And Memory",
+          "file": "c/C03-Variables-And-Memory.json"
+        },
+        {
+          "id": "C-Lesson04",
+          "title": "Data Types And Sizes",
+          "file": "c/C04-Data-Types-And-Sizes.json"
+        },
+        {
+          "id": "C-Lesson05",
+          "title": "Operators And Precedence",
+          "file": "c/C05-Operators-And-Precedence.json"
+        },
+        {
+          "id": "C-Lesson06",
+          "title": "Control Flow",
+          "file": "c/C06-Control-Flow.json"
+        },
+        {
+          "id": "C-Lesson07",
+          "title": "For Loops And Counters",
+          "file": "c/C07-For-Loops-And-Counters.json"
+        },
+        {
+          "id": "C-Lesson08",
+          "title": "Functions And The Stack",
+          "file": "c/C08-Functions-And-The-Stack.json"
+        },
+        {
+          "id": "C-Lesson09",
+          "title": "Arrays And Memory Layout",
+          "file": "c/C09-Arrays-And-Memory-Layout.json"
+        },
+        {
+          "id": "C-Lesson10",
+          "title": "Points Addressing And Dereferencing",
+          "file": "c/C10-Points-Addressing-And-Dereferencing.json"
+        },
+        {
+          "id": "C-Lesson11",
+          "title": "Pointer Arithmetic",
+          "file": "c/C11-Pointer-Arithmetic.json"
+        },
+        {
+          "id": "C-Lesson12",
+          "title": "Manual String Functions",
+          "file": "c/C12-Manual-String-Functions.json"
+        },
+        {
+          "id": "C-Lesson13",
+          "title": "Dynamic Memory",
+          "file": "c/C13-Dynamic-Memory.json"
+        },
+        {
+          "id": "C-Lesson14",
+          "title": "Structs And Data Layout",
+          "file": "c/C14-Structs-And-Data-Layout.json"
+        },
+        {
+          "id": "C-Lesson15",
+          "title": "Enums And Type Safety",
+          "file": "c/C15-Enums-And-Type-Safety.json"
+        },
+        {
+          "id": "C-Lesson16",
+          "title": "Unions And Memory Reuse",
+          "file": "c/C16-Unions-And-Memory-Reuse.json"
+        },
+        {
+          "id": "C-Lesson17",
+          "title": "Linked List Implementation",
+          "file": "c/C17-Linked-List-Implementation.json"
+        },
+        {
+          "id": "C-Lesson18",
+          "title": "Function Pointers",
+          "file": "c/C18-Function-Pointers.json"
+        },
+        {
+          "id": "C-Lesson19",
+          "title": "Preprocessor And Macros",
+          "file": "c/C19-Preprocessor-And-Macros.json"
+        },
+        {
+          "id": "C-Lesson20",
+          "title": "Header Files",
+          "file": "c/C20-Header-Files.json"
+        },
+        {
+          "id": "C-Lesson21",
+          "title": "Bitwise Operations",
+          "file": "c/C21-Bitwise-Operations.json"
+        },
+        {
+          "id": "C-Lesson22",
+          "title": "Bitfield Flag System",
+          "file": "c/C22-Bitfield-Flag-System.json"
+        },
+        {
+          "id": "C-Lesson23",
+          "title": "Stacks And Queues Manual Implementation",
+          "file": "c/C23-Stacks-And-Queues-Manual-Implementation.json"
+        },
+        {
+          "id": "C-Lesson24",
+          "title": "Memory Alignment And Padding",
+          "file": "c/C24-Memory-Alignment-And-Padding.json"
+        },
+        {
+          "id": "C-Lesson25",
+          "title": "Recursion And Stack Frames",
+          "file": "c/C25-Recursion-And-Stack-Frames.json"
+        },
+        {
+          "id": "C-Lesson26",
+          "title": "Simple Sorting Algorithm",
+          "file": "c/C26-Simple-Sorting-Algorithm.json"
+        },
+        {
+          "id": "C-Lesson27",
+          "title": "Complex Data Structures",
+          "file": "c/C27-Complex-Data-Structures.json"
+        },
+        {
+          "id": "C-Lesson28",
+          "title": "Debugging With Print And Mind",
+          "file": "c/C28-Debugging-With-Print-And-Mind.json"
+        },
+        {
+          "id": "C-Lesson29",
+          "title": "Mini Allocator",
+          "file": "c/C29-Mini-Allocator.json"
+        },
+        {
+          "id": "C-Lesson30",
+          "title": "Finale ECS",
+          "file": "c/C30-Finale-ECS.json"
+        }
       ]
     }
   ]
