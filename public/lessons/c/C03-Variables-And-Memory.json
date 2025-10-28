@@ -4,15 +4,15 @@
   "content": [
     {
       "type": "text",
-      "text": "You’ve seen a C program run and print text. Now let’s ask a deeper question: where does that text, or any piece of data, actually live when the program runs? The answer lies in memory. Every program uses memory to store and retrieve information while it runs, and C lets you see that process up close."
+      "text": "You’ve seen a C program run and print text. Now, deeper question: where does that text, or any piece of data, actually live when the program runs? The answer lies in memory. Every program uses memory to store and retrieve information while it runs."
     },
     {
       "type": "text",
-      "text": "Think of memory as a long row of numbered boxes. Each box can hold a value, and each has an address, its position in that long line. When you create a variable in C, you’re asking the computer to reserve one of those boxes for you and give it a name so you can find it later."
+      "text": "Think of memory as a long row of numbered boxes. Each box can hold a value, and each has an address, which is its position in that long line. When you create a variable in C, you reserve one of those boxes for you and give it a name so you can find it later."
     },
     {
       "type": "text",
-      "text": "For example, when you write int age = 20;, you’re creating a box big enough to hold an integer and storing the number 20 inside it. The name age is just a label, something humans use to remember which box we’re talking about. The computer doesn’t care about the name, it only remembers the address."
+      "text": "For example, when you write `int age = 20;`, you’re creating a box big enough to hold a whole number (known as an integer), and storing the number 20 inside it. The name age is just a label, something humans use to remember which box we’re talking about. The program doesn’t care about the name but only remembers the address."
     },
     {
       "type": "code-quiz",
