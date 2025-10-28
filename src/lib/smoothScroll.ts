@@ -7,27 +7,17 @@ export function initSmoothScroll() {
   if (lenis) return
 
   lenis = new Lenis({
-    // Lower lerp = more smoothing; higher = snappier
+    autoResize: true,
+    autoRaf: true,
     lerp: 0.1,
     duration: 1.2,
     smoothWheel: true,
     syncTouch: true,
   })
-
-  function raf(time: number) {
-    lenis?.raf(time)
-    requestAnimationFrame(raf)
-  }
-  requestAnimationFrame(raf)
 }
 
 export function destroySmoothScroll() {
   if (!lenis) return
   try { lenis.destroy() } catch {}
   lenis = null
-}
-
-export function resizeSmoothScroll() {
-  if (!lenis) return
-  lenis.resize()
 }

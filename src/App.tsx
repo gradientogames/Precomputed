@@ -1,5 +1,4 @@
 import {useEffect, useMemo, useRef, useState} from 'react'
-import { resizeSmoothScroll } from './lib/smoothScroll'
 import {backendLabel, loadCompleted as loadProgress, setLessonCompleted} from './lib/progress'
 import {hasSupabase} from './lib/supabaseClient'
 import {type AuthUser, onAuthChange} from './lib/auth'
@@ -263,7 +262,6 @@ export default function App() {
   // Resize smooth scroll and scroll down on mcq answer
   useEffect(() => {
     if (!lesson) return
-    resizeSmoothScroll()   
     const idx = visibleCount - 1
     const el = itemRefs.current[idx]
       if (el && typeof (el as any).scrollIntoView === 'function') {
@@ -549,16 +547,10 @@ export default function App() {
           } catch {
           }
         }
-      }  
-    }   
+      }
+    }
     prevVisibleRef.current = visibleCount
   }, [visibleCount, lesson])
-
-  useEffect(() => {
-    if (isLessonRoute && lesson && !lessonLoading) {
-      resizeSmoothScroll() // runs after new element is rendered
-    }
-  }, [visibleCount, lessonLoading, lesson])
 
   const total = manifest.length
   const completedCount = useMemo(() => {

@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { resizeSmoothScroll } from '../lib/smoothScroll'
 import ConfirmDialog from './ConfirmDialog'
 
 // Simple interpreter facade; now supports Python, C, and C# via web workers
@@ -58,7 +57,6 @@ export default function CodeInterpreter({ language = 'python', initialCode, time
   }
 
   useEffect(() => {
-    resizeSmoothScroll()
       if (consoleRef && typeof (consoleRef as any).scrollIntoView === 'function') {
         try {
           (consoleRef as any).scrollIntoView({behavior: 'smooth', block: 'start'} as any)
