@@ -4,15 +4,71 @@
   "content": [
     {
       "type": "text",
-      "text": "You’ve seen a C program run and print text. Now, deeper question: where does that text, or any piece of data, actually live when the program runs? The answer lies in memory. Every program uses memory to store and retrieve information while it runs."
+      "text": "You’ve seen a C program run and print text. Now, deeper question: where does that text, or any piece of data, actually live when the program runs?"
     },
     {
       "type": "text",
-      "text": "Think of memory as a long row of numbered boxes. Each box can hold a value, and each has an address, which is its position in that long line. When you create a variable in C, you reserve one of those boxes for you and give it a name so you can find it later."
+      "text": "The answer lies in memory. Every program uses memory to store and retrieve information while it runs."
     },
     {
       "type": "text",
-      "text": "For example, when you write `int age = 20;`, you’re creating a box big enough to hold a whole number (known as an integer), and storing the number 20 inside it. The name age is just a label, something humans use to remember which box we’re talking about. The program doesn’t care about the name but only remembers the address."
+      "text": "Think of memory as a long row of numbered boxes, stored in your RAM. Each box can hold a value, and each has an address, which is its position in that long line. When you create a variable in C, you reserve one of those boxes and give it a name so you can find it later."
+    },
+    {
+      "type": "text",
+      "text": "For example, when you write `int age = 20;`, you’re creating a box big enough to hold a whole number (known as an integer), and storing the number 20 inside it. The name `age` is just a label, something we use to remember which box we’re talking about. The program itself doesn't store the name but only remembers the address."
+    },
+    {
+      "type": "text",
+      "text": "In fact, instead of storing actual values into your memory, you can store the addresses other parts of your memory. Sounds confusing right? That will be unpacked later so don't worry about it. Plus, the program and the code itself is stored in memory, so aside from data and addresses to that data, it can also store instructions."
+    },
+    {
+      "type": "text",
+      "text": "To clarify, RAM is the short-term memory of your device whilst your HDD (for those with super old hardware) or SSD is your long-term memory. Short term memory is far faster to access that long term memory which is why we don't just directly store temporary data into long term memory."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Where is a program stored when it runs?",
+      "options": [
+        { "id": "b", "text": "In your HDD." },
+        { "id": "a", "text": "In your RAM.", "correct": true },
+        { "id": "c", "text": "In your CPU." },
+        { "id": "d", "text": "In your SSD." }
+      ],
+      "explanation": "When you open a program or app on any device, it gets loaded into short term memory, RAM, before running."
+    },
+    {
+      "type": "text",
+      "text": "Now it's time for you to store your own data in memory!"
+    },
+    {
+      "type": "text",
+      "text": "In C, declaring a variable usually is built up of five bits of text separated by spaces, which will be referred to as tokens from now on."
+    },
+    {
+      "type": "text",
+      "text": "Because C is \"strongly typed\", every variable you declare starts off with the type of data you want to store, such as `int`, then the name you want to give the variable yourself (to reference it in other parts of your code), then an equal, `=`, sign, before you set its initial value. Don't forget to end the line with a semi-colon (`;`). Here's an example of a variable declaration: `int bogus = 15;`"
+    },
+    {
+      "type": "text",
+      "text": "Now, `int` is short for integer (a whole number), so `int bogus = 15;` stores a whole number, no decimals. A decimal number can be stored via a `float`, like so: `float harrow = 4.2;`."
+    },
+    {
+      "type": "text",
+      "text": "As for text, a single character can be stored with `char Variable = 'A';` and to store many characters, known as strings, you need to use a list of characters (which will be explained in future lessons)."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Change this code to print out the number 69 instead of 67.",
+      "prefixCode": "#include <stdio.h>\n\nint main() {\n",
+      "starterCode": "int number = 67;\n",
+      "suffixCode": "    printf(\"%d\", number);\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "69" }
+    },
+    {
+      "type": "text",
+      "text": "If you recall, using `printf(\"Text\")` allows you to output text to the console... but what if you wanted to use numbers?"
     },
     {
       "type": "code-quiz",
