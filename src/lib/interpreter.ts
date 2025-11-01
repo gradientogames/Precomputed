@@ -133,7 +133,12 @@ function createWorkerRunner(workerPath: string, workerType: WorkerOptions['type'
 }
 
 export function createPythonRunner(): PythonRunner {
-  return createWorkerRunner('../workers/pythonWorker.js')
+  console.log('[Interpreter] createPythonRunner: constructing Python runner')
+  const workerUrl = new URL('../workers/pythonWorker.js', import.meta.url)
+  console.log('[Interpreter] createPythonRunner: worker path resolved to', workerUrl.href)
+  const runner = createWorkerRunner(workerUrl.pathname)
+  console.log('[Interpreter] createPythonRunner: Python runner created')
+  return runner
 }
 
 function createPaizaRunner(language: 'c' | 'csharp'): Runner {

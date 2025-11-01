@@ -15,6 +15,67 @@
   gap: clamp(2rem, 4vw, 4rem); /* roughly 2–3 lines spacing */
 }
 
+/* Character animation styles */
+.char-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  /* clip-path: inset(100% 0 0 0); */
+  will-change: transform, opacity, clip-path;
+  white-space: pre; /* Preserve spaces */ 
+}
+
+.ai-word .char-reveal.emphasised {
+  font-weight: 800;
+  font-size: clamp(3.6rem, 10vw, 50rem);
+  line-height: 1;
+  background: linear-gradient(45deg, var(--brand-1), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.programmer-word .char-reveal.emphasised {
+  font-weight: 800;
+  font-size: clamp(2.5rem, 10vw, 10rem);
+  line-height: 1;
+  background: linear-gradient(45deg, var(--brand-1), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.char-reveal.animated {
+  animation: revealChar 0.4s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  /* Use hardware acceleration for smoother animation */
+  transform: translateY(100%) translateZ(0);
+}
+
+@keyframes revealChar {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+    /* clip-path: inset(100% 0 0 0); */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    /* clip-path: inset(0 0 0 0); */
+  }
+}
+
+/* Fallback for browsers that don't support animations */
+@media (prefers-reduced-motion: reduce) {
+  .char-reveal {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    animation: none !important;
+  }
+}
+
 /* Top Section */
 .quote-top {
   width: 100%;

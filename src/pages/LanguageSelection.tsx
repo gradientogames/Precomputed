@@ -12,7 +12,12 @@ export default function LanguageSelection({ canDoLessons }: LanguageSelectionPro
   return (
     <section className="language-menu">
       {!canDoLessons && (
-        <p className="text-muted mt-2">Sign in to choose a language and start lessons.</p>
+        <div className="sign-in-container">
+          <div className="sign-in-message">
+            <p className="text-muted">Sign in to choose a language and start lessons.</p>
+            <button className="btn btn-primary mt-2" onClick={() => navigate('signin' as any)}>Sign in</button>
+          </div>
+        </div>
       )}
       <div className="language-grid">
         <TiltCard>
