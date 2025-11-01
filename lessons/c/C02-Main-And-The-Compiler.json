@@ -4,11 +4,19 @@
   "content": [
     {
       "type": "text",
-      "text": "Last time, you learned that C is a bridge between your ideas and the machine’s logic. Now it’s time to actually see a C program. Every C program begins in one specific place: a function called main. When your program runs, the computer jumps straight into main and starts reading your instructions line by line."
+      "text": "Last time, you learned that C is a tool to convert your English ideas into computer instructions. Now it is time to actually see a C program."
     },
     {
       "type": "text",
-      "text": "Let's see what a simple C program looks like. This will be your first real program and your first compiled experience. When you write C code, the file you save is only half the story (or in this case, the code that will be save on this website). You’ll still need a compiler to translate it into machine language so the CPU can execute it."
+      "text": "Every C program begins in one specific place: a function called main. When your program runs, the computer jumps straight into main and starts reading your instructions line by line."
+    },
+    {
+      "type": "text",
+      "text": "Time to try out C! This will be your first real program and your first compiled experience. When you write C code, the file you save is only half the story (or in this case, the code that will be save on this website). You’ll still need a compiler to translate it into machine language so the CPU can execute it."
+    },
+    {
+      "type": "text",
+      "text": "The process of compiling is usually hidden behind a 'run' button (just like this website). Traditionally, you would use a console to input a file and run a compiler on it, but we'll abstract that for now."
     },
     {
       "type": "code-quiz",
@@ -26,11 +34,41 @@
     },
     {
       "type": "text",
-      "text": "But now, a deeper dive into that program. The first line, `#include <stdio.h>`, tells the compiler to include a small collection of code that knows how to handle input and output. Without it, `printf` would be unknown. The next part, `int main()`, marks the start of the main function, the heart of your program. Everything between the curly braces runs when the program starts."
+      "text": "But now, a deeper dive into that program. The first line, `#include <stdio.h>`, tells the compiler to include a small collection of code that knows how to handle input and output. Without it, `printf` would be unknown."
     },
     {
       "type": "text",
-      "text": "Inside main, you called `printf`. That’s a method that sends text to the output. In this case, it displays `Hello, world!`. Finally, the line `return 0;` tells the operating system that your program finished successfully."
+      "text": "The next part, `int main()`, marks the start of the main function, the heart of your program. Everything between the curly braces runs when the program starts."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What imports 'printf()'?",
+      "options": [
+        { "id": "a", "text": "return 0;"},
+        { "id": "b", "text": "#import <stdio.h>" , "correct": true },
+        { "id": "c", "text": "{ };" },
+        { "id": "d", "text": "int main() {}." }
+      ],
+      "explanation": "`#import <stdio.h>` imports `printf()` into the file."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Where does the program start?",
+      "options": [
+        { "id": "a", "text": "return 0;"},
+        { "id": "b", "text": "#import <stdio.h>"  },
+        { "id": "c", "text": "{ };" },
+        { "id": "d", "text": "int main() {}.", "correct": true }
+      ],
+      "explanation": "`int main() {}`, inside the curly brackets, is where the code of the app starts running."
+    },
+    {
+      "type": "text",
+      "text": "Inside main, you called `printf`. That’s a method that sends text to the output. In this case, it displays `Hello, world!`."
+    },
+    {
+      "type": "text",
+      "text": "Finally, the line `return 0;` tells the operating system that your program finished successfully."
     },
     {
       "type": "text",
@@ -53,7 +91,22 @@
     },
     {
       "type": "text",
-      "text": "Some methods came have arguments, inputs that give extra information to the function for whatever purpose. This can be a number to do operations on, or in the case of `printf(\"This is not a method.\");` it can be text to display. Methods require that all their parameters are filled, meaning that you must give an argument for every corresponding method. Put simply, `printf();` would give an error if you gave two text inputs, or none; it MUST have one text input. It also MUST be text, it cannot be a number. If there was a method that had two numbers as parameters, then you MUST have two numbers in your arguments (the inputs you give when using a method). So, `AddTwoNumbers(5, 10);` would be correct, but `AddTwoNumbers(5);` would not be. Note how a comma (`,`) was used to separate arguments."
+      "text": "Some methods came have arguments, inputs that give extra information to the function for whatever purpose. This can be a number to do operations on, or in the case of `printf(\"This is not a method.\");` it can be text to display. Methods require that all their parameters are filled, meaning that you must give an argument for every corresponding method."
+    },
+    {
+      "type": "text",
+      "text": "Put simply, `printf();` would give an error if you gave two text inputs, or none; it MUST have one text input. It also MUST be text, it cannot be a number. If there was a method that had two numbers as parameters, then you MUST have two numbers in your arguments (the inputs you give when using a method). So, `AddTwoNumbers(5, 10);` would be correct, but `AddTwoNumbers(5);` would not be. Note how a comma (`,`) was used to separate arguments."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Which of these would NOT give an error?",
+      "options": [
+        { "id": "a", "text": "printf(\"This is correct\")"},
+        { "id": "b", "text": "printf(\"Bozo.\");", "correct": true },
+        { "id": "c", "text": "printf();" },
+        { "id": "d", "text": "printf(\"This is\", \"possible true?\");" }
+      ],
+      "explanation": "`printf(\"Bozo.\");` is correct for it has the method name, and in the brackets it has text in quotation marks. Most importantly, the line ends in a semi-colon."
     },
     {
       "type": "text",
@@ -61,7 +114,7 @@
     },
     {
       "type": "multiple-choice-quiz",
-      "question": "Now, time for a review. What do you think `int main() { }` represent in a C program?",
+      "question": "Review time! What do you think `int main() { }` represent in a C program?",
       "options": [
         { "id": "a", "text": "It defines the starting point of the program.", "correct": true },
         { "id": "b", "text": "It prints text to the screen." },
@@ -87,11 +140,11 @@
     },
     {
       "type": "text",
-      "text": "Now you’ve seen how source code, compiler, and CPU fit together. You write instructions, the compiler translates them, and the machine obeys. C doesn’t hide that process, it invites you to see what’s really going on under the hood."
+      "text": "Now you’ve seen your first bit of C code and what it does. Plus, how the compiler is involved in this process. You write instructions, the compiler translates them, and the hardware follows it."
     },
     {
       "type": "text",
-      "text": "In the next lesson, we’ll talk about variables and memory. You’ll learn that every piece of data you use in C has a physical space inside the computer’s memory. It’s how you start thinking like the machine itself."
+      "text": "In the next lesson, we’ll talk about variables and memory. You’ll learn that every piece of data you use in C has a physical space inside the computer’s memory, and how to use it to store data."
     }
   ]
 }

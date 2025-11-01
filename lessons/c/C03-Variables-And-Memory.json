@@ -4,30 +4,118 @@
   "content": [
     {
       "type": "text",
-      "text": "You’ve seen a C program run and print text. Now let’s ask a deeper question: where does that text, or any piece of data, actually live when the program runs? The answer lies in memory. Every program uses memory to store and retrieve information while it runs, and C lets you see that process up close."
+      "text": "You’ve seen a C program run and print text. Now, deeper question: where does that text, or any piece of data, actually live when the program runs?"
     },
     {
       "type": "text",
-      "text": "Think of memory as a long row of numbered boxes. Each box can hold a value, and each has an address, its position in that long line. When you create a variable in C, you’re asking the computer to reserve one of those boxes for you and give it a name so you can find it later."
+      "text": "The answer lies in memory. Every program uses memory to store and retrieve information while it runs."
     },
     {
       "type": "text",
-      "text": "For example, when you write int age = 20;, you’re creating a box big enough to hold an integer and storing the number 20 inside it. The name age is just a label, something humans use to remember which box we’re talking about. The computer doesn’t care about the name, it only remembers the address."
+      "text": "Think of memory as a long row of numbered boxes, stored in your RAM. Each box can hold a value, and each has an address, which is its position in that long line. When you create a variable in C, you reserve one of those boxes and give it a name so you can find it later."
+    },
+    {
+      "type": "text",
+      "text": "For example, when you write `int age = 20;`, you’re creating a box big enough to hold a whole number (known as an integer), and storing the number 20 inside it. The name `age` is just a label, something we use to remember which box we’re talking about. The program itself doesn't store the name, only remembering the address."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "What is the name of this variable? `float Int = 6.9;`",
+      "options": [
+        { "id": "b", "text": "6.9" },
+        { "id": "a", "text": "float" },
+        { "id": "c", "text": "Int", "correct": true },
+        { "id": "d", "text": "Float" }
+      ],
+      "explanation": "`Int` is the actual name of the variable created with the given declaration. Though, the name is quite a terrible one, when naming variables, you want to make it immediately recognisable as to how the variable will be used."
+    },
+    {
+      "type": "text",
+      "text": "Here's a cool thing you can do with memory... instead of storing actual values into your memory, you can store the addresses other parts of memory. Sounds confusing right? That will be unpacked later so don't worry about it. Plus, the program, the code itself, is stored in memory, so aside from data and addresses to said data, it can also store instructions."
+    },
+    {
+      "type": "text",
+      "text": "To clarify, when the term \"memory\" is used, it is referring to RAM. RAM is the short-term memory of your device whilst your HDD (for those with super old hardware) or SSD is your long-term memory. Short term memory is far faster to access than long term memory which is why we don't just directly store temporary data into long term memory."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "Where is a program stored when it runs?",
+      "options": [
+        { "id": "b", "text": "In your HDD." },
+        { "id": "a", "text": "In your RAM.", "correct": true },
+        { "id": "c", "text": "In your CPU." },
+        { "id": "d", "text": "In your SSD." }
+      ],
+      "explanation": "When you open a program or app on any device, it gets loaded into short term memory, RAM, before running."
+    },
+    {
+      "type": "text",
+      "text": "Now it's time for you to store your own data in memory!"
+    },
+    {
+      "type": "text",
+      "text": "In C, declaring a variable usually is built up of four bits of text separated by spaces, which will be referred to as keywords from now on."
+    },
+    {
+      "type": "text",
+      "text": "Because C is \"strongly typed\", every variable you declare starts off with the type of data you want to store, such as `int`, then the name you want to give the variable yourself (to reference it in other parts of your code), then an equal, `=`, sign, then the initial value. Don't forget to end the line with a semi-colon (`;`). Here's an example of a variable declaration: `int bogus = 15;`"
+    },
+    {
+      "type": "text",
+      "text": "Now, `int` is short for integer (a whole number), so `int bogus = 15;` stores a whole number, no decimals. A decimal number can be stored via a `float`, like so: `float harrow = 4.2;`."
+    },
+    {
+      "type": "multiple-choice-quiz",
+      "question": "How do you store a whole number with the name 'loser' to memory?",
+      "options": [
+        { "id": "b", "text": "float loser = 4.0;" },
+        { "id": "a", "text": "loser = 40" },
+        { "id": "c", "text": "int loser = 40" },
+        { "id": "d", "text": "int loser = 40;", "correct": true  }
+      ],
+      "explanation": "`int loser = 40;` is correct. It has the type, then name, then `=`, then the value. Most importantly, the declaration ends in a semi-colon."
+    },
+    {
+      "type": "text",
+      "text": "As for text, a single character can be stored with `char Variable = 'A';` and to store many characters, known as strings, you need to use a list of characters (which will be explained in future lessons). For now, the only time you'll need to use strings is in printing to the console: `printf(\"text\")`. 'single quotes' are used for chars whilst \"double quotes\" are used for strings"
     },
     {
       "type": "code-quiz",
       "language": "c",
-      "prompt": "Declare an integer variable named 'count' and give it a value of 5, then print it to the screen.",
-      "starterCode": "#include <stdio.h>\n\nint main() {\n    // your code here\n    return 0;\n}",
-      "desiredOutput": { "type": "exact", "value": "5" }
+      "prompt": "Change this code to print out the number 69 instead of 67.",
+      "prefixCode": "#include <stdio.h>\n\nint main() {\n",
+      "starterCode": "int number = 67;\n",
+      "suffixCode": "    printf(\"Thy number is %d.\", number);\n    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "Thy number is 69." },
+      "maxLines": 1,
+      "maxStringLength": 0
     },
     {
       "type": "text",
-      "text": "When you ran that program, the CPU stored the number 5 somewhere in memory. The variable count was your way of saying, 'remember this value for later.' If you print it again or perform math on it, the computer goes back to that same spot in memory, retrieves the value, and uses it in the calculation."
+      "text": "When you ran that program, the CPU stored the number 69 somewhere in memory. The variable `number` was your way storing the number into memory. If you print it or perform math on it, the computer goes back to that same spot in memory, retrieves the value, and uses it in the calculation."
+    },
+    {
+      "type": "text",
+      "text": "If you recall, using `printf(\"Text\")` allows you to output text to the console... but what if you wanted to use numbers? The `printf()` method always starts with a string as the first argument, the main text to output, whilst succeeding arguments bits of data you want put into that text. For integers, `%d` is used to insert into the text; `printf(\"text %d text\", 420);` will output \"text 420 text\". Notice how variables aren't strictly necessary to print text with numbers."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Finish the code to print the given number variable provided.",
+      "prefixCode": "#include <stdio.h>\n\nint main() {\n    int number = 694204167;\n    //Any line that beings with a double slash, \"//\",\n    //Is called a comment, which is text that\n    //Isn't ran, but is only there\n    //To give additional info for ourselves.\n    //use printf() to output the number.\n",
+      "starterCode": "    printf...",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "5" },
+      "maxLines": 1,
+      "maxStringLength": 7
+    },
+    {
+      "type": "text",
+      "text": "Well done. You've learnt so much already!"
     },
     {
       "type": "multiple-choice-quiz",
-      "question": "What does a variable actually represent in C?",
+      "question": "What does a variable represent?",
       "options": [
         { "id": "a", "text": "A label that points to a spot in memory.", "correct": true },
         { "id": "b", "text": "A box that moves around randomly." },
@@ -38,7 +126,15 @@
     },
     {
       "type": "text",
-      "text": "The type you declare, like int or char, tells the compiler how many bytes to reserve for that variable. Different data types take up different amounts of memory. An int might take 4 bytes, while a char only takes 1. You’ll see later that this matters when you start working directly with memory addresses."
+      "text": "So, you've touched on variables and storing them. But... how much space does it take up? Can you run out?"
+    },
+    {
+      "type": "text",
+      "text": "In computer science, memory is made up of bits, 1s, and 0s, yadda yadda you've heard this before. In computer science, bits are rarely manipulated individually, instead memory is only ever accessed and stored in as bytes. Bytes are units of 8 bits, which allows a byte to have 256 (2^8) unique values. Things you store can use any amount of bytes, from just 1, to 16 bytes (128 bits), or more!"
+    },
+    {
+      "type": "text",
+      "text": "The type of variable you declare, like `int` or `char`, tells the compiler how many bytes to reserve for that variable. Different data types take up different amounts of memory. An int might take 4 bytes, while a char only takes 1. You’ll see later that this matters when you start working directly with memory addresses."
     },
     {
       "type": "multiple-choice-quiz",
@@ -49,15 +145,15 @@
         { "id": "c", "text": "That x is a new function." },
         { "id": "d", "text": "That x controls the compiler." }
       ],
-      "explanation": "The keyword int tells the compiler that x should store an integer value, and it decides how much memory to reserve based on that type."
+      "explanation": "The keyword `int` tells the compiler that x should store an integer value, and it decides how much memory to reserve based on that type (which is 4 bytes usually)."
     },
     {
       "type": "text",
-      "text": "In short, variables are how you talk to memory without dealing with raw numbers and addresses. You tell the computer what to store and what to call it, and it does the rest. But in C, you’ll soon see that those underlying addresses are still visible, and you can even reach in and manipulate them yourself."
+      "text": "In short, variables are how you store data for use later on. You tell the computer what to store and what to call it, and it does the rest. But in C, you’ll soon see that you can see and even manipulate the underlying addresses to memory, known as pointers."
     },
     {
       "type": "text",
-      "text": "Next, we’ll go deeper into those details. You’ll learn about data types and sizes, and see exactly how many bytes different kinds of data take up. That’s where you’ll start to truly think like the machine."
+      "text": "Next, You'll learn more about different data types and the memory used to store them."
     }
   ]
 }

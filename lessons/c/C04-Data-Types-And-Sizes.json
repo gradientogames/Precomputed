@@ -4,26 +4,49 @@
   "content": [
     {
       "type": "text",
-      "text": "Last time, you learned that every variable takes up space in memory. Now it’s time to see how much space each kind of data actually uses. In C, this isn’t abstract, it’s part of the language itself. The data type you choose determines exactly how many bytes the computer will reserve."
+      "text": "Last time, you learned that every variable takes up space in memory. Using C, you'll see how much space each kind of data actually uses. The data type you choose determines exactly how many bytes the computer will reserve."
     },
     {
       "type": "text",
-      "text": "Let’s start simple. A byte is the smallest unit of memory that can store a value. One byte can hold 256 different numbers, from 0 to 255. Larger types like int, float, or double use multiple bytes to store bigger or more precise numbers."
+      "text": "First, a review. A byte is the smallest unit of memory that can store a value. Hardware is built around bytes being at the lowest level and so you can't just store a single bit (a single 1 or 0) into memory. One byte can hold 256 different numbers, from 0 to 255. Larger types like `int`, `float`, or `double` use multiple bytes to store bigger or more precise numbers."
     },
     {
       "type": "text",
-      "text": "For example, a char usually takes 1 byte, an int often takes 4 bytes, and a double might take 8 bytes. These sizes can vary depending on your system, but the idea is the same: larger types hold more information but use more memory. C gives you a direct way to check a type’s size using a built-in operator called sizeof."
+      "text": "For example, a char usually takes 1 byte, an int often takes 4 bytes, and a double might take 8 bytes. These sizes can vary depending on your system, but the idea is the same: larger types hold more information but use more memory. C gives you a direct way to check a type’s size using a built-in operator called `sizeof()`."
     },
     {
       "type": "code-quiz",
       "language": "c",
-      "prompt": "Print the number of bytes used by an int using sizeof.",
-      "starterCode": "#include <stdio.h>\n\nint main() {\n    // print the size of an int\n    printf(\"%zu\", sizeof(int));\n    return 0;\n}",
-      "desiredOutput": { "type": "exact", "value": "4" }
+      "prompt": "Run the given program to print the number of bytes used by an int using `sizeof()`.",
+      "prefixCode": "#include <stdio.h>\n\nint main() {\n    ",
+      "starterCode": "printf(\"%zu\", sizeof(int));\n",
+      "suffixCode": "    return 0;\n}",
+      "desiredOutput": { "type": "exact", "value": "4", "skippable": true },
+      "maxLines": 1
     },
     {
       "type": "text",
-      "text": "Depending on your machine, the output might be 4 or another number, but the key point is that sizeof tells you how many bytes the type occupies. You can use it on variables or directly on type names. This gives you a concrete view of memory usage."
+      "text": "`sizeof()` on variables or directly on type names. This will be a powerful tool later on."
+    },
+    {
+      "type": "text",
+      "text": "You may have noticed that `sizeof()` has the characteristics of a method, and that's because it is! It has a name, brackets, and parameter. It doesn't have a semi-colon because it is nested within another method, `printf()`. A semi-colon is only needed on the main method line."
+    },
+    {
+      "type": "text",
+      "text": "Additionally, a new thing this specific method does is output a value. Alongside doing something, or printing text, a method can \"return\" a value, meaning that in your code, you can use a method's return value as a value or parameter. So you can set a variable to the output of a method: `int size = (int)sizeof(char);`."
+    },
+    {
+      "type": "text",
+      "text": "Why is there a `(int)` in `int size = (int)sizeof(char);`? Don't worry about it."
+    },
+    {
+      "type": "text",
+      "text": "Effectively, using a method first calculated the output, the return value, and replaces itself in the code with the output. So when you run `int size = (int)sizeof(char);`, it first does the `(int)sizeof(char)` method, and returns 1 as the value, ending up with `int size = 1`. This is an oversimplification, but it will help you understand how methods work."
+    },
+    {
+      "type": "text",
+      "text": "That's why you see `return 0` at the end of your C program, because it is returning a value (0 representing program success) for the `main()` method. It's a lot to take in... so don't worry about it, there'll be a whole lesson about this later on."
     },
     {
       "type": "multiple-choice-quiz",
@@ -34,7 +57,16 @@
         { "id": "c", "text": "It measures how long a program runs." },
         { "id": "d", "text": "It converts a value into bytes." }
       ],
-      "explanation": "sizeof returns the number of bytes that a type or variable occupies in memory. It’s how you measure data directly in C."
+      "explanation": "`sizeof` returns the number of bytes that a type or variable occupies in memory; it's used to measure the space something will, or does take up in memory."
+    },
+    {
+      "type": "code-quiz",
+      "language": "c",
+      "prompt": "Now for a challenge. Create a variable called `size` and set it to the size of a `double`.",
+      "prefixCode": "#include <stdio.h>\n\nint main() {\n",
+      "starterCode": "    //make sure you add `(int)` before `sizeof()`",
+      "suffixCode": "    printf(\"%d\", size);\n    return 0;\n}",
+      "desiredOutput": { "type": "text+tokens", "text": "8", "sourceIncludes": ["int size = (int)sizeof(double);"] }
     },
     {
       "type": "text",
@@ -42,7 +74,7 @@
     },
     {
       "type": "text",
-      "text": "You’ve now connected data types to physical memory. In C, types aren’t just about meaning, they define real storage space inside the machine. In the next lesson, you’ll use these values in action as you explore how operators combine, compare, and manipulate them."
+      "text": "You’ve now connected variables to the bytes that are stored. In the next lesson, you’ll use these values in action as you explore how operators combine, compare, and manipulate them."
     }
   ]
 }
