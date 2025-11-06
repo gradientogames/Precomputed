@@ -1,0 +1,6 @@
+-Code-example element.
+-hidden parts of code quiz.
+-finish animation at start
+-change colours of whole website to use custom unique colours
+-update animation with some svg lines and stuff
+-redesign logo with new colours

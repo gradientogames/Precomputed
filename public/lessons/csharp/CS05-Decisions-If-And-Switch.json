@@ -25,7 +25,7 @@
           "text": "if score >= 50: Console.WriteLine(\"Pass\");"
         },
         {
-          "text": "if score >= 50 { Console.WriteLine(\"Pass\"); }\"",
+          "text": "if (score >= 50) { Console.WriteLine(\"Pass\"); }\"",
           "correct": true
         },
         {
@@ -51,6 +51,14 @@
       "text": "Sometimes you need to check multiple conditions. An else if statement lets you test additional conditions if the first one is false. For example, you could classify scores as 'Fail', 'Pass', or 'Excellent' using multiple conditions in order."
     },
     {
+      "type": "text",
+      "text": "Immediately after using an if statement, after its closing curly bracket, you can add an `else` statement, which occurs if the condition of the if statement isn't satisfied. Like so `if (condition) { } else { }`. Of course you would add lines between the curley brackets and replace `condition` with a comparison, or any boolean."
+    },
+    {
+      "type": "text",
+      "text": "You can also chain ifs using `else if`. Like so: `if(x) { } else if (y) { } else if (z) { } else { }`. An `else` alone at the end isn't strictly necessary. When you chain else-ifs, it runs sequentially, if checks the first condition, if it isn't met then it goes to the next condition, then so on."
+    },
+    {
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Use if, else if, and else to classify a variable score = 85 as 'Fail' (<50), 'Pass' (50-79), or 'Excellent' (80+). Print the result.",
@@ -67,6 +75,10 @@
       "text": "The switch statement is another way to make decisions, especially when you have a single variable with multiple specific values. It compares the variable to each case, and executes the matching block. This can be cleaner than multiple if-else statements in some situations."
     },
     {
+      "type": "text",
+      "text": "The switch case syntax works by giving an input value, and then adding a bunch of 'cases' in between. You can put `switch (integer) { }`, and within the curley brackets you add as many `case x: /*any code here*/ break;` as you like, where x can be either another integer where the input integer must equal for the code inside to execute. the `break;` must always go after any code you execute to ensure... blah blah blah... you need it. You can also add a default case, `default: /*code*/ break;`, to execute if no other cases are met, similar to `else`."
+    },
+    {
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Use a switch statement on an integer variable day = 3 to print the corresponding weekday name (1=Monday, 2=Tuesday, 3=Wednesday, 4=Thursday, 5=Friday). Include a default case for invalid numbers.",
@@ -81,10 +93,6 @@
     {
       "type": "text",
       "text": "Decision-making allows programs to act differently under different circumstances. Without branching, every program would do the same thing all the time. By combining variables, operators, and conditions, you gain control over how your program reacts to input or data."
-    },
-    {
-      "type": "text",
-      "text": "Final challenge: Create a program that takes an integer representing temperature. Print 'Cold' if it is below 10, 'Warm' if between 10 and 25, and 'Hot' if above 25. Use an if-else chain or switch logic as you prefer."
     },
     {
       "type": "text",
