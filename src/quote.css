@@ -38,7 +38,7 @@
 
 .programmer-word .char-reveal.emphasised {
   font-weight: 800;
-  font-size: clamp(2.5rem, 10vw, 10rem);
+  font-size: clamp(3rem, 10vw, 10rem);
   line-height: 1;
   background: linear-gradient(45deg, var(--brand-1), var(--brand-2));
   -webkit-background-clip: text;
@@ -98,19 +98,8 @@
   width: 100%;
   font-size: clamp(1.8rem, 5.8vw, 4.2rem);
   line-height: 1.1;
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left; /* TODO, make this right and change code in textMosaic.ts */
 }
-  .line:after {
-        content: "";
-        display: inline-block;
-        width: 100%;	
-    }
-    #tagline {
-        height: 80px;
-        overflow: hidden;
-        line-height: 80px; /* vert-center */
-    }
 
 .top-right {
   display: flex;

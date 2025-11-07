@@ -158,7 +158,7 @@ body, body * {
 
 img, svg, video { max-width: 100%; height: auto; }
 
-a { color: var(--color-primary); text-decoration: none; }
+a { color: var(--color-primary); text-decoration: none; cursor: pointer; }
 a:hover { text-decoration: underline; }
 
 /* Layout */
@@ -983,4 +983,90 @@ code {
   opacity:0.6;
   filter:blur(20px);
   transition:opacity 200ms linear;
+}
+
+/* Mosaic styles */
+:root {
+  --mosaic-cell-size: 3px;
+  --mosaic-resolution: 3;   
+}
+
+.mosaic {
+  position: absolute;
+  z-index: 2;
+}
+
+.mosaic.ai-word {
+  margin-top: 86px;
+}
+.mosaic.ai-question {
+  margin-left: 174px;
+  margin-top: 34px;
+}
+.mosaic.line1 {
+  margin: 6px 0px;
+}
+.mosaic.line2 {
+  margin: 86px 0px;
+}
+.mosaic.bottom-line {
+  margin: 6px 0px;
+}
+.mosaic.programmer-word {
+  margin: 86px 0px;
+}
+
+.mosaic-text {
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 2.5s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes pixel {
+  0% {
+    opacity: 0;
+    transform: scale(0) translate(0, 0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translate(0, 100%);
+  }
+}
+
+.pixel {
+  width: var(--mosaic-cell-size);
+  height: var(--mosaic-cell-size);
+  background-color: var(--mosaic-cell-empty-color);
+  image-rendering: pixelated;
+  will-change: opacity, transform;
+  opacity: 0;
+  animation: pixel 3s ease-out 0s forwards;
+}
+.pixel.filled {
+   background-color: var(--color-text);
+}
+.programmer-word .pixel.filled {
+  background: linear-gradient(45deg, var(--brand-1), var(--brand-2));
+  background-size: 100vw 100vh;
+  background-position: calc(-1 * var(--x) * var(--mosaic-cell-size)) calc(-1 * var(--y) * var(--mosaic-cell-size));
+}
+.ai-word .pixel.filled {
+  background: linear-gradient(45deg, var(--brand-1), var(--brand-2));
+  background-size: 100vw 100vh;
+  background-position: calc(-1 * var(--x) * var(--mosaic-cell-size)) calc(-1 * var(--y) * var(--mosaic-cell-size));
 }

@@ -3,10 +3,15 @@ import { navigate } from '../lib/router'
 import { hasSupabase } from '../lib/supabaseClient'
 import { useEffect, useState, useRef } from 'react'
 import { type AuthUser, onAuthChange } from '../lib/auth'
+import { applyMosaicToTextElements } from '../lib/textMosaic'
 
 export default function Home() {
   const [user, setUser] = useState<AuthUser | null>(null);
   const quoteAnimated = useRef(false);
+
+   useEffect(() => {
+    applyMosaicToTextElements();
+  }, []);
 
   // Function to wrap each character in a span for animation
   const wrapCharsForAnimation = () => {
@@ -87,17 +92,17 @@ export default function Home() {
         <div className="quote-inner">
           <div className="quote-top" aria-label="Top section of quote">
             <div className="top-left">
-              <div id="tagline" className="line line1 textReveal">Why learn programming</div>
-              <div id="tagline" className="line line2 textReveal">when there is</div>
+              <div className="line line1 mosaic-text">Why learn programming</div>
+              <div className="line line2 mosaic-text">when there is</div>
             </div>
             <div className="top-right">
-              <span className="ai-word textRevealEmphasised">AI</span>
-              <span className="ai-question textReveal textRevealDelay">?</span>
+              <span className="ai-word mosaic-text">AI</span>
+              <span className="ai-question mosaic-text">?</span>
             </div>
           </div>
           <div className="quote-bottom" aria-label="Bottom section of quote">
-            <div className="bottom-line textReveal">AI sucks without a</div>
-            <span className="programmer-word textRevealEmphasised">PROGRAMMER</span>
+            <div className="bottom-line mosaic-text">AI sucks without a</div>
+            <span className="programmer-word mosaic-text">PROGRAMMER</span>
           </div>
         </div>
       </section>
