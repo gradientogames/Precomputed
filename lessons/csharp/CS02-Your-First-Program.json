@@ -6,17 +6,14 @@
       "type": "text",
       "text": "You now understand how programmers think. It’s time to turn that mindset into real code. In this lesson, you’ll create your first full C# program, understand where it begins, and learn how a computer runs instructions step by step. You’ll see how structure and order define how a program behaves."
     },
-
     {
       "type": "text",
       "text": "Every C# program starts the same way. You define a class, then a special method called Main. The Main method is the program’s entry point, where execution begins. Every statement inside Main runs in the order it appears, from top to bottom. Once you understand that order, you can control exactly what happens and when."
     },
-
     {
       "type": "text",
       "text": "Let’s start with a small challenge. Imagine you’re explaining how to greet someone using precise instructions. You could say: 'Look at them. Say hello. Smile.' That’s the same logic a program follows. Each statement is an instruction. In C#, those statements are written as code inside curly braces `{}`."
     },
-
     {
       "type": "multiple-choice-quiz",
       "question": "Where does every C# program start executing?",
@@ -41,12 +38,10 @@
       ],
       "explanation": "The Main method is always the entry point of a C# program. Execution starts there, not before."
     },
-
     {
       "type": "text",
       "text": "Now you’ll see what a minimal working program looks like. This is the structure that every C# program uses, even the simplest ones. You’ll recognize the pattern from now on: class, Main, and statements inside it. Don’t worry about every word yet, just focus on understanding the structure."
     },
-
     {
       "type": "code-quiz",
       "language": "csharp",
@@ -59,21 +54,18 @@
         "value": "Hello from C#."
       }
     },
-
     {
       "type": "text",
       "text": "That single line, `Console.WriteLine(\"Hello from C#.\");`, is an instruction. It tells the computer to print text to the screen. Notice the parentheses and quotes. They define the message. The semicolon at the end tells C# that the statement is complete. Without it, the program will not compile."
     },
-
     {
       "type": "text",
       "text": "Programs are built from statements like this. Each statement performs an action. You can stack them to make the program do more. Order matters. The computer runs the first statement, then the next, and continues until it reaches the end of Main. Let’s practice that idea."
     },
-
     {
       "type": "code-quiz",
       "language": "csharp",
-      "prompt": "Add one more statement to print a second line after the first. The order of lines matters.",
+      "prompt": "Add one more statement to print \"This is your second line.\" after the first. The order of lines matters.",
       "prefixCode": "using System;\nclass Program {\n    static void Main() {\n        Console.WriteLine(\"Hello from C#.\");\n",
       "starterCode": "        // Add your next instruction here\n",
       "suffixCode": "    }\n}",
@@ -82,12 +74,10 @@
         "value": "Hello from C#.\nThis is your second line."
       }
     },
-
     {
       "type": "text",
       "text": "You just created a simple sequence. The program executed one instruction, then the next, exactly as written. This flow of control is what defines the program’s behavior. In programming, flow is everything. You can control it by changing the order of statements or by introducing logic, which you’ll learn soon."
     },
-
     {
       "type": "multiple-choice-quiz",
       "question": "What happens if you place a statement above another in C#?",
@@ -112,22 +102,17 @@
       ],
       "explanation": "C# runs statements in the exact order they appear within the Main method. Order defines execution flow."
     },
-
     {
       "type": "text",
       "text": "Here’s a key concept: structure makes code predictable. The clearer your structure, the easier it is to understand and maintain. You’ve just written a complete, working program. That’s a major step. You now understand how to define a program, where it begins, and how to control its flow."
     },
-
     {
       "type": "text",
       "text": "For your final challenge, think about how you could represent a short set of steps using code. For example, print three lines: one that introduces you, one that says what you’re learning, and one that says why. Keep it simple, but structured. Each statement should do one thing, in order."
     },
-
     {
       "type": "text",
       "text": "To reflect: You’ve learned the foundation of every C# program. Every program starts at Main, runs top to bottom, and ends when Main finishes. This predictable structure lets you focus on logic without confusion. In the next lesson, you’ll learn about variables and data types, which let you store and use information inside your programs."
     }
-
-
   ]
 }

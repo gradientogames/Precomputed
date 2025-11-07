@@ -105,7 +105,7 @@
       "prefixCode": "#include <stdio.h>\n\nint main() {\n    int number = 694204167;\n    //Any line that beings with a double slash, \"//\",\n    //Is called a comment, which is text that\n    //Isn't ran, but is only there\n    //To give additional info for ourselves.\n    //use printf() to output the number.\n",
       "starterCode": "    printf...",
       "suffixCode": "    return 0;\n}",
-      "desiredOutput": { "type": "exact", "value": "5" },
+      "desiredOutput": { "type": "exact", "value": "694204167" },
       "maxLines": 1,
       "maxStringLength": 7
     },

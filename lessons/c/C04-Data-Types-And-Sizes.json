@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "text": "`sizeof()` on variables or directly on type names. This will be a powerful tool later on."
+      "text": "You can use `sizeof()` on variables or directly on type names. This will be a powerful tool later on."
     },
     {
       "type": "text",
@@ -34,15 +34,11 @@
     },
     {
       "type": "text",
-      "text": "Additionally, a new thing this specific method does is output a value. Alongside doing something, or printing text, a method can \"return\" a value, meaning that in your code, you can use a method's return value as a value or parameter. So you can set a variable to the output of a method: `int size = (int)sizeof(char);`."
+      "text": "Additionally, a new thing this specific method does is output a value. Alongside doing something, or printing text, a method can \"return\" a value, meaning that in your code, you can use a method's return value as a value or parameter. So you can set a variable to the output of a method: `int size = sizeof(char);`."
     },
     {
       "type": "text",
-      "text": "Why is there a `(int)` in `int size = (int)sizeof(char);`? Don't worry about it."
-    },
-    {
-      "type": "text",
-      "text": "Effectively, using a method first calculated the output, the return value, and replaces itself in the code with the output. So when you run `int size = (int)sizeof(char);`, it first does the `(int)sizeof(char)` method, and returns 1 as the value, ending up with `int size = 1`. This is an oversimplification, but it will help you understand how methods work."
+      "text": "Effectively, using a method first calculated the output, the return value, and replaces itself in the code with the output. So when you run `int size = sizeof(char);`, it first does the `sizeof(char)` method, and returns 1 as the value, ending up with `int size = 1`. This is an oversimplification, but it will help you understand how methods work."
     },
     {
       "type": "text",
@@ -64,9 +60,9 @@
       "language": "c",
       "prompt": "Now for a challenge. Create a variable called `size` and set it to the size of a `double`.",
       "prefixCode": "#include <stdio.h>\n\nint main() {\n",
-      "starterCode": "    //make sure you add `(int)` before `sizeof()`",
+      "starterCode": "",
       "suffixCode": "    printf(\"%d\", size);\n    return 0;\n}",
-      "desiredOutput": { "type": "text+tokens", "text": "8", "sourceIncludes": ["int size = (int)sizeof(double);"] }
+      "desiredOutput": { "type": "text+tokens", "text": "8", "sourceIncludes": ["int size = sizeof(double);"] }
     },
     {
       "type": "text",

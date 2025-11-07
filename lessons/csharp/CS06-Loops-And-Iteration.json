@@ -12,6 +12,16 @@
     },
     {
       "type": "text",
+      "text": "Before we explore the different loop types, let’s look at the general structure of loop syntax in C#. Every loop includes three things: a keyword (`for`, `while`, or `foreach`), parentheses `()` for conditions or declarations, and curly braces `{}` to define the block of code that repeats."
+    },
+    {
+      "type": "code-example",
+      "language": "csharp",
+      "code": "for (int i = 0; i < 5; i++) {\n    Console.WriteLine(i);\n}",
+      "explanation": "The parentheses after `for` contain three parts: initialization (`int i = 0`), condition (`i < 5`), and increment (`i++`). Each part is separated by a semicolon. The curly braces enclose the block that executes each time."
+    },
+    {
+      "type": "text",
       "text": "Here’s a challenge. Imagine you want to print the numbers 1 through 5 on the screen. You could write five separate Console.WriteLine() statements. But a loop lets you do it with just a few lines. Think about how to tell the computer to repeat the print action in order."
     },
     {
@@ -55,6 +65,16 @@
       "text": "A while loop repeats a block of code as long as a condition is true. You use it when you don’t know in advance how many times the loop will run. The program keeps checking the condition before each iteration."
     },
     {
+      "type": "text",
+      "text": "The syntax of a while loop is simpler. It starts with the keyword `while`, followed by a condition inside parentheses. The code inside the curly braces repeats as long as the condition remains true."
+    },
+    {
+      "type": "code-example",
+      "language": "csharp",
+      "code": "int counter = 1;\nwhile (counter <= 5) {\n    Console.WriteLine(counter);\n    counter++;\n}",
+      "explanation": "Here, the condition `counter <= 5` is checked before each iteration. If it’s true, the code runs again. Always update the counter inside the loop to avoid infinite repetition."
+    },
+    {
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Use a while loop to print numbers from 1 to 5. Declare an integer counter and update it inside the loop.",
@@ -71,6 +91,16 @@
       "text": "A foreach loop is used to iterate over collections like arrays or lists. It automatically goes through each element, making your code shorter and easier to read. This is especially useful when you don’t need to modify the collection while looping."
     },
     {
+      "type": "text",
+      "text": "The `foreach` loop has a different structure. It doesn’t use a counter or condition—it automatically moves through each item in a collection. The syntax declares a temporary variable that represents the current element."
+    },
+    {
+      "type": "code-example",
+      "language": "csharp",
+      "code": "string[] fruits = {\"Apple\", \"Banana\", \"Cherry\"};\nforeach (string fruit in fruits) {\n    Console.WriteLine(fruit);\n}",
+      "explanation": "The loop reads as: 'For each string called `fruit` in the `fruits` array, run this block.' You don’t modify the loop variable; it’s read-only within the loop."
+    },
+    {
       "type": "code-quiz",
       "language": "csharp",
       "prompt": "Use a foreach loop to print all elements in the array numbers = {2, 4, 6, 8, 10}.",
@@ -85,6 +115,16 @@
     {
       "type": "text",
       "text": "Loops also require careful control to avoid problems. If the condition never becomes false, a loop runs forever, causing your program to hang. Always ensure your loop has a condition that will eventually end or a break statement when needed."
+    },
+    {
+      "type": "text",
+      "text": "Each loop type uses braces `{}` to define its block. Forgetting braces or semicolons is a common beginner mistake. For example, placing a semicolon immediately after the loop header will terminate the loop before the block runs."
+    },
+    {
+      "type": "code-example",
+      "language": "csharp",
+      "code": "// Incorrect: loop does nothing\nfor (int i = 0; i < 3; i++);\n{\n    Console.WriteLine(i); // This runs once, not inside the loop\n}",
+      "explanation": "The semicolon after the loop header ends the statement prematurely. Always ensure the block starts immediately after the parentheses without a semicolon."
     },
     {
       "type": "multiple-choice-quiz",
