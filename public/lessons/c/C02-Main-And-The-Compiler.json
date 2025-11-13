@@ -25,7 +25,11 @@
       "starterCode": "    printf(\"Hello, World!\");",
       "prefixCode": "#include <stdio.h>\n\nint main() {\n\n",
       "suffixCode": "    return 0;\n}",
-      "desiredOutput": { "type": "exact", "value": "Hello, world!", "skippable": true },
+      "desiredOutput": {
+        "type": "exact",
+        "value": "Hello, world!",
+        "skippable": true
+      },
       "maxLines": 1
     },
     {
@@ -44,21 +48,47 @@
       "type": "multiple-choice-quiz",
       "question": "What imports 'printf()'?",
       "options": [
-        { "id": "a", "text": "return 0;"},
-        { "id": "b", "text": "#import <stdio.h>" , "correct": true },
-        { "id": "c", "text": "{ };" },
-        { "id": "d", "text": "int main() {}." }
+        {
+          "id": "a",
+          "text": "return 0;"
+        },
+        {
+          "id": "b",
+          "text": "#include <stdio.h>",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "{ };"
+        },
+        {
+          "id": "d",
+          "text": "int main() {}."
+        }
       ],
-      "explanation": "`#import <stdio.h>` imports `printf()` into the file."
+      "explanation": "`#include <stdio.h>` imports `printf()` into the file."
     },
     {
       "type": "multiple-choice-quiz",
       "question": "Where does the program start?",
       "options": [
-        { "id": "a", "text": "return 0;"},
-        { "id": "b", "text": "#import <stdio.h>"  },
-        { "id": "c", "text": "{ };" },
-        { "id": "d", "text": "int main() {}.", "correct": true }
+        {
+          "id": "a",
+          "text": "return 0;"
+        },
+        {
+          "id": "b",
+          "text": "#include <stdio.h>"
+        },
+        {
+          "id": "c",
+          "text": "{ };"
+        },
+        {
+          "id": "d",
+          "text": "int main() {}.",
+          "correct": true
+        }
       ],
       "explanation": "`int main() {}`, inside the curly brackets, is where the code of the app starts running."
     },
@@ -76,22 +106,39 @@
     },
     {
       "type": "text",
-      "text": "For now, it is important to understand that `printf` is known as a method. A method looks like any bit of text (with no spaces in between) such as `stinkyBozo` or `printf` that has a pair of brackets after it, like `printf()`. Methods are bundles of code that perform a specific task and can be reused. Don't worry about the specifics for now, just know that `printf(\"Harrow?\")` will output `Harrow?` to the console, which we will use to test our programs."
+      "text": "For now, it is important to understand that `printf` is known as a method. A method looks like any bit of text (with no spaces in between) such as `stinkyBozo` or `printf` that has a pair of brackets after it, like `printf()`."
+    },
+    {
+      "type": "text",
+      "text": "Methods are bundles of code that perform a specific task and can be reused. Don't worry about the specifics for now, just know that `printf(\"Harrow?\")` will output `Harrow?` to the console, which we will use to test our programs."
     },
     {
       "type": "multiple-choice-quiz",
       "question": "Which of these are NOT methods?",
       "options": [
-        { "id": "a", "text": "printf(\"This is not a method.\");"},
-        { "id": "b", "text": "#import <stdio.h>" , "correct": true },
-        { "id": "c", "text": "EliminateOrphans();" },
-        { "id": "d", "text": "int main() {}." }
+        {
+          "id": "a",
+          "text": "printf(\"This is not a method.\");"
+        },
+        {
+          "id": "b",
+          "text": "#include <stdio.h>",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "EliminateOrphans();"
+        },
+        {
+          "id": "d",
+          "text": "int main() {}."
+        }
       ],
-      "explanation": "`#import <stdio.h>` is not a method. It tells the program to include other methods and definitions, rather than having a function itself. int main() {} might have tripped you up, but it is still a method, only a method definition. This will be explained in more detail later on."
+      "explanation": "`#include <stdio.h>` is not a method. It tells the program to include other methods and definitions, rather than having a function itself. int main() {} might have tripped you up, but it is still a method, only a method definition. This will be explained in more detail later on."
     },
     {
       "type": "text",
-      "text": "Some methods came have arguments, inputs that give extra information to the function for whatever purpose. This can be a number to do operations on, or in the case of `printf(\"This is not a method.\");` it can be text to display. Methods require that all their parameters are filled, meaning that you must give an argument for every corresponding method."
+      "text": "Some methods can have arguments, inputs that give extra information to the function for whatever purpose. This can be a number to do operations on, or in the case of `printf(\"This is not a method.\");` it can be text to display. Methods require that all their parameters are filled, meaning that you must give an argument for every corresponding method."
     },
     {
       "type": "text",
@@ -101,10 +148,23 @@
       "type": "multiple-choice-quiz",
       "question": "Which of these would NOT give an error?",
       "options": [
-        { "id": "a", "text": "printf(\"This is correct\")"},
-        { "id": "b", "text": "printf(\"Bozo.\");", "correct": true },
-        { "id": "c", "text": "printf();" },
-        { "id": "d", "text": "printf(\"This is\", \"possible true?\");" }
+        {
+          "id": "a",
+          "text": "printf(\"This is correct\")"
+        },
+        {
+          "id": "b",
+          "text": "printf(\"Bozo.\");",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "printf();"
+        },
+        {
+          "id": "d",
+          "text": "printf(\"This is\", \"possible true?\");"
+        }
       ],
       "explanation": "`printf(\"Bozo.\");` is correct for it has the method name, and in the brackets it has text in quotation marks. Most importantly, the line ends in a semi-colon."
     },
@@ -116,10 +176,23 @@
       "type": "multiple-choice-quiz",
       "question": "Review time! What do you think `int main() { }` represent in a C program?",
       "options": [
-        { "id": "a", "text": "It defines the starting point of the program.", "correct": true },
-        { "id": "b", "text": "It prints text to the screen." },
-        { "id": "c", "text": "It includes the input and output library." },
-        { "id": "d", "text": "It declares a variable." }
+        {
+          "id": "a",
+          "text": "It defines the starting point of the program.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "It prints text to the screen."
+        },
+        {
+          "id": "c",
+          "text": "It includes the input and output library."
+        },
+        {
+          "id": "d",
+          "text": "It declares a variable."
+        }
       ],
       "explanation": "main() is the entry point of every C program. The computer always begins execution there within its curley brackets."
     },
@@ -131,10 +204,23 @@
       "type": "multiple-choice-quiz",
       "question": "What happens if you forget to compile your C file?",
       "options": [
-        { "id": "a", "text": "The computer will still understand it automatically." },
-        { "id": "b", "text": "It won’t run, because the CPU can’t execute plain text.", "correct": true },
-        { "id": "c", "text": "The code will print everything twice." },
-        { "id": "d", "text": "It will skip the main function." }
+        {
+          "id": "a",
+          "text": "The computer will still understand it automatically."
+        },
+        {
+          "id": "b",
+          "text": "It won’t run, because the CPU can’t execute plain text.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "The code will print everything twice."
+        },
+        {
+          "id": "d",
+          "text": "It will skip the main function."
+        }
       ],
       "explanation": "A compiler is required because the CPU only understands machine code, not the source text you wrote."
     },

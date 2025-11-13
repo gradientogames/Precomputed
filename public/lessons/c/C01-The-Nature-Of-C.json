@@ -18,10 +18,23 @@
       "type": "multiple-choice-quiz",
       "question": "Why do we need a programming language like C?",
       "options": [
-        { "id": "a", "text": "Computers understand English." },
-        { "id": "b", "text": "C allows us to create instructions for hardware.", "correct": true },
-        { "id": "c", "text": "C is used to make computers think on their own via quantum entanglement." },
-        { "id": "d", "text": "C is only for building video games." }
+        {
+          "id": "a",
+          "text": "Computers understand English."
+        },
+        {
+          "id": "b",
+          "text": "C allows us to create instructions for hardware.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "C is used to make computers think on their own via quantum entanglement."
+        },
+        {
+          "id": "d",
+          "text": "C is only for building video games."
+        }
       ],
       "explanation": "Computers can’t understand human language. A programming language like C lets us describe what we want the machine to do in a way that can be translated into its own language of binary instructions."
     },
@@ -33,10 +46,23 @@
       "type": "multiple-choice-quiz",
       "question": "Which of these describes what a compiler does?",
       "options": [
-        { "id": "a", "text": "It turns your text instructions into machine instructions.", "correct": true },
-        { "id": "b", "text": "It runs your code line by line instantly." },
-        { "id": "c", "text": "It manages the computer’s memory for you." },
-        { "id": "d", "text": "It sends your code over the internet." }
+        {
+          "id": "a",
+          "text": "It turns your text instructions into machine instructions.",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text": "It runs your code line by line instantly."
+        },
+        {
+          "id": "c",
+          "text": "It manages the computer’s memory for you."
+        },
+        {
+          "id": "d",
+          "text": "It sends your code over the internet."
+        }
       ],
       "explanation": "A compiler reads the code you write and produces a version that the CPU can run. It acts as a translator between you and the machine."
     },
@@ -52,12 +78,25 @@
       "type": "multiple-choice-quiz",
       "question": "What is optimisation?",
       "options": [
-        { "id": "a", "text": "Speeding up your code through rearranging code." },
-        { "id": "b", "text": "Reducing the amount of work done.", "correct": true },
-        { "id": "c", "text": "Manually controlling memory." },
-        { "id": "d", "text": "Activating the CPU nitro at selective times for performance gains." }
+        {
+          "id": "a",
+          "text": "Speeding up your code through rearranging code."
+        },
+        {
+          "id": "b",
+          "text": "Reducing the amount of work done.",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Manually controlling memory."
+        },
+        {
+          "id": "d",
+          "text": "Activating the CPU nitro at selective times for performance gains."
+        }
       ],
-      "explanation": "Allow manually controlling memory and rearranging code can speed up code, it is only because it allows the compiler to turn you code into better cpu instructions. Optimisation at its core is reducing the work being done, whether it is rendering less unnecessary pixels, doing less math, or accessing memory less often."
+      "explanation": "While manually controlling memory and rearranging code can speed up code, it is only because it allows the compiler to turn you code into better cpu instructions which does less work on your CPU. Optimisation at its core is reducing the work being done, whether it is rendering less unnecessary pixels, doing less math, or accessing memory less often."
     },
     {
       "type": "text",
